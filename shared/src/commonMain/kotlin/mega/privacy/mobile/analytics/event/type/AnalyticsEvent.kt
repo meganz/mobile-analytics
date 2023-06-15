@@ -1,8 +1,8 @@
-package mega.privacy.mobile.analytics.event
+package mega.privacy.mobile.analytics.event.type
 
 import mega.privacy.mobile.analytics.EventDataMapper
 import mega.privacy.mobile.analytics.getPlatform
-import mega.privacy.mobile.analytics.identifier.EventIdentifier
+import mega.privacy.mobile.analytics.event.identifier.EventIdentifier
 
 /**
  * Analytics event

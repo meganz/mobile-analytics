@@ -1,6 +1,6 @@
-package mega.privacy.mobile.analytics.event
+package mega.privacy.mobile.analytics.event.type
 
-import mega.privacy.mobile.analytics.identifier.NavigationEventIdentifier
+import mega.privacy.mobile.analytics.event.identifier.NavigationEventIdentifier
 
 
 /**

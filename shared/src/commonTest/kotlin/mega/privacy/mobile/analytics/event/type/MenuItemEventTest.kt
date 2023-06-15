@@ -1,43 +1,43 @@
-package mega.privacy.mobile.analytics.event
+package mega.privacy.mobile.analytics.event.type
 
 import mega.privacy.mobile.analytics.EventDataMapper
+import mega.privacy.mobile.analytics.event.identifier.MenuItemEventIdentifier
 import mega.privacy.mobile.analytics.getPlatform
-import mega.privacy.mobile.analytics.identifier.NavigationEventIdentifier
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-
-class NavigationEventTest {
+class MenuItemEventTest {
     private val platformIdentifier = getPlatform().baseIdentifier
     private val eventIdentifier = 1
-
-    private val expectedNavigationElementType = "navigationElementType"
-    private val expectedDestination = "destination"
+    private val expectedScreenName = "screenName"
+    private val expectedMenuItem = "menuItem"
+    private val expectedMenuType = "menuType"
 
     private val expectedEventName = "eventName"
 
-    private val fakeIdentifier = object : NavigationEventIdentifier {
-        override val navigationElementType: String?
-            get() = expectedNavigationElementType
-        override val destination: String?
-            get() = expectedDestination
+    private val fakeIdentifier = object : MenuItemEventIdentifier {
+        override val menuItem: String
+            get() = expectedMenuItem
+        override val screenName: String?
+            get() = expectedScreenName
+        override val menuType: String?
+            get() = expectedMenuType
         override val eventName: String
             get() = expectedEventName
         override val uniqueIdentifier: Int
             get() = eventIdentifier
-
     }
 
-    private val underTest = NavigationEvent(
+    private val underTest = MenuItemEvent(
         eventIdentifier = fakeIdentifier,
         viewId = null
     )
 
     @Test
-    fun `test that event identifier is 4000`() {
+    fun `test that event identifier is 5000`() {
         val actual = underTest.getEventIdentifier() - platformIdentifier - eventIdentifier
-        assertEquals(expected = 4000, actual = actual)
+        assertEquals(expected = 5000, actual = actual)
     }
 
     @Test
@@ -48,8 +48,8 @@ class NavigationEventTest {
             }
         }
         val actual = underTest.getEventMessage(mapper)
-
-        assertTrue(actual.contains(expectedNavigationElementType))
-        assertTrue(actual.contains(expectedDestination))
+        assertTrue(actual.contains(expectedScreenName))
+        assertTrue(actual.contains(expectedMenuItem))
+        assertTrue(actual.contains(expectedMenuType))
     }
 }

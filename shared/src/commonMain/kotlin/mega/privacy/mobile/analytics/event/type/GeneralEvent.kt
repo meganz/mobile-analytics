@@ -1,6 +1,6 @@
-package mega.privacy.mobile.analytics.event
+package mega.privacy.mobile.analytics.event.type
 
-import mega.privacy.mobile.analytics.identifier.GeneralEventIdentifier
+import mega.privacy.mobile.analytics.event.identifier.GeneralEventIdentifier
 
 /**
  * General event

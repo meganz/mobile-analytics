@@ -1,28 +1,23 @@
-package mega.privacy.mobile.analytics.event
+package mega.privacy.mobile.analytics.event.type
 
 import mega.privacy.mobile.analytics.EventDataMapper
+import mega.privacy.mobile.analytics.event.identifier.GeneralEventIdentifier
 import mega.privacy.mobile.analytics.getPlatform
-import mega.privacy.mobile.analytics.identifier.ButtonPressedEventIdentifier
-import mega.privacy.mobile.analytics.identifier.DialogDisplayedEventIdentifier
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-
-class DialogDisplayedEventTest {
+class GeneralEventTest {
     private val platformIdentifier = getPlatform().baseIdentifier
     private val eventIdentifier = 1
-    private val expectedScreenName = "screenName"
-    private val expectedDialogName = "dialogName"
+    private val expectedInfo = "info"
 
 
     private val expectedEventName = "eventName"
 
-    private val fakeIdentifier = object : DialogDisplayedEventIdentifier {
-        override val screenName: String?
-            get() = expectedScreenName
-        override val dialogName: String
-            get() = expectedDialogName
+    private val fakeIdentifier = object : GeneralEventIdentifier {
+        override val info: String?
+            get() = expectedInfo
         override val eventName: String
             get() = expectedEventName
         override val uniqueIdentifier: Int
@@ -30,15 +25,15 @@ class DialogDisplayedEventTest {
 
     }
 
-    private val underTest = DialogDisplayedEvent(
+    private val underTest = GeneralEvent(
         eventIdentifier = fakeIdentifier,
         viewId = null
     )
 
     @Test
-    fun `test that event identifier is 3000`() {
+    fun `test that event identifier is 7000`() {
         val actual = underTest.getEventIdentifier() - platformIdentifier - eventIdentifier
-        assertEquals(expected = 3000, actual = actual)
+        assertEquals(expected = 7000, actual = actual)
     }
 
     @Test
@@ -49,7 +44,6 @@ class DialogDisplayedEventTest {
             }
         }
         val actual = underTest.getEventMessage(mapper)
-        assertTrue(actual.contains(expectedScreenName))
-        assertTrue(actual.contains(expectedDialogName))
+        assertTrue(actual.contains(expectedInfo))
     }
 }

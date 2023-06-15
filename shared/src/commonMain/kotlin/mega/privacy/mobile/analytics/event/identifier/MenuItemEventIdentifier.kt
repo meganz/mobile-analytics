@@ -1,4 +1,4 @@
-package mega.privacy.mobile.analytics.identifier
+package mega.privacy.mobile.analytics.event.identifier
 
 /**
  * Menu item event identifier
