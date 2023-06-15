@@ -6,9 +6,8 @@ import mega.privacy.mobile.analytics.identifier.NavigationEventIdentifier
 /**
  * Navigation event
  *
- * @property identifier
+ * @property eventIdentifier
  * @property viewId
- * @constructor Create empty Navigation event
  */
 class NavigationEvent(
     override val eventIdentifier: NavigationEventIdentifier,

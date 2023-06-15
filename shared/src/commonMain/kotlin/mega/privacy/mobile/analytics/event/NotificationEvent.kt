@@ -5,9 +5,8 @@ import mega.privacy.mobile.analytics.identifier.NotificationEventIdentifier
 /**
  * Notification event
  *
- * @property identifier
+ * @property eventIdentifier
  * @property viewId
- * @constructor Create empty Notification event
  */
 data class NotificationEvent(
     override val eventIdentifier: NotificationEventIdentifier,

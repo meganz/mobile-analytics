@@ -5,9 +5,8 @@ import mega.privacy.mobile.analytics.identifier.TabSelectedEventIdentifier
 /**
  * Tab selected event
  *
- * @property identifier
+ * @property eventIdentifier
  * @property viewId
- * @constructor Create empty Tab selected event
  */
 data class TabSelectedEvent(
     override val eventIdentifier: TabSelectedEventIdentifier,

@@ -5,9 +5,8 @@ import mega.privacy.mobile.analytics.identifier.ScreenViewEventIdentifier
 /**
  * Screen view event
  *
- * @property identifier
+ * @property eventIdentifier
  * @property viewId
- * @constructor Create empty Screen view event
  */
 data class ScreenViewEvent(
     override val eventIdentifier: ScreenViewEventIdentifier,

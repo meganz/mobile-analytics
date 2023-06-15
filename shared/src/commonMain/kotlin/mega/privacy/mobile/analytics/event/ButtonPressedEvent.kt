@@ -1,15 +1,13 @@
 package mega.privacy.mobile.analytics.event
 
 import mega.privacy.mobile.analytics.identifier.ButtonPressedEventIdentifier
-import mega.privacy.mobile.analytics.identifier.EventIdentifier
 
 
 /**
  * Button pressed event
  *
- * @property identifier
+ * @property eventIdentifier
  * @property viewId
- * @constructor Create empty Button pressed event
  */
 class ButtonPressedEvent(
     override val eventIdentifier: ButtonPressedEventIdentifier,

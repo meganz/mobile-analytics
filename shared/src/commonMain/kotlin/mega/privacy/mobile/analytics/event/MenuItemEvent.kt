@@ -6,9 +6,8 @@ import mega.privacy.mobile.analytics.identifier.MenuItemEventIdentifier
 /**
  * Menu item event
  *
- * @property identifier
+ * @property eventIdentifier
  * @property viewId
- * @constructor Create empty Menu item event
  */
 class MenuItemEvent(
     override val eventIdentifier: MenuItemEventIdentifier,

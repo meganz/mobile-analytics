@@ -5,9 +5,8 @@ import mega.privacy.mobile.analytics.identifier.DialogDisplayedEventIdentifier
 /**
  * Dialog displayed event
  *
- * @property identifier
+ * @property eventIdentifier
  * @property viewId
- * @constructor Create empty Dialog displayed event
  */
 class DialogDisplayedEvent(
     override val eventIdentifier: DialogDisplayedEventIdentifier,

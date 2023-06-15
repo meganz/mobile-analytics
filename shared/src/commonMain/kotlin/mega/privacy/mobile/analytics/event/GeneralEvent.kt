@@ -5,9 +5,8 @@ import mega.privacy.mobile.analytics.identifier.GeneralEventIdentifier
 /**
  * General event
  *
- * @property identifier
+ * @property eventIdentifier
  * @property viewId
- * @constructor Create empty General event
  */
 data class GeneralEvent(
     override val eventIdentifier: GeneralEventIdentifier,
