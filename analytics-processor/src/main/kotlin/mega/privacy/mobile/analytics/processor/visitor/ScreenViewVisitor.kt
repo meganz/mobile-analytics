@@ -5,6 +5,7 @@ import com.google.devtools.ksp.symbol.KSNode
 import com.google.devtools.ksp.visitor.KSDefaultVisitor
 import com.squareup.kotlinpoet.TypeName
 import com.squareup.kotlinpoet.TypeSpec
+import mega.privacy.mobile.analytics.core.event.identifier.ScreenViewEventIdentifier
 import mega.privacy.mobile.analytics.processor.IdGenerator
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.visitor.data.ScreenViewEventData
@@ -12,7 +13,6 @@ import mega.privacy.mobile.analytics.processor.visitor.response.EventResponse
 
 class ScreenViewVisitor(private val idGenerator: IdGenerator) :
     KSDefaultVisitor<ScreenViewEventData, EventResponse>() {
-    private val packageName = "mega.privacy.mobile.analytics.event.screen"
 
     override fun visitClassDeclaration(
         classDeclaration: KSClassDeclaration,
@@ -25,7 +25,7 @@ class ScreenViewVisitor(private val idGenerator: IdGenerator) :
         return EventResponse(
             newMap,
             TypeSpec.objectBuilder(getClassName(shortName))
-//                .addSuperinterface()
+                .addSuperinterface(ScreenViewEventIdentifier::class)
                 .build()
         )
     }

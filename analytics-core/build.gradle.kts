@@ -7,6 +7,7 @@ plugins {
 kotlin {
     targetHierarchy.default()
 
+    jvm()
     android {
         compilations.all {
             kotlinOptions {

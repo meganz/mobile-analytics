@@ -16,6 +16,7 @@ kotlin {
     sourceSets {
         val jvmMain by getting {
             dependencies {
+                implementation(project(":analytics-core"))
                 implementation(project(":analytics-annotations"))
                 implementation("com.squareup:kotlinpoet:1.14.2")
                 implementation("com.squareup:kotlinpoet-ksp:1.14.2")

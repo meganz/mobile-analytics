@@ -4,6 +4,7 @@ import com.google.common.truth.Truth.assertThat
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSName
 import com.squareup.kotlinpoet.TypeSpec
+import mega.privacy.mobile.analytics.core.event.identifier.ScreenViewEventIdentifier
 import mega.privacy.mobile.analytics.processor.IdGenerator
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.visitor.data.ScreenViewEventData
@@ -86,7 +87,7 @@ internal class ScreenViewVisitorTest {
             .keys
             .map { it.toString() }
 
-        assertThat(actual).contains("ScreenViewEventIdentifier")
+        assertThat(actual).contains(ScreenViewEventIdentifier::class.qualifiedName)
     }
 
     private fun stubClassDeclaration(className: String = "name"): KSClassDeclaration {
