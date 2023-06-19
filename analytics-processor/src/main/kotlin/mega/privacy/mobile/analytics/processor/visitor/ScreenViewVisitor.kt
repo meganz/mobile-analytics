@@ -3,7 +3,8 @@ package mega.privacy.mobile.analytics.processor.visitor
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSNode
 import com.google.devtools.ksp.visitor.KSDefaultVisitor
-import com.squareup.kotlinpoet.TypeName
+import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import mega.privacy.mobile.analytics.core.event.identifier.ScreenViewEventIdentifier
 import mega.privacy.mobile.analytics.processor.IdGenerator
@@ -26,9 +27,30 @@ class ScreenViewVisitor(private val idGenerator: IdGenerator) :
             newMap,
             TypeSpec.objectBuilder(getClassName(shortName))
                 .addSuperinterface(ScreenViewEventIdentifier::class)
+                .addProperty(
+                    createEventNameProperty(shortName)
+                )
+                .addProperty(
+                    createUniqueIdentifierProperty(
+                        newMap[shortName]
+                            ?: throw VisitorException("No id added to map for $shortName")
+                    )
+                )
                 .build()
         )
     }
+
+    private fun createEventNameProperty(shortName: String) =
+        PropertySpec.builder("eventName", String::class)
+            .initializer("%S", shortName)
+            .addModifiers(KModifier.OVERRIDE)
+            .build()
+
+    private fun createUniqueIdentifierProperty(id: Int) =
+        PropertySpec.builder("uniqueIdentifier", Int::class)
+            .initializer("%L", id)
+            .addModifiers(KModifier.OVERRIDE)
+            .build()
 
     private fun getClassName(shortName: String) = "${shortName}Event"
 
