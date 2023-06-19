@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("com.google.devtools.ksp")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -38,6 +39,18 @@ kotlin {
             }
         }
     }
+}
+dependencies{
+//    add("kspCommonMain", project(":analytics-processor"))
+    add("kspCommonMainMetadata", project(":analytics-processor"))
+//    add("kspAndroid", project(":analytics-processor"))
+//    add("kspAndroidTest", project(":analytics-processor"))
+//    add("kspIosX64", project(":analytics-processor"))
+//    add("kspIosX64Test", project(":analytics-processor"))
+//    add("kspIosArm64", project(":analytics-processor"))
+//    add("kspIosArm64Test", project(":analytics-processor"))
+//    add("kspIosSimulatorArm64", project(":analytics-processor"))
+//    add("kspIosSimulatorArm64Test", project(":analytics-processor"))
 }
 
 android {
