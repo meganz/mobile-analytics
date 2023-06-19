@@ -1,5 +1,6 @@
+package mega.privacy.mobile.analytics.processor
+
 import com.google.common.truth.Truth.assertThat
-import mega.privacy.mobile.analytics.processor.IdGenerator
 import mega.privacy.mobile.analytics.processor.exception.NoIdAvailableException
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
