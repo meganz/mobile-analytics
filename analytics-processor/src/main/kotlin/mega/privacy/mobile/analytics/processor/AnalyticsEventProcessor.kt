@@ -1,15 +1,19 @@
 package mega.privacy.mobile.analytics.processor
 
 import com.google.devtools.ksp.processing.CodeGenerator
-import com.google.devtools.ksp.processing.Dependencies
 import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.validate
+import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.FileSpec
+import com.squareup.kotlinpoet.ksp.writeTo
 import kotlinx.serialization.json.Json
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
+import mega.privacy.mobile.analytics.processor.visitor.ScreenViewVisitor
+import mega.privacy.mobile.analytics.processor.visitor.data.ScreenViewEventData
 import kotlin.reflect.KClass
 
 /**
@@ -32,27 +36,25 @@ class AnalyticsEventProcessor(
         val screens = resolver.findAnnotations(ScreenViewEvent::class)
         if (!screens.iterator().hasNext()) return emptyList()
 
-        val file = codeGenerator.createNewFile(
-            dependencies = Dependencies.ALL_FILES,
-            packageName = "com.example",
-            fileName = "ScreenTest",
-            extensionName = "txt"
+        val fileSpec = FileSpec.builder(
+            packageName = "mega.privacy.mobile.analytics.event",
+            fileName = "ScreenViewEvents"
         )
-        file.write("\n Annotated classes \n".toByteArray())
-        screens.forEach {
-            file.write(
-                """
-                ${it.simpleName}
-                ClassKind: ${it.classKind}
-                Package name: ${it.packageName.getShortName()}
-                Qualifier: ${it.qualifiedName?.getQualifier()}
-                Short name: ${it.qualifiedName?.getShortName()}
-            """.trimIndent().toByteArray()
-            )
-            file.write("\n".toByteArray())
-        }
-        file.close()
 
+        screens.forEach {
+            val result = ScreenViewVisitor(IdGenerator(0..999)).visitClassDeclaration(
+                it, ScreenViewEventData(
+                    emptyMap()
+                )
+            )
+            fileSpec.addType(result.spec)
+        }
+
+
+        fileSpec.build().writeTo(
+            codeGenerator = codeGenerator,
+            aggregating = false
+        )
         return (screens).filterNot { it.validate() }.toList()
     }
 
