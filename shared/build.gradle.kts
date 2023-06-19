@@ -31,6 +31,7 @@ kotlin {
             dependencies {
                 //put your multiplatform dependencies here
                 implementation(project(":analytics-annotations"))
+                implementation(project(":analytics-core"))
             }
         }
         val commonTest by getting {

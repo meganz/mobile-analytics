@@ -21,3 +21,4 @@ rootProject.name = "Mobile-Analytics"
 include(":shared")
 include(":analytics-annotations")
 include(":analytics-processor")
+include(":analytics-core")
