@@ -3,7 +3,7 @@ package mega.privacy.mobile.analytics.core.event.identifier
 /**
  * General event identifier
  */
-interface GeneralEventIdentifier : EventIdentifier {
+interface ItemSelectedEventIdentifier : EventIdentifier {
     /**
      * Info
      */

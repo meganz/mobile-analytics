@@ -1,6 +1,6 @@
 package mega.privacy.mobile.analytics.core.event.type
 
-import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
+import mega.privacy.mobile.analytics.core.event.identifier.ItemSelectedEventIdentifier
 
 /**
  * General event
@@ -8,11 +8,11 @@ import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifie
  * @property eventIdentifier
  * @property viewId
  */
-data class GeneralEvent(
-    override val eventIdentifier: GeneralEventIdentifier,
+data class ItemSelectedEvent(
+    override val eventIdentifier: ItemSelectedEventIdentifier,
     override val viewId: String?,
 ) : AnalyticsEvent() {
-    override val eventTypeIdentifier = 7000
+    override val eventTypeIdentifier = 8000
 
     override val eventData: Map<String, Any?>
         get() {
