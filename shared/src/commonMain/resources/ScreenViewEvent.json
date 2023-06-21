@@ -1,1 +1,8 @@
-{"PhotoScreen":200,"SlideShowScreen":201}
+{
+  "PhotoScreen": 200,
+  "SlideShowScreen": 201,
+  "ChatScreen": 300,
+  "CloudDriveScreen": 100,
+  "HomeScreen": 0,
+  "SharedItemsScreen": 400
+}

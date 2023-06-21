@@ -7,3 +7,15 @@ interface PhotoScreen
 
 @ScreenViewEvent
 interface SlideShowScreen
+
+@ScreenViewEvent
+interface ChatScreen
+
+@ScreenViewEvent
+interface CloudDriveScreen
+
+@ScreenViewEvent
+interface HomeScreen
+
+@ScreenViewEvent
+interface SharedItemsScreen
