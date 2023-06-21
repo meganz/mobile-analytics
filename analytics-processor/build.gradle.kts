@@ -34,6 +34,8 @@ kotlin {
                 implementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
                 implementation("org.mockito:mockito-inline:3.11.2")
                 implementation("com.google.truth:truth:1.1.3")
+                implementation("com.github.tschuchortdev:kotlin-compile-testing:1.5.0")
+                implementation("com.github.tschuchortdev:kotlin-compile-testing-ksp:1.5.0")
             }
         }
     }

@@ -8,26 +8,38 @@ import com.google.devtools.ksp.validate
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.ksp.writeTo
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
-import mega.privacy.mobile.analytics.processor.IdGenerator
-import mega.privacy.mobile.analytics.processor.IdProvider
+import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.IdProvider
 import mega.privacy.mobile.analytics.processor.visitor.ScreenViewVisitor
 import mega.privacy.mobile.analytics.processor.visitor.data.ScreenViewEventData
 import kotlin.reflect.KClass
 
+/**
+ * Screen view event generator
+ *
+ * @property codeGenerator
+ * @property idProvider
+ * @property idGenerator
+ */
 class ScreenViewEventGenerator(
     private val codeGenerator: CodeGenerator,
     private val idProvider: IdProvider,
+    private val idGenerator: IdGenerator,
 ) {
 
-    private val idGenerator = IdGenerator(0..999)
-
-    fun generate(resolver: Resolver): List<KSAnnotated> {
+    /**
+     * Generate
+     *
+     * @param resolver
+     * @return Unresolved annotations
+     */
+    fun generate(resolver: Resolver, packageName: String, fileName: String): List<KSAnnotated> {
         val screens = resolver.findAnnotations(ScreenViewEvent::class)
         if (!screens.iterator().hasNext()) return emptyList()
 
         val fileSpec = FileSpec.builder(
-            packageName = "mega.privacy.mobile.analytics.event",
-            fileName = "ScreenViewEvents"
+            packageName = packageName,
+            fileName = fileName
         )
 
         var latestMap =

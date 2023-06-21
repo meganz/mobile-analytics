@@ -1,4 +1,4 @@
-package mega.privacy.mobile.analytics.processor
+package mega.privacy.mobile.analytics.processor.identifier
 
 import mega.privacy.mobile.analytics.processor.exception.NoIdAvailableException
 
@@ -7,14 +7,14 @@ import mega.privacy.mobile.analytics.processor.exception.NoIdAvailableException
  *
  * @property validRange
  */
-class IdGenerator(private val validRange: IntRange) {
+class SingleRangeIdGenerator(private val validRange: IntRange) : IdGenerator {
     /**
      * Invoke
      *
      * @param name
      * @param currentIdentifiers
      */
-    operator fun invoke(name: String, currentIdentifiers: Map<String, Int>) =
+    override operator fun invoke(name: String, currentIdentifiers: Map<String, Int>) =
         if (currentIdentifiers.containsKey(name)) currentIdentifiers else addIdentifier(
             name,
             currentIdentifiers

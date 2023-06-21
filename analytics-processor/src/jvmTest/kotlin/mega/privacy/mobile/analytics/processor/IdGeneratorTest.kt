@@ -2,6 +2,8 @@ package mega.privacy.mobile.analytics.processor
 
 import com.google.common.truth.Truth.assertThat
 import mega.privacy.mobile.analytics.processor.exception.NoIdAvailableException
+import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.SingleRangeIdGenerator
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -15,7 +17,7 @@ class IdGeneratorTest {
 
     @BeforeEach
     internal fun setUp() {
-        underTest = IdGenerator(idRange)
+        underTest = SingleRangeIdGenerator(idRange)
     }
 
     @Test

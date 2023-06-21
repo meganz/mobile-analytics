@@ -1,4 +1,4 @@
-package mega.privacy.mobile.analytics.processor
+package mega.privacy.mobile.analytics.processor.identifier
 
 import com.google.devtools.ksp.processing.KSPLogger
 import kotlinx.serialization.json.Json
@@ -34,7 +34,8 @@ class IdProvider(
     fun loadIdentifiers(annotationClass: KClass<*>): Map<String, Int> {
         logger.info("Loading identifiers for ${annotationClass.simpleName} from $resourcePath")
         val screenViewEventsJson: String =
-            getIdentifierResourceJson(annotationClass)
+            getIdentifierResourceJson(annotationClass).takeUnless { it.isEmpty() }
+                ?: return emptyMap()
         return Json.decodeFromString(screenViewEventsJson)
     }
 

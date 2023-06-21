@@ -6,7 +6,7 @@ import com.google.devtools.ksp.symbol.KSName
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.TypeSpec
 import mega.privacy.mobile.analytics.core.event.identifier.ScreenViewEventIdentifier
-import mega.privacy.mobile.analytics.processor.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.visitor.data.ScreenViewEventData
 import org.junit.jupiter.api.BeforeEach
