@@ -1,4 +1,3 @@
-import org.gradle.internal.impldep.org.fusesource.jansi.AnsiRenderer.test
 
 val kspVersion: String by project
 

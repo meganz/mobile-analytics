@@ -61,3 +61,13 @@ android {
         minSdk = 24
     }
 }
+
+ksp {
+    // ...
+
+    val relativeResourcePath = "src/commonMain/resources"
+
+    val absoluteResourcePath = File(projectDir, relativeResourcePath).absolutePath
+
+    arg("resourcePath", absoluteResourcePath)
+}
