@@ -6,12 +6,18 @@ import com.google.devtools.ksp.visitor.KSDefaultVisitor
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
+import mega.privacy.mobile.analytics.core.event.identifier.EventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.ScreenViewEventIdentifier
-import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
+import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.visitor.data.ScreenViewEventData
 import mega.privacy.mobile.analytics.processor.visitor.response.EventResponse
 
+/**
+ * Screen view visitor
+ *
+ * @property idGenerator
+ */
 class ScreenViewVisitor(private val idGenerator: IdGenerator) :
     KSDefaultVisitor<ScreenViewEventData, EventResponse>() {
 
@@ -40,19 +46,24 @@ class ScreenViewVisitor(private val idGenerator: IdGenerator) :
         )
     }
 
+    private fun getClassName(shortName: String) = "${shortName}Event"
+
     private fun createEventNameProperty(shortName: String) =
-        PropertySpec.builder("eventName", String::class)
-            .initializer("%S", shortName)
+        PropertySpec.builder(
+            name = EventIdentifier::eventName.name,
+            type = String::class
+        ).initializer("%S", shortName)
             .addModifiers(KModifier.OVERRIDE)
             .build()
 
     private fun createUniqueIdentifierProperty(id: Int) =
-        PropertySpec.builder("uniqueIdentifier", Int::class)
-            .initializer("%L", id)
+        PropertySpec.builder(
+            name = EventIdentifier::uniqueIdentifier.name,
+            type = Int::class
+        ).initializer("%L", id)
             .addModifiers(KModifier.OVERRIDE)
             .build()
 
-    private fun getClassName(shortName: String) = "${shortName}Event"
 
     @Throws(NotImplementedError::class)
     override fun defaultHandler(node: KSNode, data: ScreenViewEventData) =

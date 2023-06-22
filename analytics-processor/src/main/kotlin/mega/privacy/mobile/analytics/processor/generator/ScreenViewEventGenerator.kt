@@ -8,6 +8,7 @@ import com.google.devtools.ksp.validate
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.ksp.writeTo
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
+import mega.privacy.mobile.analytics.processor.findAnnotations
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
 import mega.privacy.mobile.analytics.processor.visitor.ScreenViewVisitor
@@ -64,10 +65,4 @@ class ScreenViewEventGenerator(
         idProvider.saveIdentifiers(latestMap, ScreenViewEvent::class)
         return (screens).filterNot { it.validate() }.toList()
     }
-
-    private fun Resolver.findAnnotations(
-        kClass: KClass<*>,
-    ) = getSymbolsWithAnnotation(
-        kClass.qualifiedName.toString()
-    ).filterIsInstance<KSClassDeclaration>()
 }

@@ -5,9 +5,12 @@ import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.symbol.KSAnnotated
+import com.google.devtools.ksp.symbol.KSClassDeclaration
+import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.processor.generator.ScreenViewEventGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
 import mega.privacy.mobile.analytics.processor.identifier.SingleRangeIdGenerator
+import kotlin.reflect.KClass
 
 /**
  * Analytics event processor
@@ -26,6 +29,7 @@ class AnalyticsEventProcessor(
             idProvider = idProvider,
             idGenerator = SingleRangeIdGenerator(0..999)
         )
+
         return screenViewEventGenerator.generate(
             resolver = resolver,
             packageName = "mega.privacy.mobile.analytics.event",
@@ -33,7 +37,7 @@ class AnalyticsEventProcessor(
         )
     }
 
-    companion object{
+    companion object {
         /**
          * Resource path key
          */
@@ -41,3 +45,9 @@ class AnalyticsEventProcessor(
     }
 
 }
+
+fun Resolver.findAnnotations(
+    kClass: KClass<*>,
+) = getSymbolsWithAnnotation(
+    kClass.qualifiedName.toString()
+).filterIsInstance<KSClassDeclaration>()
