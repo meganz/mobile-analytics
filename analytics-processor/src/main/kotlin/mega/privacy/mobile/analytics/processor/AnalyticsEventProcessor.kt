@@ -6,8 +6,8 @@ import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSClassDeclaration
-import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.processor.generator.ScreenViewEventGenerator
+import mega.privacy.mobile.analytics.processor.generator.TabSelectedEventGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
 import mega.privacy.mobile.analytics.processor.identifier.SingleRangeIdGenerator
 import kotlin.reflect.KClass
@@ -30,11 +30,24 @@ class AnalyticsEventProcessor(
             idGenerator = SingleRangeIdGenerator(0..999)
         )
 
-        return screenViewEventGenerator.generate(
+        val tabSelectedEventGenerator = TabSelectedEventGenerator(
+            codeGenerator = codeGenerator,
+            idProvider = idProvider,
+            idGenerator = SingleRangeIdGenerator(0..999)
+        )
+
+        val screenViewList: List<KSAnnotated> = screenViewEventGenerator.generate(
             resolver = resolver,
             packageName = "mega.privacy.mobile.analytics.event",
             fileName = "ScreenViewEvents"
         )
+
+        val tabSelectedList: List<KSAnnotated> = tabSelectedEventGenerator.generate(
+            resolver = resolver,
+            packageName = "mega.privacy.mobile.analytics.event",
+            fileName = "TabSelectedEvents"
+        )
+        return screenViewList + tabSelectedList
     }
 
     companion object {

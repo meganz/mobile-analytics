@@ -27,4 +27,4 @@ interface IncomingSharesTab
 interface OutgoingSharesTab
 
 @TabSelectedEvent(screenName = "SharedItemsScreen", tabName = "Link Shares")
-interface LinkShares
+interface LinkSharesTab

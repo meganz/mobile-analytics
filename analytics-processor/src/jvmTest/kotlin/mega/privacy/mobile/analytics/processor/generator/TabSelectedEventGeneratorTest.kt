@@ -9,6 +9,7 @@ import com.tschuchort.compiletesting.kspIncremental
 import com.tschuchort.compiletesting.kspSourcesDir
 import com.tschuchort.compiletesting.symbolProcessorProviders
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
+import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.processor.AnalyticsEventProcessor
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
@@ -18,8 +19,8 @@ import org.junit.jupiter.api.io.TempDir
 import org.mockito.kotlin.mock
 import java.io.File
 
-internal class ScreenViewEventGeneratorTest {
-    private lateinit var underTest: ScreenViewEventGenerator
+internal class TabSelectedEventGeneratorTest {
+    private lateinit var underTest: TabSelectedEventGenerator
 
     @TempDir
     lateinit var temporaryFolder: File
@@ -30,7 +31,7 @@ internal class ScreenViewEventGeneratorTest {
 
     @BeforeEach
     internal fun setUp() {
-        underTest = ScreenViewEventGenerator(
+        underTest = TabSelectedEventGenerator(
             codeGenerator = codeGenerator,
             idProvider = idProvider,
             idGenerator = idGenerator,
@@ -49,7 +50,7 @@ internal class ScreenViewEventGeneratorTest {
         compilation.compile()
 
         val idFile = temporaryFolder.listFiles()
-            ?.find { it.name == "${ScreenViewEvent::class.simpleName}.json" }
+            ?.find { it.name == "${TabSelectedEvent::class.simpleName}.json" }
 
         assertThat(idFile).isNotNull()
     }
@@ -62,7 +63,7 @@ internal class ScreenViewEventGeneratorTest {
         val sourceFile = compilation.kspSourcesDir
             .walkTopDown()
             .filter { it.isFile }
-            .find { it.name == "ScreenViewEvents.kt" }
+            .find { it.name == "TabSelectedEvents.kt" }
 
         assertThat(sourceFile).isNotNull()
         val fileContent = sourceFile?.readText()
@@ -93,19 +94,20 @@ internal class ScreenViewEventGeneratorTest {
         return prepareCompilation(*sourceFiles).compile()
     }
 
+
     private val input = kotlin(
         "input.kt",
         """
-import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
+import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 
-@ScreenViewEvent
-interface TestScreen1
+@TabSelectedEvent(tabName = "tab1", screenName = "screen1")
+interface TestTab1
 
-@ScreenViewEvent
-interface TestScreen2
+@TabSelectedEvent(tabName = "tab2", screenName = "screen2")
+interface TestTab2
 
-@ScreenViewEvent
-interface TestScreen3
+@TabSelectedEvent(tabName = "tab3", screenName = "screen3")
+interface TestTab3
 
     """
     )
@@ -113,29 +115,43 @@ interface TestScreen3
     private val output =
         """
         package mega.privacy.mobile.analytics.event
-
+    
         import kotlin.Int
         import kotlin.String
-        import mega.privacy.mobile.analytics.core.event.identifier.ScreenViewEventIdentifier
-
-        public object TestScreen1Event : ScreenViewEventIdentifier {
-          override val eventName: String = "TestScreen1"
-
+        import mega.privacy.mobile.analytics.core.event.identifier.TabSelectedEventIdentifier
+        
+        public object TestTab1Event : TabSelectedEventIdentifier {
+          override val eventName: String = "TestTab1"
+        
           override val uniqueIdentifier: Int = 0
+        
+          override val tabName: String = "tab1"
+        
+          override val screenName: String = "screen1"
         }
-
-        public object TestScreen2Event : ScreenViewEventIdentifier {
-          override val eventName: String = "TestScreen2"
-
+        
+        public object TestTab2Event : TabSelectedEventIdentifier {
+          override val eventName: String = "TestTab2"
+        
           override val uniqueIdentifier: Int = 1
+        
+          override val tabName: String = "tab2"
+        
+          override val screenName: String = "screen2"
         }
-
-        public object TestScreen3Event : ScreenViewEventIdentifier {
-          override val eventName: String = "TestScreen3"
-
+        
+        public object TestTab3Event : TabSelectedEventIdentifier {
+          override val eventName: String = "TestTab3"
+        
           override val uniqueIdentifier: Int = 2
+        
+          override val tabName: String = "tab3"
+        
+          override val screenName: String = "screen3"
         }
 
     """.trimIndent()
 }
+
+
 

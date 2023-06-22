@@ -3,42 +3,45 @@ package mega.privacy.mobile.analytics.processor.generator
 import com.google.devtools.ksp.processing.CodeGenerator
 import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.symbol.KSAnnotated
-import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.validate
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.ksp.writeTo
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
+import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.processor.findAnnotations
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
 import mega.privacy.mobile.analytics.processor.visitor.ScreenViewVisitor
+import mega.privacy.mobile.analytics.processor.visitor.TabSelectedVisitor
 import mega.privacy.mobile.analytics.processor.visitor.data.ScreenViewEventData
-import kotlin.reflect.KClass
+import mega.privacy.mobile.analytics.processor.visitor.data.TabSelectedEventData
 
 /**
- * Screen view event generator
+ * Tab selected event generator
  *
  * @property codeGenerator
  * @property idProvider
  * @property idGenerator
  */
-class ScreenViewEventGenerator(
+class TabSelectedEventGenerator(
     private val codeGenerator: CodeGenerator,
     private val idProvider: IdProvider,
     private val idGenerator: IdGenerator,
 ) {
 
-    private val annotationClass = ScreenViewEvent::class
+    private val annotationClass = TabSelectedEvent::class
 
     /**
      * Generate
      *
      * @param resolver
-     * @return Unresolved annotations
+     * @param packageName
+     * @param fileName
+     * @return unhandled classes
      */
     fun generate(resolver: Resolver, packageName: String, fileName: String): List<KSAnnotated> {
-        val screens = resolver.findAnnotations(annotationClass)
-        if (!screens.iterator().hasNext()) return emptyList()
+        val tabEvents = resolver.findAnnotations(annotationClass)
+        if (!tabEvents.iterator().hasNext()) return emptyList()
 
         val fileSpec = FileSpec.builder(
             packageName = packageName,
@@ -47,10 +50,10 @@ class ScreenViewEventGenerator(
 
         var latestMap =
             idProvider.loadIdentifiers(annotationClass)
-        screens.forEach {
-            val result = ScreenViewVisitor(idGenerator)
+        tabEvents.forEach {
+            val result = TabSelectedVisitor(idGenerator)
                 .visitClassDeclaration(
-                    it, ScreenViewEventData(
+                    it, TabSelectedEventData(
                         latestMap
                     )
                 )
@@ -65,6 +68,6 @@ class ScreenViewEventGenerator(
         )
 
         idProvider.saveIdentifiers(latestMap, annotationClass)
-        return (screens).filterNot { it.validate() }.toList()
+        return (tabEvents).filterNot { it.validate() }.toList()
     }
 }
