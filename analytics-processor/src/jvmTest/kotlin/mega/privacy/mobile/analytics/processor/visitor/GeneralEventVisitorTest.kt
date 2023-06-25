@@ -1,37 +1,48 @@
 package mega.privacy.mobile.analytics.processor.visitor
 
-import com.google.common.truth.Truth.assertThat
-import com.google.devtools.ksp.symbol.KSAnnotation
+import com.google.common.truth.Truth.*
 import com.google.devtools.ksp.symbol.KSClassDeclaration
-import com.google.devtools.ksp.symbol.KSName
-import com.google.devtools.ksp.symbol.KSValueArgument
+import com.google.devtools.ksp.symbol.KSFunctionDeclaration
+import com.google.devtools.ksp.symbol.KSPropertyDeclaration
+import com.google.devtools.ksp.symbol.KSPropertyGetter
+import com.google.devtools.ksp.symbol.KSTypeReference
+import com.google.devtools.ksp.symbol.KSValueParameter
 import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.TypeSpec
-import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
-import mega.privacy.mobile.analytics.core.event.identifier.TabSelectedEventIdentifier
+import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.generator.mockShortName
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
-import mega.privacy.mobile.analytics.processor.visitor.data.TabSelectedEventData
+import mega.privacy.mobile.analytics.processor.visitor.data.GeneralEventData
+import mega.privacy.mobile.analytics.processor.visitor.mapper.ConstructorParameterMapper
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.assertThrows
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
+import org.mockito.kotlin.stub
+import kotlin.reflect.KClass
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class TabSelectedVisitorTest {
-    private lateinit var underTest: TabSelectedVisitor
+internal class GeneralEventVisitorTest {
+    private lateinit var underTest: GeneralEventVisitor
     private val eventIdentifier = 42
 
     private val idGenerator = mock<IdGenerator> {
         on { invoke(any(), any()) }.thenAnswer { mapOf(it.arguments[0] to eventIdentifier) }
     }
 
+    private val constructorParameterMapper = mock<ConstructorParameterMapper>()
+
     @BeforeEach
     internal fun setUp() {
-        underTest = TabSelectedVisitor(idGenerator)
+        underTest = GeneralEventVisitor(
+            idGenerator = idGenerator,
+            constructorParameterMapper = constructorParameterMapper
+        )
     }
 
     @Test
@@ -40,7 +51,7 @@ internal class TabSelectedVisitorTest {
         assertThrows<VisitorException> {
             underTest.visitClassDeclaration(
                 classDeclaration = classDeclaration,
-                data = TabSelectedEventData(emptyMap()),
+                data = GeneralEventData(emptyMap()),
             )
         }
     }
@@ -51,7 +62,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration(className = expected)
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = GeneralEventData(emptyMap()),
         )
 
         assertThat(actual.idMap).containsKey(expected)
@@ -65,7 +76,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration(className = className)
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = GeneralEventData(emptyMap()),
         )
 
         assertThat(actual.spec.name).isEqualTo(expected)
@@ -76,7 +87,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = GeneralEventData(emptyMap()),
         )
 
         assertThat(actual.spec.kind).isEqualTo(TypeSpec.Kind.OBJECT)
@@ -88,13 +99,13 @@ internal class TabSelectedVisitorTest {
 
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = GeneralEventData(emptyMap()),
         ).spec
             .superinterfaces
             .keys
             .map { it.toString() }
 
-        assertThat(actual).contains(TabSelectedEventIdentifier::class.qualifiedName)
+        assertThat(actual).contains(GeneralEventIdentifier::class.qualifiedName)
     }
 
     @Test
@@ -104,7 +115,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration(className = name)
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = GeneralEventData(emptyMap()),
         ).spec
             .propertySpecs
             .associate { it.name to it.initializer }
@@ -117,7 +128,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = GeneralEventData(emptyMap()),
         ).spec
             .propertySpecs
             .first { it.name == "eventName" }
@@ -131,7 +142,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = GeneralEventData(emptyMap()),
         ).spec
             .propertySpecs
             .associate { it.name to it.initializer }
@@ -144,7 +155,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = GeneralEventData(emptyMap()),
         ).spec
             .propertySpecs
             .first { it.name == "uniqueIdentifier" }
@@ -153,102 +164,129 @@ internal class TabSelectedVisitorTest {
     }
 
     @Test
-    internal fun `test that tab name property is added with the correct value`() {
-        val tabName = "Expected"
-        val expectedTabName = "\"$tabName\""
-        val classDeclaration = stubClassDeclaration(
-            tabName = tabName
-        )
-        val actual = underTest.visitClassDeclaration(
-            classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
-        ).spec
-            .propertySpecs
-            .associate { it.name to it.initializer }
-
-        assertThat(actual["tabName"].toString()).isEqualTo(expectedTabName)
-    }
-
-    @Test
-    internal fun `test that tab name property is declared as an overridden property`() {
+    internal fun `test that info property is declared as an overridden property`() {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = GeneralEventData(emptyMap()),
         ).spec
             .propertySpecs
-            .first { it.name == "tabName" }
+            .first { it.name == "info" }
 
         assertThat(actual.modifiers).contains(KModifier.OVERRIDE)
     }
 
     @Test
-    internal fun `test that screen name property is added with the correct value`() {
-        val screenName = "Expected"
-        val expectedScreenName = "\"$screenName\""
+    internal fun `test that constructor parameters are added as parameters`() {
+        val intParam = "expected1"
+        val stringParam = "expected2"
+        val longParam = "expected3"
+
         val classDeclaration = stubClassDeclaration(
-            screenName = screenName
+            constructorParameters = mapOf(
+                intParam to Int::class,
+                stringParam to String::class,
+                longParam to Long::class,
+            )
         )
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = GeneralEventData(emptyMap()),
         ).spec
-            .propertySpecs
-            .associate { it.name to it.initializer }
+            .primaryConstructor
+            ?.parameters
+            ?.map { it.name }
 
-        assertThat(actual["screenName"].toString()).isEqualTo(expectedScreenName)
+        assertThat(actual).contains(intParam)
+        assertThat(actual).contains(stringParam)
+        assertThat(actual).contains(longParam)
     }
 
     @Test
-    internal fun `test that screen name property is declared as an overridden property`() {
-        val classDeclaration = stubClassDeclaration()
+    internal fun `test that constructor parameters are added to info map`() {
+        val intParam = "expected1"
+        val stringParam = "expected2"
+        val longParam = "expected3"
+
+        val classDeclaration = stubClassDeclaration(
+            constructorParameters = mapOf(
+                intParam to Int::class,
+                stringParam to String::class,
+                longParam to Long::class,
+            )
+        )
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = GeneralEventData(emptyMap()),
         ).spec
             .propertySpecs
-            .first { it.name == "screenName" }
+            .first { it.name == "info" }
 
-        assertThat(actual.modifiers).contains(KModifier.OVERRIDE)
+        assertThat(actual.initializer.toString()).contains("\"$intParam\" to $intParam")
+        assertThat(actual.initializer.toString()).contains("\"$stringParam\" to $stringParam")
+        assertThat(actual.initializer.toString()).contains("\"$longParam\" to $longParam")
     }
+
+//    @Test
+//    internal fun `test that fields without values throw an exception`() {
+//        val classDeclaration = stubClassDeclaration(fields = mapOf("emptyField" to null))
+//        assertThrows<VisitorException> {
+//            underTest.visitClassDeclaration(
+//                classDeclaration = classDeclaration,
+//                data = GeneralEventData(emptyMap()),
+//            )
+//        }
+//    }
 
     private fun stubClassDeclaration(
         className: String = "name",
-        tabName: String = "tab",
-        screenName: String = "screen",
+        constructorParameters: Map<String, KClass<*>>? = null,
+        fields: Map<String, Any?>? = null,
     ): KSClassDeclaration {
-        val annotation = stubAnnotation(tabName, screenName)
-
         val name = className.mockShortName()
+        val constructor = constructorParameters?.let { stubConstructor(it) }
         return mock {
             on { qualifiedName }.thenReturn(name)
-            on { annotations }.thenReturn(sequenceOf(annotation))
+            on { primaryConstructor }.thenReturn(constructor)
+//            on { getAllProperties() }.thenReturn(stubFields(fields))
         }
     }
 
-    private fun stubAnnotation(
-        tabName: String,
-        screenName: String,
-    ): KSAnnotation {
-        val annotationName =
-            TabSelectedEvent::class.java.simpleName.mockShortName()
-        val tabArgumentName = TabSelectedEvent::tabName.name.mockShortName()
-        val screenArgumentName = TabSelectedEvent::screenName.name.mockShortName()
-        val args = listOf(
-            mock<KSValueArgument> {
-                on { name }.thenReturn(tabArgumentName)
-                on { value }.thenReturn(tabName)
-            },
-            mock<KSValueArgument> {
-                on { name }.thenReturn(screenArgumentName)
-                on { value }.thenReturn(screenName)
+//    private fun stubFields(fields: Map<String, Any?>?): Sequence<KSPropertyDeclaration>? {
+//        if (fields.isNullOrEmpty()) return emptySequence()
+//
+//        fields.forEach { (fieldName, fieldValue) ->
+//            val shortName = fieldName.mockShortName()
+//            val getterValue = mock<KSTypeReference>{
+//                on {  }
+//            }
+//            val propertyGetter = mock<KSPropertyGetter>{
+//                on { returnType }
+//            }
+//            mock<KSPropertyDeclaration> {
+//                on { qualifiedName }.thenReturn(shortName)
+//                on { getter }
+//            }
+//        }
+//    }
+
+    private fun stubConstructor(
+        parameterTypes: Map<String, KClass<*>>,
+    ): KSFunctionDeclaration {
+        val parameterMap = parameterTypes.map { (key, value) ->
+            val paramName = key.mockShortName()
+            val valueParam = mock<KSValueParameter> { on { name }.thenReturn(paramName) }
+            valueParam to ParameterSpec.builder(name = key, type = value).build()
+        }.toMap()
+
+        constructorParameterMapper.stub {
+            parameterMap.forEach { (key, value) ->
+                on { invoke(key) }.thenReturn(value)
             }
-        )
-        val annotation = mock<KSAnnotation> {
-            on { shortName }.thenReturn(annotationName)
-            on { arguments }.thenReturn(args)
         }
-        return annotation
+        val constructor = mock<KSFunctionDeclaration> {
+            on { parameters }.thenReturn(parameterMap.keys.toList())
+        }
+        return constructor
     }
-
 }
