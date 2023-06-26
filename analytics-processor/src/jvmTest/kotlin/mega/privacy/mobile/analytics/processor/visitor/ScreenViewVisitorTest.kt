@@ -8,7 +8,7 @@ import com.squareup.kotlinpoet.TypeSpec
 import mega.privacy.mobile.analytics.core.event.identifier.ScreenViewEventIdentifier
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
-import mega.privacy.mobile.analytics.processor.visitor.data.ScreenViewEventData
+import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -36,7 +36,7 @@ internal class ScreenViewVisitorTest {
         assertThrows<VisitorException> {
             underTest.visitClassDeclaration(
                 classDeclaration = classDeclaration,
-                data = ScreenViewEventData(emptyMap()),
+                data = EventData(emptyMap()),
             )
         }
     }
@@ -47,7 +47,7 @@ internal class ScreenViewVisitorTest {
         val classDeclaration = stubClassDeclaration(className = expected)
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = ScreenViewEventData(emptyMap()),
+            data = EventData(emptyMap()),
         )
 
         assertThat(actual.idMap).containsKey(expected)
@@ -61,7 +61,7 @@ internal class ScreenViewVisitorTest {
         val classDeclaration = stubClassDeclaration(className = className)
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = ScreenViewEventData(emptyMap()),
+            data = EventData(emptyMap()),
         )
 
         assertThat(actual.spec.name).isEqualTo(expected)
@@ -72,7 +72,7 @@ internal class ScreenViewVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = ScreenViewEventData(emptyMap()),
+            data = EventData(emptyMap()),
         )
 
         assertThat(actual.spec.kind).isEqualTo(TypeSpec.Kind.OBJECT)
@@ -84,7 +84,7 @@ internal class ScreenViewVisitorTest {
 
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = ScreenViewEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .superinterfaces
             .keys
@@ -100,7 +100,7 @@ internal class ScreenViewVisitorTest {
         val classDeclaration = stubClassDeclaration(className = name)
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = ScreenViewEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .associate { it.name to it.initializer }
@@ -113,7 +113,7 @@ internal class ScreenViewVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = ScreenViewEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .first { it.name == "eventName" }
@@ -127,7 +127,7 @@ internal class ScreenViewVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = ScreenViewEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .associate { it.name to it.initializer }
@@ -140,7 +140,7 @@ internal class ScreenViewVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = ScreenViewEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .first { it.name == "uniqueIdentifier" }

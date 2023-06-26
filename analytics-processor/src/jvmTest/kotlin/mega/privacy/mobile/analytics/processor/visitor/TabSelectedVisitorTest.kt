@@ -11,7 +11,7 @@ import mega.privacy.mobile.analytics.core.event.identifier.TabSelectedEventIdent
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.mockShortName
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
-import mega.privacy.mobile.analytics.processor.visitor.data.TabSelectedEventData
+import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -39,7 +39,7 @@ internal class TabSelectedVisitorTest {
         assertThrows<VisitorException> {
             underTest.visitClassDeclaration(
                 classDeclaration = classDeclaration,
-                data = TabSelectedEventData(emptyMap()),
+                data = EventData(emptyMap()),
             )
         }
     }
@@ -50,7 +50,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration(className = expected)
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = EventData(emptyMap()),
         )
 
         assertThat(actual.idMap).containsKey(expected)
@@ -64,7 +64,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration(className = className)
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = EventData(emptyMap()),
         )
 
         assertThat(actual.spec.name).isEqualTo(expected)
@@ -75,7 +75,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = EventData(emptyMap()),
         )
 
         assertThat(actual.spec.kind).isEqualTo(TypeSpec.Kind.OBJECT)
@@ -87,7 +87,7 @@ internal class TabSelectedVisitorTest {
 
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .superinterfaces
             .keys
@@ -103,7 +103,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration(className = name)
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .associate { it.name to it.initializer }
@@ -116,7 +116,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .first { it.name == "eventName" }
@@ -130,7 +130,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .associate { it.name to it.initializer }
@@ -143,7 +143,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .first { it.name == "uniqueIdentifier" }
@@ -160,7 +160,7 @@ internal class TabSelectedVisitorTest {
         )
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .associate { it.name to it.initializer }
@@ -173,7 +173,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .first { it.name == "tabName" }
@@ -190,7 +190,7 @@ internal class TabSelectedVisitorTest {
         )
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .associate { it.name to it.initializer }
@@ -203,7 +203,7 @@ internal class TabSelectedVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = TabSelectedEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .first { it.name == "screenName" }

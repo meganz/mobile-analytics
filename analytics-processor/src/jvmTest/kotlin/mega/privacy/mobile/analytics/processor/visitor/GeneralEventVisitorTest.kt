@@ -13,8 +13,8 @@ import com.squareup.kotlinpoet.TypeSpec
 import mega.privacy.mobile.analytics.annotations.StaticValue
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
-import mega.privacy.mobile.analytics.processor.mockShortName
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.mockShortName
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import mega.privacy.mobile.analytics.processor.visitor.mapper.ConstructorParameterMapper
 import org.junit.jupiter.api.Assertions.*
