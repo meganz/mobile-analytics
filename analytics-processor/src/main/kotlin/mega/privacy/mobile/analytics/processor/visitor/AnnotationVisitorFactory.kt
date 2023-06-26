@@ -3,6 +3,7 @@ package mega.privacy.mobile.analytics.processor.visitor
 import com.google.devtools.ksp.visitor.KSDefaultVisitor
 import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
 import mega.privacy.mobile.analytics.annotations.GeneralEvent
+import mega.privacy.mobile.analytics.annotations.ItemSelectedEvent
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
 import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
@@ -35,6 +36,11 @@ class AnnotationVisitorFactory(private val idGenerator: IdGenerator) {
             )
 
             ButtonPressEvent::class -> ButtonPressVisitor(idGenerator = idGenerator)
+
+            ItemSelectedEvent::class -> ItemSelectedEventVisitor(
+                constructorParameterMapper = ConstructorParameterMapper(),
+                idGenerator = idGenerator
+            )
 
             else -> throw IllegalArgumentException("No visitor class registered for event type ${annotationType.simpleName}. Please add registration to ${AnnotationVisitorFactory::class.simpleName}")
         }

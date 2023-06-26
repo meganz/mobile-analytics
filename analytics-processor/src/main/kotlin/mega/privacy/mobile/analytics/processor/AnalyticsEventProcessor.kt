@@ -7,6 +7,7 @@ import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.symbol.KSAnnotated
 import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
 import mega.privacy.mobile.analytics.annotations.GeneralEvent
+import mega.privacy.mobile.analytics.annotations.ItemSelectedEvent
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
 import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.processor.generator.EventCodeGenerator
@@ -28,59 +29,59 @@ class AnalyticsEventProcessor(
 
     override fun process(resolver: Resolver): List<KSAnnotated> {
         logger.info("Processing started...")
-        val screenViewEventGenerator = EventCodeGenerator(
-            codeGenerator = codeGenerator,
-            idProvider = idProvider,
-            visitorFactory = visitorFactory,
-            annotationClass = ScreenViewEvent::class
-        )
-
-        val tabSelectedEventGenerator = EventCodeGenerator(
-            codeGenerator = codeGenerator,
-            idProvider = idProvider,
-            visitorFactory = visitorFactory,
-            annotationClass = TabSelectedEvent::class
-        )
-
-        val generalEventGenerator = EventCodeGenerator(
-            codeGenerator = codeGenerator,
-            idProvider = idProvider,
-            visitorFactory = visitorFactory,
-            annotationClass = GeneralEvent::class,
-        )
-
-        val buttonPressEventGenerator = EventCodeGenerator(
-            codeGenerator = codeGenerator,
-            idProvider = idProvider,
-            visitorFactory = visitorFactory,
-            annotationClass = ButtonPressEvent::class,
-        )
-
-        val screenViewList: List<KSAnnotated> = screenViewEventGenerator.generate(
-            resolver = resolver,
-            packageName = "mega.privacy.mobile.analytics.event",
-            fileName = "ScreenViewEvents"
-        )
-
-        val tabSelectedList: List<KSAnnotated> = tabSelectedEventGenerator.generate(
-            resolver = resolver,
-            packageName = "mega.privacy.mobile.analytics.event",
-            fileName = "TabSelectedEvents"
-        )
-
-        val generalEventsList: List<KSAnnotated> = generalEventGenerator.generate(
-            resolver = resolver,
-            packageName = "mega.privacy.mobile.analytics.event",
-            fileName = "GeneralEvents"
-        )
-
-        val buttonPressEventsList: List<KSAnnotated> = buttonPressEventGenerator.generate(
-            resolver = resolver,
-            packageName = "mega.privacy.mobile.analytics.event",
-            fileName = "ButtonPressEvents"
-        )
-
-        return screenViewList + tabSelectedList + generalEventsList + buttonPressEventsList
+        val packageName = "mega.privacy.mobile.analytics.event"
+        return listOf(
+            EventCodeGenerator(
+                codeGenerator = codeGenerator,
+                idProvider = idProvider,
+                visitorFactory = visitorFactory,
+                annotationClass = ScreenViewEvent::class
+            ).generate(
+                resolver = resolver,
+                packageName = packageName,
+                fileName = "ScreenViewEvents"
+            ),
+            EventCodeGenerator(
+                codeGenerator = codeGenerator,
+                idProvider = idProvider,
+                visitorFactory = visitorFactory,
+                annotationClass = TabSelectedEvent::class
+            ).generate(
+                resolver = resolver,
+                packageName = packageName,
+                fileName = "TabSelectedEvents"
+            ),
+            EventCodeGenerator(
+                codeGenerator = codeGenerator,
+                idProvider = idProvider,
+                visitorFactory = visitorFactory,
+                annotationClass = GeneralEvent::class,
+            ).generate(
+                resolver = resolver,
+                packageName = packageName,
+                fileName = "GeneralEvents"
+            ),
+            EventCodeGenerator(
+                codeGenerator = codeGenerator,
+                idProvider = idProvider,
+                visitorFactory = visitorFactory,
+                annotationClass = ButtonPressEvent::class,
+            ).generate(
+                resolver = resolver,
+                packageName = packageName,
+                fileName = "ButtonPressEvents"
+            ),
+            EventCodeGenerator(
+                codeGenerator = codeGenerator,
+                idProvider = idProvider,
+                visitorFactory = visitorFactory,
+                annotationClass = ItemSelectedEvent::class,
+            ).generate(
+                resolver = resolver,
+                packageName = packageName,
+                fileName = "ItemSelectedEvents"
+            ),
+        ).flatten()
     }
 
     companion object {
