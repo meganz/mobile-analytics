@@ -27,8 +27,8 @@ class AnnotationVisitorFactory(private val idGenerator: IdGenerator) {
             ScreenViewEvent::class -> ScreenViewVisitor(idGenerator = idGenerator)
             TabSelectedEvent::class -> TabSelectedVisitor(idGenerator = idGenerator)
             GeneralEvent::class -> GeneralEventVisitor(
-                idGenerator = idGenerator,
-                constructorParameterMapper = ConstructorParameterMapper()
+                constructorParameterMapper = ConstructorParameterMapper(),
+                idGenerator = idGenerator
             )
 
             else -> throw IllegalArgumentException("No visitor class registered for event type ${annotationType.simpleName}. Please add registration to ${AnnotationVisitorFactory::class.simpleName}")

@@ -8,7 +8,6 @@ import com.tschuchort.compiletesting.SourceFile.Companion.kotlin
 import com.tschuchort.compiletesting.kspIncremental
 import com.tschuchort.compiletesting.kspSourcesDir
 import com.tschuchort.compiletesting.symbolProcessorProviders
-import mega.privacy.mobile.analytics.annotations.GeneralEvent
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
 import mega.privacy.mobile.analytics.processor.AnalyticsEventProcessor
 import mega.privacy.mobile.analytics.processor.TestProcessorProvider
@@ -41,8 +40,8 @@ internal class ScreenViewEventGeneratorTest {
             visitorFactory = mock {
                 on { invoke(any()) }.thenReturn(
                     GeneralEventVisitor(
-                        idGenerator,
-                        ConstructorParameterMapper()
+                        ConstructorParameterMapper(),
+                        idGenerator
                     )
                 )
             },

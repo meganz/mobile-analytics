@@ -41,8 +41,8 @@ internal class GeneralEventVisitorTest {
     @BeforeEach
     internal fun setUp() {
         underTest = GeneralEventVisitor(
-            idGenerator = idGenerator,
             constructorParameterMapper = constructorParameterMapper,
+            idGenerator = idGenerator,
         )
     }
 

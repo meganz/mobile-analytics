@@ -48,7 +48,10 @@ abstract class AnalyticsEventVisitor(
      * @param className
      * @return Builder of the correct type
      */
-    protected open fun getTypeBuilderSpecType(className: String): TypeSpec.Builder =
+    protected open fun getTypeBuilderSpecType(
+        className: String,
+        classDeclaration: KSClassDeclaration,
+    ): TypeSpec.Builder =
         TypeSpec.objectBuilder(className)
 
     /**
@@ -83,8 +86,10 @@ abstract class AnalyticsEventVisitor(
         classDeclaration: KSClassDeclaration,
         shortName: String,
         newMap: Map<String, Int>,
-    ) = getTypeBuilderSpecType(getClassName(shortName))
-        .addSuperinterface(eventIdentifierClass)
+    ) = getTypeBuilderSpecType(
+        className = getClassName(shortName),
+        classDeclaration = classDeclaration
+    ).addSuperinterface(eventIdentifierClass)
         .addProperty(
             createEventNameProperty(shortName)
         )

@@ -40,8 +40,8 @@ internal class EventCodeGeneratorTest {
             visitorFactory = mock {
                 on { invoke(any()) }.thenReturn(
                     GeneralEventVisitor(
-                        idGenerator,
-                        ConstructorParameterMapper()
+                        ConstructorParameterMapper(),
+                        idGenerator
                     )
                 )
             },
