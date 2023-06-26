@@ -5,7 +5,7 @@ import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.symbol.KSAnnotated
-import com.google.devtools.ksp.symbol.KSClassDeclaration
+import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
 import mega.privacy.mobile.analytics.annotations.GeneralEvent
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
 import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
@@ -13,7 +13,6 @@ import mega.privacy.mobile.analytics.processor.generator.EventCodeGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
 import mega.privacy.mobile.analytics.processor.identifier.SingleRangeIdGenerator
 import mega.privacy.mobile.analytics.processor.visitor.AnnotationVisitorFactory
-import kotlin.reflect.KClass
 
 /**
  * Analytics event processor
@@ -50,6 +49,13 @@ class AnalyticsEventProcessor(
             annotationClass = GeneralEvent::class,
         )
 
+        val buttonPressEventGenerator = EventCodeGenerator(
+            codeGenerator = codeGenerator,
+            idProvider = idProvider,
+            visitorFactory = visitorFactory,
+            annotationClass = ButtonPressEvent::class,
+        )
+
         val screenViewList: List<KSAnnotated> = screenViewEventGenerator.generate(
             resolver = resolver,
             packageName = "mega.privacy.mobile.analytics.event",
@@ -68,7 +74,13 @@ class AnalyticsEventProcessor(
             fileName = "GeneralEvents"
         )
 
-        return screenViewList + tabSelectedList + generalEventsList
+        val buttonPressEventsList: List<KSAnnotated> = buttonPressEventGenerator.generate(
+            resolver = resolver,
+            packageName = "mega.privacy.mobile.analytics.event",
+            fileName = "ButtonPressEvents"
+        )
+
+        return screenViewList + tabSelectedList + generalEventsList + buttonPressEventsList
     }
 
     companion object {
