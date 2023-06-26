@@ -9,5 +9,4 @@ import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
  * @property idGenerator
  */
 class ScreenViewVisitor(idGenerator: IdGenerator) :
-    AnalyticsEventVisitor(idGenerator, ScreenViewEventIdentifier::class) {
-}
+    AnalyticsEventVisitor(idGenerator, ScreenViewEventIdentifier::class)
