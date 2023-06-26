@@ -9,19 +9,21 @@ import com.tschuchort.compiletesting.kspIncremental
 import com.tschuchort.compiletesting.kspSourcesDir
 import com.tschuchort.compiletesting.symbolProcessorProviders
 import mega.privacy.mobile.analytics.annotations.GeneralEvent
-import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.processor.AnalyticsEventProcessor
 import mega.privacy.mobile.analytics.processor.TestProcessorProvider
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
+import mega.privacy.mobile.analytics.processor.visitor.GeneralEventVisitor
+import mega.privacy.mobile.analytics.processor.visitor.mapper.ConstructorParameterMapper
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
+import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import java.io.File
 
-internal class GeneralEventGeneratorTest {
-    private lateinit var underTest: GeneralEventGenerator
+internal class EventCodeGeneratorTest {
+    private lateinit var underTest: EventCodeGenerator
 
     @TempDir
     lateinit var temporaryFolder: File
@@ -32,10 +34,18 @@ internal class GeneralEventGeneratorTest {
 
     @BeforeEach
     internal fun setUp() {
-        underTest = GeneralEventGenerator(
+        underTest = EventCodeGenerator(
             codeGenerator = codeGenerator,
             idProvider = idProvider,
-            idGenerator = idGenerator,
+            visitorFactory = mock {
+                on { invoke(any()) }.thenReturn(
+                    GeneralEventVisitor(
+                        idGenerator,
+                        ConstructorParameterMapper()
+                    )
+                )
+            },
+            annotationClass = GeneralEvent::class
         )
     }
 

@@ -6,11 +6,13 @@ import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSClassDeclaration
-import mega.privacy.mobile.analytics.processor.generator.GeneralEventGenerator
-import mega.privacy.mobile.analytics.processor.generator.ScreenViewEventGenerator
-import mega.privacy.mobile.analytics.processor.generator.TabSelectedEventGenerator
+import mega.privacy.mobile.analytics.annotations.GeneralEvent
+import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
+import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
+import mega.privacy.mobile.analytics.processor.generator.EventCodeGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
 import mega.privacy.mobile.analytics.processor.identifier.SingleRangeIdGenerator
+import mega.privacy.mobile.analytics.processor.visitor.AnnotationVisitorFactory
 import kotlin.reflect.KClass
 
 /**
@@ -22,25 +24,30 @@ class AnalyticsEventProcessor(
     options: Map<String, String>,
 ) : SymbolProcessor {
     private val idProvider = IdProvider(logger, options[resourcePathKey])
+    private val idGenerator = SingleRangeIdGenerator(0..999)
+    private val visitorFactory = AnnotationVisitorFactory(idGenerator)
 
     override fun process(resolver: Resolver): List<KSAnnotated> {
         logger.info("Processing started...")
-        val screenViewEventGenerator = ScreenViewEventGenerator(
+        val screenViewEventGenerator = EventCodeGenerator(
             codeGenerator = codeGenerator,
             idProvider = idProvider,
-            idGenerator = SingleRangeIdGenerator(0..999)
+            visitorFactory = visitorFactory,
+            annotationClass = ScreenViewEvent::class
         )
 
-        val tabSelectedEventGenerator = TabSelectedEventGenerator(
+        val tabSelectedEventGenerator = EventCodeGenerator(
             codeGenerator = codeGenerator,
             idProvider = idProvider,
-            idGenerator = SingleRangeIdGenerator(0..999)
+            visitorFactory = visitorFactory,
+            annotationClass = TabSelectedEvent::class
         )
 
-        val generalEventGenerator = GeneralEventGenerator(
+        val generalEventGenerator = EventCodeGenerator(
             codeGenerator = codeGenerator,
             idProvider = idProvider,
-            idGenerator = SingleRangeIdGenerator(0..999),
+            visitorFactory = visitorFactory,
+            annotationClass = GeneralEvent::class,
         )
 
         val screenViewList: List<KSAnnotated> = screenViewEventGenerator.generate(
@@ -72,9 +79,3 @@ class AnalyticsEventProcessor(
     }
 
 }
-
-fun Resolver.findAnnotations(
-    kClass: KClass<*>,
-) = getSymbolsWithAnnotation(
-    kClass.qualifiedName.toString()
-).filterIsInstance<KSClassDeclaration>()

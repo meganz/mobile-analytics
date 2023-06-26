@@ -8,19 +8,23 @@ import com.tschuchort.compiletesting.SourceFile.Companion.kotlin
 import com.tschuchort.compiletesting.kspIncremental
 import com.tschuchort.compiletesting.kspSourcesDir
 import com.tschuchort.compiletesting.symbolProcessorProviders
+import mega.privacy.mobile.analytics.annotations.GeneralEvent
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
 import mega.privacy.mobile.analytics.processor.AnalyticsEventProcessor
 import mega.privacy.mobile.analytics.processor.TestProcessorProvider
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
+import mega.privacy.mobile.analytics.processor.visitor.GeneralEventVisitor
+import mega.privacy.mobile.analytics.processor.visitor.mapper.ConstructorParameterMapper
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
+import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import java.io.File
 
 internal class ScreenViewEventGeneratorTest {
-    private lateinit var underTest: ScreenViewEventGenerator
+    private lateinit var underTest: EventCodeGenerator
 
     @TempDir
     lateinit var temporaryFolder: File
@@ -31,10 +35,18 @@ internal class ScreenViewEventGeneratorTest {
 
     @BeforeEach
     internal fun setUp() {
-        underTest = ScreenViewEventGenerator(
+        underTest = EventCodeGenerator(
             codeGenerator = codeGenerator,
             idProvider = idProvider,
-            idGenerator = idGenerator,
+            visitorFactory = mock {
+                on { invoke(any()) }.thenReturn(
+                    GeneralEventVisitor(
+                        idGenerator,
+                        ConstructorParameterMapper()
+                    )
+                )
+            },
+            annotationClass = ScreenViewEvent::class
         )
     }
 
