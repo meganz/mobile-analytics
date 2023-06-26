@@ -284,6 +284,19 @@ internal class GeneralEventVisitorTest {
         assertThat(actual.initializer.toString()).contains("\"$expectedKey3\" to \"$expectedValue3\"")
     }
 
+    @Test
+    internal fun `test that if no parameters are present info is an empty map`() {
+        val classDeclaration = stubClassDeclaration()
+        val actual = underTest.visitClassDeclaration(
+            classDeclaration = classDeclaration,
+            data = GeneralEventData(emptyMap()),
+        ).spec
+            .propertySpecs
+            .first { it.name == "info" }
+
+        assertThat(actual.initializer.toString().trim()).isEqualTo("emptyMap()")
+    }
+
     private fun stubClassDeclaration(
         className: String = "name",
         constructorParameters: Map<String, KClass<*>>? = null,

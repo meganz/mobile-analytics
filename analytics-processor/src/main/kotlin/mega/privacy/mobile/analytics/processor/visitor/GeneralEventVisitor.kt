@@ -128,18 +128,19 @@ class GeneralEventVisitor(
         constructorValues: List<KSValueParameter>?,
     ): CodeBlock {
         val initialiser = CodeBlock.builder()
-        initialiser.addStatement("mapOf(")
-        constructorValues?.forEach {
-            val name = it.name?.getShortName()
-            val value = getValue(it) ?: name
-            initialiser.addStatement(
-                "\"${name}\" to $value,"
-            )
+        if (constructorValues.isNullOrEmpty()){
+            initialiser.addStatement("emptyMap()")
+        } else {
+            initialiser.addStatement("mapOf(")
+            constructorValues.forEach {
+                val name = it.name?.getShortName()
+                val value = getValue(it) ?: name
+                initialiser.addStatement(
+                    "\"${name}\" to $value,"
+                )
+            }
+            initialiser.add(")")
         }
-
-        //Add field values
-
-        initialiser.add(")")
         return initialiser.build()
     }
 
