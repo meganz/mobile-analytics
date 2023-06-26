@@ -54,8 +54,4 @@ class TabSelectedVisitor(idGenerator: IdGenerator) :
             .build()
     }
 
-    private fun KSAnnotation.getParameterValue(name: String) = arguments
-        .find { it.name?.getShortName() == name }
-        ?.value
-
 }

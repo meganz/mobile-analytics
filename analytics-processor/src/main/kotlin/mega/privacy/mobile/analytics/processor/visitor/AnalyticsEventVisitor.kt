@@ -1,5 +1,6 @@
 package mega.privacy.mobile.analytics.processor.visitor
 
+import com.google.devtools.ksp.symbol.KSAnnotation
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSNode
 import com.google.devtools.ksp.visitor.KSDefaultVisitor
@@ -135,6 +136,15 @@ abstract class AnalyticsEventVisitor(
 
         return this
     }
+
+    /**
+     * Get parameter value
+     *
+     * @param name
+     */
+    protected fun KSAnnotation.getParameterValue(name: String) = arguments
+        .find { it.name?.getShortName() == name }
+        ?.value
 
 }
 
