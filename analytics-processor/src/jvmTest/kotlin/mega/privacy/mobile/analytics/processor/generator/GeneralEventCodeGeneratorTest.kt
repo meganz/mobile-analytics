@@ -1,0 +1,22 @@
+package mega.privacy.mobile.analytics.processor.generator
+
+import mega.privacy.mobile.analytics.annotations.GeneralEvent
+import mega.privacy.mobile.analytics.processor.generator.parameter.GeneralEventParameter
+import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.visitor.GeneralEventVisitor
+import mega.privacy.mobile.analytics.processor.visitor.mapper.ConstructorParameterMapper
+
+internal class GeneralEventCodeGeneratorTest : EventCodeGeneratorTest() {
+
+    override val testParams = GeneralEventParameter()
+    override val annotationClass = GeneralEvent::class
+
+    override fun visitor(idGenerator: IdGenerator) = GeneralEventVisitor(
+        ConstructorParameterMapper(),
+        idGenerator
+    )
+
+}
+
+
+

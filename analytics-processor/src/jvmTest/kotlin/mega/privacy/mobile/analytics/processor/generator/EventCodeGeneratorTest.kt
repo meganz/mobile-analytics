@@ -4,33 +4,36 @@ import com.google.common.truth.Truth.assertThat
 import com.google.devtools.ksp.processing.CodeGenerator
 import com.tschuchort.compiletesting.KotlinCompilation
 import com.tschuchort.compiletesting.SourceFile
-import com.tschuchort.compiletesting.SourceFile.Companion.kotlin
 import com.tschuchort.compiletesting.kspIncremental
 import com.tschuchort.compiletesting.kspSourcesDir
 import com.tschuchort.compiletesting.symbolProcessorProviders
-import mega.privacy.mobile.analytics.annotations.GeneralEvent
 import mega.privacy.mobile.analytics.processor.AnalyticsEventProcessor
 import mega.privacy.mobile.analytics.processor.TestProcessorProvider
+import mega.privacy.mobile.analytics.processor.generator.parameter.GeneratorCodeTestParameter
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
-import mega.privacy.mobile.analytics.processor.visitor.GeneralEventVisitor
-import mega.privacy.mobile.analytics.processor.visitor.mapper.ConstructorParameterMapper
+import mega.privacy.mobile.analytics.processor.visitor.AnalyticsEventVisitor
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import java.io.File
+import kotlin.reflect.KClass
 
-internal class EventCodeGeneratorTest {
+abstract class EventCodeGeneratorTest {
     private lateinit var underTest: EventCodeGenerator
+
+    protected abstract val testParams: GeneratorCodeTestParameter
+    protected abstract val annotationClass: KClass<*>
+    protected abstract fun visitor(idGenerator: IdGenerator): AnalyticsEventVisitor
 
     @TempDir
     lateinit var temporaryFolder: File
-
     private val codeGenerator = mock<CodeGenerator>()
     private val idProvider = mock<IdProvider>()
     private val idGenerator = mock<IdGenerator>()
+
 
     @BeforeEach
     internal fun setUp() {
@@ -39,46 +42,43 @@ internal class EventCodeGeneratorTest {
             idProvider = idProvider,
             visitorFactory = mock {
                 on { invoke(any()) }.thenReturn(
-                    GeneralEventVisitor(
-                        ConstructorParameterMapper(),
-                        idGenerator
-                    )
+                    visitor(idGenerator)
                 )
             },
-            annotationClass = GeneralEvent::class
+            annotationClass = annotationClass
         )
     }
 
     @Test
     internal fun `test that compilation is successful`() {
-        val result = compile(input)
+        val result = compile(testParams.sourceFile)
         assertThat(result.exitCode).isEqualTo(KotlinCompilation.ExitCode.OK)
     }
 
     @Test
     internal fun `test that identifier file is created`() {
-        val compilation = prepareCompilation(input)
+        val compilation = prepareCompilation(testParams.sourceFile)
         compilation.compile()
 
         val idFile = temporaryFolder.listFiles()
-            ?.find { it.name == "${GeneralEvent::class.simpleName}.json" }
+            ?.find { it.name == "${annotationClass.simpleName}.json" }
 
         assertThat(idFile).isNotNull()
     }
 
     @Test
     internal fun `test that code file is created`() {
-        val compilation = prepareCompilation(input)
+        val compilation = prepareCompilation(testParams.sourceFile)
         compilation.compile()
 
         val sourceFile = compilation.kspSourcesDir
             .walkTopDown()
             .filter { it.isFile }
-            .find { it.name == "GeneralEvents.kt" }
+            .find { it.name == testParams.outPutFileName }
 
         assertThat(sourceFile).isNotNull()
         val fileContent = sourceFile?.readText()
-        assertThat(fileContent).contains(output)
+        assertThat(fileContent).contains(testParams.expectedOutput)
     }
 
     private fun prepareCompilation(vararg sourceFiles: SourceFile): KotlinCompilation {
@@ -104,73 +104,4 @@ internal class EventCodeGeneratorTest {
     private fun compile(vararg sourceFiles: SourceFile): KotlinCompilation.Result {
         return prepareCompilation(*sourceFiles).compile()
     }
-
-
-    private val input = kotlin(
-        "input.kt",
-        """
-import mega.privacy.mobile.analytics.annotations.GeneralEvent
-import mega.privacy.mobile.analytics.annotations.StaticValue
-
-@GeneralEvent
-interface Test1
-
-@GeneralEvent
-interface Test2
-
-@GeneralEvent
-class TestTab3(
-    val foo: Int,
-    @StaticValue("my value")
-    val bar: String,
-)
-
-    """
-    )
-
-    private val output =
-        """
-    package mega.privacy.mobile.analytics.event
-    
-    import kotlin.Any
-    import kotlin.Int
-    import kotlin.String
-    import kotlin.collections.Map
-    import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
-    
-    public object Test1Event : GeneralEventIdentifier {
-      override val eventName: String = "Test1"
-    
-      override val uniqueIdentifier: Int = 0
-    
-      override val info: Map<String, Any?> = emptyMap()
-    
-    }
-    
-    public object Test2Event : GeneralEventIdentifier {
-      override val eventName: String = "Test2"
-    
-      override val uniqueIdentifier: Int = 1
-    
-      override val info: Map<String, Any?> = emptyMap()
-    
-    }
-    
-    public class TestTab3Event(
-      foo: Int,
-    ) : GeneralEventIdentifier {
-      override val eventName: String = "TestTab3"
-    
-      override val uniqueIdentifier: Int = 2
-    
-      override val info: Map<String, Any?> = mapOf(
-      "foo" to foo,
-      "bar" to "my value",
-      )
-    }
-
-    """.trimIndent()
 }
-
-
-
