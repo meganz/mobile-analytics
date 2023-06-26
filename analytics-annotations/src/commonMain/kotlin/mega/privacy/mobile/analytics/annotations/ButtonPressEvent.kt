@@ -4,4 +4,8 @@ package mega.privacy.mobile.analytics.annotations
  * Button press event
  */
 @Target(AnnotationTarget.CLASS)
-annotation class ButtonPressEvent
+annotation class ButtonPressEvent(
+    val buttonName: String,
+    val screen: String = "",
+    val dialog: String = "",
+)
