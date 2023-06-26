@@ -13,9 +13,9 @@ import com.squareup.kotlinpoet.TypeSpec
 import mega.privacy.mobile.analytics.annotations.StaticValue
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
-import mega.privacy.mobile.analytics.processor.generator.mockShortName
+import mega.privacy.mobile.analytics.processor.mockShortName
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
-import mega.privacy.mobile.analytics.processor.visitor.data.GeneralEventData
+import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import mega.privacy.mobile.analytics.processor.visitor.mapper.ConstructorParameterMapper
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
@@ -52,7 +52,7 @@ internal class GeneralEventVisitorTest {
         assertThrows<VisitorException> {
             underTest.visitClassDeclaration(
                 classDeclaration = classDeclaration,
-                data = GeneralEventData(emptyMap()),
+                data = EventData(emptyMap()),
             )
         }
     }
@@ -63,7 +63,7 @@ internal class GeneralEventVisitorTest {
         val classDeclaration = stubClassDeclaration(className = expected)
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = GeneralEventData(emptyMap()),
+            data = EventData(emptyMap()),
         )
 
         assertThat(actual.idMap).containsKey(expected)
@@ -77,7 +77,7 @@ internal class GeneralEventVisitorTest {
         val classDeclaration = stubClassDeclaration(className = className)
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = GeneralEventData(emptyMap()),
+            data = EventData(emptyMap()),
         )
 
         assertThat(actual.spec.name).isEqualTo(expected)
@@ -88,7 +88,7 @@ internal class GeneralEventVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = GeneralEventData(emptyMap()),
+            data = EventData(emptyMap()),
         )
 
         assertThat(actual.spec.kind).isEqualTo(TypeSpec.Kind.OBJECT)
@@ -100,7 +100,7 @@ internal class GeneralEventVisitorTest {
 
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = GeneralEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .superinterfaces
             .keys
@@ -116,7 +116,7 @@ internal class GeneralEventVisitorTest {
         val classDeclaration = stubClassDeclaration(className = name)
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = GeneralEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .associate { it.name to it.initializer }
@@ -129,7 +129,7 @@ internal class GeneralEventVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = GeneralEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .first { it.name == "eventName" }
@@ -143,7 +143,7 @@ internal class GeneralEventVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = GeneralEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .associate { it.name to it.initializer }
@@ -156,7 +156,7 @@ internal class GeneralEventVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = GeneralEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .first { it.name == "uniqueIdentifier" }
@@ -169,7 +169,7 @@ internal class GeneralEventVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = GeneralEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .first { it.name == "info" }
@@ -192,7 +192,7 @@ internal class GeneralEventVisitorTest {
         )
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = GeneralEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .primaryConstructor
             ?.parameters
@@ -218,7 +218,7 @@ internal class GeneralEventVisitorTest {
         )
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = GeneralEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .first { it.name == "info" }
@@ -245,7 +245,7 @@ internal class GeneralEventVisitorTest {
         )
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = GeneralEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .primaryConstructor
             ?.parameters
@@ -274,7 +274,7 @@ internal class GeneralEventVisitorTest {
         )
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = GeneralEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .first { it.name == "info" }
@@ -289,7 +289,7 @@ internal class GeneralEventVisitorTest {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
-            data = GeneralEventData(emptyMap()),
+            data = EventData(emptyMap()),
         ).spec
             .propertySpecs
             .first { it.name == "info" }

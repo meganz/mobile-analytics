@@ -10,6 +10,7 @@ import com.tschuchort.compiletesting.kspSourcesDir
 import com.tschuchort.compiletesting.symbolProcessorProviders
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
 import mega.privacy.mobile.analytics.processor.AnalyticsEventProcessor
+import mega.privacy.mobile.analytics.processor.TestProcessorProvider
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
 import org.junit.jupiter.api.BeforeEach

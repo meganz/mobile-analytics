@@ -6,15 +6,13 @@ import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.validate
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.ksp.writeTo
-import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
 import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.processor.findAnnotations
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
-import mega.privacy.mobile.analytics.processor.visitor.ScreenViewVisitor
 import mega.privacy.mobile.analytics.processor.visitor.TabSelectedVisitor
-import mega.privacy.mobile.analytics.processor.visitor.data.ScreenViewEventData
-import mega.privacy.mobile.analytics.processor.visitor.data.TabSelectedEventData
+import mega.privacy.mobile.analytics.processor.visitor.data.EventData
+import kotlin.reflect.KClass
 
 /**
  * Tab selected event generator
@@ -27,9 +25,9 @@ class TabSelectedEventGenerator(
     private val codeGenerator: CodeGenerator,
     private val idProvider: IdProvider,
     private val idGenerator: IdGenerator,
+    private val annotationClass: KClass<*> = TabSelectedEvent::class,
 ) {
 
-    private val annotationClass = TabSelectedEvent::class
 
     /**
      * Generate
@@ -53,7 +51,7 @@ class TabSelectedEventGenerator(
         tabEvents.forEach {
             val result = TabSelectedVisitor(idGenerator)
                 .visitClassDeclaration(
-                    it, TabSelectedEventData(
+                    it, EventData(
                         latestMap
                     )
                 )

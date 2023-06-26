@@ -10,7 +10,7 @@ import mega.privacy.mobile.analytics.core.event.identifier.EventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.ScreenViewEventIdentifier
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
-import mega.privacy.mobile.analytics.processor.visitor.data.ScreenViewEventData
+import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import mega.privacy.mobile.analytics.processor.visitor.response.EventResponse
 
 /**
@@ -19,11 +19,11 @@ import mega.privacy.mobile.analytics.processor.visitor.response.EventResponse
  * @property idGenerator
  */
 class ScreenViewVisitor(private val idGenerator: IdGenerator) :
-    KSDefaultVisitor<ScreenViewEventData, EventResponse>() {
+    KSDefaultVisitor<EventData, EventResponse>() {
 
     override fun visitClassDeclaration(
         classDeclaration: KSClassDeclaration,
-        data: ScreenViewEventData,
+        data: EventData,
     ): EventResponse {
         val shortName = classDeclaration.qualifiedName?.getShortName()
             ?: throw VisitorException("Qualified name is null")
@@ -66,6 +66,6 @@ class ScreenViewVisitor(private val idGenerator: IdGenerator) :
 
 
     @Throws(NotImplementedError::class)
-    override fun defaultHandler(node: KSNode, data: ScreenViewEventData) =
+    override fun defaultHandler(node: KSNode, data: EventData) =
         throw NotImplementedError("The called function has not been implemented on ${ScreenViewVisitor::class.simpleName}")
 }

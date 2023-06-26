@@ -12,15 +12,15 @@ import mega.privacy.mobile.analytics.core.event.identifier.EventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.TabSelectedEventIdentifier
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
-import mega.privacy.mobile.analytics.processor.visitor.data.TabSelectedEventData
+import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import mega.privacy.mobile.analytics.processor.visitor.response.EventResponse
 
 class TabSelectedVisitor(private val idGenerator: IdGenerator) :
-    KSDefaultVisitor<TabSelectedEventData, EventResponse>() {
+    KSDefaultVisitor<EventData, EventResponse>() {
 
     override fun visitClassDeclaration(
         classDeclaration: KSClassDeclaration,
-        data: TabSelectedEventData,
+        data: EventData,
     ): EventResponse {
         val shortName = classDeclaration.qualifiedName?.getShortName()
             ?: throw VisitorException("Qualified name is null")
@@ -100,6 +100,6 @@ class TabSelectedVisitor(private val idGenerator: IdGenerator) :
         ?.value
 
     @Throws(NotImplementedError::class)
-    override fun defaultHandler(node: KSNode, data: TabSelectedEventData) =
+    override fun defaultHandler(node: KSNode, data: EventData) =
         throw NotImplementedError("The called function has not been implemented on ${TabSelectedVisitor::class.simpleName}")
 }

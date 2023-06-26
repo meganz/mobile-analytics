@@ -1,7 +1,6 @@
 package mega.privacy.mobile.analytics.processor.generator
 
 import com.google.devtools.ksp.processing.CodeGenerator
-import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.validate
@@ -12,8 +11,9 @@ import mega.privacy.mobile.analytics.processor.findAnnotations
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
 import mega.privacy.mobile.analytics.processor.visitor.GeneralEventVisitor
-import mega.privacy.mobile.analytics.processor.visitor.data.GeneralEventData
+import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import mega.privacy.mobile.analytics.processor.visitor.mapper.ConstructorParameterMapper
+import kotlin.reflect.KClass
 
 /**
  * General event generator
@@ -26,9 +26,9 @@ class GeneralEventGenerator(
     private val codeGenerator: CodeGenerator,
     private val idProvider: IdProvider,
     private val idGenerator: IdGenerator,
+    private val annotationClass: KClass<*> = GeneralEvent::class,
 ) {
 
-    private val annotationClass = GeneralEvent::class
 
     /**
      * Generate
@@ -37,8 +37,8 @@ class GeneralEventGenerator(
      * @return Unresolved annotations
      */
     fun generate(resolver: Resolver, packageName: String, fileName: String): List<KSAnnotated> {
-        val generalEvents = resolver.findAnnotations(annotationClass)
-        if (!generalEvents.iterator().hasNext()) return emptyList()
+        val events = resolver.findAnnotations(annotationClass)
+        if (!events.iterator().hasNext()) return emptyList()
 
         val fileSpec = FileSpec.builder(
             packageName = packageName,
@@ -47,16 +47,15 @@ class GeneralEventGenerator(
 
         var latestMap =
             idProvider.loadIdentifiers(annotationClass)
-        generalEvents.forEach {
+        events.forEach {
             val result = GeneralEventVisitor(
                 idGenerator = idGenerator,
                 constructorParameterMapper = ConstructorParameterMapper(),
-            )
-                .visitClassDeclaration(
-                    it, GeneralEventData(
-                        latestMap
-                    )
+            ).visitClassDeclaration(
+                it, EventData(
+                    latestMap
                 )
+            )
             latestMap = result.idMap
             fileSpec.addType(result.spec)
         }
@@ -68,6 +67,6 @@ class GeneralEventGenerator(
         )
 
         idProvider.saveIdentifiers(latestMap, annotationClass)
-        return (generalEvents).filterNot { it.validate() }.toList()
+        return (events).filterNot { it.validate() }.toList()
     }
 }

@@ -1,4 +1,4 @@
-package mega.privacy.mobile.analytics.processor.generator
+package mega.privacy.mobile.analytics.processor
 
 import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.processing.SymbolProcessorEnvironment

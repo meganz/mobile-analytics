@@ -3,14 +3,13 @@ package mega.privacy.mobile.analytics.processor.visitor
 import com.google.common.truth.Truth.assertThat
 import com.google.devtools.ksp.symbol.KSAnnotation
 import com.google.devtools.ksp.symbol.KSClassDeclaration
-import com.google.devtools.ksp.symbol.KSName
 import com.google.devtools.ksp.symbol.KSValueArgument
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.TypeSpec
 import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.core.event.identifier.TabSelectedEventIdentifier
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
-import mega.privacy.mobile.analytics.processor.generator.mockShortName
+import mega.privacy.mobile.analytics.processor.mockShortName
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.visitor.data.TabSelectedEventData
 import org.junit.jupiter.api.BeforeEach

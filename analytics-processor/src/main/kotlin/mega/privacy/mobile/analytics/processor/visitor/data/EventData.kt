@@ -1,8 +1,8 @@
 package mega.privacy.mobile.analytics.processor.visitor.data
 
 /**
- * Screen view event data
+ * Event data
  *
  * @property idMap
  */
-data class ScreenViewEventData(val idMap: Map<String, Int>)
+data class EventData(val idMap: Map<String, Int>)

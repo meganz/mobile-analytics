@@ -8,6 +8,7 @@ import com.tschuchort.compiletesting.SourceFile.Companion.kotlin
 import com.tschuchort.compiletesting.kspIncremental
 import com.tschuchort.compiletesting.kspSourcesDir
 import com.tschuchort.compiletesting.symbolProcessorProviders
+import mega.privacy.mobile.analytics.annotations.GeneralEvent
 import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.processor.AnalyticsEventProcessor
 import mega.privacy.mobile.analytics.processor.TestProcessorProvider
@@ -19,8 +20,8 @@ import org.junit.jupiter.api.io.TempDir
 import org.mockito.kotlin.mock
 import java.io.File
 
-internal class TabSelectedEventGeneratorTest {
-    private lateinit var underTest: TabSelectedEventGenerator
+internal class GeneralEventGeneratorTest {
+    private lateinit var underTest: GeneralEventGenerator
 
     @TempDir
     lateinit var temporaryFolder: File
@@ -31,7 +32,7 @@ internal class TabSelectedEventGeneratorTest {
 
     @BeforeEach
     internal fun setUp() {
-        underTest = TabSelectedEventGenerator(
+        underTest = GeneralEventGenerator(
             codeGenerator = codeGenerator,
             idProvider = idProvider,
             idGenerator = idGenerator,
@@ -50,7 +51,7 @@ internal class TabSelectedEventGeneratorTest {
         compilation.compile()
 
         val idFile = temporaryFolder.listFiles()
-            ?.find { it.name == "${TabSelectedEvent::class.simpleName}.json" }
+            ?.find { it.name == "${GeneralEvent::class.simpleName}.json" }
 
         assertThat(idFile).isNotNull()
     }
@@ -63,7 +64,7 @@ internal class TabSelectedEventGeneratorTest {
         val sourceFile = compilation.kspSourcesDir
             .walkTopDown()
             .filter { it.isFile }
-            .find { it.name == "TabSelectedEvents.kt" }
+            .find { it.name == "GeneralEvents.kt" }
 
         assertThat(sourceFile).isNotNull()
         val fileContent = sourceFile?.readText()
@@ -98,57 +99,65 @@ internal class TabSelectedEventGeneratorTest {
     private val input = kotlin(
         "input.kt",
         """
-import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
+import mega.privacy.mobile.analytics.annotations.GeneralEvent
+import mega.privacy.mobile.analytics.annotations.StaticValue
 
-@TabSelectedEvent(tabName = "tab1", screenName = "screen1")
-interface TestTab1
+@GeneralEvent
+interface Test1
 
-@TabSelectedEvent(tabName = "tab2", screenName = "screen2")
-interface TestTab2
+@GeneralEvent
+interface Test2
 
-@TabSelectedEvent(tabName = "tab3", screenName = "screen3")
-interface TestTab3
+@GeneralEvent
+class TestTab3(
+    val foo: Int,
+    @StaticValue("my value")
+    val bar: String,
+)
 
     """
     )
 
     private val output =
         """
-        package mega.privacy.mobile.analytics.event
+    package mega.privacy.mobile.analytics.event
     
-        import kotlin.Int
-        import kotlin.String
-        import mega.privacy.mobile.analytics.core.event.identifier.TabSelectedEventIdentifier
-        
-        public object TestTab1Event : TabSelectedEventIdentifier {
-          override val eventName: String = "TestTab1"
-        
-          override val uniqueIdentifier: Int = 0
-        
-          override val tabName: String = "tab1"
-        
-          override val screenName: String = "screen1"
-        }
-        
-        public object TestTab2Event : TabSelectedEventIdentifier {
-          override val eventName: String = "TestTab2"
-        
-          override val uniqueIdentifier: Int = 1
-        
-          override val tabName: String = "tab2"
-        
-          override val screenName: String = "screen2"
-        }
-        
-        public object TestTab3Event : TabSelectedEventIdentifier {
-          override val eventName: String = "TestTab3"
-        
-          override val uniqueIdentifier: Int = 2
-        
-          override val tabName: String = "tab3"
-        
-          override val screenName: String = "screen3"
-        }
+    import kotlin.Any
+    import kotlin.Int
+    import kotlin.String
+    import kotlin.collections.Map
+    import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
+    
+    public object Test1Event : GeneralEventIdentifier {
+      override val eventName: String = "Test1"
+    
+      override val uniqueIdentifier: Int = 0
+    
+      override val info: Map<String, Any?> = emptyMap()
+    
+    }
+    
+    public object Test2Event : GeneralEventIdentifier {
+      override val eventName: String = "Test2"
+    
+      override val uniqueIdentifier: Int = 1
+    
+      override val info: Map<String, Any?> = emptyMap()
+    
+    }
+    
+    public class TestTab3Event(
+      foo: Int,
+    ) : GeneralEventIdentifier {
+      override val eventName: String = "TestTab3"
+    
+      override val uniqueIdentifier: Int = 2
+    
+      override val info: Map<String, Any?> = mapOf(
+      "foo" to foo,
+      "bar" to "my value",
+      )
+    }
 
     """.trimIndent()
 }

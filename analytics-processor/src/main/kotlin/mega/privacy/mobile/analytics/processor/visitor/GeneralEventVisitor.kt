@@ -1,6 +1,5 @@
 package mega.privacy.mobile.analytics.processor.visitor
 
-import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSNode
 import com.google.devtools.ksp.symbol.KSValueParameter
@@ -18,7 +17,7 @@ import mega.privacy.mobile.analytics.core.event.identifier.EventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
-import mega.privacy.mobile.analytics.processor.visitor.data.GeneralEventData
+import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import mega.privacy.mobile.analytics.processor.visitor.mapper.ConstructorParameterMapper
 import mega.privacy.mobile.analytics.processor.visitor.response.EventResponse
 
@@ -30,11 +29,11 @@ import mega.privacy.mobile.analytics.processor.visitor.response.EventResponse
 class GeneralEventVisitor(
     private val idGenerator: IdGenerator,
     private val constructorParameterMapper: ConstructorParameterMapper,
-) : KSDefaultVisitor<GeneralEventData, EventResponse>() {
+) : KSDefaultVisitor<EventData, EventResponse>() {
 
     override fun visitClassDeclaration(
         classDeclaration: KSClassDeclaration,
-        data: GeneralEventData,
+        data: EventData,
     ): EventResponse {
         val shortName = classDeclaration.qualifiedName?.getShortName()
             ?: throw VisitorException("Qualified name is null")
@@ -167,6 +166,6 @@ class GeneralEventVisitor(
 
 
     @Throws(NotImplementedError::class)
-    override fun defaultHandler(node: KSNode, data: GeneralEventData) =
+    override fun defaultHandler(node: KSNode, data: EventData) =
         throw NotImplementedError("The called function has not been implemented on ${GeneralEventVisitor::class.simpleName}")
 }
