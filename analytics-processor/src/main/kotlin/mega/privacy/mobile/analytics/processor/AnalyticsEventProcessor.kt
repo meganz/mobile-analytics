@@ -40,7 +40,7 @@ class AnalyticsEventProcessor(
         val generalEventGenerator = GeneralEventGenerator(
             codeGenerator = codeGenerator,
             idProvider = idProvider,
-            idGenerator = SingleRangeIdGenerator(0..999)
+            idGenerator = SingleRangeIdGenerator(0..999),
         )
 
         val screenViewList: List<KSAnnotated> = screenViewEventGenerator.generate(

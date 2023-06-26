@@ -1,5 +1,6 @@
 package mega.privacy.mobile.analytics.processor.visitor
 
+import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSNode
 import com.google.devtools.ksp.symbol.KSValueParameter
@@ -12,6 +13,7 @@ import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.asClassName
 import com.squareup.kotlinpoet.asTypeName
+import mega.privacy.mobile.analytics.annotations.StaticValue
 import mega.privacy.mobile.analytics.core.event.identifier.EventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
@@ -28,8 +30,7 @@ import mega.privacy.mobile.analytics.processor.visitor.response.EventResponse
 class GeneralEventVisitor(
     private val idGenerator: IdGenerator,
     private val constructorParameterMapper: ConstructorParameterMapper,
-) :
-    KSDefaultVisitor<GeneralEventData, EventResponse>() {
+) : KSDefaultVisitor<GeneralEventData, EventResponse>() {
 
     override fun visitClassDeclaration(
         classDeclaration: KSClassDeclaration,
@@ -43,12 +44,13 @@ class GeneralEventVisitor(
         val constructorValues: List<KSValueParameter>? =
             classDeclaration.primaryConstructor?.parameters
 
-
 //        Create constructor
         val constructorParameters = constructorValues?.let { parameters ->
-            parameters.mapNotNull { ksValueParameter ->
-                constructorParameterMapper(ksValueParameter)
-            }
+            parameters
+                .filterStaticAnnotatedParameters()
+                .mapNotNull { ksValueParameter ->
+                    constructorParameterMapper(ksValueParameter)
+                }
         }
         val typeSpecBuilder = if (constructorParameters.isNullOrEmpty()) {
             TypeSpec.objectBuilder(getClassName(shortName))
@@ -76,19 +78,22 @@ class GeneralEventVisitor(
             )
 
         typeSpecBuilder.addProperty(
-            createInfoProperty(constructorValues)
+            createInfoProperty(
+                constructorValues = constructorValues,
+            )
         )
-
-//        //Add field values
-//        classDeclaration.getAllProperties().forEach {
-//            if (it.)
-//        }
 
         return EventResponse(
             newMap,
             typeSpecBuilder.build()
         )
     }
+
+    private fun List<KSValueParameter>.filterStaticAnnotatedParameters(): List<KSValueParameter> =
+        filterNot { parameter -> parameter.isStaticValueParameter() }
+
+    private fun KSValueParameter.isStaticValueParameter() =
+        annotations.any { it.shortName.getShortName() == StaticValue::class.java.simpleName }
 
     private fun getClassName(shortName: String) = "${shortName}Event"
 
@@ -108,26 +113,49 @@ class GeneralEventVisitor(
             .addModifiers(KModifier.OVERRIDE)
             .build()
 
-    private fun createInfoProperty(constructorValues: List<KSValueParameter>?) =
-        createIngoPropertyBuilder()
-            .addModifiers(KModifier.OVERRIDE)
-            .initializer(createInfoPropertyInitialiser(constructorValues))
-            .build()
+    private fun createInfoProperty(
+        constructorValues: List<KSValueParameter>?,
+    ) = createInfoPropertyBuilder()
+        .addModifiers(KModifier.OVERRIDE)
+        .initializer(
+            createInfoPropertyInitialiser(
+                constructorValues = constructorValues,
+            )
+        )
+        .build()
 
-    private fun createInfoPropertyInitialiser(constructorValues: List<KSValueParameter>?): CodeBlock {
+    private fun createInfoPropertyInitialiser(
+        constructorValues: List<KSValueParameter>?,
+    ): CodeBlock {
         val initialiser = CodeBlock.builder()
         initialiser.addStatement("mapOf(")
-        constructorValues?.mapNotNull { it.name?.getShortName() }
-            ?.forEach {
-                initialiser.addStatement(
-                    "\"${it}\" to $it,"
-                )
-            }
+        constructorValues?.forEach {
+            val name = it.name?.getShortName()
+            val value = getValue(it) ?: name
+            initialiser.addStatement(
+                "\"${name}\" to $value,"
+            )
+        }
+
+        //Add field values
+
         initialiser.add(")")
         return initialiser.build()
     }
 
-    private fun createIngoPropertyBuilder() = PropertySpec.builder(
+    private fun getValue(
+        parameter: KSValueParameter,
+    ) = parameter.annotations.find {
+        it.shortName.getShortName() == StaticValue::class.java.simpleName
+    }?.arguments
+        ?.first()
+        ?.value
+        ?.let {
+            "\"$it\""
+        }
+
+
+    private fun createInfoPropertyBuilder() = PropertySpec.builder(
         name = GeneralEventIdentifier::info.name,
         type = Map::class.asClassName()
             .parameterizedBy(

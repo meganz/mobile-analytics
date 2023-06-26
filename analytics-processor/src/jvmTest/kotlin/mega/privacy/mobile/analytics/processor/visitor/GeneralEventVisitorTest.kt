@@ -1,15 +1,16 @@
 package mega.privacy.mobile.analytics.processor.visitor
 
 import com.google.common.truth.Truth.*
+import com.google.devtools.ksp.symbol.KSAnnotation
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSFunctionDeclaration
-import com.google.devtools.ksp.symbol.KSPropertyDeclaration
-import com.google.devtools.ksp.symbol.KSPropertyGetter
-import com.google.devtools.ksp.symbol.KSTypeReference
+import com.google.devtools.ksp.symbol.KSName
+import com.google.devtools.ksp.symbol.KSValueArgument
 import com.google.devtools.ksp.symbol.KSValueParameter
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.TypeSpec
+import mega.privacy.mobile.analytics.annotations.StaticValue
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.generator.mockShortName
@@ -41,7 +42,7 @@ internal class GeneralEventVisitorTest {
     internal fun setUp() {
         underTest = GeneralEventVisitor(
             idGenerator = idGenerator,
-            constructorParameterMapper = constructorParameterMapper
+            constructorParameterMapper = constructorParameterMapper,
         )
     }
 
@@ -227,66 +228,136 @@ internal class GeneralEventVisitorTest {
         assertThat(actual.initializer.toString()).contains("\"$longParam\" to $longParam")
     }
 
-//    @Test
-//    internal fun `test that fields without values throw an exception`() {
-//        val classDeclaration = stubClassDeclaration(fields = mapOf("emptyField" to null))
-//        assertThrows<VisitorException> {
-//            underTest.visitClassDeclaration(
-//                classDeclaration = classDeclaration,
-//                data = GeneralEventData(emptyMap()),
-//            )
-//        }
-//    }
+    @Test
+    internal fun `test that static value parameters are not added to constructor parameters`() {
+        val expectedParameter = "expected"
+        val intParam = "notExpected1"
+        val stringParam = "notExpected2"
+        val longParam = "notExpected3"
+
+        val classDeclaration = stubClassDeclaration(
+            constructorParameters = mapOf(expectedParameter to String::class),
+            staticValueParameters = mapOf(
+                intParam to "12",
+                stringParam to "string",
+                longParam to "1234",
+            )
+        )
+        val actual = underTest.visitClassDeclaration(
+            classDeclaration = classDeclaration,
+            data = GeneralEventData(emptyMap()),
+        ).spec
+            .primaryConstructor
+            ?.parameters
+            ?.map { it.name }
+
+        assertThat(actual).doesNotContain(intParam)
+        assertThat(actual).doesNotContain(stringParam)
+        assertThat(actual).doesNotContain(longParam)
+    }
+
+    @Test
+    internal fun `test that static valued parameters are added to the info map property`() {
+        val expectedKey1 = "expected1"
+        val expectedValue1 = "expected1Value"
+        val expectedKey2 = "expected2"
+        val expectedValue2 = "expected2Value"
+        val expectedKey3 = "expected3"
+        val expectedValue3 = "expected3Value"
+
+        val classDeclaration = stubClassDeclaration(
+            staticValueParameters = mapOf(
+                expectedKey1 to expectedValue1,
+                expectedKey2 to expectedValue2,
+                expectedKey3 to expectedValue3,
+            )
+        )
+        val actual = underTest.visitClassDeclaration(
+            classDeclaration = classDeclaration,
+            data = GeneralEventData(emptyMap()),
+        ).spec
+            .propertySpecs
+            .first { it.name == "info" }
+
+        assertThat(actual.initializer.toString()).contains("\"$expectedKey1\" to \"$expectedValue1\"")
+        assertThat(actual.initializer.toString()).contains("\"$expectedKey2\" to \"$expectedValue2\"")
+        assertThat(actual.initializer.toString()).contains("\"$expectedKey3\" to \"$expectedValue3\"")
+    }
 
     private fun stubClassDeclaration(
         className: String = "name",
         constructorParameters: Map<String, KClass<*>>? = null,
-        fields: Map<String, Any?>? = null,
+        staticValueParameters: Map<String, String>? = null,
     ): KSClassDeclaration {
         val name = className.mockShortName()
-        val constructor = constructorParameters?.let { stubConstructor(it) }
+        val constructor = stubConstructor(constructorParameters, staticValueParameters)
         return mock {
             on { qualifiedName }.thenReturn(name)
             on { primaryConstructor }.thenReturn(constructor)
-//            on { getAllProperties() }.thenReturn(stubFields(fields))
+            on { getAllProperties() }.thenReturn(emptySequence())
         }
     }
 
-//    private fun stubFields(fields: Map<String, Any?>?): Sequence<KSPropertyDeclaration>? {
-//        if (fields.isNullOrEmpty()) return emptySequence()
-//
-//        fields.forEach { (fieldName, fieldValue) ->
-//            val shortName = fieldName.mockShortName()
-//            val getterValue = mock<KSTypeReference>{
-//                on {  }
-//            }
-//            val propertyGetter = mock<KSPropertyGetter>{
-//                on { returnType }
-//            }
-//            mock<KSPropertyDeclaration> {
-//                on { qualifiedName }.thenReturn(shortName)
-//                on { getter }
-//            }
-//        }
-//    }
-
     private fun stubConstructor(
-        parameterTypes: Map<String, KClass<*>>,
-    ): KSFunctionDeclaration {
-        val parameterMap = parameterTypes.map { (key, value) ->
+        parameterTypes: Map<String, KClass<*>>?,
+        staticValueParameters: Map<String, String>?,
+    ): KSFunctionDeclaration? {
+        if (parameterTypes.isNullOrEmpty() && staticValueParameters.isNullOrEmpty()) return null
+        val annotationName = StaticValue::class.java.simpleName.mockShortName()
+
+        val nonStaticParameters = stubNonStaticParameters(parameterTypes) ?: emptyList()
+        val staticParameters =
+            stubStaticValueParameters(staticValueParameters, annotationName) ?: emptyList()
+
+        val constructor = mock<KSFunctionDeclaration> {
+            on { parameters }.thenReturn(nonStaticParameters + staticParameters)
+        }
+        return constructor
+    }
+
+    private fun stubStaticValueParameters(
+        staticValueParameters: Map<String, String>?,
+        annotationName: KSName,
+    ): List<KSValueParameter>? {
+        val parameterMap = staticValueParameters?.map { (key, paramValue) ->
             val paramName = key.mockShortName()
-            val valueParam = mock<KSValueParameter> { on { name }.thenReturn(paramName) }
-            valueParam to ParameterSpec.builder(name = key, type = value).build()
-        }.toMap()
+            val argumentValue = mock<KSValueArgument> {
+                on { value }.thenReturn(paramValue)
+            }
+            val staticValueAnnotation = mock<KSAnnotation> {
+                on { shortName }.thenReturn(annotationName)
+                on { arguments }.thenReturn(listOf(argumentValue))
+            }
+            val valueParam = mock<KSValueParameter> {
+                on { name }.thenReturn(paramName)
+                on { annotations }.thenReturn(sequenceOf(staticValueAnnotation))
+            }
+            valueParam to ParameterSpec.builder(name = key, type = String::class).build()
+        }?.toMap()
 
         constructorParameterMapper.stub {
-            parameterMap.forEach { (key, value) ->
+            parameterMap?.forEach { (key, value) ->
                 on { invoke(key) }.thenReturn(value)
             }
         }
-        val constructor = mock<KSFunctionDeclaration> {
-            on { parameters }.thenReturn(parameterMap.keys.toList())
+        return parameterMap?.keys?.toList()
+    }
+
+    private fun stubNonStaticParameters(parameterTypes: Map<String, KClass<*>>?): List<KSValueParameter>? {
+        val parameterMap = parameterTypes?.map { (key, value) ->
+            val paramName = key.mockShortName()
+            val valueParam = mock<KSValueParameter> {
+                on { name }.thenReturn(paramName)
+                on { annotations }.thenReturn(emptySequence())
+            }
+            valueParam to ParameterSpec.builder(name = key, type = value).build()
+        }?.toMap()
+
+        constructorParameterMapper.stub {
+            parameterMap?.forEach { (key, value) ->
+                on { invoke(key) }.thenReturn(value)
+            }
         }
-        return constructor
+        return parameterMap?.keys?.toList()
     }
 }
