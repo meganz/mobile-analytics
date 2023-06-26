@@ -9,94 +9,32 @@ import com.google.devtools.ksp.symbol.KSValueArgument
 import com.google.devtools.ksp.symbol.KSValueParameter
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.ParameterSpec
-import com.squareup.kotlinpoet.TypeSpec
 import mega.privacy.mobile.analytics.annotations.StaticValue
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
-import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.mockShortName
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import mega.privacy.mobile.analytics.processor.visitor.mapper.ConstructorParameterMapper
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.assertThrows
-import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.stub
 import kotlin.reflect.KClass
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class GeneralEventVisitorTest {
-    private lateinit var underTest: GeneralEventVisitor
-    private val eventIdentifier = 42
-
-    private val idGenerator = mock<IdGenerator> {
-        on { invoke(any(), any()) }.thenAnswer { mapOf(it.arguments[0] to eventIdentifier) }
-    }
-
+internal class GeneralEventVisitorTest : AnalyticsVisitorTest<GeneralEventVisitor>() {
     private val constructorParameterMapper = mock<ConstructorParameterMapper>()
-
-    @BeforeEach
-    internal fun setUp() {
-        underTest = GeneralEventVisitor(
+    override fun initialiseUnderTest(idGenerator: IdGenerator): GeneralEventVisitor {
+        return GeneralEventVisitor(
             constructorParameterMapper = constructorParameterMapper,
             idGenerator = idGenerator,
         )
     }
 
     @Test
-    internal fun `test that exception is thrown if no name is present`() {
-        val classDeclaration = mock<KSClassDeclaration> { on { qualifiedName }.thenReturn(null) }
-        assertThrows<VisitorException> {
-            underTest.visitClassDeclaration(
-                classDeclaration = classDeclaration,
-                data = EventData(emptyMap()),
-            )
-        }
-    }
-
-    @Test
-    internal fun `test that the new class name is added to the id map`() {
-        val expected = "Expected"
-        val classDeclaration = stubClassDeclaration(className = expected)
-        val actual = underTest.visitClassDeclaration(
-            classDeclaration = classDeclaration,
-            data = EventData(emptyMap()),
-        )
-
-        assertThat(actual.idMap).containsKey(expected)
-    }
-
-    @Test
-    internal fun `test that event name is correct`() {
-        val className = "AnnotatedName"
-        val expected = "${className}Event"
-
-        val classDeclaration = stubClassDeclaration(className = className)
-        val actual = underTest.visitClassDeclaration(
-            classDeclaration = classDeclaration,
-            data = EventData(emptyMap()),
-        )
-
-        assertThat(actual.spec.name).isEqualTo(expected)
-    }
-
-    @Test
-    internal fun `test that event type is correct`() {
-        val classDeclaration = stubClassDeclaration()
-        val actual = underTest.visitClassDeclaration(
-            classDeclaration = classDeclaration,
-            data = EventData(emptyMap()),
-        )
-
-        assertThat(actual.spec.kind).isEqualTo(TypeSpec.Kind.OBJECT)
-    }
-
-    @Test
     internal fun `test that event implements correct interface`() {
-        val classDeclaration = stubClassDeclaration()
+        val classDeclaration = stubClassDeclarationWithConstructor()
 
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
@@ -110,63 +48,8 @@ internal class GeneralEventVisitorTest {
     }
 
     @Test
-    internal fun `test that event name property is added with the correct value`() {
-        val name = "Expected"
-        val expected = "\"$name\""
-        val classDeclaration = stubClassDeclaration(className = name)
-        val actual = underTest.visitClassDeclaration(
-            classDeclaration = classDeclaration,
-            data = EventData(emptyMap()),
-        ).spec
-            .propertySpecs
-            .associate { it.name to it.initializer }
-
-        assertThat(actual["eventName"].toString()).isEqualTo(expected)
-    }
-
-    @Test
-    internal fun `test that event name property is declared as an overridden property`() {
-        val classDeclaration = stubClassDeclaration()
-        val actual = underTest.visitClassDeclaration(
-            classDeclaration = classDeclaration,
-            data = EventData(emptyMap()),
-        ).spec
-            .propertySpecs
-            .first { it.name == "eventName" }
-
-        assertThat(actual.modifiers).contains(KModifier.OVERRIDE)
-    }
-
-    @Test
-    internal fun `test that event identifier is added with the value returned by the id generator`() {
-        val expected = eventIdentifier
-        val classDeclaration = stubClassDeclaration()
-        val actual = underTest.visitClassDeclaration(
-            classDeclaration = classDeclaration,
-            data = EventData(emptyMap()),
-        ).spec
-            .propertySpecs
-            .associate { it.name to it.initializer }
-
-        assertThat(actual["uniqueIdentifier"].toString()).isEqualTo(expected.toString())
-    }
-
-    @Test
-    internal fun `test that event id property is declared as an overridden property`() {
-        val classDeclaration = stubClassDeclaration()
-        val actual = underTest.visitClassDeclaration(
-            classDeclaration = classDeclaration,
-            data = EventData(emptyMap()),
-        ).spec
-            .propertySpecs
-            .first { it.name == "uniqueIdentifier" }
-
-        assertThat(actual.modifiers).contains(KModifier.OVERRIDE)
-    }
-
-    @Test
     internal fun `test that info property is declared as an overridden property`() {
-        val classDeclaration = stubClassDeclaration()
+        val classDeclaration = stubClassDeclarationWithConstructor()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
             data = EventData(emptyMap()),
@@ -183,7 +66,7 @@ internal class GeneralEventVisitorTest {
         val stringParam = "expected2"
         val longParam = "expected3"
 
-        val classDeclaration = stubClassDeclaration(
+        val classDeclaration = stubClassDeclarationWithConstructor(
             constructorParameters = mapOf(
                 intParam to Int::class,
                 stringParam to String::class,
@@ -209,7 +92,7 @@ internal class GeneralEventVisitorTest {
         val stringParam = "expected2"
         val longParam = "expected3"
 
-        val classDeclaration = stubClassDeclaration(
+        val classDeclaration = stubClassDeclarationWithConstructor(
             constructorParameters = mapOf(
                 intParam to Int::class,
                 stringParam to String::class,
@@ -235,7 +118,7 @@ internal class GeneralEventVisitorTest {
         val stringParam = "notExpected2"
         val longParam = "notExpected3"
 
-        val classDeclaration = stubClassDeclaration(
+        val classDeclaration = stubClassDeclarationWithConstructor(
             constructorParameters = mapOf(expectedParameter to String::class),
             staticValueParameters = mapOf(
                 intParam to "12",
@@ -265,7 +148,7 @@ internal class GeneralEventVisitorTest {
         val expectedKey3 = "expected3"
         val expectedValue3 = "expected3Value"
 
-        val classDeclaration = stubClassDeclaration(
+        val classDeclaration = stubClassDeclarationWithConstructor(
             staticValueParameters = mapOf(
                 expectedKey1 to expectedValue1,
                 expectedKey2 to expectedValue2,
@@ -286,7 +169,7 @@ internal class GeneralEventVisitorTest {
 
     @Test
     internal fun `test that if no parameters are present info is an empty map`() {
-        val classDeclaration = stubClassDeclaration()
+        val classDeclaration = stubClassDeclarationWithConstructor()
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
             data = EventData(emptyMap()),
@@ -297,7 +180,10 @@ internal class GeneralEventVisitorTest {
         assertThat(actual.initializer.toString().trim()).isEqualTo("emptyMap()")
     }
 
-    private fun stubClassDeclaration(
+    override fun stubClassDeclaration(className: String) =
+        stubClassDeclarationWithConstructor(className)
+
+    private fun stubClassDeclarationWithConstructor(
         className: String = "name",
         constructorParameters: Map<String, KClass<*>>? = null,
         staticValueParameters: Map<String, String>? = null,
