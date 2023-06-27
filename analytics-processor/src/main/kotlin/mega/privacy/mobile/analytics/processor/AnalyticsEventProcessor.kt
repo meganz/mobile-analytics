@@ -9,6 +9,7 @@ import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
 import mega.privacy.mobile.analytics.annotations.GeneralEvent
 import mega.privacy.mobile.analytics.annotations.ItemSelectedEvent
 import mega.privacy.mobile.analytics.annotations.MenuItemEvent
+import mega.privacy.mobile.analytics.annotations.NavigationEvent
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
 import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.processor.generator.EventCodeGenerator
@@ -91,6 +92,16 @@ class AnalyticsEventProcessor(
                 resolver = resolver,
                 packageName = packageName,
                 fileName = "MenuItemEvents"
+            ),
+            EventCodeGenerator(
+                codeGenerator = codeGenerator,
+                idProvider = idProvider,
+                visitorFactory = visitorFactory,
+                annotationClass = NavigationEvent::class,
+            ).generate(
+                resolver = resolver,
+                packageName = packageName,
+                fileName = "NavigationEvents"
             ),
         ).flatten()
     }
