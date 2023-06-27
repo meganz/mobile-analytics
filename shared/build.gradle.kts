@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
@@ -11,7 +14,7 @@ kotlin {
     android {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = "17"
             }
         }
     }
@@ -26,12 +29,24 @@ kotlin {
         }
     }
 
+    targets.withType<KotlinNativeTarget>{
+        binaries.withType<Framework> {
+            isStatic = false
+            export(project(":analytics-annotations"))
+            export(project(":analytics-core"))
+
+            transitiveExport = true
+        }
+    }
+
     sourceSets {
         val commonMain by getting {
             dependencies {
                 //put your multiplatform dependencies here
                 implementation(project(":analytics-annotations"))
                 implementation(project(":analytics-core"))
+                api(project(":analytics-annotations"))
+                api(project(":analytics-core"))
             }
         }
         val commonTest by getting {
@@ -44,13 +59,15 @@ kotlin {
 dependencies{
 //    add("kspCommonMain", project(":analytics-processor"))
     add("kspCommonMainMetadata", project(":analytics-processor"))
-//    add("kspAndroid", project(":analytics-processor"))
+    add("kspIosArm64", project(":analytics-processor"))
+    add("kspIosX64", project(":analytics-processor"))
+    add("kspIosSimulatorArm64", project(":analytics-processor"))
+    add("kspAndroid", project(":analytics-processor"))
+
 //    add("kspAndroidTest", project(":analytics-processor"))
 //    add("kspIosX64", project(":analytics-processor"))
 //    add("kspIosX64Test", project(":analytics-processor"))
-//    add("kspIosArm64", project(":analytics-processor"))
 //    add("kspIosArm64Test", project(":analytics-processor"))
-//    add("kspIosSimulatorArm64", project(":analytics-processor"))
 //    add("kspIosSimulatorArm64Test", project(":analytics-processor"))
 }
 
@@ -59,6 +76,10 @@ android {
     compileSdk = 33
     defaultConfig {
         minSdk = 24
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
