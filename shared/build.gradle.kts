@@ -39,8 +39,18 @@ kotlin {
         }
     }
 
+    afterEvaluate{
+        tasks{
+            withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>{
+                if (name != "kspCommonMainKotlinMetadata")
+                    dependsOn("kspCommonMainKotlinMetadata")
+            }
+        }
+    }
+
     sourceSets {
         val commonMain by getting {
+            kotlin.srcDir("build/generated/ksp/metadata/commonMain")
             dependencies {
                 //put your multiplatform dependencies here
                 implementation(project(":analytics-annotations"))
@@ -59,10 +69,10 @@ kotlin {
 dependencies{
 //    add("kspCommonMain", project(":analytics-processor"))
     add("kspCommonMainMetadata", project(":analytics-processor"))
-    add("kspIosArm64", project(":analytics-processor"))
-    add("kspIosX64", project(":analytics-processor"))
-    add("kspIosSimulatorArm64", project(":analytics-processor"))
-    add("kspAndroid", project(":analytics-processor"))
+//    add("kspIosArm64", project(":analytics-processor"))
+//    add("kspIosX64", project(":analytics-processor"))
+//    add("kspIosSimulatorArm64", project(":analytics-processor"))
+//    add("kspAndroid", project(":analytics-processor"))
 
 //    add("kspAndroidTest", project(":analytics-processor"))
 //    add("kspIosX64", project(":analytics-processor"))
