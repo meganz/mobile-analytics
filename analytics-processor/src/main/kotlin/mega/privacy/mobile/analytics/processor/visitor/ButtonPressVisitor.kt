@@ -13,6 +13,13 @@ import mega.privacy.mobile.analytics.core.event.identifier.TabSelectedEventIdent
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 
+/**
+ * Button press visitor
+ *
+ * @constructor
+ *
+ * @param idGenerator
+ */
 class ButtonPressVisitor(idGenerator: IdGenerator) :
     AnalyticsEventVisitor(idGenerator, ButtonPressedEventIdentifier::class) {
 

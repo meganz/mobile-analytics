@@ -1,12 +1,19 @@
-package mega.privacy.mobile.analytics.processor.visitor
+package mega.privacy.mobile.analytics.processor.factory
 
 import com.google.devtools.ksp.visitor.KSDefaultVisitor
 import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
 import mega.privacy.mobile.analytics.annotations.GeneralEvent
 import mega.privacy.mobile.analytics.annotations.ItemSelectedEvent
+import mega.privacy.mobile.analytics.annotations.MenuItemEvent
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
 import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.visitor.ButtonPressVisitor
+import mega.privacy.mobile.analytics.processor.visitor.GeneralEventVisitor
+import mega.privacy.mobile.analytics.processor.visitor.ItemSelectedEventVisitor
+import mega.privacy.mobile.analytics.processor.visitor.MenuItemEventVisitor
+import mega.privacy.mobile.analytics.processor.visitor.ScreenViewVisitor
+import mega.privacy.mobile.analytics.processor.visitor.TabSelectedVisitor
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import mega.privacy.mobile.analytics.processor.visitor.mapper.ConstructorParameterMapper
 import mega.privacy.mobile.analytics.processor.visitor.response.EventResponse
@@ -41,6 +48,8 @@ class AnnotationVisitorFactory(private val idGenerator: IdGenerator) {
                 constructorParameterMapper = ConstructorParameterMapper(),
                 idGenerator = idGenerator
             )
+
+            MenuItemEvent::class -> MenuItemEventVisitor(idGenerator = idGenerator)
 
             else -> throw IllegalArgumentException("No visitor class registered for event type ${annotationType.simpleName}. Please add registration to ${AnnotationVisitorFactory::class.simpleName}")
         }

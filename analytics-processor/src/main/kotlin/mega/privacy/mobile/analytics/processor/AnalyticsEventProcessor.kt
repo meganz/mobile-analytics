@@ -8,12 +8,13 @@ import com.google.devtools.ksp.symbol.KSAnnotated
 import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
 import mega.privacy.mobile.analytics.annotations.GeneralEvent
 import mega.privacy.mobile.analytics.annotations.ItemSelectedEvent
+import mega.privacy.mobile.analytics.annotations.MenuItemEvent
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
 import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.processor.generator.EventCodeGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
 import mega.privacy.mobile.analytics.processor.identifier.SingleRangeIdGenerator
-import mega.privacy.mobile.analytics.processor.visitor.AnnotationVisitorFactory
+import mega.privacy.mobile.analytics.processor.factory.AnnotationVisitorFactory
 
 /**
  * Analytics event processor
@@ -80,6 +81,16 @@ class AnalyticsEventProcessor(
                 resolver = resolver,
                 packageName = packageName,
                 fileName = "ItemSelectedEvents"
+            ),
+            EventCodeGenerator(
+                codeGenerator = codeGenerator,
+                idProvider = idProvider,
+                visitorFactory = visitorFactory,
+                annotationClass = MenuItemEvent::class,
+            ).generate(
+                resolver = resolver,
+                packageName = packageName,
+                fileName = "MenuItemEvents"
             ),
         ).flatten()
     }

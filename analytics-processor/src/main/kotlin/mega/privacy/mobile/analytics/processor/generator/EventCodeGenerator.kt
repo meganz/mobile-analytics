@@ -8,7 +8,7 @@ import com.google.devtools.ksp.validate
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.ksp.writeTo
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
-import mega.privacy.mobile.analytics.processor.visitor.AnnotationVisitorFactory
+import mega.privacy.mobile.analytics.processor.factory.AnnotationVisitorFactory
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import kotlin.reflect.KClass
 
