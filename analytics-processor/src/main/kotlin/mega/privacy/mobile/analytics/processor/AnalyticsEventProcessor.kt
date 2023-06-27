@@ -6,6 +6,7 @@ import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.symbol.KSAnnotated
 import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
+import mega.privacy.mobile.analytics.annotations.DialogDisplayedEvent
 import mega.privacy.mobile.analytics.annotations.GeneralEvent
 import mega.privacy.mobile.analytics.annotations.ItemSelectedEvent
 import mega.privacy.mobile.analytics.annotations.MenuItemEvent
@@ -113,6 +114,16 @@ class AnalyticsEventProcessor(
                 resolver = resolver,
                 packageName = packageName,
                 fileName = "NotificationEvents"
+            ),
+            EventCodeGenerator(
+                codeGenerator = codeGenerator,
+                idProvider = idProvider,
+                visitorFactory = visitorFactory,
+                annotationClass = DialogDisplayedEvent::class,
+            ).generate(
+                resolver = resolver,
+                packageName = packageName,
+                fileName = "DialogDisplayedEvents"
             ),
         ).flatten()
     }

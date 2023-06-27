@@ -2,6 +2,10 @@ package mega.privacy.mobile.analytics.annotations
 
 /**
  * Menu item event
+ *
+ * @property menuItem
+ * @property menuType
+ * @property screen
  */
 @Target(AnnotationTarget.CLASS)
 annotation class MenuItemEvent(
@@ -9,6 +13,9 @@ annotation class MenuItemEvent(
     val menuType: MenuType,
     val screen: String = "",
 ) {
+    /**
+     * Menu type
+     */
     enum class MenuType {
         /**
          * Toolbar
