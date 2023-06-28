@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    `maven-publish`
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -14,6 +15,7 @@ kotlin {
                 jvmTarget = "17"
             }
         }
+        publishLibraryVariants("release", "debug")
     }
     
     listOf(

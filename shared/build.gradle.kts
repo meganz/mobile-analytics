@@ -5,6 +5,8 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("com.google.devtools.ksp")
+    id("digital.wup.android-maven-publish")
+    `maven-publish`
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -17,8 +19,9 @@ kotlin {
                 jvmTarget = "17"
             }
         }
+        publishLibraryVariants("release", "debug")
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -29,7 +32,7 @@ kotlin {
         }
     }
 
-    targets.withType<KotlinNativeTarget>{
+    targets.withType<KotlinNativeTarget> {
         binaries.withType<Framework> {
             isStatic = false
             export(project(":analytics-annotations"))
@@ -39,11 +42,55 @@ kotlin {
         }
     }
 
-    afterEvaluate{
-        tasks{
-            withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>{
+    afterEvaluate {
+        tasks {
+            withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>> {
                 if (name != "kspCommonMainKotlinMetadata")
                     dependsOn("kspCommonMainKotlinMetadata")
+            }
+
+
+            getByName("androidReleaseSourcesJar") {
+                dependsOn("kspCommonMainKotlinMetadata")
+            }
+
+            getByName("androidDebugSourcesJar") {
+                dependsOn("kspCommonMainKotlinMetadata")
+            }
+
+            getByName("iosArm64SourcesJar") {
+                dependsOn("kspCommonMainKotlinMetadata")
+            }
+
+            getByName("iosArm64SourcesJar") {
+                dependsOn("kspCommonMainKotlinMetadata")
+            }
+
+            getByName("iosSimulatorArm64SourcesJar") {
+                dependsOn("kspCommonMainKotlinMetadata")
+            }
+
+            getByName("iosX64SourcesJar") {
+                dependsOn("kspCommonMainKotlinMetadata")
+            }
+
+            getByName("sourcesJar") {
+                dependsOn("kspCommonMainKotlinMetadata")
+            }
+        }
+
+        task("sourceJar") {
+            dependsOn("kspCommonMainKotlinMetadata")
+        }
+    }
+
+    publishing {
+        publications {
+            matching { it.name == "${android().name}kotlinMultiplatform" }.all {
+                val targetPublication = this@all
+                tasks.withType<AbstractPublishToMaven>()
+                    .matching { it.publication == targetPublication }
+                    .configureEach { onlyIf { findProperty("isMainHost") == "true" } }
             }
         }
     }
@@ -53,7 +100,7 @@ kotlin {
             kotlin.srcDir("build/generated/ksp/metadata/commonMain")
             dependencies {
                 //put your multiplatform dependencies here
-                implementation(project(":analytics-annotations"))
+                compileOnly(project(":analytics-annotations"))
                 implementation(project(":analytics-core"))
                 api(project(":analytics-annotations"))
                 api(project(":analytics-core"))
@@ -65,20 +112,10 @@ kotlin {
             }
         }
     }
-}
-dependencies{
-//    add("kspCommonMain", project(":analytics-processor"))
-    add("kspCommonMainMetadata", project(":analytics-processor"))
-//    add("kspIosArm64", project(":analytics-processor"))
-//    add("kspIosX64", project(":analytics-processor"))
-//    add("kspIosSimulatorArm64", project(":analytics-processor"))
-//    add("kspAndroid", project(":analytics-processor"))
 
-//    add("kspAndroidTest", project(":analytics-processor"))
-//    add("kspIosX64", project(":analytics-processor"))
-//    add("kspIosX64Test", project(":analytics-processor"))
-//    add("kspIosArm64Test", project(":analytics-processor"))
-//    add("kspIosSimulatorArm64Test", project(":analytics-processor"))
+}
+dependencies {
+    add("kspCommonMainMetadata", project(":analytics-processor"))
 }
 
 android {
