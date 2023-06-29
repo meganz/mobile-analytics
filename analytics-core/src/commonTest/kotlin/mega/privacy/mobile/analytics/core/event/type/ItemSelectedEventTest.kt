@@ -1,6 +1,6 @@
 package mega.privacy.mobile.analytics.core.event.type
 
-import mega.privacy.mobile.analytics.core.EventDataMapper
+import mega.privacy.mobile.analytics.core.mapper.EventDataMapper
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.ItemSelectedEventIdentifier
 import mega.privacy.mobile.analytics.core.getPlatform

@@ -1,5 +1,7 @@
 package mega.privacy.mobile.analytics.core
 
+import kotlinx.coroutines.CoroutineDispatcher
+
 /**
  * Get platform
  *
@@ -10,4 +12,7 @@ actual fun getPlatform(): Platform = object : Platform {
         get() = "JVM platform is no-op"
     override val baseIdentifier: Int
         get() = 0
+    override val backgroundDispatcher: CoroutineDispatcher
+        get() = throw NotImplementedError("No-op")
 }
+

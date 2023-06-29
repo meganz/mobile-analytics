@@ -1,5 +1,7 @@
 package mega.privacy.mobile.analytics.core
 
+import kotlinx.coroutines.CoroutineDispatcher
+
 /**
  * Platform
  */
@@ -13,6 +15,11 @@ interface Platform {
      * Base identifier
      */
     val baseIdentifier: Int
+
+    /**
+     * Background dispatcher
+     */
+    val backgroundDispatcher: CoroutineDispatcher
 }
 
 /**

@@ -1,6 +1,6 @@
 package mega.privacy.mobile.analytics.core.event.type
 
-import mega.privacy.mobile.analytics.core.EventDataMapper
+import mega.privacy.mobile.analytics.core.mapper.EventDataMapper
 import mega.privacy.mobile.analytics.core.event.identifier.NavigationEventIdentifier
 import mega.privacy.mobile.analytics.core.getPlatform
 import kotlin.test.Test

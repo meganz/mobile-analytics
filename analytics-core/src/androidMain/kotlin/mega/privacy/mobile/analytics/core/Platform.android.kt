@@ -1,5 +1,8 @@
 package mega.privacy.mobile.analytics.core
 
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+
 /**
  * Android platform
  */
@@ -13,6 +16,9 @@ class AndroidPlatform : Platform {
      * Base identifier
      */
     override val baseIdentifier = 300_000
+
+    override val backgroundDispatcher: CoroutineDispatcher
+        get() = Dispatchers.IO
 }
 
 /**

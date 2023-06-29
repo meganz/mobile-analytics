@@ -1,4 +1,4 @@
-package mega.privacy.mobile.analytics.core
+package mega.privacy.mobile.analytics.core.mapper
 
 /**
  * Event data mapper
