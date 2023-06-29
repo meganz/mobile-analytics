@@ -104,6 +104,8 @@ kotlin {
                 implementation(project(":analytics-core"))
                 api(project(":analytics-annotations"))
                 api(project(":analytics-core"))
+
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
             }
         }
         val commonTest by getting {

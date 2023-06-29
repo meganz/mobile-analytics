@@ -1,6 +1,5 @@
 package mega.privacy.mobile.analytics.core.event
 
-import mega.privacy.mobile.analytics.core.api.ViewIdProvider
 import mega.privacy.mobile.analytics.core.event.identifier.ButtonPressedEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.DialogDisplayedEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.EventIdentifier
@@ -28,7 +27,7 @@ import mega.privacy.mobile.analytics.core.event.type.TabSelectedEvent
  * @property viewIdProvider
  */
 class EventGenerator(
-    private val viewIdProvider: ViewIdProvider,
+    private val viewIdProvider: suspend () -> String,
 ) {
     private var currentViewId: String? = null
 
@@ -42,7 +41,7 @@ class EventGenerator(
         return when (eventIdentifier) {
             is ScreenViewEventIdentifier -> trackScreenView(
                 eventIdentifier,
-                viewIdProvider.getViewIdentifier()
+                viewIdProvider()
             )
 
             is ButtonPressedEventIdentifier -> ButtonPressedEvent(
@@ -81,7 +80,7 @@ class EventGenerator(
 
             is TabSelectedEventIdentifier -> TabSelectedEvent(
                 eventIdentifier,
-                currentViewId ?: viewIdProvider.getViewIdentifier()
+                currentViewId ?: viewIdProvider()
             )
 
             else -> throw NotImplementedError("Not yet implemented")

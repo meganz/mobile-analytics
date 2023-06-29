@@ -1,7 +1,6 @@
 package mega.privacy.mobile.analytics.core.event
 
 import kotlinx.coroutines.test.runTest
-import mega.privacy.mobile.analytics.core.api.ViewIdProvider
 import mega.privacy.mobile.analytics.core.event.identifier.ButtonPressedEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.DialogDisplayedEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
@@ -26,11 +25,7 @@ import kotlin.test.assertTrue
 class EventGeneratorTest {
     private var currentViewId = "ViewId"
 
-    private val fakeViewIdProvider = object : ViewIdProvider {
-        override suspend fun getViewIdentifier(): String {
-            return currentViewId
-        }
-    }
+    private val fakeViewIdProvider = { currentViewId }
 
     private val underTest: EventGenerator = EventGenerator(viewIdProvider = fakeViewIdProvider)
 
