@@ -1,5 +1,6 @@
 package mega.privacy.mobile.analytics.processor.generator
 
+import com.google.devtools.ksp.containingFile
 import com.google.devtools.ksp.processing.CodeGenerator
 import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.symbol.KSAnnotated
@@ -7,8 +8,9 @@ import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.validate
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.ksp.writeTo
-import mega.privacy.mobile.analytics.processor.identifier.IdProvider
+import mega.privacy.mobile.analytics.annotations.Exclude
 import mega.privacy.mobile.analytics.processor.factory.AnnotationVisitorFactory
+import mega.privacy.mobile.analytics.processor.identifier.IdProvider
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import kotlin.reflect.KClass
 
@@ -72,5 +74,14 @@ class EventCodeGenerator(
         kClass: KClass<*>,
     ) = getSymbolsWithAnnotation(
         kClass.qualifiedName.toString()
-    ).filterIsInstance<KSClassDeclaration>()
+    ).filterNot {
+        it.containingFile?.annotations?.any { annotation ->
+            annotation.shortName.getShortName() == Exclude::class.simpleName
+        } == true
+    }.filterIsInstance<KSClassDeclaration>()
+        .filterNot {
+            it.annotations.any { annotation ->
+                annotation.shortName.getShortName() == Exclude::class.simpleName
+            }
+        }
 }
