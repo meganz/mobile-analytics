@@ -38,7 +38,6 @@ class Tracker(
             eventSender.sendEvent(
                 eventId = event.getEventIdentifier(),
                 message = event.getEventMessage(eventDataMapper),
-                addJourneyId = true,
                 viewId = event.viewId
             )
         }

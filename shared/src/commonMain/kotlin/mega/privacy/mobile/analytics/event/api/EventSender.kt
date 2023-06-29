@@ -9,13 +9,11 @@ interface EventSender {
      *
      * @param eventId
      * @param message
-     * @param addJourneyId
      * @param viewId
      */
     fun sendEvent(
         eventId: Int,
         message: String,
-        addJourneyId: Boolean,
         viewId: String?,
     )
 }

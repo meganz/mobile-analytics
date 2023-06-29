@@ -1,5 +1,12 @@
 # Mobile Analytics
 
+## Integrating the library
+1. Implement the `EventSender` and `ViewIdProvider` interfaces
+2. Create a singleton instance of the `Tracker` class
+3. Pass the generated event identifier objects to the `Tracker` instance `trackEvent` method
+
+The `sendEvent` method will be called on a background thread by the `Tracker` class.
+
 ## Adding an event
 1. Create an interface/class and annotate it with the relevant annotation (See below)
 2. Run `gradlew build`
