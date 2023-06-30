@@ -1,3 +1,4 @@
+import groovy.util.Node
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
@@ -5,7 +6,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("com.google.devtools.ksp")
-    id("digital.wup.android-maven-publish")
+    id("com.jfrog.artifactory")
     `maven-publish`
 }
 
@@ -49,16 +50,11 @@ kotlin {
                     dependsOn("kspCommonMainKotlinMetadata")
             }
 
-
             getByName("androidReleaseSourcesJar") {
                 dependsOn("kspCommonMainKotlinMetadata")
             }
 
             getByName("androidDebugSourcesJar") {
-                dependsOn("kspCommonMainKotlinMetadata")
-            }
-
-            getByName("iosArm64SourcesJar") {
                 dependsOn("kspCommonMainKotlinMetadata")
             }
 
@@ -92,6 +88,22 @@ kotlin {
                     .matching { it.publication == targetPublication }
                     .configureEach { onlyIf { findProperty("isMainHost") == "true" } }
             }
+
+            val libVersion = rootProject.extra.get("androidLibVersion") as String
+            create<MavenPublication>("aar") {
+                groupId = "mega.privacy.mobile"
+                artifactId = "analytics-events-android"
+                version = libVersion
+                artifact("$buildDir/outputs/aar/${project.name}-release.aar")
+                artifact("$buildDir/libs/${project.name}-android-1.0.0-sources.jar") {
+                    classifier = "sources"
+                    extension = "jar"
+                }
+
+                pom.withXml {
+                    addDependencyInPOM(libVersion)
+                }
+            }
         }
     }
 
@@ -101,7 +113,6 @@ kotlin {
             dependencies {
                 //put your multiplatform dependencies here
                 compileOnly(project(":analytics-annotations"))
-                implementation(project(":analytics-core"))
                 api(project(":analytics-annotations"))
                 api(project(":analytics-core"))
 
@@ -114,8 +125,8 @@ kotlin {
             }
         }
     }
-
 }
+
 dependencies {
     add("kspCommonMainMetadata", project(":analytics-processor"))
 }
@@ -140,4 +151,41 @@ ksp {
     val absoluteResourcePath = File(projectDir, relativeResourcePath).absolutePath
 
     arg("resourcePath", absoluteResourcePath)
+}
+
+
+artifactory {
+    clientConfig.isIncludeEnvVars = true
+    setContextUrl("https://artifactory.developers.mega.co.nz/artifactory/mega-gradle")
+    publish {
+        repository {
+            setRepoKey("mobile-analytics")
+            setUsername(System.getenv("ARTIFACTORY_USER")) // The publisher user name
+            setPassword(System.getenv("ARTIFACTORY_ACCESS_TOKEN")) // The publisher password
+        }
+        defaults {
+            setPublishArtifacts(true)
+            publications("aar")
+            setPublishPom(true)
+        }
+    }
+}
+
+/**
+ * Update POM to add dependency to core and annotation modules
+ */
+fun XmlProvider.addDependencyInPOM(libVersion: String) {
+    val depRoot = asNode().appendNode("dependencies")
+    val coreDependency = depRoot.appendNode("dependency")
+
+    Node(coreDependency, "groupId").apply { setValue("mega.privacy.mobile") }
+    Node(coreDependency, "artifactId").apply { setValue("analytics-core-android") }
+    Node(coreDependency, "version").apply { setValue(libVersion) }
+    Node(coreDependency, "scope").apply { setValue("compile") }
+
+    val annotationsDependency = depRoot.appendNode("dependency")
+    Node(annotationsDependency, "groupId").apply { setValue("mega.privacy.mobile") }
+    Node(annotationsDependency, "artifactId").apply { setValue("analytics-annotations-android") }
+    Node(annotationsDependency, "version").apply { setValue(libVersion) }
+    Node(annotationsDependency, "scope").apply { setValue("compile") }
 }
