@@ -6,6 +6,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("com.google.devtools.ksp")
+    id("io.github.luca992.multiplatform-swiftpackage") version "2.1.2"
     id("com.jfrog.artifactory")
     `maven-publish`
 }
@@ -29,7 +30,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "shared"
+            baseName = "MEGAAnalyticsShared"
         }
     }
 
@@ -153,6 +154,17 @@ ksp {
     arg("resourcePath", absoluteResourcePath)
 }
 
+multiplatformSwiftPackage {
+    packageName("MEGAAnalyticsShared")
+    zipFileName("MEGAAnalyticsShared")
+    distributionMode { local() }
+    swiftToolsVersion("5.8")
+    outputDirectory(File(projectDir, "../SwiftPackages/MEGAAnalyticsShared"))
+    targetPlatforms {
+        iOS { v("14") }
+        targets("macosX64") { v("10.15") }
+    }
+}
 
 artifactory {
     clientConfig.isIncludeEnvVars = true
