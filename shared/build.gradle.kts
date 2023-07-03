@@ -203,4 +203,10 @@ fun XmlProvider.addDependencyInPOM(libVersion: String) {
     Node(annotationsDependency, "scope").apply { setValue("compile") }
 }
 
+tasks.getByName("artifactoryPublish") {
+    dependsOn("assemble")
+    dependsOn("androidReleaseSourcesJar")
+}
+
+
 tasks.register<HtmlTableTask>("generateHtmlTables")

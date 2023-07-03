@@ -96,3 +96,8 @@ artifactory {
         }
     }
 }
+
+tasks.getByName("artifactoryPublish") {
+    dependsOn("assemble")
+    dependsOn("androidReleaseSourcesJar")
+}

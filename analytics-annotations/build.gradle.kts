@@ -62,7 +62,6 @@ kotlin {
             }
         }
     }
-
 }
 
 android {
@@ -92,4 +91,9 @@ artifactory {
             setPublishPom(true)
         }
     }
+}
+
+tasks.getByName("artifactoryPublish") {
+    dependsOn("assemble")
+    dependsOn("androidReleaseSourcesJar")
 }
