@@ -1,6 +1,7 @@
 import groovy.util.Node
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import src.main.kotlin.HtmlTableTask
 
 plugins {
     kotlin("multiplatform")
@@ -201,3 +202,5 @@ fun XmlProvider.addDependencyInPOM(libVersion: String) {
     Node(annotationsDependency, "version").apply { setValue(libVersion) }
     Node(annotationsDependency, "scope").apply { setValue("compile") }
 }
+
+tasks.register<HtmlTableTask>("generateHtmlTables")
