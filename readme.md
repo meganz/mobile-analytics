@@ -8,6 +8,9 @@
 The `sendEvent` method will be called on a background thread by the `Tracker` class.
 
 ## Adding an event
+
+New events are added to the *shared* module inside the *commonMain* folder
+
 1. Create an interface/class and annotate it with the relevant annotation (See below)
 2. Run `gradlew build`
 3. Commit newly created interface/class as well as the generated/updated json file in the resources folder
@@ -101,7 +104,7 @@ val fooBar: Int, //Type does not matter, this will always default to string.
 * Generated event type is object
 * Event name will the [interface name], event class will be [interface name + "Event"]
   */
-  @GeneralEvent
+  @ItemSelectedEvent
   interface ExampleSimpleItemSelected
 
 /**
@@ -132,7 +135,7 @@ val fooBar: Int, //Type does not matter, this will always default to string.
 *           ...
 *      }
 */
-@GeneralEvent
+@ItemSelectedEvent
 class ExampleComplexItemSelected(
 val foo: String?,
 val bar: Int,

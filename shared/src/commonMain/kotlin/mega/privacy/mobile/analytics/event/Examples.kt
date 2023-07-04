@@ -6,6 +6,7 @@ import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
 import mega.privacy.mobile.analytics.annotations.DialogDisplayedEvent
 import mega.privacy.mobile.analytics.annotations.Exclude
 import mega.privacy.mobile.analytics.annotations.GeneralEvent
+import mega.privacy.mobile.analytics.annotations.ItemSelectedEvent
 import mega.privacy.mobile.analytics.annotations.MenuItemEvent
 import mega.privacy.mobile.analytics.annotations.NavigationEvent
 import mega.privacy.mobile.analytics.annotations.NotificationEvent
@@ -108,7 +109,7 @@ class ExampleComplexGeneralEvent(
  * Generated event type is object
  * Event name will the [interface name], event class will be [interface name + "Event"]
  */
-@GeneralEvent
+@ItemSelectedEvent
 interface ExampleSimpleItemSelected
 
 /**
@@ -139,7 +140,7 @@ interface ExampleSimpleItemSelected
  *           ...
  *      }
  */
-@GeneralEvent
+@ItemSelectedEvent
 class ExampleComplexItemSelected(
     val foo: String?,
     val bar: Int,
