@@ -10,10 +10,10 @@ import kotlinx.serialization.json.JsonPrimitive
  * Json mapper
  */
 class JsonMapper : EventDataMapper {
-    override fun mapData(eventData: Map<String, Any?>): String {
-        return getMapJson(eventData).toString()
+    override fun mapData(eventData: Map<String, Any?>) = runCatching {
+        getMapJson(eventData).toString()
             .replace("\"", "\\\"")
-    }
+    }.getOrDefault("")
 
     private fun getMapJson(map: Map<*, *>) = JsonObject(
         map.mapKeys { it.key.toString() }
