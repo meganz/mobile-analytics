@@ -10,3 +10,15 @@ interface RemoveLinksConfirmationDialog
 
 @DialogDisplayedEvent(dialog = "CreateNewAlbumDialog", screen = "PhotoScreen")
 interface CreateNewAlbumDialog
+
+@DialogDisplayedEvent(dialog = "LinkProFeatureSeePlanFolderDialog")
+interface LinkProFeatureSeePlanFolderDialog
+
+@DialogDisplayedEvent(dialog = "LinkProFeatureSeePlanFileDialog")
+interface LinkProFeatureSeePlanFileDialog
+
+@DialogDisplayedEvent(dialog = "LinkProFeatureSeeNotNowPlanFolderDialog")
+interface LinkProFeatureSeeNotNowPlanFolderDialog
+
+@DialogDisplayedEvent(dialog = "LinkProFeatureSeeNotNowPlanFileDialog")
+interface LinkProFeatureSeeNotNowPlanFileDialog
