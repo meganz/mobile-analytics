@@ -201,6 +201,12 @@ fun XmlProvider.addDependencyInPOM(libVersion: String) {
     Node(annotationsDependency, "artifactId").apply { setValue("analytics-annotations-android") }
     Node(annotationsDependency, "version").apply { setValue(libVersion) }
     Node(annotationsDependency, "scope").apply { setValue("compile") }
+
+    val kotlinxSerializationJsonDep = depRoot.appendNode("dependency")
+    Node(kotlinxSerializationJsonDep, "groupId").apply { setValue("org.jetbrains.kotlinx") }
+    Node(kotlinxSerializationJsonDep, "artifactId").apply { setValue("kotlinx-serialization-json") }
+    Node(kotlinxSerializationJsonDep, "version").apply { setValue("1.5.1") }
+    Node(kotlinxSerializationJsonDep, "scope").apply { setValue("compile") }
 }
 
 tasks.getByName("artifactoryPublish") {
