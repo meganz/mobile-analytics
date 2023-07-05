@@ -1,13 +1,12 @@
 BUILD_STEP = ''
 
-/**
- * GitLab commands that can trigger this job.
- */
-BUILD_KMM_ANALYTICS_CMD = "build_kmm_analytics"
-BUILD_KA_CMD = "build_ka"
-
 // The log file of publishing lib to Artifactory
 ARTIFACTORY_PUBLISH_LOG = "artifactory_publish.log"
+
+/**
+ * common.groovy file with common methods
+ */
+def common
 
 pipeline {
     agent { label 'mac-jenkins-slave-android || mac-jenkins-slave' }
@@ -33,19 +32,23 @@ pipeline {
     post {
         failure {
             script {
-                downloadJenkinsConsoleLog(CONSOLE_LOG_FILE)
-                String jenkinsLogLink = uploadFileToGitLab(CONSOLE_LOG_FILE)
+                common = load('jenkinsfile/common.groovy')
+
+                common.downloadJenkinsConsoleLog(CONSOLE_LOG_FILE)
+                String jenkinsLogLink = common.uploadFileToGitLab(CONSOLE_LOG_FILE)
                 String message = failureMessage("<br/>") +
                         "<br/>Build Log:\t${jenkinsLogLink}"
 
-                sendToMR(message)
+                common.sendToMR(message)
                 slackSend color: 'danger', message: failureMessage("\n")
                 slackUploadFile filePath: 'console.txt', initialComment: 'Jenkins Log'
             }
         }
         success {
             script {
-                sendToMR(successMessage("<br/>"))
+                common = load('jenkinsfile/common.groovy')
+
+                common.sendToMR(successMessage("<br/>"))
                 slackSend color: "good", message: successMessage("\n")
             }
         }
@@ -57,6 +60,7 @@ pipeline {
         stage('prepare') {
             steps {
                 script {
+                    common = load('jenkinsfile/common.groovy')
                     println("Print environment variables")
                     sh('set')
                 }
@@ -75,8 +79,6 @@ pipeline {
                                 "ARTIFACTORY_USER=${ARTIFACTORY_USER}",
                                 "ARTIFACTORY_ACCESS_TOKEN=${ARTIFACTORY_ACCESS_TOKEN}",
                         ]) {
-                            sendToMR("Publish to artifactory - started")
-
                             sh """
                                 ./gradlew artifactoryPublish 2>&1  | tee ${ARTIFACTORY_PUBLISH_LOG}
                             """
@@ -86,36 +88,6 @@ pipeline {
             }
         }
     }
-}
-
-/**
- * send message to GitLab MR comment
- * @param message message to send
- */
-void sendToMR(String message) {
-    println("####### Entering sendToMR() #######")
-
-    def mrNumber = getMrNumberInCD()
-
-    if (mrNumber != null && !mrNumber.isEmpty()) {
-        withCredentials([usernamePassword(credentialsId: 'Gitlab-Access-Token', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
-            env.MARKDOWN_LINK = message
-            env.MERGE_REQUEST_URL = "${env.GITLAB_BASE_URL}/api/v4/projects/278/merge_requests/${mrNumber}/notes"
-            sh 'curl --request POST --header PRIVATE-TOKEN:$TOKEN --form body=\"${MARKDOWN_LINK}\" ${MERGE_REQUEST_URL}'
-        }
-    } else {
-        println("[Failure] Cannot get MR ID!")
-    }
-}
-
-/**
- * Get MergeRequest ID for CD
- *
- * @return MR Number if job is triggered in CD. Otherwise return null.
- */
-def getMrNumberInCD() {
-    println("####### Entering getMrNumberInCD() #######")
-    return env.gitlabMergeRequestIid
 }
 
 /**
