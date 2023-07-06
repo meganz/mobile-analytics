@@ -3,10 +3,15 @@ BUILD_STEP = ''
 // The log file of publishing lib to Artifactory
 ARTIFACTORY_PUBLISH_LOG = "artifactory_publish.log"
 
+// Flag indicating whether generated Swift package has updates.
+HAS_SWIFT_PACKAGE_CHANGE = false
+
 /**
  * common.groovy file with common methods
  */
 def common
+
+
 
 pipeline {
     agent { label 'mac-jenkins-slave-android || mac-jenkins-slave' }
@@ -48,8 +53,17 @@ pipeline {
             script {
                 common = load('jenkinsfile/common.groovy')
 
-                common.sendToMR(successMessage("<br/>"))
-                slackSend color: "good", message: successMessage("\n")
+                common.sendToMR(androidSuccessMessage("<br/>"))
+                slackSend color: "good", message: androidSuccessMessage("\n")
+
+                if (HAS_SWIFT_PACKAGE_CHANGE) {
+                    common.sendToMR(iOSSuccessMessage("<br/>"))
+                    slackSend color: "good", message: iOSSuccessMessage("\n")
+                } else {
+                    String noFileChangeMsg = "No change in iOS Swift Package. No files are published."
+                    common.sendToMR(noFileChangeMsg)
+                    slackSend color: "good", message: noFileChangeMsg
+                }
             }
         }
         cleanup {
@@ -66,7 +80,7 @@ pipeline {
                 }
             }
         }
-        stage('Publish Library to Artifactory') {
+        stage('Publish Android Library to Artifactory') {
             steps {
                 script {
                     BUILD_STEP = 'Publish to artifactory'
@@ -87,7 +101,70 @@ pipeline {
                 }
             }
         }
+        stage('Publish iOS library to GitLab') {
+            steps {
+                script {
+                    BUILD_STEP = 'Publish to artifactory'
+
+                    withCredentials([gitUsernamePassword(credentialsId: 'Gitlab-Access-Token', gitToolName: 'Default')]) {
+                        sh """
+                                ./gradlew createSwiftPackage
+                                
+                                rm -fr mobile-analytics-ios
+                                git clone https://code.developers.mega.co.nz/mobile/kmm/mobile-analytics-ios.git
+                                cd mobile-analytics-ios
+                                cp -fr ../SwiftPackages/MEGAAnalyticsiOS/MEGAAnalyticsiOS.xcframework .
+                                cp -fr ../SwiftPackages/MEGAAnalyticsiOS/Package.swift .
+                            """
+                        if (hasSwiftPackageChanges()) {
+                            println("there are new file changes of SwiftPackage. Starting to push changes...")
+                            HAS_SWIFT_PACKAGE_CHANGE = true
+                            sh """
+                                cd mobile-analytics-ios
+                                git add . 
+                                git commit -m "iOS analytics update - author(${gitlabCommentAuthor}) commit(${GIT_COMMIT})"
+                                git push
+                            """
+                        } else {
+                            HAS_SWIFT_PACKAGE_CHANGE = false
+                            println("There are no file changes of SwiftPackage")
+                        }
+                    }
+                }
+            }
+        }
     }
+}
+
+/**
+ * Read the swift package commit ID
+ * @return
+ */
+String getSwiftPackageCommit() {
+    return sh(script: "cd mobile-analytics-ios ; git rev-parse HEAD", returnStdout: true).trim()
+}
+
+/**
+ * Check if there is file changes in git workspace in Swift Package repo.
+ * @return true if there is change. Otherwise return false.
+ */
+boolean hasSwiftPackageChanges() {
+    String output = sh(script: "cd mobile-analytics-ios ; git status --porcelain", returnStdout: true).trim()
+    println("hasSwiftPackageChanges: " + output)
+    return !output.isEmpty()
+}
+
+/**
+ * Success message for iOS publishing.
+ * @param lineBreak Slack and MR comment use different line breaks. Slack uses "/n",
+ * while GitLab MR uses "<br/>".
+ * @return
+ */
+boolean iOSSuccessMessage(String lineBreak) {
+    return  ":rocket: Mobile-Analytics library(iOS) has been published successfully!(Build Number: ${env.BUILD_NUMBER})" +
+            "${lineBreak}Author:\t${gitlabCommentAuthor}" +
+            "${lineBreak}Commit:\t${GIT_COMMIT}" +
+            "${lineBreak}SwiftPackage Commit:\t${getSwiftPackageCommit()}"
 }
 
 /**
@@ -96,16 +173,16 @@ pipeline {
  * while GitLab MR uses "<br/>".
  * @return The success message to be sent
  */
-private String successMessage(String lineBreak) {
-    return ":rocket: Mobile-Analytics library(Android) has been published successfully!(Build Number: ${env.BUILD_NUMBER})" +
+private String androidSuccessMessage(String lineBreak) {
+    return  ":rocket: Mobile-Analytics library(Android) has been published successfully!(Build Number: ${env.BUILD_NUMBER})" +
             "${lineBreak}Author:\t${gitlabCommentAuthor}" +
             "${lineBreak}Commit:\t${GIT_COMMIT}" +
-            "${lineBreak}Version:\tmega.privacy.mobile:analytics-events-android:${getVersionText()}" +
+            "${lineBreak}Version:\tmega.privacy.mobile:analytics-events-android:${getAndroidLibVersion()}" +
             "${lineBreak}Command:\t${gitlabTriggerPhrase}" +
             "${lineBreak}AAR Artifactory Page: ${getLibArtifactoryUrl()}"
 }
 
-private String getVersionText() {
+private String getAndroidLibVersion() {
     println("######## Entering getVersionText() ########")
 
     String content = sh(script: "grep -e 'Deploying artifact.*\\.aar\$' ${ARTIFACTORY_PUBLISH_LOG}", returnStdout: true).trim()
