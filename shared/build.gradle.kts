@@ -31,7 +31,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "MEGAAnalyticsShared"
+            baseName = "MEGAAnalyticsiOS"
         }
     }
 
@@ -156,11 +156,11 @@ ksp {
 }
 
 multiplatformSwiftPackage {
-    packageName("MEGAAnalyticsShared")
-    zipFileName("MEGAAnalyticsShared")
+    packageName("MEGAAnalyticsiOS")
+    zipFileName("MEGAAnalyticsiOS")
     distributionMode { local() }
     swiftToolsVersion("5.8")
-    outputDirectory(File(projectDir, "../SwiftPackages/MEGAAnalyticsShared"))
+    outputDirectory(File(projectDir, "../SwiftPackages/MEGAAnalyticsiOS"))
     targetPlatforms {
         iOS { v("14") }
         targets("macosX64") { v("10.15") }
