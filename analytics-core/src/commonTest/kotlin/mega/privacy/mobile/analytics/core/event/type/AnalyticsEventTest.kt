@@ -14,7 +14,7 @@ internal class AnalyticsEventTest {
     private val expectedName = "EventName"
     private val data = mapOf("data" to null)
 
-    private val fakeEventIdentifier = object : EventIdentifier {
+    private val fakeEventIdentifier = object : EventIdentifier() {
         override val eventName: String
             get() = expectedName
         override val uniqueIdentifier: Int

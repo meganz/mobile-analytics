@@ -24,7 +24,7 @@ interface TestNavigationItem
         import kotlin.String
         import mega.privacy.mobile.analytics.core.event.identifier.NavigationEventIdentifier
         
-        public object TestNavigationItemEvent : NavigationEventIdentifier {
+        public object TestNavigationItemEvent : NavigationEventIdentifier() {
           override val eventName: String = "TestNavigationItem"
         
           override val uniqueIdentifier: Int = 0

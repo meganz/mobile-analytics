@@ -31,7 +31,7 @@ class EventGeneratorTest {
 
     @Test
     fun `test that screen view event identifier returns a screen view event`() = runTest {
-        val fakeScreenViewInfo = object : ScreenViewEventIdentifier {
+        val fakeScreenViewInfo = object : ScreenViewEventIdentifier() {
             override val eventName: String
                 get() = "expectedName"
             override val uniqueIdentifier: Int
@@ -44,7 +44,7 @@ class EventGeneratorTest {
 
     @Test
     internal fun `test that each screen view has a new view id`() = runTest {
-        val fakeScreenViewInfo = object : ScreenViewEventIdentifier {
+        val fakeScreenViewInfo = object : ScreenViewEventIdentifier() {
             override val eventName: String
                 get() = "expectedName"
             override val uniqueIdentifier: Int
@@ -60,7 +60,7 @@ class EventGeneratorTest {
 
     @Test
     fun `test that button pressed event identifier returns a button pressed event`() = runTest {
-        val fakeScreenViewInfo = object : ButtonPressedEventIdentifier {
+        val fakeScreenViewInfo = object : ButtonPressedEventIdentifier() {
             override val buttonName: String
                 get() = "expected"
             override val screenName: String?
@@ -79,7 +79,7 @@ class EventGeneratorTest {
 
     @Test
     fun `test that dialog displayed event identifier returns a dialog displayed event`() = runTest {
-        val fakeScreenViewInfo = object : DialogDisplayedEventIdentifier {
+        val fakeScreenViewInfo = object : DialogDisplayedEventIdentifier() {
             override val screenName: String?
                 get() = "expected"
             override val dialogName: String
@@ -96,7 +96,7 @@ class EventGeneratorTest {
 
     @Test
     fun `test that general event identifier returns a general event`() = runTest {
-        val fakeScreenViewInfo = object : GeneralEventIdentifier {
+        val fakeScreenViewInfo = object : GeneralEventIdentifier() {
             override val info: Map<String, Any?>
                 get() = emptyMap()
             override val eventName: String
@@ -111,7 +111,7 @@ class EventGeneratorTest {
 
     @Test
     fun `test that item selected event identifier returns a item selected event`() = runTest {
-        val fakeScreenViewInfo = object : ItemSelectedEventIdentifier {
+        val fakeScreenViewInfo = object : ItemSelectedEventIdentifier() {
             override val info: Map<String, Any>?
                 get() = null
             override val eventName: String
@@ -126,7 +126,7 @@ class EventGeneratorTest {
 
     @Test
     fun `test that menu item event identifier returns a menu item event`() = runTest {
-        val fakeScreenViewInfo = object : MenuItemEventIdentifier {
+        val fakeScreenViewInfo = object : MenuItemEventIdentifier() {
             override val menuItem: String
                 get() = "expected"
             override val screenName: String?
@@ -145,7 +145,7 @@ class EventGeneratorTest {
 
     @Test
     fun `test that navigation event identifier returns a navigation event`() = runTest {
-        val fakeScreenViewInfo = object : NavigationEventIdentifier {
+        val fakeScreenViewInfo = object : NavigationEventIdentifier() {
             override val navigationElementType: String?
                 get() = "expected"
             override val destination: String?
@@ -162,7 +162,7 @@ class EventGeneratorTest {
 
     @Test
     fun `test that notification event identifier returns a notification event`() = runTest {
-        val fakeScreenViewInfo = object : NotificationEventIdentifier {
+        val fakeScreenViewInfo = object : NotificationEventIdentifier() {
             override val eventName: String
                 get() = "expectedName"
             override val uniqueIdentifier: Int
@@ -175,7 +175,7 @@ class EventGeneratorTest {
 
     @Test
     fun `test that tab selected event identifier returns a tab selected event`() = runTest {
-        val fakeScreenViewInfo = object : TabSelectedEventIdentifier {
+        val fakeScreenViewInfo = object : TabSelectedEventIdentifier() {
             override val screenName: String
                 get() = "expected"
             override val tabName: String

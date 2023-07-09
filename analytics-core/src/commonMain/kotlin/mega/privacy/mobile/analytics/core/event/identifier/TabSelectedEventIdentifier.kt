@@ -3,14 +3,14 @@ package mega.privacy.mobile.analytics.core.event.identifier
 /**
  * Tab selected event identifier
  */
-interface TabSelectedEventIdentifier : EventIdentifier {
+abstract class TabSelectedEventIdentifier : EventIdentifier() {
     /**
      * Screen name
      */
-    val screenName: String
+    abstract val screenName: String
 
     /**
      * Tab name
      */
-    val tabName: String
+    abstract val tabName: String
 }

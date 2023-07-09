@@ -3,14 +3,14 @@ package mega.privacy.mobile.analytics.core.event.identifier
 /**
  * Dialog displayed event identifier
  */
-interface DialogDisplayedEventIdentifier : EventIdentifier {
+abstract  class DialogDisplayedEventIdentifier : EventIdentifier() {
     /**
      * Screen name
      */
-    val screenName: String?
+    abstract val screenName: String?
 
     /**
      * Dialog name
      */
-    val dialogName: String
+    abstract val dialogName: String
 }

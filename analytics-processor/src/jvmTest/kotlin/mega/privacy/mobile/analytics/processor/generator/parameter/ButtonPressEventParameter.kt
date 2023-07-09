@@ -23,7 +23,7 @@ interface TestButton
         import kotlin.String
         import mega.privacy.mobile.analytics.core.event.identifier.ButtonPressedEventIdentifier
         
-        public object TestButtonEvent : ButtonPressedEventIdentifier {
+        public object TestButtonEvent : ButtonPressedEventIdentifier() {
           override val eventName: String = "TestButton"
         
           override val uniqueIdentifier: Int = 0

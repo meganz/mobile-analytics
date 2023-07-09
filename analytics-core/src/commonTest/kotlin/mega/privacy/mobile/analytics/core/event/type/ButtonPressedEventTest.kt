@@ -17,7 +17,7 @@ class ButtonPressedEventTest {
 
     private val expectedEventName = "eventName"
 
-    private val fakeIdentifier = object : ButtonPressedEventIdentifier {
+    private val fakeIdentifier = object : ButtonPressedEventIdentifier() {
         override val buttonName: String
             get() = expectedButtonName
         override val screenName: String?

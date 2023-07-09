@@ -3,19 +3,19 @@ package mega.privacy.mobile.analytics.core.event.identifier
 /**
  * Menu item event identifier
  */
-interface MenuItemEventIdentifier : EventIdentifier {
+abstract class MenuItemEventIdentifier : EventIdentifier() {
     /**
      * Menu item
      */
-    val menuItem: String
+    abstract val menuItem: String
 
     /**
      * Screen name
      */
-    val screenName: String?
+    abstract val screenName: String?
 
     /**
      * Menu type
      */
-    val menuType: String?
+    abstract val menuType: String?
 }

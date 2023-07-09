@@ -30,7 +30,7 @@ interface TestTab3
         import kotlin.String
         import mega.privacy.mobile.analytics.core.event.identifier.TabSelectedEventIdentifier
         
-        public object TestTab1Event : TabSelectedEventIdentifier {
+        public object TestTab1Event : TabSelectedEventIdentifier() {
           override val eventName: String = "TestTab1"
         
           override val uniqueIdentifier: Int = 0
@@ -40,7 +40,7 @@ interface TestTab3
           override val screenName: String = "screen1"
         }
         
-        public object TestTab2Event : TabSelectedEventIdentifier {
+        public object TestTab2Event : TabSelectedEventIdentifier() {
           override val eventName: String = "TestTab2"
         
           override val uniqueIdentifier: Int = 1
@@ -50,7 +50,7 @@ interface TestTab3
           override val screenName: String = "screen2"
         }
         
-        public object TestTab3Event : TabSelectedEventIdentifier {
+        public object TestTab3Event : TabSelectedEventIdentifier() {
           override val eventName: String = "TestTab3"
         
           override val uniqueIdentifier: Int = 2

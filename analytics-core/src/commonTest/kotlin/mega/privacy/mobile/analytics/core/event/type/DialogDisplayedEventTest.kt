@@ -16,7 +16,7 @@ class DialogDisplayedEventTest {
 
     private val expectedEventName = "eventName"
 
-    private val fakeIdentifier = object : DialogDisplayedEventIdentifier {
+    private val fakeIdentifier = object : DialogDisplayedEventIdentifier() {
         override val screenName: String?
             get() = expectedScreenName
         override val dialogName: String

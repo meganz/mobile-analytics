@@ -15,16 +15,13 @@ import org.mockito.kotlin.mock
 internal class NotificationEventVisitorTest : AnalyticsVisitorTest<NotificationEventVisitor>() {
 
     @Test
-    internal fun `test that event implements correct interface`() {
+    internal fun `test that event extends correct class`() {
         val classDeclaration = stubClassDeclaration()
 
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
             data = EventData(emptyMap()),
-        ).spec
-            .superinterfaces
-            .keys
-            .map { it.toString() }
+        ).spec.superclass.toString()
 
         assertThat(actual).contains(NotificationEventIdentifier::class.qualifiedName)
     }

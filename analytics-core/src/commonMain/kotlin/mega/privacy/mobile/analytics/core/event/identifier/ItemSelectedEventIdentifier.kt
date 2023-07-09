@@ -3,9 +3,9 @@ package mega.privacy.mobile.analytics.core.event.identifier
 /**
  * General event identifier
  */
-interface ItemSelectedEventIdentifier : EventIdentifier {
+abstract class ItemSelectedEventIdentifier : EventIdentifier() {
     /**
      * Info
      */
-    val info: Map<String, Any>?
+    abstract val info: Map<String, Any>?
 }

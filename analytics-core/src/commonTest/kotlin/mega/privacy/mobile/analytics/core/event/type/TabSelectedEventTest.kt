@@ -16,7 +16,7 @@ class TabSelectedEventTest {
 
     private val expectedEventName = "eventName"
 
-    private val fakeIdentifier = object : TabSelectedEventIdentifier {
+    private val fakeIdentifier = object : TabSelectedEventIdentifier() {
         override val screenName: String
             get() = expectedScreenName
         override val tabName: String

@@ -3,19 +3,19 @@ package mega.privacy.mobile.analytics.core.event.identifier
 /**
  * Button pressed event identifier
  */
-interface ButtonPressedEventIdentifier : EventIdentifier {
+abstract class ButtonPressedEventIdentifier : EventIdentifier() {
     /**
      * Button name
      */
-    val buttonName: String
+    abstract val buttonName: String
 
     /**
      * Screen name
      */
-    val screenName: String?
+    abstract val screenName: String?
 
     /**
      * Dialog name
      */
-    val dialogName: String?
+    abstract val dialogName: String?
 }

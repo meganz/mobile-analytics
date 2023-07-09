@@ -3,14 +3,14 @@ package mega.privacy.mobile.analytics.core.event.identifier
 /**
  * Navigation event identifier
  */
-interface NavigationEventIdentifier : EventIdentifier {
+abstract class NavigationEventIdentifier : EventIdentifier() {
     /**
      * Navigation element type
      */
-    val navigationElementType: String?
+    abstract val navigationElementType: String?
 
     /**
      * Destination
      */
-    val destination: String?
+    abstract val destination: String?
 }

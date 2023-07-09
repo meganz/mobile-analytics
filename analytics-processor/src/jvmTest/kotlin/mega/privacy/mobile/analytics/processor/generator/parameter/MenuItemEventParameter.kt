@@ -26,7 +26,7 @@ interface TestItem2"""
         import kotlin.String
         import mega.privacy.mobile.analytics.core.event.identifier.MenuItemEventIdentifier
         
-        public object TestItemEvent : MenuItemEventIdentifier {
+        public object TestItemEvent : MenuItemEventIdentifier() {
           override val eventName: String = "TestItem"
         
           override val uniqueIdentifier: Int = 0
@@ -38,7 +38,7 @@ interface TestItem2"""
           override val screenName: String? = null
         }
         
-        public object TestItem2Event : MenuItemEventIdentifier {
+        public object TestItem2Event : MenuItemEventIdentifier() {
           override val eventName: String = "TestItem2"
         
           override val uniqueIdentifier: Int = 1
