@@ -6,12 +6,14 @@ ARTIFACTORY_PUBLISH_LOG = "artifactory_publish.log"
 // Flag indicating whether generated Swift package has updates.
 HAS_SWIFT_PACKAGE_CHANGE = false
 
+TRIGGER_TYPE_UNKNOWN = -1
+TRIGGER_TYPE_PUSH = 0
+TRIGGER_TYPE_COMMAND = 1
+
 /**
  * common.groovy file with common methods
  */
 def common
-
-
 
 pipeline {
     agent { label 'mac-jenkins-slave-android || mac-jenkins-slave' }
@@ -40,11 +42,14 @@ pipeline {
                 common = load('jenkinsfile/common.groovy')
 
                 common.downloadJenkinsConsoleLog(CONSOLE_LOG_FILE)
-                String jenkinsLogLink = common.uploadFileToGitLab(CONSOLE_LOG_FILE)
-                String message = failureMessage("<br/>") +
-                        "<br/>Build Log:\t${jenkinsLogLink}"
 
-                common.sendToMR(message)
+                if (triggerType() == TRIGGER_TYPE_COMMAND) {
+                    String jenkinsLogLink = common.uploadFileToGitLab(CONSOLE_LOG_FILE)
+                    String message = failureMessage("<br/>") +
+                            "<br/>Build Log:\t${jenkinsLogLink}"
+                    sendToMR(message)
+                }
+
                 slackSend color: 'danger', message: failureMessage("\n")
                 slackUploadFile filePath: 'console.txt', initialComment: 'Jenkins Log'
             }
@@ -53,15 +58,15 @@ pipeline {
             script {
                 common = load('jenkinsfile/common.groovy')
 
-                common.sendToMR(androidSuccessMessage("<br/>"))
+                sendToMR(androidSuccessMessage("<br/>"))
                 slackSend color: "good", message: androidSuccessMessage("\n")
 
                 if (HAS_SWIFT_PACKAGE_CHANGE) {
-                    common.sendToMR(iOSSuccessMessage("<br/>"))
+                    sendToMR(iOSSuccessMessage("<br/>"))
                     slackSend color: "good", message: iOSSuccessMessage("\n")
                 } else {
                     String noFileChangeMsg = "No change in iOS Swift Package. No files are published."
-                    common.sendToMR(noFileChangeMsg)
+                    sendToMR(noFileChangeMsg)
                     slackSend color: "good", message: noFileChangeMsg
                 }
             }
@@ -122,7 +127,7 @@ pipeline {
                             sh """
                                 cd mobile-analytics-ios
                                 git add . 
-                                git commit -m "iOS analytics update - author(${gitlabCommentAuthor}) commit(${GIT_COMMIT})"
+                                git commit -m "iOS analytics update - author(${authorName()}) commit(${GIT_COMMIT})"
                                 git push
                             """
                         } else {
@@ -133,6 +138,56 @@ pipeline {
                 }
             }
         }
+    }
+}
+
+private void sendToMR(String message) {
+    if (triggerType() == TRIGGER_TYPE_COMMAND) {
+        common.sendToMR(message)
+    }
+}
+
+/**
+ * Check why this job is triggered
+ * @return trigger types
+ */
+private int triggerType() {
+    if (gitlabActionType == "NOTE") {
+        return TRIGGER_TYPE_COMMAND
+    } else if (gitlabActionType == "PUSH") {
+        return TRIGGER_TYPE_PUSH
+    } else {
+        return TRIGGER_TYPE_UNKNOWN
+    }
+}
+
+/**
+ * Get the name of the build trigger person.
+ * @return name
+ */
+private String authorName() {
+    if (triggerType() == TRIGGER_TYPE_COMMAND) {
+        return gitlabCommentAuthor
+    } else {
+        return gitlabUserName
+    }
+}
+
+/**
+ * Command name of what triggers the build.
+ * @return one of these values: PUSH, N/A or MR comment
+ */
+private String command() {
+    int triggerTypeValue = triggerType()
+    switch (triggerTypeValue) {
+        case TRIGGER_TYPE_COMMAND:
+            return gitlabTriggerPhrase
+            break
+        case TRIGGER_TYPE_PUSH:
+            return "PUSH"
+            break
+        default:
+            return "N/A"
     }
 }
 
@@ -161,8 +216,8 @@ boolean hasSwiftPackageChanges() {
  * @return
  */
 boolean iOSSuccessMessage(String lineBreak) {
-    return  ":rocket: Mobile-Analytics library(iOS) has been published successfully!(Build Number: ${env.BUILD_NUMBER})" +
-            "${lineBreak}Author:\t${gitlabCommentAuthor}" +
+    return ":rocket: Mobile-Analytics library(iOS) has been published successfully!(Build Number: ${env.BUILD_NUMBER})" +
+            "${lineBreak}Author:\t${authorName()}" +
             "${lineBreak}Commit:\t${GIT_COMMIT}" +
             "${lineBreak}SwiftPackage Commit:\t${getSwiftPackageCommit()}"
 }
@@ -174,11 +229,11 @@ boolean iOSSuccessMessage(String lineBreak) {
  * @return The success message to be sent
  */
 private String androidSuccessMessage(String lineBreak) {
-    return  ":rocket: Mobile-Analytics library(Android) has been published successfully!(Build Number: ${env.BUILD_NUMBER})" +
-            "${lineBreak}Author:\t${gitlabCommentAuthor}" +
+    return ":rocket: Mobile-Analytics library(Android) has been published successfully!(Build Number: ${env.BUILD_NUMBER})" +
+            "${lineBreak}Author:\t${authorName()}" +
             "${lineBreak}Commit:\t${GIT_COMMIT}" +
             "${lineBreak}Version:\tmega.privacy.mobile:analytics-events-android:${getAndroidLibVersion()}" +
-            "${lineBreak}Command:\t${gitlabTriggerPhrase}" +
+            "${lineBreak}Command:\t${command()}" +
             "${lineBreak}AAR Artifactory Page: ${getLibArtifactoryUrl()}"
 }
 
@@ -239,9 +294,9 @@ String uploadFileToGitLab(String fileName) {
  * @return failure message
  */
 private String failureMessage(String lineBreak) {
-    String message = ":x: Mobile-Analytics Library(Android) Creation Failed!(BuildNumber: ${env.BUILD_NUMBER})" +
-            "${lineBreak}Author:\t${gitlabCommentAuthor}" +
-            "${lineBreak}Command:\t${gitlabTriggerPhrase}" +
+    String message = ":x: Mobile-Analytics Library(Android+iOS) Creation Failed!(Build No:${env.BUILD_NUMBER})" +
+            "${lineBreak}Author:\t${authorName()}" +
+            "${lineBreak}Command:\t${command()}" +
             "${lineBreak}Commit:\t${GIT_COMMIT}"
     return message
 }
