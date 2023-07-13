@@ -141,6 +141,10 @@ pipeline {
     }
 }
 
+/**
+ * Send message to Merge Request
+ * @param message message to send
+ */
 private void sendToMR(String message) {
     if (triggerType() == TRIGGER_TYPE_COMMAND) {
         common.sendToMR(message)
