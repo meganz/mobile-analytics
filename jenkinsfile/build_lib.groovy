@@ -114,7 +114,6 @@ pipeline {
                     withCredentials([gitUsernamePassword(credentialsId: 'Gitlab-Access-Token', gitToolName: 'Default')]) {
                         sh """
                                 ./gradlew createSwiftPackage
-                                
                                 rm -fr mobile-analytics-ios
                                 git clone https://code.developers.mega.co.nz/mobile/kmm/mobile-analytics-ios.git
                                 cd mobile-analytics-ios
