@@ -125,13 +125,33 @@ pipeline {
                             HAS_SWIFT_PACKAGE_CHANGE = true
                             sh """
                                 cd mobile-analytics-ios
-                                git add . 
+                                git add .
                                 git commit -m "iOS analytics update - author(${authorName()}) commit(${GIT_COMMIT})"
                                 git push
                             """
                         } else {
                             HAS_SWIFT_PACKAGE_CHANGE = false
                             println("There are no file changes of SwiftPackage")
+                        }
+                    }
+                }
+            }
+        }
+        stage('Sync Code to GitHub') {
+            steps {
+                script {
+                    BUILD_STEP = 'Sync Code to GitHub'
+
+                    // only sync to GitHub, when build is triggered by push to main branch
+                    if (triggerType() == TRIGGER_TYPE_PUSH && gitlabTargetBranch == "main") {
+                        withCredentials([
+                                usernamePassword(credentialsId: 'GitHub-Access-Token',
+                                        usernameVariable: 'USERNAME',
+                                        passwordVariable: 'TOKEN')
+                        ]) {
+                            sh """
+                                git push https://${USERNAME}:${TOKEN}@github.com/meganz/mobile-analytics.git HEAD:main                            
+                            """
                         }
                     }
                 }
