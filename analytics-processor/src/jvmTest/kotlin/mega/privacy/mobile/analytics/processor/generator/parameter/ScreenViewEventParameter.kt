@@ -30,19 +30,19 @@ interface TestScreen3
         import kotlin.String
         import mega.privacy.mobile.analytics.core.event.identifier.ScreenViewEventIdentifier
 
-        public object TestScreen1Event : ScreenViewEventIdentifier() {
+        public object TestScreen1Event : ScreenViewEventIdentifier {
           override val eventName: String = "TestScreen1"
 
           override val uniqueIdentifier: Int = 0
         }
 
-        public object TestScreen2Event : ScreenViewEventIdentifier() {
+        public object TestScreen2Event : ScreenViewEventIdentifier {
           override val eventName: String = "TestScreen2"
 
           override val uniqueIdentifier: Int = 1
         }
 
-        public object TestScreen3Event : ScreenViewEventIdentifier() {
+        public object TestScreen3Event : ScreenViewEventIdentifier {
           override val eventName: String = "TestScreen3"
 
           override val uniqueIdentifier: Int = 2

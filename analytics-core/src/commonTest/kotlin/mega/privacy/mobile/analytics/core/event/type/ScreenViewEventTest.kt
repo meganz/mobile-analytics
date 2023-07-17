@@ -12,7 +12,7 @@ class ScreenViewEventTest {
 
     private val expectedEventName = "eventName"
 
-    private val fakeIdentifier = object : ScreenViewEventIdentifier() {
+    private val fakeIdentifier = object : ScreenViewEventIdentifier {
         override val eventName: String
             get() = expectedEventName
         override val uniqueIdentifier: Int

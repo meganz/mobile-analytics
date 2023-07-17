@@ -26,7 +26,7 @@ interface TestDialog2
         import kotlin.String
         import mega.privacy.mobile.analytics.core.event.identifier.DialogDisplayedEventIdentifier
         
-        public object TestDialogEvent : DialogDisplayedEventIdentifier() {
+        public object TestDialogEvent : DialogDisplayedEventIdentifier {
           override val eventName: String = "TestDialog"
         
           override val uniqueIdentifier: Int = 0
@@ -36,7 +36,7 @@ interface TestDialog2
           override val screenName: String? = "screen1"
         }
         
-        public object TestDialog2Event : DialogDisplayedEventIdentifier() {
+        public object TestDialog2Event : DialogDisplayedEventIdentifier {
           override val eventName: String = "TestDialog2"
         
           override val uniqueIdentifier: Int = 1

@@ -3,14 +3,14 @@ package mega.privacy.mobile.analytics.core.event.identifier
 /**
  * Event identifier
  */
-abstract class EventIdentifier {
+interface EventIdentifier {
     /**
      * Event name
      */
-    abstract val eventName: String
+    val eventName: String
 
     /**
      * Unique identifier
      */
-    abstract val uniqueIdentifier: Int
+    val uniqueIdentifier: Int
 }

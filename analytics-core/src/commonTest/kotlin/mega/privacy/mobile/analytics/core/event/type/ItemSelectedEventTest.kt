@@ -16,7 +16,7 @@ class ItemSelectedEventTest {
 
     private val expectedEventName = "eventName"
 
-    private val fakeIdentifier = object : ItemSelectedEventIdentifier() {
+    private val fakeIdentifier = object : ItemSelectedEventIdentifier {
         override val info: Map<String, Any>
             get() = expectedInfo
         override val eventName: String

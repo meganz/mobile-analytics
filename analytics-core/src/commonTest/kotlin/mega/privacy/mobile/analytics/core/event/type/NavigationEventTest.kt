@@ -16,7 +16,7 @@ class NavigationEventTest {
 
     private val expectedEventName = "eventName"
 
-    private val fakeIdentifier = object : NavigationEventIdentifier() {
+    private val fakeIdentifier = object : NavigationEventIdentifier {
         override val navigationElementType: String?
             get() = expectedNavigationElementType
         override val destination: String?

@@ -16,7 +16,7 @@ class MenuItemEventTest {
 
     private val expectedEventName = "eventName"
 
-    private val fakeIdentifier = object : MenuItemEventIdentifier() {
+    private val fakeIdentifier = object : MenuItemEventIdentifier {
         override val menuItem: String
             get() = expectedMenuItem
         override val screenName: String?

@@ -15,7 +15,7 @@ class GeneralEventTest {
 
     private val expectedEventName = "eventName"
 
-    private val fakeIdentifier = object : GeneralEventIdentifier() {
+    private val fakeIdentifier = object : GeneralEventIdentifier {
         override val info: Map<String, Any>
             get() = expectedInfo
         override val eventName: String

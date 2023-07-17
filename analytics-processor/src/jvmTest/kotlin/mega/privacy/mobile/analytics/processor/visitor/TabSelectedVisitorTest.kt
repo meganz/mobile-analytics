@@ -21,13 +21,16 @@ internal class TabSelectedVisitorTest : AnalyticsVisitorTest<TabSelectedVisitor>
         TabSelectedVisitor(idGenerator)
 
     @Test
-    internal fun `test that event extends correct class`() {
+    internal fun `test that event implements correct interface`() {
         val classDeclaration = stubClassDeclaration()
 
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
             data = EventData(emptyMap()),
-        ).spec.superclass.toString()
+        ).spec
+            .superinterfaces
+            .keys
+            .map { it.toString() }
 
         assertThat(actual).contains(TabSelectedEventIdentifier::class.qualifiedName)
     }

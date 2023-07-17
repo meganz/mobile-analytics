@@ -90,7 +90,7 @@ abstract class AnalyticsEventVisitor(
     ) = getTypeBuilderSpecType(
         className = getClassName(shortName),
         classDeclaration = classDeclaration
-    ).superclass(eventIdentifierClass)
+    ).addSuperinterface(eventIdentifierClass)
         .addProperty(
             createEventNameProperty(shortName)
         )

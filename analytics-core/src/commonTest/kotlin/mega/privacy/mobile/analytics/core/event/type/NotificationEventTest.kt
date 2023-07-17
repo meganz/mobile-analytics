@@ -12,7 +12,7 @@ class NotificationEventTest {
 
     private val expectedEventName = "eventName"
 
-    private val fakeIdentifier = object : NotificationEventIdentifier() {
+    private val fakeIdentifier = object : NotificationEventIdentifier {
         override val eventName: String
             get() = expectedEventName
         override val uniqueIdentifier: Int

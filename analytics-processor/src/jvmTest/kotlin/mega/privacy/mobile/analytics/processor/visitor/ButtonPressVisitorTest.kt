@@ -1,5 +1,6 @@
 package mega.privacy.mobile.analytics.processor.visitor
 
+import com.google.common.truth.Truth
 import com.google.common.truth.Truth.assertThat
 import com.google.devtools.ksp.symbol.KSAnnotation
 import com.google.devtools.ksp.symbol.KSClassDeclaration
@@ -7,6 +8,7 @@ import com.google.devtools.ksp.symbol.KSName
 import com.google.devtools.ksp.symbol.KSValueArgument
 import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
 import mega.privacy.mobile.analytics.core.event.identifier.ButtonPressedEventIdentifier
+import mega.privacy.mobile.analytics.core.event.identifier.TabSelectedEventIdentifier
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.mockShortName
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
@@ -21,13 +23,16 @@ internal class ButtonPressVisitorTest : AnalyticsVisitorTest<ButtonPressVisitor>
         ButtonPressVisitor(idGenerator)
 
     @Test
-    internal fun `test that event extends correct class`() {
+    internal fun `test that event implements correct interface`() {
         val classDeclaration = stubClassDeclaration()
 
         val actual = underTest.visitClassDeclaration(
             classDeclaration = classDeclaration,
             data = EventData(emptyMap()),
-        ).spec.superclass.toString()
+        ).spec
+            .superinterfaces
+            .keys
+            .map { it.toString() }
 
         assertThat(actual).contains(ButtonPressedEventIdentifier::class.qualifiedName)
     }

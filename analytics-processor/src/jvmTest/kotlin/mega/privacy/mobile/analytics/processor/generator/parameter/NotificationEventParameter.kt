@@ -23,7 +23,7 @@ interface TestNotification
         import kotlin.String
         import mega.privacy.mobile.analytics.core.event.identifier.NotificationEventIdentifier
         
-        public object TestNotificationEvent : NotificationEventIdentifier() {
+        public object TestNotificationEvent : NotificationEventIdentifier {
           override val eventName: String = "TestNotification"
         
           override val uniqueIdentifier: Int = 0

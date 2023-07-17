@@ -37,7 +37,7 @@ class Test3(
     import kotlin.collections.Map
     import mega.privacy.mobile.analytics.core.event.identifier.ItemSelectedEventIdentifier
     
-    public object Test1Event : ItemSelectedEventIdentifier() {
+    public object Test1Event : ItemSelectedEventIdentifier {
       override val eventName: String = "Test1"
     
       override val uniqueIdentifier: Int = 0
@@ -46,7 +46,7 @@ class Test3(
     
     }
     
-    public object Test2Event : ItemSelectedEventIdentifier() {
+    public object Test2Event : ItemSelectedEventIdentifier {
       override val eventName: String = "Test2"
     
       override val uniqueIdentifier: Int = 1
@@ -57,7 +57,7 @@ class Test3(
     
     public class Test3Event(
       foo: Int,
-    ) : ItemSelectedEventIdentifier() {
+    ) : ItemSelectedEventIdentifier {
       override val eventName: String = "Test3"
     
       override val uniqueIdentifier: Int = 2
