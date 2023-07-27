@@ -19,3 +19,15 @@ interface HomeScreen
 
 @ScreenViewEvent
 interface SharedItemsScreen
+
+@ScreenViewEvent
+interface AlbumListScreen
+
+@ScreenViewEvent
+interface AlbumContentScreen
+
+@ScreenViewEvent
+interface SingleAlbumLinkScreen
+
+@ScreenViewEvent
+interface MultipleAlbumLinksScreen
