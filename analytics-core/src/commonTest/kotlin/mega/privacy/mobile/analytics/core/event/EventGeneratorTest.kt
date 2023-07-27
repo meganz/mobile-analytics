@@ -112,8 +112,8 @@ class EventGeneratorTest {
     @Test
     fun `test that item selected event identifier returns a item selected event`() = runTest {
         val fakeScreenViewInfo = object : ItemSelectedEventIdentifier {
-            override val info: Map<String, Any>?
-                get() = null
+            override val info: Map<String, Any?>
+                get() = emptyMap()
             override val eventName: String
                 get() = "expectedName"
             override val uniqueIdentifier: Int

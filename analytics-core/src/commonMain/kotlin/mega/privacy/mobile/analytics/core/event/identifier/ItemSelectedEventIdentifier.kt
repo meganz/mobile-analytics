@@ -7,5 +7,5 @@ interface ItemSelectedEventIdentifier : EventIdentifier {
     /**
      * Info
      */
-    val info: Map<String, Any>?
+    val info: Map<String, Any?>
 }

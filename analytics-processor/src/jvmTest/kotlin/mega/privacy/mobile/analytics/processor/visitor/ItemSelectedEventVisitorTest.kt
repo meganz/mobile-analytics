@@ -9,6 +9,7 @@ import com.google.devtools.ksp.symbol.KSValueArgument
 import com.google.devtools.ksp.symbol.KSValueParameter
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.ParameterSpec
+import com.squareup.kotlinpoet.TypeName
 import mega.privacy.mobile.analytics.annotations.StaticValue
 import mega.privacy.mobile.analytics.core.event.identifier.ItemSelectedEventIdentifier
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
@@ -56,6 +57,20 @@ internal class ItemSelectedEventVisitorTest : AnalyticsVisitorTest<ItemSelectedE
             .first { it.name == "info" }
 
         assertThat(actual.modifiers).contains(KModifier.OVERRIDE)
+    }
+
+    @Test
+    internal fun `test that info property is declared as an non nullable map of string and nullable any`() {
+        val classDeclaration = stubClassDeclarationWithConstructor()
+        val actual = underTest.visitClassDeclaration(
+            classDeclaration = classDeclaration,
+            data = EventData(emptyMap()),
+        ).spec
+            .propertySpecs
+            .first { it.name == "info" }
+
+        assertThat(actual.type.isNullable).isFalse()
+        assertThat(actual.type.toString()).isEqualTo("kotlin.collections.Map<kotlin.String, kotlin.Any?>")
     }
 
     @Test

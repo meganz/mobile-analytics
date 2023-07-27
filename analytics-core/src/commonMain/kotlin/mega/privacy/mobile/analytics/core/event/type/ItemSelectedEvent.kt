@@ -16,6 +16,6 @@ data class ItemSelectedEvent(
 
     override val eventData: Map<String, Any?>
         get() {
-            return eventIdentifier.info ?: emptyMap()
+            return eventIdentifier.info
         }
 }
