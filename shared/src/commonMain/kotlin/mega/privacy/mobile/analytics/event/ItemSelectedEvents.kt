@@ -21,3 +21,9 @@ class AlbumSelected(val selectionType: SelectionType) {
         MultiRemove,
     }
 }
+
+@ItemSelectedEvent
+class AlbumSelectAll(val albumsCount: Int)
+
+@ItemSelectedEvent
+class AlbumDeselectAll
