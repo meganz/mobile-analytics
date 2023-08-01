@@ -106,7 +106,7 @@ pipeline {
                 }
             }
         }
-        stage('Publish iOS library to GitLab') {
+        stage('Publish iOS library to GitLab and GitHub') {
             steps {
                 script {
                     BUILD_STEP = 'Publish to artifactory'
@@ -129,6 +129,18 @@ pipeline {
                                 git commit -m "iOS analytics update - author(${authorName()}) commit(${GIT_COMMIT})"
                                 git push
                             """
+
+                            // push GitLab to GitHub
+                            withCredentials([
+                                    usernamePassword(credentialsId: 'GitHub-Access-Token',
+                                            usernameVariable: 'USERNAME',
+                                            passwordVariable: 'TOKEN')
+                            ]) {
+                                sh """
+                                    cd mobile-analytics-ios
+                                    git push https://${USERNAME}:${TOKEN}@github.com/meganz/mobile-analytics-ios.git HEAD:main
+                                """
+                            }
                         } else {
                             HAS_SWIFT_PACKAGE_CHANGE = false
                             println("There are no file changes of SwiftPackage")
@@ -138,21 +150,24 @@ pipeline {
             }
         }
         stage('Sync Code to GitHub') {
+            when {
+                // only sync to GitHub, when build is triggered by push to main branch
+                expression {
+                    triggerType() == TRIGGER_TYPE_PUSH && gitlabTargetBranch == "main"
+                }
+            }
             steps {
                 script {
                     BUILD_STEP = 'Sync Code to GitHub'
 
-                    // only sync to GitHub, when build is triggered by push to main branch
-                    if (triggerType() == TRIGGER_TYPE_PUSH && gitlabTargetBranch == "main") {
-                        withCredentials([
-                                usernamePassword(credentialsId: 'GitHub-Access-Token',
-                                        usernameVariable: 'USERNAME',
-                                        passwordVariable: 'TOKEN')
-                        ]) {
-                            sh """
-                                git push https://${USERNAME}:${TOKEN}@github.com/meganz/mobile-analytics.git HEAD:main                            
-                            """
-                        }
+                    withCredentials([
+                            usernamePassword(credentialsId: 'GitHub-Access-Token',
+                                    usernameVariable: 'USERNAME',
+                                    passwordVariable: 'TOKEN')
+                    ]) {
+                        sh """
+                            git push https://${USERNAME}:${TOKEN}@github.com/meganz/mobile-analytics.git HEAD:main
+                        """
                     }
                 }
             }
@@ -165,6 +180,7 @@ pipeline {
  * @param message message to send
  */
 private void sendToMR(String message) {
+    common = load('jenkinsfile/common.groovy')
     if (triggerType() == TRIGGER_TYPE_COMMAND) {
         common.sendToMR(message)
     }
@@ -201,6 +217,7 @@ private String authorName() {
  * @return one of these values: PUSH, N/A or MR comment
  */
 private String command() {
+    println("==== entering command() ====")
     int triggerTypeValue = triggerType()
     switch (triggerTypeValue) {
         case TRIGGER_TYPE_COMMAND:
