@@ -177,7 +177,7 @@ abstract class HtmlTableTask : DefaultTask() {
             eventType.contains("ButtonPress", true) -> 2000
             eventType.contains("DialogDisplayed", true) -> 3000
             eventType.contains("Navigation", true) -> 4000
-            eventType.contains("MenuItemSelec", true) -> 5000
+            eventType.contains("MenuItem", true) -> 5000
             eventType.contains("Notification", true) -> 6000
             eventType.contains("General", true) -> 7000
             eventType.contains("ItemSelect", true) -> 8000
