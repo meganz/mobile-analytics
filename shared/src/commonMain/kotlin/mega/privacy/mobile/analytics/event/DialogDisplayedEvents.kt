@@ -22,3 +22,6 @@ interface LinkProFeatureSeeNotNowPlanFolderDialog
 
 @DialogDisplayedEvent(dialog = "LinkProFeatureSeeNotNowPlanFileDialog")
 interface LinkProFeatureSeeNotNowPlanFileDialog
+
+@DialogDisplayedEvent(dialog = "AlbumImportInputDecryptionKeyDialog", screen = "AlbumImportScreen")
+interface AlbumImportInputDecryptionKeyDialog

@@ -28,3 +28,6 @@ interface SingleAlbumLinkScreen
 
 @ScreenViewEvent
 interface MultipleAlbumLinksScreen
+
+@ScreenViewEvent
+interface AlbumImportScreen
