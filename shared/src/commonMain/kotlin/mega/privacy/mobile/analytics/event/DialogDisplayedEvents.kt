@@ -25,3 +25,9 @@ interface LinkProFeatureSeeNotNowPlanFileDialog
 
 @DialogDisplayedEvent(dialog = "AlbumImportInputDecryptionKeyDialog", screen = "AlbumImportScreen")
 interface AlbumImportInputDecryptionKeyDialog
+
+@DialogDisplayedEvent(dialog = "PasscodeUnlockDialog")
+interface PasscodeUnlockDialog
+
+@DialogDisplayedEvent(dialog = "PasscodeBiometricUnlockDialog")
+interface PasscodeBiometricUnlockDialog

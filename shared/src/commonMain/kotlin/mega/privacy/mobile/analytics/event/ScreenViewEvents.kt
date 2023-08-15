@@ -31,3 +31,9 @@ interface MultipleAlbumLinksScreen
 
 @ScreenViewEvent
 interface AlbumImportScreen
+
+@ScreenViewEvent
+interface PasscodeScreen
+
+@ScreenViewEvent
+interface PasscodeSettingScreen

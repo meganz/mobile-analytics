@@ -100,3 +100,12 @@ interface LinkProFeatureSeeNotNowPlanFolderButtonPressed
 )
 interface LinkProFeatureSeeNotNowPlanFileButtonPressed
 
+@ButtonPressEvent(
+    buttonName = "Forgot Passcode"
+)
+interface ForgotPasscodeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Logout"
+)
+interface PasscodeLogoutButtonPressed
