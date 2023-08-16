@@ -109,3 +109,18 @@ interface ForgotPasscodeButtonPressed
     buttonName = "Logout"
 )
 interface PasscodeLogoutButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "InAppUpdate Update"
+)
+interface InAppUpdateUpdateButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "InAppUpdate Cancel"
+)
+interface InAppUpdateCancelButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "InAppUpdate Restart"
+)
+interface InAppUpdateRestartButtonPressed

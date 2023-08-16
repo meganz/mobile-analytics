@@ -7,3 +7,6 @@ interface ImportAlbumContentLoaded
 
 @GeneralEvent
 interface PasscodeEntered
+
+@GeneralEvent
+interface InAppUpdateDownloadSuccessMessageDisplayed
