@@ -3,7 +3,7 @@ package mega.privacy.mobile.analytics.event
 import mega.privacy.mobile.analytics.annotations.ItemSelectedEvent
 
 @ItemSelectedEvent
-class AlbumSelected(val selectionType: SelectionType) {
+class AlbumSelected(val selectionType: SelectionType, imageCount: Int?, videoCount: Int?) {
     enum class SelectionType {
         /**
          * When the user selects an album to open
