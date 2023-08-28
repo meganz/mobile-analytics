@@ -27,3 +27,18 @@ class AlbumSelectAll(val albumsCount: Int)
 
 @ItemSelectedEvent
 class AlbumDeselectAll
+
+@ItemSelectedEvent
+class SearchItemSelected(val searchItemType: SearchItemType){
+    enum class SearchItemType{
+        /**
+         * When user selects folder to open
+         */
+        File,
+
+        /**
+         * When user selects file to open
+         */
+        Folder
+    }
+}

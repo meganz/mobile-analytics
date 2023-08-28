@@ -87,3 +87,52 @@ interface AlbumContentShareLinkMenuToolbar
     screen = "Album list screen",
 )
 interface AlbumListShareLinkMenuItem
+
+@MenuItemEvent(
+    menuItem = "Search",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Home Screen"
+)
+interface HomeScreenSearchMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Search",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud drive screen"
+)
+interface CloudDriveSearchMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Open with",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Search results screen"
+)
+interface SearchResultOpenWithMenuItem
+
+@MenuItemEvent(
+    menuItem = "Save to device",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Search results screen"
+)
+interface SearchResultSaveToDeviceMenuItem
+
+@MenuItemEvent(
+    menuItem = "Get link",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Search results screen"
+)
+interface SearchResultGetLinkMenuItem
+
+@MenuItemEvent(
+    menuItem = "Share",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Search results screen"
+)
+interface SearchResultShareMenuItem
+
+@MenuItemEvent(
+    menuItem = "Overflow",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Search results screen"
+)
+interface SearchResultOverflowMenuItem

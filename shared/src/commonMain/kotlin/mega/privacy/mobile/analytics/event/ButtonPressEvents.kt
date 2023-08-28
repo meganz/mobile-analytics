@@ -124,3 +124,21 @@ interface InAppUpdateCancelButtonPressed
     buttonName = "InAppUpdate Restart"
 )
 interface InAppUpdateRestartButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Docs",
+    screen = "Home screen"
+)
+interface HomeScreenDocsTilePressed
+
+@ButtonPressEvent(
+    buttonName = "Audio",
+    screen = "Home screen"
+)
+interface HomeScreenAudioTilePressed
+
+@ButtonPressEvent(
+    buttonName = "Videos",
+    screen = "Home screen"
+)
+interface HomeScreenVideosTilePressed
