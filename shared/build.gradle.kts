@@ -118,7 +118,7 @@ kotlin {
                 api(project(":analytics-annotations"))
                 api(project(":analytics-core"))
 
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
             }
         }
         val commonTest by getting {
@@ -216,3 +216,39 @@ tasks.getByName("artifactoryPublish") {
 
 
 tasks.register<HtmlTableTask>("generateHtmlTables")
+
+// https://youtrack.jetbrains.com/issue/KT-42276
+val workAroundKt43094 = true
+if (workAroundKt43094) {
+    fun stripLines(dotHFile: File) {
+        val linesToStrip = listOf(
+            """__attribute__((swift_name("KotlinChar.Companion")))""",
+            """__attribute__((swift_name("KotlinString.Companion")))""",
+            """__attribute__((swift_name("KotlinDuration.Companion")))""",
+        )
+
+        val dotHOriginal = dotHFile.readText()
+        var dotHRewritten = dotHOriginal
+        for (lineToStrip in linesToStrip) {
+            dotHRewritten = dotHRewritten.replace(
+                lineToStrip,
+                "/* Stripped for KT-43094: $lineToStrip */"
+            )
+        }
+
+        if (dotHRewritten == dotHOriginal) {
+            logger.warn("Failed to strip swift_name lines from $dotHFile: already stripped?")
+            return
+        }
+
+        dotHFile.writeText(dotHRewritten)
+        logger.info("Stripped swift_name lines from $dotHFile")
+    }
+
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinNativeLink> {
+        doLast {
+            val dotHFile = File(outputFile.get(), "Headers/MEGAAnalyticsiOS.h")
+            stripLines(dotHFile)
+        }
+    }
+}
