@@ -58,6 +58,7 @@ pipeline {
             script {
                 common = load('jenkinsfile/common.groovy')
 
+                createTag(getAndroidLibVersion())
                 sendToMR(androidSuccessMessage("<br/>"))
                 slackSend color: "good", message: androidSuccessMessage("\n")
 
@@ -184,6 +185,11 @@ private void sendToMR(String message) {
     if (triggerType() == TRIGGER_TYPE_COMMAND) {
         common.sendToMR(message)
     }
+}
+
+private void createTag(String tag) {
+    common = load('jenkinsfile/common.groovy')
+    common.createTag(tag)
 }
 
 /**

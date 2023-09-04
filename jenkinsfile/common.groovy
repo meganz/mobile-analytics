@@ -48,6 +48,19 @@ void sendToMR(String message) {
     }
 }
 
+void createTag(String tag){
+    String projectID = "278"
+
+    withCredentials([usernamePassword(credentialsId: 'Gitlab-Access-Token', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
+        def tagCommand = """
+            curl --request POST \
+                 --header "PRIVATE-TOKEN: $TOKEN" \
+                 "${env.GITLAB_BASE_URL}/api/v4/projects/${projectID}/repository/tags?tag_name=${tag}&ref=main&message=${tag}"
+        """
+        sh(tagCommand)
+    }
+}
+
 /**
  * download jenkins build console log and save to file.
  */
