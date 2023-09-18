@@ -31,3 +31,6 @@ interface PasscodeUnlockDialog
 
 @DialogDisplayedEvent(dialog = "PasscodeBiometricUnlockDialog")
 interface PasscodeBiometricUnlockDialog
+
+@DialogDisplayedEvent(dialog = "SpeedSelectedDialog", screen = "SpeedSelectedPopup")
+interface SpeedSelectedDialog

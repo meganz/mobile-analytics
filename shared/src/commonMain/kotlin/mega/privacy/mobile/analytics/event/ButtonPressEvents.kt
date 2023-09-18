@@ -142,3 +142,36 @@ interface HomeScreenAudioTilePressed
     screen = "Home screen"
 )
 interface HomeScreenVideosTilePressed
+
+@ButtonPressEvent(
+    buttonName = "Full screen",
+    screen = "Video player controller"
+)
+interface VideoPlayerFullScreenPressed
+
+@ButtonPressEvent(
+    buttonName = "Original",
+    screen = "Video player controller"
+)
+interface VideoPlayerOriginalPressed
+
+@ButtonPressEvent(
+    buttonName = "Speed Option 0.5X",
+    screen = "Video player controller",
+    dialog = "SpeedSelectedPopup"
+)
+interface SpeedOption0_5XPressed
+
+@ButtonPressEvent(
+    buttonName = "Speed Option 1.5X",
+    screen = "Video player controller",
+    dialog = "SpeedSelectedPopup"
+)
+interface SpeedOption1_5XPressed
+
+@ButtonPressEvent(
+    buttonName = "Speed Option 2X",
+    screen = "Video player controller",
+    dialog = "SpeedSelectedPopup"
+)
+interface SpeedOption2XPressed
