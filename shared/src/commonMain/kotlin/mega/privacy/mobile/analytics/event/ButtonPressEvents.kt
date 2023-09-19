@@ -175,3 +175,66 @@ interface SpeedOption1_5XPressed
     dialog = "SpeedSelectedPopup"
 )
 interface SpeedOption2XPressed
+
+@ButtonPressEvent(
+    buttonName = "Off Option",
+    screen = "Video player controller",
+    dialog = "AddSubtitleDialog"
+)
+interface OffOptionForHideSubtitlePressed
+
+@ButtonPressEvent(
+    buttonName = "Auto Match Subtitle Option",
+    screen = "Video player controller",
+    dialog = "AddSubtitleDialog"
+)
+interface AutoMatchSubtitleOptionPressed
+
+@ButtonPressEvent(
+    buttonName = "Add Subtitles Option",
+    screen = "Video player controller",
+    dialog = "AddSubtitleDialog"
+)
+interface AddSubtitlesOptionPressed
+
+@ButtonPressEvent(
+    buttonName = "Search Mode",
+    screen = "SelectSubtitleView"
+)
+interface SearchModeEnablePressed
+
+@ButtonPressEvent(
+    buttonName = "Add Subtitle",
+    screen = "SelectSubtitleView"
+)
+interface AddSubtitlePressed
+
+@ButtonPressEvent(
+    buttonName = "Cancel Select Subtitle",
+    screen = "SelectSubtitleView"
+)
+interface CancelSelectSubtitlePressed
+
+@ButtonPressEvent(
+    buttonName = "Loop Button",
+    screen = "Video player controller"
+)
+interface LoopButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Lock Button",
+    screen = "Video player controller"
+)
+interface LockButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Unlock Button",
+    screen = "Video player controller"
+)
+interface UnlockButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Snapshot Button",
+    screen = "Video player controller"
+)
+interface SnapshotButtonPressed

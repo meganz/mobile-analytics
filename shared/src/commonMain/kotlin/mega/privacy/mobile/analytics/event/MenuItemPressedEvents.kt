@@ -1,5 +1,6 @@
 package mega.privacy.mobile.analytics.event
 
+import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
 import mega.privacy.mobile.analytics.annotations.MenuItemEvent
 
 @MenuItemEvent(
@@ -136,3 +137,46 @@ interface SearchResultShareMenuItem
     screen = "Search results screen"
 )
 interface SearchResultOverflowMenuItem
+
+@MenuItemEvent(
+    menuItem = "Info",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Video Player"
+)
+interface VideoPlayerInfoMenuItem
+
+
+@MenuItemEvent(
+    menuItem = "Save To Device",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Video Player"
+)
+interface VideoPlayerSaveToDeviceMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Send To Chat",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Video Player"
+)
+interface VideoPlayerSendToChatMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Share",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Video Player"
+)
+interface VideoPlayerShareMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Get Link",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Video Player"
+)
+interface VideoPlayerGetLinkMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Remove Link",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Video Player"
+)
+interface VideoPlayerRemoveLinkMenuToolbar

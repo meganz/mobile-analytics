@@ -10,3 +10,6 @@ interface PasscodeEntered
 
 @GeneralEvent
 interface InAppUpdateDownloadSuccessMessageDisplayed
+
+@GeneralEvent
+interface VideoPlayerIsActivated

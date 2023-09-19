@@ -34,3 +34,6 @@ interface PasscodeBiometricUnlockDialog
 
 @DialogDisplayedEvent(dialog = "SpeedSelectedDialog", screen = "SpeedSelectedPopup")
 interface SpeedSelectedDialog
+
+@DialogDisplayedEvent(dialog = "AddSubtitleDialog", screen = "AddSubtitleDialog")
+interface AddSubtitleDialog
