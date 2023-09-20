@@ -77,14 +77,14 @@ interface LinkShareLinkForNodesMenuToolbar
 
 @MenuItemEvent(
     menuItem = "Album share get link ",
-    menuType = MenuItemEvent.MenuType.Toolbar,
+    menuType = MenuItemEvent.MenuType.Item,
     screen = "Album content screen",
 )
 interface AlbumContentShareLinkMenuToolbar
 
 @MenuItemEvent(
     menuItem = "Albums share get links",
-    menuType = MenuItemEvent.MenuType.Item,
+    menuType = MenuItemEvent.MenuType.Toolbar,
     screen = "Album list screen",
 )
 interface AlbumListShareLinkMenuItem

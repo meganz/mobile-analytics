@@ -238,3 +238,33 @@ interface UnlockButtonPressed
     screen = "Video player controller"
 )
 interface SnapshotButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Create Album Dialog Button",
+    screen = "Photos screen album tab",
+)
+interface CreateAlbumDialogButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Add Items to New Album FAB",
+    screen = "Select photos screen",
+)
+interface AddItemsToNewAlbumFAB
+
+@ButtonPressEvent(
+    buttonName = "Add Items to Existing Album FAB",
+    screen = "Select photos screen",
+)
+interface AddItemsToExistingAlbumFAB
+
+@ButtonPressEvent(
+    buttonName = "Remove Items from Album Button",
+    screen = "Album content screen",
+)
+interface RemoveItemsFromAlbumDialogButton
+
+@ButtonPressEvent(
+    buttonName = "Delete Albums Dialog Button",
+    screen = "Photos screen album tab and album content screen",
+)
+interface DeleteAlbumsDialogButton
