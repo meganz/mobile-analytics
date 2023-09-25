@@ -42,3 +42,18 @@ class SearchItemSelected(val searchItemType: SearchItemType){
         Folder
     }
 }
+
+@ItemSelectedEvent
+class SearchImageFilterPressed
+
+@ItemSelectedEvent
+class SearchDocsFilterPressed
+
+@ItemSelectedEvent
+class SearchAudioFilterPressed
+
+@ItemSelectedEvent
+class SearchVideosFilterPressed
+
+@ItemSelectedEvent
+class SearchResetFilterPressed
