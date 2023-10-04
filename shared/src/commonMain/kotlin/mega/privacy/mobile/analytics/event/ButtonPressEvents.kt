@@ -264,7 +264,49 @@ interface AddItemsToExistingAlbumFAB
 interface RemoveItemsFromAlbumDialogButton
 
 @ButtonPressEvent(
-    buttonName = "Delete Albums Dialog Button",
-    screen = "Photos screen album tab and album content screen",
+    buttonName = "Slideshow preference repeat",
+    screen = "Slideshow settings screen"
 )
-interface DeleteAlbumsDialogButton
+class SlideshowSettingRepeatButton(val isEnabled: Boolean)
+
+@ButtonPressEvent(
+    buttonName = "Slideshow preference speed slow 8s",
+    screen = "Slideshow settings screen",
+    dialog = "SlideshowSpeedDialog"
+)
+interface SlideshowSettingSpeedSlowButton
+
+@ButtonPressEvent(
+    buttonName = "Slideshow preference speed normal 4s",
+    screen = "Slideshow settings screen",
+    dialog = "SlideshowSpeedDialog"
+)
+interface SlideshowSettingSpeedNormalButton
+
+@ButtonPressEvent(
+    buttonName = "Slideshow preference speed fast 2s",
+    screen = "Slideshow settings screen",
+    dialog = "SlideshowSpeedDialog"
+)
+interface SlideshowSettingSpeedFastButton
+
+@ButtonPressEvent(
+    buttonName = "Slideshow preference order shuffle",
+    screen = "Slideshow settings screen",
+    dialog = "SlideshowOrderDialog"
+)
+interface SlideshowSettingOrderShuffleButton
+
+@ButtonPressEvent(
+    buttonName = "Slideshow preference order newest",
+    screen = "Slideshow settings screen",
+    dialog = "SlideshowOrderDialog"
+)
+interface SlideshowSettingOrderNewestButton
+
+@ButtonPressEvent(
+    buttonName = "Slideshow preference order oldest",
+    screen = "Slideshow settings screen",
+    dialog = "SlideshowOrderDialog"
+)
+interface SlideshowSettingOrderOldestButton

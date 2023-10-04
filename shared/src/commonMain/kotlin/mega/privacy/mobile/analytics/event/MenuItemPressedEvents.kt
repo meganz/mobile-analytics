@@ -180,3 +180,20 @@ interface VideoPlayerGetLinkMenuToolbar
     screen = "Video Player"
 )
 interface VideoPlayerRemoveLinkMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Play Slideshow",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Image Preview",
+)
+class PlaySlideshowMenuToolbar(val entryPoint: SlideshowEntryPoint) {
+    enum class SlideshowEntryPoint {
+        CloudDrive,
+
+        FolderLink,
+
+        Timeline,
+
+        AlbumContent,
+    }
+}
