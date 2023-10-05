@@ -37,6 +37,3 @@ interface PasscodeScreen
 
 @ScreenViewEvent
 interface PasscodeSettingScreen
-
-@ScreenViewEvent
-interface SlideshowScreen
