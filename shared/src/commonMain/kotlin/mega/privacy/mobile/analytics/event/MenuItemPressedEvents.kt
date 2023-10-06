@@ -187,3 +187,31 @@ interface VideoPlayerRemoveLinkMenuToolbar
     screen = "Image Preview",
 )
 interface PlaySlideshowMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Schedule meeting",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Meetings list screen"
+)
+interface ScheduleMeetingMenuItem
+
+@MenuItemEvent(
+    menuItem = "Edit scheduled meeting",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Meetings list screen"
+)
+interface ScheduledMeetingEditMenuItem
+
+@MenuItemEvent(
+    menuItem = "Edit scheduled meeting",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Scheduled meeting info screen"
+)
+interface ScheduledMeetingEditMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Cancel schedule meeting",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Meetings list screen"
+)
+interface ScheduledMeetingCancelMenuItem

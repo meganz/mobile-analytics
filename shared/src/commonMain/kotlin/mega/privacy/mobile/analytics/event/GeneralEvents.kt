@@ -13,3 +13,6 @@ interface InAppUpdateDownloadSuccessMessageDisplayed
 
 @GeneralEvent
 interface VideoPlayerIsActivated
+
+@GeneralEvent
+interface WaitingRoomTimeout

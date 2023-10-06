@@ -310,3 +310,69 @@ interface SlideshowSettingOrderNewestButton
     dialog = "SlideshowOrderDialog"
 )
 interface SlideshowSettingOrderOldestButton
+
+@ButtonPressEvent(
+    buttonName = "Scheduled meeting recurrence option",
+    screen = "Scheduled meeting options screen"
+)
+interface ScheduledMeetingSettingRecurrenceButton
+
+@ButtonPressEvent(
+    buttonName = "Scheduled meeting enable meeting link option",
+    screen = "Scheduled meeting options screen"
+)
+interface ScheduledMeetingSettingEnableMeetingLinkButton
+
+@ButtonPressEvent(
+    buttonName = "Scheduled meeting enable send calendar invite option",
+    screen = "Scheduled meeting options screen"
+)
+interface ScheduledMeetingSettingSendCalendarInviteButton
+
+@ButtonPressEvent(
+    buttonName = "Scheduled meeting create confirmation button",
+    screen = "Scheduled meeting options screen"
+)
+interface ScheduledMeetingCreateConfirmButton
+
+@ButtonPressEvent(
+    buttonName = "Scheduled meeting share meeting link button",
+    screen = "Scheduled meeting info screen"
+)
+interface ScheduledMeetingShareMeetingLinkButton
+
+@ButtonPressEvent(
+    buttonName = "Scheduled meeting reminder notification join button",
+    dialog = "Scheduled meeting reminder notification"
+)
+interface ScheduledMeetingReminderNotificationJoinButton
+
+@ButtonPressEvent(
+    buttonName = "Scheduled meeting reminder notification message button",
+    dialog = "Scheduled meeting reminder notification"
+)
+interface ScheduledMeetingReminderNotificationMessageButton
+
+@ButtonPressEvent(
+    buttonName = "Scheduled meeting enable open invite option (allow non-hosts to add participants)",
+    screen = "Scheduled meeting options and info screens"
+)
+interface ScheduledMeetingSettingEnableOpenInviteButton
+
+@ButtonPressEvent(
+    buttonName = "Waiting room enable option",
+    screen = "Scheduled meeting options and info screens"
+)
+interface WaitingRoomEnableButton
+
+@ButtonPressEvent(
+    buttonName = "Waiting room leave button",
+    screen = "Waiting room screen"
+)
+interface WaitingRoomLeaveButton
+
+@ButtonPressEvent(
+    buttonName = "Scheduled meeting join as a guest button",
+    screen = "Join as a guest screen"
+)
+interface ScheduledMeetingJoinGuestButton
