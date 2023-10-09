@@ -264,10 +264,16 @@ interface AddItemsToExistingAlbumFAB
 interface RemoveItemsFromAlbumDialogButton
 
 @ButtonPressEvent(
-    buttonName = "Slideshow preference repeat",
+    buttonName = "Slideshow preference repeat ON toggle",
     screen = "Slideshow settings screen"
 )
-class SlideshowSettingRepeatButton(val isEnabled: Boolean)
+class SlideshowSettingRepeatOnButton
+
+@ButtonPressEvent(
+    buttonName = "Slideshow preference repeat OFF toggle",
+    screen = "Slideshow settings screen"
+)
+class SlideshowSettingRepeatOffButton
 
 @ButtonPressEvent(
     buttonName = "Slideshow preference speed slow 8s",
