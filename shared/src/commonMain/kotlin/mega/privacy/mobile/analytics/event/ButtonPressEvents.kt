@@ -382,3 +382,36 @@ interface WaitingRoomLeaveButton
     screen = "Join as a guest screen"
 )
 interface ScheduledMeetingJoinGuestButton
+
+@ButtonPressEvent(
+    buttonName = "Create album FAB",
+    screen = "Photos screen albums tab"
+)
+interface CreateAlbumFAB
+
+@ButtonPressEvent(
+    buttonName = "Album photos selection filter all locations",
+    screen = "Album photos selection screen",
+    dialog = "Album photos selection select location dialog"
+)
+interface AlbumPhotosSelectionAllLocationsButton
+
+@ButtonPressEvent(
+    buttonName = "Album photos selection filter cloud drive",
+    screen = "Album photos selection screen",
+    dialog = "Album photos selection select location dialog"
+)
+interface AlbumPhotosSelectionCloudDriveButton
+
+@ButtonPressEvent(
+    buttonName = "Album photos selection filter camera uploads",
+    screen = "Album photos selection screen",
+    dialog = "Album photos selection select location dialog"
+)
+interface AlbumPhotosSelectionCameraUploadsButton
+
+@ButtonPressEvent(
+    buttonName = "Album photos selection add FAB",
+    screen = "Album photos selection screen",
+)
+interface AlbumPhotosSelectionAddFAB
