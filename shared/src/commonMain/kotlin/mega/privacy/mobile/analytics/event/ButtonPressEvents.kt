@@ -409,9 +409,3 @@ interface AlbumPhotosSelectionCloudDriveButton
     dialog = "Album photos selection select location dialog"
 )
 interface AlbumPhotosSelectionCameraUploadsButton
-
-@ButtonPressEvent(
-    buttonName = "Album photos selection add FAB",
-    screen = "Album photos selection screen",
-)
-interface AlbumPhotosSelectionAddFAB
