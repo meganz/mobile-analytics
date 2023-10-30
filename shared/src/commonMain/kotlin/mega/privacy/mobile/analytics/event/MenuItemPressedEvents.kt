@@ -222,3 +222,17 @@ interface ScheduledMeetingCancelMenuItem
     screen = "Album photos selection screen"
 )
 interface AlbumPhotosSelectionFilterMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Album content delete album",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Album content screen"
+)
+interface AlbumContentDeleteAlbum
+
+@MenuItemEvent(
+    menuItem = "Album list delete albums",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Albums list screen"
+)
+interface AlbumsListDeleteAlbums
