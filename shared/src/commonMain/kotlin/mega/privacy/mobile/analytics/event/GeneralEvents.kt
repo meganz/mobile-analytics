@@ -16,3 +16,6 @@ interface VideoPlayerIsActivated
 
 @GeneralEvent
 interface WaitingRoomTimeout
+
+@GeneralEvent
+interface OnboardingUpsellingDialogVariantBProPlanIIIDisplayed

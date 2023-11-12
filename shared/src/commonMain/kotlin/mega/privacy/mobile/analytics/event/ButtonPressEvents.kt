@@ -415,3 +415,16 @@ interface AlbumPhotosSelectionCameraUploadsButton
     screen = "Album content screen"
 )
 interface AlbumAddPhotosFAB
+
+@ButtonPressEvent(
+    buttonName = "View Pro plans",
+    screen = "Onboarding Pro Plan Upselling dialog - Variant A"
+)
+interface OnboardingUpsellingDialogVariantAViewProPlansButton
+
+@ButtonPressEvent(
+    buttonName = "Buy Pro plan",
+    screen = "Onboarding Pro Plan Upselling dialog - Variant B"
+)
+interface OnboardingUpsellingDialogVariantBBuyProPlanButton
+
