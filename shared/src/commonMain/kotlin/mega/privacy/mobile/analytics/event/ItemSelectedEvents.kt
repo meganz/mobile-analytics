@@ -57,3 +57,23 @@ class SearchVideosFilterPressed
 
 @ItemSelectedEvent
 class SearchResetFilterPressed
+
+@ItemSelectedEvent
+class AlbumItemSelected(val selectionType: SelectionType) {
+    enum class SelectionType {
+        /**
+         * When the user selects an item to open
+         */
+        Single,
+
+        /**
+         * When the user adds to/starts the multi-selection of items
+         */
+        MultiAdd,
+
+        /**
+         * When the user removes from the multi-selection of items
+         */
+        MultiRemove,
+    }
+}

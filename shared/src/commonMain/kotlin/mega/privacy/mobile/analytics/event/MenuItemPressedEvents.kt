@@ -236,3 +236,10 @@ interface AlbumContentDeleteAlbum
     screen = "Albums list screen"
 )
 interface AlbumsListDeleteAlbums
+
+@MenuItemEvent(
+    menuItem = "Album content remove items",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Album content screen"
+)
+interface AlbumContentRemoveItems
