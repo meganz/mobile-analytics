@@ -37,3 +37,9 @@ interface SpeedSelectedDialog
 
 @DialogDisplayedEvent(dialog = "AddSubtitleDialog", screen = "AddSubtitleDialog")
 interface AddSubtitleDialog
+
+@DialogDisplayedEvent(dialog = "AlbumImportStorageOverQuota", screen = "AlbumImportScreen")
+interface AlbumImportStorageOverQuotaDialog
+
+@DialogDisplayedEvent(dialog = "TransferOverQuotaWarningDialog")
+interface TransferOverQuotaDialog

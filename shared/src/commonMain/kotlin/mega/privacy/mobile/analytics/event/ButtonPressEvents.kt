@@ -428,3 +428,26 @@ interface OnboardingUpsellingDialogVariantAViewProPlansButton
 )
 interface OnboardingUpsellingDialogVariantBBuyProPlanButton
 
+@ButtonPressEvent(
+    buttonName = "Album import Save to Cloud Drive",
+    screen = "Album import screen"
+)
+interface AlbumImportSaveToCloudDriveButton
+
+@ButtonPressEvent(
+    buttonName = "Album import Save to Device",
+    screen = "Album import screen"
+)
+interface AlbumImportSaveToDeviceButton
+
+@ButtonPressEvent(
+    buttonName = "Albums storage overquota upgrade account button",
+    dialog = "Albums Storage Over Quota"
+)
+interface AlbumsStorageOverQuotaUpgradeAccountButton
+
+@ButtonPressEvent(
+    buttonName = "Transfer overquota upgrade account button",
+    dialog = "Transfer Over Quota Dialog"
+)
+interface  TransferOverQuotaUpgradeAccountButton
