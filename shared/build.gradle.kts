@@ -28,7 +28,9 @@ kotlin {
     listOf(
         iosX64(),
         iosArm64(),
-        iosSimulatorArm64()
+        iosSimulatorArm64(),
+        macosX64(),
+        macosArm64()
     ).forEach {
         it.binaries.framework {
             baseName = "MEGAAnalyticsiOS"
@@ -163,7 +165,7 @@ multiplatformSwiftPackage {
     outputDirectory(File(projectDir, "../SwiftPackages/MEGAAnalyticsiOS"))
     targetPlatforms {
         iOS { v("14") }
-        targets("macosX64") { v("10.15") }
+        macOS { v("12")}
     }
 }
 
