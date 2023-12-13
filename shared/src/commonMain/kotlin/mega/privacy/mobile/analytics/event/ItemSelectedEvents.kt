@@ -59,7 +59,7 @@ class SearchVideosFilterPressed
 class SearchResetFilterPressed
 
 @ItemSelectedEvent
-class AlbumItemSelected(val selectionType: SelectionType) {
+class PhotoItemSelected(val selectionType: SelectionType) {
     enum class SelectionType {
         /**
          * When the user selects an item to open

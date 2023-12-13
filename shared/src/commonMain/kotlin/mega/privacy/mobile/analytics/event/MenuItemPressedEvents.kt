@@ -243,3 +243,10 @@ interface AlbumsListDeleteAlbums
     screen = "Album content screen"
 )
 interface AlbumContentRemoveItems
+
+@MenuItemEvent(
+    menuItem = "Save To device",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Photo preview screen"
+)
+interface PhotoPreviewSaveToDeviceMenuToolbar

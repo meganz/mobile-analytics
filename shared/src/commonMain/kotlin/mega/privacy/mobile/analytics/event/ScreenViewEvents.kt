@@ -40,3 +40,9 @@ interface PasscodeSettingScreen
 
 @ScreenViewEvent
 interface AlbumPhotosSelectionScreen
+
+@ScreenViewEvent
+interface PhotoPreviewScreen
+
+@ScreenViewEvent
+interface VideoPlayerScreen
