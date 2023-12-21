@@ -77,3 +77,17 @@ class PhotoItemSelected(val selectionType: SelectionType) {
         MultiRemove,
     }
 }
+
+@ItemSelectedEvent
+class SyncOptionSelected(val selectionType: SelectionType) {
+    enum class SelectionType {
+        /**
+         * When user selects option wifi only
+         */
+        SyncOptionWifiOnlySelected,
+        /**
+         * When user selects option SyncOptionWifiAndMobilePressed
+         */
+        SyncOptionWifiAndMobileSelected
+    }
+}

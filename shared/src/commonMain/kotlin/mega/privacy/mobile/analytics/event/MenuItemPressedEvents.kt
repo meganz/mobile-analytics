@@ -1,6 +1,5 @@
 package mega.privacy.mobile.analytics.event
 
-import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
 import mega.privacy.mobile.analytics.annotations.MenuItemEvent
 
 @MenuItemEvent(
@@ -250,3 +249,52 @@ interface AlbumContentRemoveItems
     screen = "Photo preview screen"
 )
 interface PhotoPreviewSaveToDeviceMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Clear resolved issues",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Android Sync List screen"
+)
+interface AndroidSyncClearResolvedIssues
+
+@MenuItemEvent(
+    menuItem = "Android Sync Stalled Issue Resolution Rename All Items",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface AndroidSyncRenameAllItems
+
+@MenuItemEvent(
+    menuItem = "Android Sync Stalled Issue Resolution Remove Duplicates",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface AndroidSyncRemoveDuplicates
+
+@MenuItemEvent(
+    menuItem = "Android Sync Stalled Issue Resolution Merge Folders",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface AndroidSyncMergeFolders
+
+@MenuItemEvent(
+    menuItem = "Android Sync Stalled Issue Remove Duplicates and Remove Rest",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface AndroidSyncRemoveDuplicatesAndRemoveRest
+
+@MenuItemEvent(
+    menuItem = "Android Sync Stalled Issue Resolution Choose Local File",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface AndroidSyncChooseLocalFile
+
+@MenuItemEvent(
+    menuItem = "Android Sync Stalled Issue Resolution Choose Remote File",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface AndroidSyncChooseRemoteFile
+
+@MenuItemEvent(
+    menuItem = "Android Sync Stalled Issue Resolution Choose LatestModified time",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface AndroidSyncChooseLatestModifiedTime

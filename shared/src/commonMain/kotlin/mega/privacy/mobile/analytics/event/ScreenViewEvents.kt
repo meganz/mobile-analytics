@@ -46,3 +46,6 @@ interface PhotoPreviewScreen
 
 @ScreenViewEvent
 interface VideoPlayerScreen
+
+@ScreenViewEvent
+interface AddSyncScreen

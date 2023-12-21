@@ -451,3 +451,18 @@ interface AlbumsStorageOverQuotaUpgradeAccountButton
     dialog = "Transfer Over Quota Dialog"
 )
 interface  TransferOverQuotaUpgradeAccountButton
+
+@ButtonPressEvent(
+    buttonName = "Android Sync Get Started button"
+)
+interface AndroidSyncGetStartedButton
+
+@ButtonPressEvent(
+    buttonName = "Android Sync Start Sync button"
+)
+interface AndroidSyncStartSyncButton
+
+@ButtonPressEvent(
+    buttonName = "Android Sync FAB button"
+)
+interface AndroidSyncFABButton
