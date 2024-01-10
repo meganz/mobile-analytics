@@ -252,6 +252,12 @@ interface CreateAlbumDialogButtonPressed
 interface AddItemsToNewAlbumFAB
 
 @ButtonPressEvent(
+    buttonName = "Add Items to New Album Button",
+    screen = "Select photos screen",
+)
+interface AddItemsToNewAlbumButton
+
+@ButtonPressEvent(
     buttonName = "Add Items to Existing Album FAB",
     screen = "Select photos screen",
 )
