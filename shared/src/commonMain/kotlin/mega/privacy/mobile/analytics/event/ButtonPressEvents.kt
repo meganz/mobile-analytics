@@ -472,3 +472,15 @@ interface AndroidSyncStartSyncButton
     buttonName = "Android Sync FAB button"
 )
 interface AndroidSyncFABButton
+
+@ButtonPressEvent(
+    buttonName = "iOS Start conversation button",
+    screen = "iOS Home screen"
+)
+interface IOSStartConversationButton
+
+@ButtonPressEvent(
+    buttonName = "iOS Upload files button",
+    screen = "iOS Home screen"
+)
+interface IOSUploadFilesButton
