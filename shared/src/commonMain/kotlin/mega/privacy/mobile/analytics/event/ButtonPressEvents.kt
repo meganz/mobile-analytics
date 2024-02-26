@@ -484,3 +484,21 @@ interface IOSStartConversationButton
     screen = "iOS Home screen"
 )
 interface IOSUploadFilesButton
+
+@ButtonPressEvent(
+    buttonName = "Device Center entrypoint button",
+    screen = "Home screen"
+)
+interface DeviceCenterEntrypointButton
+
+@ButtonPressEvent(
+    buttonName = "Device Center save new device name button",
+    screen = "Device Center screen"
+)
+interface DeviceCenterSaveNewDeviceNameButton
+
+@ButtonPressEvent(
+    buttonName = "Device Center device options button",
+    screen = "Device Center screen"
+)
+interface DeviceCenterDeviceOptionsButton

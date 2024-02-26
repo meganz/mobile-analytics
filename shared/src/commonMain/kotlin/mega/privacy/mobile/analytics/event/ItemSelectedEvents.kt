@@ -91,3 +91,18 @@ class SyncOptionSelected(val selectionType: SelectionType) {
         SyncOptionWifiAndMobileSelected
     }
 }
+
+@ItemSelectedEvent
+class DeviceCenterItemClicked(val itemType: ItemType) {
+    enum class ItemType {
+        /**
+         * When user selects a device to open
+         */
+        Device,
+
+        /**
+         * When user selects a sync/backup/CU connection to open
+         */
+        Connection
+    }
+}
