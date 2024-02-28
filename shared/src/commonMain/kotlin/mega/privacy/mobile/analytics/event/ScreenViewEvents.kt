@@ -49,3 +49,6 @@ interface VideoPlayerScreen
 
 @ScreenViewEvent
 interface AddSyncScreen
+
+@ScreenViewEvent
+interface ChatConversationScreen
