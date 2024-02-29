@@ -298,3 +298,66 @@ interface AndroidSyncChooseRemoteFile
     menuType = MenuItemEvent.MenuType.Item
 )
 interface AndroidSyncChooseLatestModifiedTime
+
+@MenuItemEvent(
+    menuItem = "Forward Message",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationForwardActionMenu
+
+@MenuItemEvent(
+    menuItem = "Share Message",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationShareActionMenu
+
+@MenuItemEvent(
+    menuItem = "Add To Cloud Drive",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationAddToCloudDriveActionMenu
+
+@MenuItemEvent(
+    menuItem = "Download",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationDownloadActionMenu
+
+@MenuItemEvent(
+    menuItem = "Invite",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationInviteActionMenu
+
+@MenuItemEvent(
+    menuItem = "Start Conversation",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationSendMessageActionMenu
+
+@MenuItemEvent(
+    menuItem = "Edit Message",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationEditActionMenu
+
+@MenuItemEvent(
+    menuItem = "Copy Text Message",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationCopyActionMenu
+
+@MenuItemEvent(
+    menuItem = "Delete Message",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationDeleteActionMenu
