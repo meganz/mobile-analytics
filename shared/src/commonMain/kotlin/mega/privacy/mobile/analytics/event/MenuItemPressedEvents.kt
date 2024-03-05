@@ -445,3 +445,101 @@ interface ChatConversationMuteMenuToolbar
     screen = "Chat conversation screen"
 )
 interface ChatConversationUnmuteMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Open with",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationOpenWithActionMenuItem
+
+@MenuItemEvent(
+    menuItem = "Forward",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationForwardActionMenuItem
+
+@MenuItemEvent(
+    menuItem = "Edit",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationEditActionMenuItem
+
+@MenuItemEvent(
+    menuItem = "Copy",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationCopyActionMenuItem
+
+@MenuItemEvent(
+    menuItem = "Share",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationShareActionMenuItem
+
+@MenuItemEvent(
+    menuItem = "Select",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationSelectActionMenuItem
+
+@MenuItemEvent(
+    menuItem = "View contacts",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationViewContactsActionMenuItem
+
+@MenuItemEvent(
+    menuItem = "Info",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationInfoActionMenuItem
+
+@MenuItemEvent(
+    menuItem = "Send message",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationSendMessageActionMenuItem
+
+@MenuItemEvent(
+    menuItem = "Invite",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationInviteActionMenuItem
+
+@MenuItemEvent(
+    menuItem = "Add to cloud drive",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationAddToCloudDriveActionMenuItem
+
+@MenuItemEvent(
+    menuItem = "Save to device",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationSaveToDeviceActionMenuItem
+
+@MenuItemEvent(
+    menuItem = "Available offline",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationAvailableOfflineActionMenuItem
+
+@MenuItemEvent(
+    menuItem = "Remove",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationRemoveActionMenuItem

@@ -106,3 +106,6 @@ class DeviceCenterItemClicked(val itemType: ItemType) {
         Connection
     }
 }
+
+@ItemSelectedEvent
+class ChatMessageLongPressed
