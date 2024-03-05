@@ -361,3 +361,87 @@ interface ChatConversationCopyActionMenu
     screen = "Chat conversation screen"
 )
 interface ChatConversationDeleteActionMenu
+
+@MenuItemEvent(
+    menuItem = "Back Button (Arrow Left)",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationHomeUpMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Call",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationCallMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Video",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationVideoMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Select",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationSelectMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Add Participants",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationAddParticipantsMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Info",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationInfoMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Clear",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationClearMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Archive",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationArchiveMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Leave",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationLeaveMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "End Call For All",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationEndCallForAllMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Mute",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationMuteMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Unmute",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationUnmuteMenuToolbar
