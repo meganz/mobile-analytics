@@ -502,3 +502,15 @@ interface DeviceCenterSaveNewDeviceNameButton
     screen = "Device Center screen"
 )
 interface DeviceCenterDeviceOptionsButton
+
+@ButtonPressEvent(
+    buttonName = "Add attachment button",
+    screen = "Chat Conversation Screen"
+)
+interface ChatConversationAddAttachmentButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Send image files floating action button",
+    screen = "Chat Conversation Screen"
+)
+interface ChatConversationSendImageFilesFloatingActionButtonPressed

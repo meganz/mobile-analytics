@@ -109,3 +109,17 @@ class DeviceCenterItemClicked(val itemType: ItemType) {
 
 @ItemSelectedEvent
 class ChatMessageLongPressed
+
+@ItemSelectedEvent
+class ChatImageAttachmentItemSelected(val selectionType: SelectionType, val imageCount: Int) {
+    enum class SelectionType {
+        /**
+         * When user selects single image
+         */
+        SingleMode,
+        /**
+         * When user selects multiple images
+         */
+        MultiSelectMode
+    }
+}

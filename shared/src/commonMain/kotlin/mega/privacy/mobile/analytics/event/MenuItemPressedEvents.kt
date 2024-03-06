@@ -543,3 +543,66 @@ interface ChatConversationAvailableOfflineActionMenuItem
     screen = "Chat conversation screen"
 )
 interface ChatConversationRemoveActionMenuItem
+
+@MenuItemEvent(
+    menuItem = "Take picture",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationTakePictureMenuItem
+
+@MenuItemEvent(
+    menuItem = "File",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationFileMenuItem
+
+@MenuItemEvent(
+    menuItem = "Voice",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationVoiceMenuItem
+
+@MenuItemEvent(
+    menuItem = "Video",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationVideoMenuItem
+
+@MenuItemEvent(
+    menuItem = "Scan",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationScanMenuItem
+
+@MenuItemEvent(
+    menuItem = "GIF",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationGIFMenuItem
+
+@MenuItemEvent(
+    menuItem = "Location",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationLocationMenuItem
+
+@MenuItemEvent(
+    menuItem = "Contact",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationContactMenuItem
+
+@MenuItemEvent(
+    menuItem = "Voice clip",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationVoiceClipMenuItem
