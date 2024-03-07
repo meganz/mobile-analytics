@@ -419,6 +419,13 @@ interface ChatConversationClearMenuToolbar
 interface ChatConversationArchiveMenuToolbar
 
 @MenuItemEvent(
+    menuItem = "Unarchive",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationUnarchiveMenuToolbar
+
+@MenuItemEvent(
     menuItem = "Leave",
     menuType = MenuItemEvent.MenuType.Toolbar,
     screen = "Chat conversation screen"
