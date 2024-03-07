@@ -43,3 +43,6 @@ interface AlbumImportStorageOverQuotaDialog
 
 @DialogDisplayedEvent(dialog = "TransferOverQuotaWarningDialog")
 interface TransferOverQuotaDialog
+
+@DialogDisplayedEvent(dialog = "IOSGuestEndCallFreePlanUsersLimitDialog")
+interface IOSGuestEndCallFreePlanUsersLimitDialog
