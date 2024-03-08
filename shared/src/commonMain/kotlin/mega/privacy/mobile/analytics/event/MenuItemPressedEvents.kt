@@ -559,6 +559,13 @@ interface ChatConversationRemoveActionMenuItem
 interface ChatConversationTakePictureMenuItem
 
 @MenuItemEvent(
+    menuItem = "Gallery",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationGalleryMenuItem
+
+@MenuItemEvent(
     menuItem = "File",
     menuType = MenuItemEvent.MenuType.Item,
     screen = "Chat conversation screen"
