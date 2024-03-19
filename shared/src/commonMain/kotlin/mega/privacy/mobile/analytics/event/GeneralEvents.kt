@@ -21,7 +21,7 @@ interface WaitingRoomTimeout
 interface OnboardingUpsellingDialogVariantBProPlanIIIDisplayed
 
 @GeneralEvent
-class AccountRegistrationEvent(
+class AccountRegistration(
     val referrerUrl: String?,
     val referrerClickTime: Long?,
     val appInstallTime: Long?
