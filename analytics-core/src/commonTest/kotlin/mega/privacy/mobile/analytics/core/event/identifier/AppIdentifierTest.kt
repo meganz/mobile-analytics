@@ -27,4 +27,10 @@ class AppIdentifierTest {
         underTest = AppIdentifier(5)
         assertEquals(50_000, underTest.identifier)
     }
+
+    @Test
+    fun `test that app identifier returns the correct identifier when 0`() {
+        underTest = AppIdentifier(0)
+        assertEquals(0, underTest.identifier)
+    }
 }

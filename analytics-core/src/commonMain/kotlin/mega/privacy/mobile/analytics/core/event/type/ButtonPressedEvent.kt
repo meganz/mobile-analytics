@@ -1,5 +1,6 @@
 package mega.privacy.mobile.analytics.core.event.type
 
+import mega.privacy.mobile.analytics.core.event.identifier.AppIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.ButtonPressedEventIdentifier
 
 
@@ -12,6 +13,7 @@ import mega.privacy.mobile.analytics.core.event.identifier.ButtonPressedEventIde
 class ButtonPressedEvent(
     override val eventIdentifier: ButtonPressedEventIdentifier,
     override val viewId: String?,
+    override val appIdentifier: AppIdentifier
 ) : AnalyticsEvent() {
     override val eventTypeIdentifier = 2000
 

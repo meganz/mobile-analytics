@@ -1,15 +1,16 @@
 package mega.privacy.mobile.analytics.core.event.type
 
+import mega.privacy.mobile.analytics.core.event.identifier.AppIdentifier
 import mega.privacy.mobile.analytics.core.mapper.EventDataMapper
 import mega.privacy.mobile.analytics.core.event.identifier.ScreenViewEventIdentifier
 import mega.privacy.mobile.analytics.core.getPlatform
+import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.eventIdentifier
+import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.expectedAppIdentifier
+import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.testEventIdentifier
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class ScreenViewEventTest {
-    private val platformIdentifier = getPlatform().baseIdentifier
-    private val eventIdentifier = 1
-
     private val expectedEventName = "eventName"
 
     private val fakeIdentifier = object : ScreenViewEventIdentifier {
@@ -22,13 +23,15 @@ class ScreenViewEventTest {
 
     private val underTest = ScreenViewEvent(
         eventIdentifier = fakeIdentifier,
-        viewId = "viewId"
+        viewId = "viewId",
+        appIdentifier = expectedAppIdentifier
     )
 
     @Test
     fun `test that event identifier is 0`() {
-        val actual = underTest.getEventIdentifier() - platformIdentifier - eventIdentifier
-        assertEquals(expected = 0, actual = actual)
+        val expected = 0
+        val eventUnderTest = underTest
+        testEventIdentifier(eventUnderTest, expected)
     }
 
     @Test

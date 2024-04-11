@@ -1,5 +1,6 @@
 package mega.privacy.mobile.analytics.core.event
 
+import mega.privacy.mobile.analytics.core.event.identifier.AppIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.ButtonPressedEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.DialogDisplayedEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.EventIdentifier
@@ -25,9 +26,11 @@ import mega.privacy.mobile.analytics.core.event.type.TabSelectedEvent
  * Event generator
  *
  * @property viewIdProvider
+ * @property appIdentifier
  */
 class EventGenerator(
     private val viewIdProvider: suspend () -> String,
+    private val appIdentifier: AppIdentifier
 ) {
     private var currentViewId: String? = null
 
@@ -41,46 +44,55 @@ class EventGenerator(
         return when (eventIdentifier) {
             is ScreenViewEventIdentifier -> trackScreenView(
                 eventIdentifier,
-                viewIdProvider()
+                viewIdProvider(),
+                appIdentifier
             )
 
             is ButtonPressedEventIdentifier -> ButtonPressedEvent(
                 eventIdentifier,
-                currentViewId
+                currentViewId,
+                appIdentifier
             )
 
             is DialogDisplayedEventIdentifier -> DialogDisplayedEvent(
                 eventIdentifier,
-                currentViewId
+                currentViewId,
+                appIdentifier
             )
 
             is GeneralEventIdentifier -> GeneralEvent(
                 eventIdentifier,
-                currentViewId
+                currentViewId,
+                appIdentifier
             )
 
             is ItemSelectedEventIdentifier -> ItemSelectedEvent(
                 eventIdentifier,
-                currentViewId
+                currentViewId,
+                appIdentifier
             )
 
             is MenuItemEventIdentifier -> MenuItemEvent(
                 eventIdentifier,
-                currentViewId
+                currentViewId,
+                appIdentifier
             )
 
             is NavigationEventIdentifier -> NavigationEvent(
                 eventIdentifier,
-                currentViewId
+                currentViewId,
+                appIdentifier
             )
 
             is NotificationEventIdentifier -> NotificationEvent(
                 eventIdentifier,
+                appIdentifier
             )
 
             is TabSelectedEventIdentifier -> TabSelectedEvent(
                 eventIdentifier,
-                currentViewId ?: viewIdProvider()
+                currentViewId ?: viewIdProvider(),
+                appIdentifier
             )
 
             else -> throw NotImplementedError("Not yet implemented")
@@ -90,8 +102,13 @@ class EventGenerator(
     private fun trackScreenView(
         eventIdentifier: ScreenViewEventIdentifier,
         viewIdentifier: String,
+        appIdentifier: AppIdentifier
     ): ScreenViewEvent {
         currentViewId = viewIdentifier
-        return ScreenViewEvent(eventIdentifier = eventIdentifier, viewId = viewIdentifier)
+        return ScreenViewEvent(
+            eventIdentifier = eventIdentifier,
+            viewId = viewIdentifier,
+            appIdentifier = appIdentifier
+        )
     }
 }

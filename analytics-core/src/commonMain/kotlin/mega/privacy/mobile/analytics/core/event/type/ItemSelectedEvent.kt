@@ -1,5 +1,6 @@
 package mega.privacy.mobile.analytics.core.event.type
 
+import mega.privacy.mobile.analytics.core.event.identifier.AppIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.ItemSelectedEventIdentifier
 
 /**
@@ -11,6 +12,7 @@ import mega.privacy.mobile.analytics.core.event.identifier.ItemSelectedEventIden
 data class ItemSelectedEvent(
     override val eventIdentifier: ItemSelectedEventIdentifier,
     override val viewId: String?,
+    override val appIdentifier: AppIdentifier
 ) : AnalyticsEvent() {
     override val eventTypeIdentifier = 8000
 

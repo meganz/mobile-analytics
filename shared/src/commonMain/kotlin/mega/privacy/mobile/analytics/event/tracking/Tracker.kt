@@ -6,6 +6,7 @@ import kotlinx.coroutines.IO
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import mega.privacy.mobile.analytics.core.event.EventGenerator
+import mega.privacy.mobile.analytics.core.event.identifier.AppIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.EventIdentifier
 import mega.privacy.mobile.analytics.core.mapper.JsonMapper
 import mega.privacy.mobile.analytics.event.api.EventSender
@@ -20,9 +21,13 @@ import mega.privacy.mobile.analytics.event.api.ViewIdProvider
  */
 class Tracker(
     viewIdProvider: ViewIdProvider,
+    appIdentifier: AppIdentifier,
     private val eventSender: EventSender,
 ) {
-    private val eventGenerator = EventGenerator(viewIdProvider = viewIdProvider::getViewIdentifier)
+    private val eventGenerator = EventGenerator(
+        viewIdProvider = viewIdProvider::getViewIdentifier,
+        appIdentifier = appIdentifier
+    )
     private val background = Dispatchers.IO
     private val scope = CoroutineScope(SupervisorJob())
     private val eventDataMapper = JsonMapper()

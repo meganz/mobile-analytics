@@ -1,5 +1,6 @@
 package mega.privacy.mobile.analytics.core.event.type
 
+import mega.privacy.mobile.analytics.core.event.identifier.AppIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.MenuItemEventIdentifier
 
 
@@ -12,6 +13,7 @@ import mega.privacy.mobile.analytics.core.event.identifier.MenuItemEventIdentifi
 class MenuItemEvent(
     override val eventIdentifier: MenuItemEventIdentifier,
     override val viewId: String?,
+    override val appIdentifier: AppIdentifier
 ) : AnalyticsEvent() {
     override val eventTypeIdentifier = 5000
 

@@ -1,5 +1,6 @@
 package mega.privacy.mobile.analytics.core.event.type
 
+import mega.privacy.mobile.analytics.core.event.identifier.AppIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.NavigationEventIdentifier
 
 
@@ -12,6 +13,7 @@ import mega.privacy.mobile.analytics.core.event.identifier.NavigationEventIdenti
 class NavigationEvent(
     override val eventIdentifier: NavigationEventIdentifier,
     override val viewId: String?,
+    override val appIdentifier: AppIdentifier
 ) : AnalyticsEvent() {
     override val eventTypeIdentifier = 4000
 

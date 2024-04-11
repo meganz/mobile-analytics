@@ -1,5 +1,6 @@
 package mega.privacy.mobile.analytics.core.event.type
 
+import mega.privacy.mobile.analytics.core.event.identifier.AppIdentifier
 import mega.privacy.mobile.analytics.core.mapper.EventDataMapper
 import mega.privacy.mobile.analytics.core.getPlatform
 import mega.privacy.mobile.analytics.core.event.identifier.EventIdentifier
@@ -14,7 +15,7 @@ abstract class AnalyticsEvent {
      *
      */
     fun getEventIdentifier() =
-        platformEventIdentifier + eventTypeIdentifier + eventIdentifier.uniqueIdentifier
+        platformEventIdentifier + eventTypeIdentifier + eventIdentifier.uniqueIdentifier + appIdentifier.id
 
     /**
      * Get event message
@@ -30,6 +31,11 @@ abstract class AnalyticsEvent {
      * View id
      */
     abstract val viewId: String?
+
+    /**
+     * App identifier
+     */
+    abstract val appIdentifier: AppIdentifier
 
     /**
      * Identifier

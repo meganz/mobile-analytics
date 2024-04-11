@@ -1,5 +1,6 @@
 package mega.privacy.mobile.analytics.core.event.type
 
+import mega.privacy.mobile.analytics.core.event.identifier.AppIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.NotificationEventIdentifier
 
 /**
@@ -10,6 +11,7 @@ import mega.privacy.mobile.analytics.core.event.identifier.NotificationEventIden
  */
 data class NotificationEvent(
     override val eventIdentifier: NotificationEventIdentifier,
+    override val appIdentifier: AppIdentifier
 ) : AnalyticsEvent() {
     override val viewId: String? = null
     override val eventTypeIdentifier = 6000

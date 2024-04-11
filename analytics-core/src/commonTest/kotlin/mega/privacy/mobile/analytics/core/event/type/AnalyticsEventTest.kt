@@ -1,5 +1,6 @@
 package mega.privacy.mobile.analytics.core.event.type
 
+import mega.privacy.mobile.analytics.core.event.identifier.AppIdentifier
 import mega.privacy.mobile.analytics.core.mapper.EventDataMapper
 import mega.privacy.mobile.analytics.core.event.identifier.EventIdentifier
 import mega.privacy.mobile.analytics.core.getPlatform
@@ -21,9 +22,13 @@ internal class AnalyticsEventTest {
             get() = eventId
     }
 
+    private val fakeAppIdentifier = AppIdentifier(1)
+
     private val underTest = object : AnalyticsEvent() {
         override val viewId: String?
             get() = null
+        override val appIdentifier: AppIdentifier
+            get() = fakeAppIdentifier
         override val eventIdentifier: EventIdentifier
             get() = fakeEventIdentifier
         override val eventTypeIdentifier: Int
@@ -34,7 +39,7 @@ internal class AnalyticsEventTest {
 
     @Test
     fun `test that the identifier combines platform and event type and unique identifiers`() {
-        val expected = platformIdentifier + typeId + eventId
+        val expected = platformIdentifier + typeId + eventId + fakeAppIdentifier.id
         assertEquals(expected = expected, actual = underTest.getEventIdentifier())
     }
 

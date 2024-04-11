@@ -1,20 +1,19 @@
 package mega.privacy.mobile.analytics.core.event.type
 
+import mega.privacy.mobile.analytics.core.event.identifier.AppIdentifier
 import mega.privacy.mobile.analytics.core.mapper.EventDataMapper
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
 import mega.privacy.mobile.analytics.core.getPlatform
+import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.eventIdentifier
+import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.expectedAppIdentifier
+import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.testEventIdentifier
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class GeneralEventTest {
-    private val platformIdentifier = getPlatform().baseIdentifier
-    private val eventIdentifier = 1
     private val expectedInfo = mapOf("info" to 3)
-
-
     private val expectedEventName = "eventName"
-
     private val fakeIdentifier = object : GeneralEventIdentifier {
         override val info: Map<String, Any>
             get() = expectedInfo
@@ -27,13 +26,15 @@ class GeneralEventTest {
 
     private val underTest = GeneralEvent(
         eventIdentifier = fakeIdentifier,
-        viewId = null
+        viewId = null,
+        appIdentifier = expectedAppIdentifier
     )
 
     @Test
     fun `test that event identifier is 7000`() {
-        val actual = underTest.getEventIdentifier() - platformIdentifier - eventIdentifier
-        assertEquals(expected = 7000, actual = actual)
+        val expected = 7000
+        val eventUnderTest = underTest
+        testEventIdentifier(eventUnderTest, expected)
     }
 
     @Test
