@@ -514,3 +514,33 @@ interface ChatConversationAddAttachmentButtonPressed
     screen = "Chat Conversation Screen"
 )
 interface ChatConversationSendImageFilesFloatingActionButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Onboarding Upselling Dialog Variant B Free Plan Continue button",
+    screen = "Onboarding Pro Plan List Screen"
+)
+interface OnboardingUpsellingDialogVariantBFreePlanContinueButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Onboarding Upselling Dialog Variant B ProI Plan Continue button",
+    screen = "Onboarding Pro Plan List Screen"
+)
+interface OnboardingUpsellingDialogVariantBProIPlanContinueButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Onboarding Upselling Dialog Variant B ProII Plan Continue button",
+    screen = "Onboarding Pro Plan List Screen"
+)
+interface OnboardingUpsellingDialogVariantBProIIPlanContinueButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Onboarding Upselling Dialog Variant B ProIII Plan Continue button",
+    screen = "Onboarding Pro Plan List Screen"
+)
+interface OnboardingUpsellingDialogVariantBProIIIPlanContinueButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Onboarding Upselling Dialog Variant B Pro Lite Plan Continue button",
+    screen = "Onboarding Pro Plan List Screen"
+)
+interface OnboardingUpsellingDialogVariantBProLitePlanContinueButtonPressed
