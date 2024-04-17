@@ -544,3 +544,27 @@ interface OnboardingUpsellingDialogVariantBProIIIPlanContinueButtonPressed
     screen = "Onboarding Pro Plan List Screen"
 )
 interface OnboardingUpsellingDialogVariantBProLitePlanContinueButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Sign Up button on USP page",
+    screen = "USP Welcome Screen"
+)
+interface SignUpButtonOnUSPPagePressed
+
+@ButtonPressEvent(
+    buttonName = "Sign Up button on Login page",
+    screen = "Login Screen"
+)
+interface SignUpButtonOnLoginPagePressed
+
+@ButtonPressEvent(
+    buttonName = "Create Account button on Sign Up page",
+    screen = "Sign Up Screen"
+)
+interface CreateAccountButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Resend Email button on Email Confirmation page",
+    screen = "Email Confirmation Screen"
+)
+interface ResendEmailConfirmationButtonPressed
