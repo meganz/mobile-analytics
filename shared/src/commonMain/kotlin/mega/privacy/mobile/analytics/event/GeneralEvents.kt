@@ -26,3 +26,6 @@ class AccountRegistration(
     val referrerClickTime: Long?,
     val appInstallTime: Long?
 )
+
+@GeneralEvent
+class AccountActivated
