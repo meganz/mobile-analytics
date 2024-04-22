@@ -13,6 +13,6 @@ fun testEventIdentifier(
     expected: Int,
 ) {
     val actual =
-        eventUnderTest.getEventIdentifier() - getPlatform().baseIdentifier - eventIdentifier - expectedAppIdentifier.id
+        eventUnderTest.getEventIdentifier() - getPlatform().baseIdentifier - eventIdentifier - expectedAppIdentifier.identifier
     assertEquals(expected = expected, actual = actual)
 }

@@ -39,7 +39,7 @@ internal class AnalyticsEventTest {
 
     @Test
     fun `test that the identifier combines platform and event type and unique identifiers`() {
-        val expected = platformIdentifier + typeId + eventId + fakeAppIdentifier.id
+        val expected = platformIdentifier + typeId + eventId + fakeAppIdentifier.identifier
         assertEquals(expected = expected, actual = underTest.getEventIdentifier())
     }
 
