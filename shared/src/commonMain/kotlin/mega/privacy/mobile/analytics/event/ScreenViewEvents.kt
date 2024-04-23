@@ -52,3 +52,15 @@ interface AddSyncScreen
 
 @ScreenViewEvent
 interface ChatConversationScreen
+
+@ScreenViewEvent
+interface USPScreen
+
+@ScreenViewEvent
+interface SignUpScreen
+
+@ScreenViewEvent
+interface LoginScreen
+
+@ScreenViewEvent
+interface EmailConfirmationScreen
