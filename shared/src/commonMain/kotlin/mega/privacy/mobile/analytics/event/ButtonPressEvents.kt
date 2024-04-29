@@ -568,3 +568,45 @@ interface CreateAccountButtonPressed
     screen = "Email Confirmation Screen"
 )
 interface ResendEmailConfirmationButtonPressed
+
+@ButtonPressEvent(
+        buttonName = "Shortcut widget upload file button",
+        screen = "Shortcut widget"
+)
+interface ShortcutWidgetUploadFileButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Shortcut widget scan document button",
+    screen = "Shortcut widget"
+)
+interface ShortcutWidgetScanDocumentButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Shortcut widget start conversation button",
+    screen = "Shortcut widget"
+)
+interface ShortcutWidgetStartConversationButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Shortcut widget add contact button",
+    screen = "Shortcut widget"
+)
+interface ShortcutWidgetAddContactButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Quick access widget recents",
+    screen = "Quick access widget"
+)
+interface QuickAccessWidgetRecentsPressed
+
+@ButtonPressEvent(
+    buttonName = "Quick access widget favourites",
+    screen = "Quick access widget"
+)
+interface QuickAccessWidgetFavouritesPressed
+
+@ButtonPressEvent(
+    buttonName = "Quick access widget offile",
+    screen = "Quick access widget"
+)
+interface QuickAccessWidgetOffilePressed
