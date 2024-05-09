@@ -620,3 +620,18 @@ interface ChatConversationContactMenuItem
     screen = "Chat conversation screen"
 )
 interface ChatConversationVoiceClipMenuItem
+
+@MenuItemEvent(
+    menuItem = "Resume Transfers",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationResumeTransfersMenuItem
+
+@MenuItemEvent(
+    menuItem = "Retry",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat conversation screen"
+)
+interface ChatConversationRetryMenuItem
+
