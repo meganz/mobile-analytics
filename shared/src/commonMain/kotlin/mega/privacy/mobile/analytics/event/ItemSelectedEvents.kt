@@ -123,3 +123,12 @@ class ChatImageAttachmentItemSelected(val selectionType: SelectionType, val imag
         MultiSelectMode
     }
 }
+
+@ItemSelectedEvent
+class SearchFileTypeOptionClicked(val typeOption: String)
+
+@ItemSelectedEvent
+class SearchLastModifiedOptionClicked(val dateOption: String)
+
+@ItemSelectedEvent
+class SearchDateAddedFilterClicked(val dateOption: String)

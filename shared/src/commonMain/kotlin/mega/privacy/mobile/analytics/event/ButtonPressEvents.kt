@@ -610,3 +610,21 @@ interface QuickAccessWidgetFavouritesPressed
     screen = "Quick access widget"
 )
 interface QuickAccessWidgetOffilePressed
+
+@ButtonPressEvent(
+    buttonName = "File Type Dropdown Chip",
+    screen = "Search Results Screen"
+)
+interface SearchFileTypeDropdownChipPressed
+
+@ButtonPressEvent(
+    buttonName = "Last Modified Dropdown Chip",
+    screen = "Search Results Screen"
+)
+interface SearchLastModifiedDropdownChipPressed
+
+@ButtonPressEvent(
+    buttonName = "Date Added Dropdown Chip",
+    screen = "Search Results Screen"
+)
+interface SearchDateAddedDropdownChipPressed
