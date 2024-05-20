@@ -29,8 +29,8 @@ class AlbumSelectAll(val albumsCount: Int)
 class AlbumDeselectAll
 
 @ItemSelectedEvent
-class SearchItemSelected(val searchItemType: SearchItemType){
-    enum class SearchItemType{
+class SearchItemSelected(val searchItemType: SearchItemType) {
+    enum class SearchItemType {
         /**
          * When user selects folder to open
          */
@@ -85,6 +85,7 @@ class SyncOptionSelected(val selectionType: SelectionType) {
          * When user selects option wifi only
          */
         SyncOptionWifiOnlySelected,
+
         /**
          * When user selects option SyncOptionWifiAndMobilePressed
          */
@@ -117,6 +118,7 @@ class ChatImageAttachmentItemSelected(val selectionType: SelectionType, val imag
          * When user selects single image
          */
         SingleMode,
+
         /**
          * When user selects multiple images
          */
@@ -125,10 +127,64 @@ class ChatImageAttachmentItemSelected(val selectionType: SelectionType, val imag
 }
 
 @ItemSelectedEvent
-class SearchFileTypeOptionClicked(val typeOption: String)
+class SearchFileTypeImagesOptionClicked
 
 @ItemSelectedEvent
-class SearchLastModifiedOptionClicked(val dateOption: String)
+class SearchFileTypeDocumentsOptionClicked
 
 @ItemSelectedEvent
-class SearchDateAddedFilterClicked(val dateOption: String)
+class SearchFileTypeAudioOptionClicked
+
+@ItemSelectedEvent
+class SearchFileTypeVideoOptionClicked
+
+@ItemSelectedEvent
+class SearchFileTypePdfOptionClicked
+
+@ItemSelectedEvent
+class SearchFileTypePresentationOptionClicked
+
+@ItemSelectedEvent
+class SearchFileTypeSpreadsheetOptionClicked
+
+@ItemSelectedEvent
+class SearchFileTypeFolderOptionClicked
+
+@ItemSelectedEvent
+class SearchFileTypeOtherOptionClicked
+
+@ItemSelectedEvent
+class SearchLastModifiedTodayClicked
+
+@ItemSelectedEvent
+class SearchLastModifiedLastSevenDaysClicked
+
+@ItemSelectedEvent
+class SearchLastModifiedLastThirtyDaysClicked
+
+@ItemSelectedEvent
+class SearchLastModifiedThisYearClicked
+
+@ItemSelectedEvent
+class SearchLastModifiedLastYearClicked
+
+@ItemSelectedEvent
+class SearchLastModifiedOlderClicked
+
+@ItemSelectedEvent
+class SearchDateAddedTodayClicked
+
+@ItemSelectedEvent
+class SearchDateAddedLastSevenDaysClicked
+
+@ItemSelectedEvent
+class SearchDateAddedLastThirtyDaysClicked
+
+@ItemSelectedEvent
+class SearchDateAddedThisYearClicked
+
+@ItemSelectedEvent
+class SearchDateAddedLastYearClicked
+
+@ItemSelectedEvent
+class SearchDateAddedOlderClicked
