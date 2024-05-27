@@ -64,3 +64,6 @@ interface LoginScreen
 
 @ScreenViewEvent
 interface EmailConfirmationScreen
+
+@ScreenViewEvent
+interface NodeInfoScreen

@@ -29,3 +29,15 @@ class AccountRegistration(
 
 @GeneralEvent
 class AccountActivated
+
+@GeneralEvent
+interface NodeInfoDescriptionEntered
+
+@GeneralEvent
+interface NodeInfoDescriptionConfirmed
+
+@GeneralEvent
+interface NodeInfoDescriptionAddedMessageDisplayed
+
+@GeneralEvent
+interface NodeInfoDescriptionUpdatedMessageDisplayed
