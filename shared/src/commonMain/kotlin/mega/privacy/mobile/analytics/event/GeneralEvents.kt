@@ -41,3 +41,6 @@ interface NodeInfoDescriptionAddedMessageDisplayed
 
 @GeneralEvent
 interface NodeInfoDescriptionUpdatedMessageDisplayed
+
+@GeneralEvent
+interface NodeInfoDescriptionCharacterLimit
