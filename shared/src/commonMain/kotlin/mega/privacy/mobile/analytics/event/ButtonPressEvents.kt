@@ -628,3 +628,27 @@ interface SearchLastModifiedDropdownChipPressed
     screen = "Search Results Screen"
 )
 interface SearchDateAddedDropdownChipPressed
+
+@ButtonPressEvent(
+    buttonName = "Subscribe button",
+    screen = "Subscription Screen"
+)
+interface SubscribeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Subscribe button on Home screen's banner",
+    screen = "Home Screen"
+)
+interface SubscribeButtonHomeBannerPressed
+
+@ButtonPressEvent(
+    buttonName = "Subscribe button on Settings screen's banner",
+    screen = "Settings Screen"
+)
+interface SubscribeButtonSettingsBannerPressed
+
+@ButtonPressEvent(
+    buttonName = "Connect to VPN toggle button",
+    screen = "Home Screen"
+)
+class ConnectVPNTogglePressed(val currentState: String)
