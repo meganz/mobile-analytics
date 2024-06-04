@@ -67,3 +67,12 @@ interface EmailConfirmationScreen
 
 @ScreenViewEvent
 interface NodeInfoScreen
+
+@ScreenViewEvent
+interface SettingsScreen
+
+@ScreenViewEvent
+interface SubscriptionScreen
+
+@ScreenViewEvent
+interface SubscriptionSuccessScreen
