@@ -46,7 +46,10 @@ interface NodeInfoDescriptionUpdatedMessageDisplayed
 interface NodeInfoDescriptionCharacterLimit
 
 @GeneralEvent
-class SubscriptionSuccessful
+interface SubscriptionSuccessful
 
 @GeneralEvent
-class SubscriptionFailed
+interface SubscriptionFailed
+
+@GeneralEvent
+interface SubscriptionCancelled

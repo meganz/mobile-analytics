@@ -651,4 +651,4 @@ interface SubscribeButtonSettingsBannerPressed
     buttonName = "Connect to VPN toggle button",
     screen = "Home Screen"
 )
-class ConnectVPNTogglePressed(val currentState: String)
+interface ConnectVPNTogglePressed
