@@ -15,7 +15,6 @@ plugins {
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
     targetHierarchy.default()
-
     android {
         compilations.all {
             kotlinOptions {
@@ -30,10 +29,18 @@ kotlin {
         iosArm64(),
         iosSimulatorArm64(),
         macosX64(),
-        macosArm64()
+        macosArm64(),
     ).forEach {
         it.binaries.framework {
             baseName = "MEGAAnalyticsiOS"
+        }
+    }
+
+    mingwX64("windows") {
+        binaries {
+            sharedLib {
+                baseName = "MEGAAnalyticsWindows"
+            }
         }
     }
 
@@ -127,6 +134,9 @@ kotlin {
             dependencies {
                 implementation(kotlin("test"))
             }
+        }
+        val windowsMain by getting {
+            dependsOn(commonMain)
         }
     }
 }
@@ -250,7 +260,9 @@ if (workAroundKt43094) {
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinNativeLink> {
         doLast {
             val dotHFile = File(outputFile.get(), "Headers/MEGAAnalyticsiOS.h")
-            stripLines(dotHFile)
+            if (dotHFile.exists()){
+                stripLines(dotHFile)
+            }
         }
     }
 }

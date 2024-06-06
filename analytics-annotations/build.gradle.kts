@@ -22,10 +22,18 @@ kotlin {
         iosArm64(),
         iosSimulatorArm64(),
         macosX64(),
-        macosArm64()
+        macosArm64(),
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
+        }
+    }
+
+    mingwX64("windows") {
+        binaries {
+            sharedLib {
+                baseName = "analytics-annotations"
+            }
         }
     }
 
@@ -62,6 +70,9 @@ kotlin {
             dependencies {
                 implementation(kotlin("test"))
             }
+        }
+        val windowsMain by getting {
+            dependsOn(commonMain)
         }
     }
 }

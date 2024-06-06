@@ -8,7 +8,6 @@ plugins {
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
     targetHierarchy.default()
-
     jvm()
     android {
         compilations.all {
@@ -31,6 +30,14 @@ kotlin {
         }
     }
 
+    mingwX64("windows") {
+        binaries {
+            sharedLib {
+                baseName = "analytics-core"
+            }
+        }
+    }
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -43,6 +50,9 @@ kotlin {
                 implementation(kotlin("test"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.2")
             }
+        }
+        val windowsMain by getting {
+            dependsOn(commonMain)
         }
     }
 
