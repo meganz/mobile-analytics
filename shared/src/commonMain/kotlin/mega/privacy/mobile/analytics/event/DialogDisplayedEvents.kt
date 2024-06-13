@@ -46,3 +46,6 @@ interface TransferOverQuotaDialog
 
 @DialogDisplayedEvent(dialog = "IOSGuestEndCallFreePlanUsersLimitDialog")
 interface IOSGuestEndCallFreePlanUsersLimitDialog
+
+@DialogDisplayedEvent(dialog = "Sync Feature Upgrade Dialog", screen = "Device Center and Sync List screens")
+interface SyncFeatureUpgradeDialogDisplayed

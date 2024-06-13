@@ -652,3 +652,27 @@ interface SubscribeButtonSettingsBannerPressed
     screen = "Home Screen"
 )
 interface ConnectVPNTogglePressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade button on Sync list screen's empty state",
+    screen = "Sync list"
+)
+interface SyncListEmptyStateUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade button on Sync list screen's banner",
+    screen = "Sync list"
+)
+interface SyncListBannerUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade button of the Upgrade dialog on Device Center and Sync list screens",
+    screen = "Device center and Sync list"
+)
+interface SyncFeatureUpgradeDialogUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Cancel button of the Upgrade dialog on Device Center and Sync list screens",
+    screen = "Device center and Sync list"
+)
+interface SyncFeatureUpgradeDialogCancelButtonPressed
