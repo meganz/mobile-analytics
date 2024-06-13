@@ -53,3 +53,9 @@ interface SubscriptionFailed
 
 @GeneralEvent
 interface SubscriptionCancelled
+
+@GeneralEvent
+interface MultiFactorAuthVerificationSuccess
+
+@GeneralEvent
+interface MultiFactorAuthVerificationFailed

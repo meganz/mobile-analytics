@@ -76,3 +76,21 @@ interface SubscriptionScreen
 
 @ScreenViewEvent
 interface SubscriptionSuccessScreen
+
+@ScreenViewEvent
+interface MultiFactorAuthScreen
+
+@ScreenViewEvent
+interface TermsOfServiceScreen
+
+@ScreenViewEvent
+interface PasswordReminderScreen
+
+@ScreenViewEvent
+interface TestPasswordScreen
+
+@ScreenViewEvent
+interface RecoveryKeyScreen
+
+@ScreenViewEvent
+interface BusinessUserRestrictionsScreen

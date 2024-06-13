@@ -676,3 +676,20 @@ interface SyncFeatureUpgradeDialogUpgradeButtonPressed
     screen = "Device center and Sync list"
 )
 interface SyncFeatureUpgradeDialogCancelButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Login button on Login screen",
+    screen = "Login Screen"
+)
+interface LoginButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Close button on Terms of Service screen",
+    screen = "Terms of Service Screen"
+)
+interface TermsOfServiceCloseButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Logout button",
+)
+interface LogoutButtonPressed
