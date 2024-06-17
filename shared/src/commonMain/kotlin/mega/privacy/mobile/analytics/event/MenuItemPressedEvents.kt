@@ -635,3 +635,44 @@ interface ChatConversationResumeTransfersMenuItem
 )
 interface ChatConversationRetryMenuItem
 
+@MenuItemEvent(
+    menuItem = "Choose from Photos",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Home Screen"
+)
+interface HomeChooseFromPhotosMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Import from files",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Home Screen"
+)
+interface HomeImportFromFilesMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Choose from Photos",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveChooseFromPhotosMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Import from files",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveImportFromFilesMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Add Menu",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveAddMenu
+
+@MenuItemEvent(
+    menuItem = "Start Conversation Menu",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat Rooms Screen"
+)
+interface ChatRoomsStartConversationMenu
