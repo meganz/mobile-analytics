@@ -59,3 +59,24 @@ interface MultiFactorAuthVerificationSuccess
 
 @GeneralEvent
 interface MultiFactorAuthVerificationFailed
+
+@GeneralEvent
+interface NodeInfoTagsEntered
+
+@GeneralEvent
+interface NodeInfoTagsAdded
+
+@GeneralEvent
+interface NodeInfoTagsRemoved
+
+@GeneralEvent
+interface NodeInfoTagsLimitErrorDisplayed
+
+@GeneralEvent
+interface NodeInfoTagsLengthErrorDisplayed
+
+@GeneralEvent
+interface NodeInfoTagsProOnlyEntered
+
+@GeneralEvent
+interface UpgradeAccountCancelled

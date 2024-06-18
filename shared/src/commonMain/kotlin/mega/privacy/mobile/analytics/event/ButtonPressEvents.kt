@@ -693,3 +693,8 @@ interface TermsOfServiceCloseButtonPressed
     buttonName = "Logout button",
 )
 interface LogoutButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade account buy button"
+)
+interface UpgradeAccountBuyButtonPressed
