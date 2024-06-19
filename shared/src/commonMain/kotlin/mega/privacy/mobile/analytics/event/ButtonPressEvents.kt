@@ -698,3 +698,39 @@ interface LogoutButtonPressed
     buttonName = "Upgrade account buy button"
 )
 interface UpgradeAccountBuyButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Home FAB button",
+    screen = "Home Screen"
+)
+interface HomeFABExpanded
+
+@ButtonPressEvent(
+    buttonName = "Home New Chat FAB",
+    screen = "Home Screen"
+)
+interface HomeNewChatFABPressed
+
+@ButtonPressEvent(
+    buttonName = "Home Upload FAB",
+    screen = "Home Screen"
+)
+interface HomeUploadFABPressed
+
+@ButtonPressEvent(
+    buttonName = "Home FAB button",
+    screen = "Home Screen"
+)
+interface HomeFABClosed
+
+@ButtonPressEvent(
+    buttonName = "Start New Conversation FAB",
+    screen = "Chat Screen"
+)
+interface ChatTabFABPressed
+
+@ButtonPressEvent(
+    buttonName = "Cloud Drive FAB button",
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveFABPressed

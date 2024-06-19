@@ -690,3 +690,38 @@ interface CloudDriveNewFolderMenuToolbar
     screen = "Cloud Drive Screen"
 )
 interface CloudDriveNewTextFileMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Upload files",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Home Screen"
+)
+interface HomeUploadFilesMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Upload folder",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Home Screen"
+)
+interface HomeUploadFolderMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "New Text File",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Home Screen"
+)
+interface HomeNewTextFileMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Upload files",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveUploadFilesMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Upload folder",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveUploadFolderMenuToolbar
