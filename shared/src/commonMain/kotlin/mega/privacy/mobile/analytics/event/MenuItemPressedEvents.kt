@@ -676,3 +676,17 @@ interface CloudDriveAddMenu
     screen = "Chat Rooms Screen"
 )
 interface ChatRoomsStartConversationMenu
+
+@MenuItemEvent(
+    menuItem = "New Folder",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveNewFolderMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "New text file",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveNewTextFileMenuToolbar

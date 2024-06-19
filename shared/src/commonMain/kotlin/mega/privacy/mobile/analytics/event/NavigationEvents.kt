@@ -7,3 +7,15 @@ import mega.privacy.mobile.analytics.annotations.NavigationEvent
     navigationElementType = NavigationEvent.NavigationElementType.Drawer
 )
 interface AndroidSyncNavigationItem
+
+@NavigationEvent(
+    destination = "Cloud Drive",
+    navigationElementType = NavigationEvent.NavigationElementType.Bottom
+)
+interface CloudDriveBottomNavigationItem
+
+@NavigationEvent(
+    destination = "Chat rooms",
+    navigationElementType = NavigationEvent.NavigationElementType.Bottom
+)
+interface ChatRoomsBottomNavigationItem
