@@ -752,3 +752,27 @@ interface CancelSubscriptionKeepPlanButtonPressed
     screen = "Cancel Subscription screen"
 )
 interface CancelSubscriptionContinueCancellationButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade now",
+    screen = "Max Call Duration Reached Modal"
+)
+interface MaxCallDurationReachedModal
+
+@ButtonPressEvent(
+    buttonName = "Upgrade now",
+    screen = "Create Meeting"
+)
+interface CreateMeetingMaxDurationReached
+
+@ButtonPressEvent(
+    buttonName = "Upgrade now",
+    screen = "Edit Meeting"
+)
+interface EditMeetingMaxDurationReached
+
+@ButtonPressEvent(
+    buttonName = "Upgrade now",
+    screen = "Edit Meeting"
+)
+interface EditSingleOccurrenceMeetingMaxDurationReached
