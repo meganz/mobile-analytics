@@ -94,3 +94,6 @@ interface RecoveryKeyScreen
 
 @ScreenViewEvent
 interface BusinessUserRestrictionsScreen
+
+@ScreenViewEvent
+interface AccountScreen

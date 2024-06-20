@@ -19,3 +19,9 @@ interface CloudDriveBottomNavigationItem
     navigationElementType = NavigationEvent.NavigationElementType.Bottom
 )
 interface ChatRoomsBottomNavigationItem
+
+@NavigationEvent(
+    destination = "My Account Profile",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyAccountProfileNavigationItem
