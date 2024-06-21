@@ -775,3 +775,15 @@ interface EditMeetingMaxDurationReached
     screen = "Edit Meeting"
 )
 interface EditSingleOccurrenceMeetingMaxDurationReached
+
+@ButtonPressEvent(
+    buttonName = "Raise hand",
+    screen = "Call Floating Panel"
+)
+interface CallRaiseHandEvent
+
+@ButtonPressEvent(
+    buttonName = "Lower hand",
+    screen = "Call Floating Panel"
+)
+interface CallLowerHandEvent
