@@ -82,4 +82,4 @@ interface NodeInfoTagsProOnlyEntered
 interface UpgradeAccountCancelled
 
 @GeneralEvent
-interface IOSAccountScreenHeaderTapped
+interface AccountScreenHeaderTapped
