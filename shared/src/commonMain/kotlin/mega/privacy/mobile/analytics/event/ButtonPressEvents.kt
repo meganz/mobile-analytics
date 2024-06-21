@@ -736,10 +736,9 @@ interface ChatTabFABPressed
 interface CloudDriveFABPressed
 
 @ButtonPressEvent(
-    buttonName = "iOS Cancel Subscription button",
-    screen = "iOS Profile screen"
+    buttonName = "Cancel Subscription button"
 )
-interface IOSCancelSubscriptionButtonPressed
+interface CancelSubscriptionButtonPressed
 
 @ButtonPressEvent(
     buttonName = "Cancel Subscription Keep plan button",
