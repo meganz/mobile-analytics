@@ -780,10 +780,10 @@ interface EditSingleOccurrenceMeetingMaxDurationReached
     buttonName = "Raise hand",
     screen = "Call Floating Panel"
 )
-interface CallRaiseHandEvent
+interface CallRaiseHand
 
 @ButtonPressEvent(
     buttonName = "Lower hand",
     screen = "Call Floating Panel"
 )
-interface CallLowerHandEvent
+interface CallLowerHand
