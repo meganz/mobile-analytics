@@ -787,3 +787,21 @@ interface CallRaiseHand
     screen = "Call Floating Panel"
 )
 interface CallLowerHand
+
+@ButtonPressEvent(
+    buttonName = "Home FAB button",
+    screen = "Home Screen"
+)
+interface HomeFABPressed
+
+@ButtonPressEvent(
+    buttonName = "Home New Chat text",
+    screen = "Home Screen"
+)
+interface HomeNewChatTextPressed
+
+@ButtonPressEvent(
+    buttonName = "Home Upload text",
+    screen = "Home Screen"
+)
+interface HomeUploadTextPressed
