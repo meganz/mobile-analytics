@@ -805,3 +805,8 @@ interface HomeNewChatTextPressed
     screen = "Home Screen"
 )
 interface HomeUploadTextPressed
+
+@ButtonPressEvent(
+    buttonName = "Business restrictions banner action button",
+)
+interface BusinessRestrictionsBannerActionButtonPressed
