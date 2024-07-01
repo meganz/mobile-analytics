@@ -1,0 +1,9 @@
+package mega.privacy.mobile.analytics.event
+
+import mega.privacy.mobile.analytics.annotations.NotificationEvent
+
+@NotificationEvent
+interface GenericAppPushNotificationReceived
+
+@NotificationEvent
+interface GenericAppPushNotificationTapped
