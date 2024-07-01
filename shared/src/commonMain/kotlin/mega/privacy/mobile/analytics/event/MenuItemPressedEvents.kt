@@ -731,3 +731,10 @@ interface CloudDriveUploadFolderMenuToolbar
     menuType = MenuItemEvent.MenuType.Toolbar
 )
 interface ToolbarOverflowMenuItem
+
+@MenuItemEvent(
+    menuItem = "Cancel subscription",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "My Account Home Screen"
+)
+interface CancelSubscriptionMenuToolbar
