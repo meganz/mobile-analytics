@@ -725,3 +725,9 @@ interface CloudDriveUploadFilesMenuToolbar
     screen = "Cloud Drive Screen"
 )
 interface CloudDriveUploadFolderMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "overflow",
+    menuType = MenuItemEvent.MenuType.Toolbar
+)
+interface ToolbarOverflowMenuItem
