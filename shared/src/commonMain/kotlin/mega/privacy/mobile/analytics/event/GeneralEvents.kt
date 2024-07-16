@@ -83,3 +83,9 @@ interface UpgradeAccountCancelled
 
 @GeneralEvent
 interface AccountScreenHeaderTapped
+
+@GeneralEvent
+interface UpgradeAccountPurchaseSucceeded
+
+@GeneralEvent
+interface UpgradeAccountPurchaseFailed

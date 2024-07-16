@@ -49,3 +49,6 @@ interface IOSGuestEndCallFreePlanUsersLimitDialog
 
 @DialogDisplayedEvent(dialog = "Sync Feature Upgrade Dialog", screen = "Device Center and Sync List screens")
 interface SyncFeatureUpgradeDialogDisplayed
+
+@DialogDisplayedEvent(dialog = "Upgrade to Pro to get unlimited calls", screen = "Call UI and MainTabBar screens")
+interface UpgradeToProToGetUnlimitedCallsDialog

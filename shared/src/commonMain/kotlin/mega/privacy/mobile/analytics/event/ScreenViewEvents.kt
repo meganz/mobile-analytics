@@ -97,3 +97,15 @@ interface BusinessUserRestrictionsScreen
 
 @ScreenViewEvent
 interface AccountScreen
+
+@ScreenViewEvent
+interface UpgradeAccountPlanScreen
+
+@ScreenViewEvent
+interface MyAccountHallScreen
+
+@ScreenViewEvent
+interface CallScreen
+
+@ScreenViewEvent
+interface MainTabBarScreen

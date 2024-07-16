@@ -810,3 +810,39 @@ interface HomeUploadTextPressed
     buttonName = "Business restrictions banner action button",
 )
 interface BusinessRestrictionsBannerActionButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade",
+    screen = "My Account Hall"
+)
+interface UpgradeMyAccount
+
+@ButtonPressEvent(
+    buttonName = "Cancel upgrade",
+    screen = "Upgrade Account Plan"
+)
+interface CancelUpgradeMyAccount
+
+@ButtonPressEvent(
+    buttonName = "Buy Pro Lite",
+    screen = "Upgrade Account Plan"
+)
+interface BuyProLite
+
+@ButtonPressEvent(
+    buttonName = "Buy Pro I",
+    screen = "Upgrade Account Plan"
+)
+interface BuyProI
+
+@ButtonPressEvent(
+    buttonName = "Buy Pro II",
+    screen = "Upgrade Account Plan"
+)
+interface BuyProII
+
+@ButtonPressEvent(
+    buttonName = "Buy Pro III",
+    screen = "Upgrade Account Plan"
+)
+interface BuyProIII
