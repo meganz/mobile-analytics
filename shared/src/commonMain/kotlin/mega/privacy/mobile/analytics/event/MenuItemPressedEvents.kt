@@ -738,3 +738,67 @@ interface ToolbarOverflowMenuItem
     screen = "My Account Home Screen"
 )
 interface CancelSubscriptionMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Hide node",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveHideNodeMenuItem
+
+
+@MenuItemEvent(
+    menuItem = "Hide node",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Timeline Screen"
+)
+interface TimelineHideNodeMenuItem
+
+@MenuItemEvent(
+    menuItem = "Hide node",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Album Content Screen"
+)
+interface AlbumContentHideNodeMenuItem
+
+@MenuItemEvent(
+    menuItem = "Hide node",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Home Screen"
+)
+interface HomeHideNodeMenuItem
+
+@MenuItemEvent(
+    menuItem = "Hide node",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Image Preview Screen"
+)
+interface ImagePreviewHideNodeMenuToolBar
+
+@MenuItemEvent(
+    menuItem = "Hide node",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Video Player Screen"
+)
+interface VideoPlayerHideNodeMenuItem
+
+@MenuItemEvent(
+    menuItem = "Hide node",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Text Editor Screen"
+)
+interface TextEditorHideNodeMenuItem
+
+@MenuItemEvent(
+    menuItem = "Hide node",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Document Preview Screen"
+)
+interface DocumentPreviewHideNodeMenuItem
+
+@MenuItemEvent(
+    menuItem = "Hide node",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Audio Player Screen"
+)
+interface AudioPlayerHideNodeMenuItem

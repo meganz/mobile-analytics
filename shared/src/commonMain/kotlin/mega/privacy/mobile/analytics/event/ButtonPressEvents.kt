@@ -846,3 +846,27 @@ interface BuyProII
     screen = "Upgrade Account Plan"
 )
 interface BuyProIII
+
+@ButtonPressEvent(
+    buttonName = "Upgrade",
+    screen = "Hidden Node Upgrade Screen"
+)
+interface HiddenNodeUpgradeUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Close",
+    screen = "Hidden Node Upgrade Screen"
+)
+interface HiddenNodeUpgradeCloseButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Continue",
+    screen = "Hidden Node Onboarding Screen"
+)
+interface HiddenNodeOnboardingContinueButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Close",
+    screen = "Hidden Node Onboarding Screen"
+)
+interface HiddenNodeOnboardingCloseButtonPressed

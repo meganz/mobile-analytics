@@ -109,3 +109,9 @@ interface CallScreen
 
 @ScreenViewEvent
 interface MainTabBarScreen
+
+@ScreenViewEvent
+interface HideNodeUpgradeScreen
+
+@ScreenViewEvent
+interface HideNodeOnboardingScreen
