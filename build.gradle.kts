@@ -15,7 +15,7 @@ allprojects {
     version = "1.0.0"
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven {
             url = uri("https://plugins.gradle.org/m2/")
         }
