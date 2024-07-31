@@ -870,3 +870,27 @@ interface HiddenNodeOnboardingContinueButtonPressed
     screen = "Hidden Node Onboarding Screen"
 )
 interface HiddenNodeOnboardingCloseButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Share Link Bar Button",
+    screen = "Call UI - Navigation Bar"
+)
+interface ShareLinkBarButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Send Link To Chat",
+    screen = "Call UI - Share link alert"
+)
+interface SendLinkToChatPressed
+
+@ButtonPressEvent(
+    buttonName = "Copy Link To Pasteboard",
+    screen = "Call UI - Share link alert"
+)
+interface CopyLinkToPasteboardPressed
+
+@ButtonPressEvent(
+    buttonName = "Share Link",
+    screen = "Call UI - Share link alert"
+)
+interface ShareLinkPressed
