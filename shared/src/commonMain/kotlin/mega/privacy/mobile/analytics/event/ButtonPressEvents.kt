@@ -894,3 +894,27 @@ interface CopyLinkToPasteboardPressed
     screen = "Call UI - Share link alert"
 )
 interface ShareLinkPressed
+
+@ButtonPressEvent(
+    buttonName = "Learn more invite contacts ",
+    screen = "Chat Screen"
+)
+interface InviteFriendsLearnMorePressed
+
+@ButtonPressEvent(
+    buttonName = "Invite friends",
+    screen = "Chat Screen"
+)
+interface InviteFriendsPressed
+
+@ButtonPressEvent(
+    buttonName = "Invite contacts",
+    screen = "New Chat Screen"
+)
+interface InviteContactsPressed
+
+@ButtonPressEvent(
+    buttonName = "Group Chat",
+    screen = "New Chat Screen"
+)
+interface GroupChatPressed
