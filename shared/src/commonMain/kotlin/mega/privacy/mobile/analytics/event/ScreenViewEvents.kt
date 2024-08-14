@@ -115,3 +115,9 @@ interface HideNodeUpgradeScreen
 
 @ScreenViewEvent
 interface HideNodeOnboardingScreen
+
+@ScreenViewEvent
+interface InviteContactScreen
+
+@ScreenViewEvent
+interface NewChatScreen

@@ -25,3 +25,27 @@ interface ChatRoomsBottomNavigationItem
     navigationElementType = NavigationEvent.NavigationElementType.Drawer
 )
 interface MyAccountProfileNavigationItem
+
+@NavigationEvent(
+    destination = "Add From Contacts",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface InviteToMEGAAddFromContacts
+
+@NavigationEvent(
+    destination = "Enter Email Address",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface InviteToMEGAEnterEmailAddress
+
+@NavigationEvent(
+    destination = "Scan Code",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface InviteToMEGAScanCode
+
+@NavigationEvent(
+    destination = "Share Invite",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface InviteToMEGAShareInvite

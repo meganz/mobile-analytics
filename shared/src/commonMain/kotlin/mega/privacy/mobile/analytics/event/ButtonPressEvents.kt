@@ -914,7 +914,15 @@ interface InviteFriendsPressed
 interface InviteContactsPressed
 
 @ButtonPressEvent(
+    buttonName = "Invite to MEGA",
+    screen = "New Chat Screen"
+)
+interface InviteToMEGAPressed
+
+@ButtonPressEvent(
     buttonName = "Group Chat",
     screen = "New Chat Screen"
 )
 interface GroupChatPressed
+
+
