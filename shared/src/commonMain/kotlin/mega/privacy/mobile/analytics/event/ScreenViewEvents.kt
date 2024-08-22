@@ -121,3 +121,6 @@ interface InviteContactScreen
 
 @ScreenViewEvent
 interface NewChatScreen
+
+@ScreenViewEvent
+interface SubscriptionCancellationSurveyScreen

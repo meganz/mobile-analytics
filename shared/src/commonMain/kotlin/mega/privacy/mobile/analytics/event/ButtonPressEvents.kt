@@ -753,6 +753,24 @@ interface CancelSubscriptionKeepPlanButtonPressed
 interface CancelSubscriptionContinueCancellationButtonPressed
 
 @ButtonPressEvent(
+    buttonName = "Subscription Cancellation Survey Cancel View button",
+    screen = "Subscription Cancellation Survey screen"
+)
+interface SubscriptionCancellationSurveyCancelViewButton
+
+@ButtonPressEvent(
+    buttonName = "Subscription Cancellation Survey Cancel Subscription button",
+    screen = "Subscription Cancellation Survey screen"
+)
+interface SubscriptionCancellationSurveyCancelSubscriptionButton
+
+@ButtonPressEvent(
+    buttonName = "Subscription Cancellation Survey Don't Cancel button",
+    screen = "Subscription Cancellation Survey screen"
+)
+interface SubscriptionCancellationSurveyDontCancelButton
+
+@ButtonPressEvent(
     buttonName = "Upgrade now",
     screen = "Max Call Duration Reached Modal"
 )
