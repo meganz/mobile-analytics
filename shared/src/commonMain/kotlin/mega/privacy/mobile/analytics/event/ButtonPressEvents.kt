@@ -943,4 +943,20 @@ interface InviteToMEGAPressed
 )
 interface GroupChatPressed
 
+@ButtonPressEvent(
+    buttonName = "Start Meeting Now",
+    screen = "Meetings Landing Screen"
+)
+interface StartMeetingNowPressed
 
+@ButtonPressEvent(
+    buttonName = "Join Meeting",
+    screen = "Meetings Landing Screen"
+)
+interface JoinMeetingPressed
+
+@ButtonPressEvent(
+    buttonName = "Schedule Meeting",
+    screen = "Meetings Landing Screen"
+)
+interface ScheduleMeetingPressed
