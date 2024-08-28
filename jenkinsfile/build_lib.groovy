@@ -1,3 +1,5 @@
+@Library('jenkins-android-shared-lib') _
+
 BUILD_STEP = ''
 
 // The log file of publishing lib to Artifactory
@@ -112,8 +114,9 @@ pipeline {
                 script {
                     BUILD_STEP = 'Publish to artifactory'
 
-                    withCredentials([gitUsernamePassword(credentialsId: 'Gitlab-Access-Token', gitToolName: 'Default')]) {
-                        sh """
+                    util.useGitLab() {
+                        util.useGpg() {
+                            sh """
                                 ./gradlew createSwiftPackage
                                 rm -fr mobile-analytics-ios
                                 git clone https://code.developers.mega.co.nz/mobile/kmm/mobile-analytics-ios.git
@@ -121,30 +124,32 @@ pipeline {
                                 cp -fr ../SwiftPackages/MEGAAnalyticsiOS/MEGAAnalyticsiOS.xcframework .
                                 cp -fr ../SwiftPackages/MEGAAnalyticsiOS/Package.swift .
                             """
-                        if (hasSwiftPackageChanges()) {
-                            println("there are new file changes of SwiftPackage. Starting to push changes...")
-                            HAS_SWIFT_PACKAGE_CHANGE = true
-                            sh """
+                            if (hasSwiftPackageChanges()) {
+                                println("there are new file changes of SwiftPackage. Starting to push changes...")
+                                HAS_SWIFT_PACKAGE_CHANGE = true
+                                sh """
                                 cd mobile-analytics-ios
+                                git config http.postBuffer 100000000
                                 git add .
                                 git commit -m "iOS analytics update - author(${authorName()}) commit(${GIT_COMMIT})"
                                 git push
                             """
 
-                            // push GitLab to GitHub
-                            withCredentials([
-                                    usernamePassword(credentialsId: 'GitHub-Access-Token',
-                                            usernameVariable: 'USERNAME',
-                                            passwordVariable: 'TOKEN')
-                            ]) {
-                                sh """
+                                // push GitLab to GitHub
+                                withCredentials([
+                                        usernamePassword(credentialsId: 'GitHub-Access-Token',
+                                                usernameVariable: 'USERNAME',
+                                                passwordVariable: 'TOKEN')
+                                ]) {
+                                    sh """
                                     cd mobile-analytics-ios
                                     git push https://${USERNAME}:${TOKEN}@github.com/meganz/mobile-analytics-ios.git HEAD:main
                                 """
+                                }
+                            } else {
+                                HAS_SWIFT_PACKAGE_CHANGE = false
+                                println("There are no file changes of SwiftPackage")
                             }
-                        } else {
-                            HAS_SWIFT_PACKAGE_CHANGE = false
-                            println("There are no file changes of SwiftPackage")
                         }
                     }
                 }
