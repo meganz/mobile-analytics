@@ -802,3 +802,10 @@ interface DocumentPreviewHideNodeMenuItem
     screen = "Audio Player Screen"
 )
 interface AudioPlayerHideNodeMenuItem
+
+@MenuItemEvent(
+    menuItem = "Meetings Add Menu",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Chat Rooms Screen"
+)
+interface MeetingsAddMenu
