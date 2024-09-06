@@ -960,3 +960,13 @@ interface JoinMeetingPressed
     screen = "Meetings Landing Screen"
 )
 interface ScheduleMeetingPressed
+
+@ButtonPressEvent(
+    buttonName = "Widget button to connect to the VPN"
+)
+interface WidgetConnectVPNButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Widget button to disconnect from the VPN"
+)
+interface WidgetDisconnectVPNButtonPressed
