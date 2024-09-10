@@ -7,3 +7,9 @@ interface GenericAppPushNotificationReceived
 
 @NotificationEvent
 interface GenericAppPushNotificationTapped
+
+@NotificationEvent
+interface FullStorageOverQuotaBannerDisplayed
+
+@NotificationEvent
+interface AlmostFullStorageOverQuotaBannerDisplayed

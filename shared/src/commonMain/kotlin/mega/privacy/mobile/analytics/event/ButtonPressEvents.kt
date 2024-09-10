@@ -970,3 +970,18 @@ interface WidgetConnectVPNButtonPressed
     buttonName = "Widget button to disconnect from the VPN"
 )
 interface WidgetDisconnectVPNButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Full Storage Upgrade Now Button"
+)
+interface FullStorageOverQuotaBannerUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Almost Full Storage Upgrade Now Button"
+)
+interface AlmostFullStorageOverQuotaBannerUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Almost Full Storage Close Banner Button"
+)
+interface AlmostFullStorageOverQuotaBannerCloseButtonPressed
