@@ -89,3 +89,6 @@ interface UpgradeAccountPurchaseSucceeded
 
 @GeneralEvent
 interface UpgradeAccountPurchaseFailed
+
+@GeneralEvent
+interface NodeInfoDescriptionRemovedMessageDisplayed
