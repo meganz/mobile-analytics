@@ -456,7 +456,7 @@ interface AlbumsStorageOverQuotaUpgradeAccountButton
     buttonName = "Transfer overquota upgrade account button",
     dialog = "Transfer Over Quota Dialog"
 )
-interface  TransferOverQuotaUpgradeAccountButton
+interface TransferOverQuotaUpgradeAccountButton
 
 @ButtonPressEvent(
     buttonName = "Android Sync Get Started button"
@@ -570,8 +570,8 @@ interface CreateAccountButtonPressed
 interface ResendEmailConfirmationButtonPressed
 
 @ButtonPressEvent(
-        buttonName = "Shortcut widget upload file button",
-        screen = "Shortcut widget"
+    buttonName = "Shortcut widget upload file button",
+    screen = "Shortcut widget"
 )
 interface ShortcutWidgetUploadFileButtonPressed
 
@@ -985,3 +985,15 @@ interface AlmostFullStorageOverQuotaBannerUpgradeButtonPressed
     buttonName = "Almost Full Storage Close Banner Button"
 )
 interface AlmostFullStorageOverQuotaBannerCloseButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Scan QR code Button",
+    screen = "Invite Contact"
+)
+interface ScanQRCodeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Invite contacts Button",
+    screen = "Invite Contact"
+)
+interface InviteContactsButtonPressed
