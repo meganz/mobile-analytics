@@ -124,3 +124,15 @@ interface NewChatScreen
 
 @ScreenViewEvent
 interface SubscriptionCancellationSurveyScreen
+
+@ScreenViewEvent
+interface PasswordItemDetailsScreen
+
+@ScreenViewEvent
+interface AddPasswordItemScreen
+
+@ScreenViewEvent
+interface EditPasswordItemScreen
+
+@ScreenViewEvent
+interface GeneratePasswordWidgetScreen

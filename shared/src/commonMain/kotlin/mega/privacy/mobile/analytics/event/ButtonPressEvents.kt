@@ -997,3 +997,116 @@ interface ScanQRCodeButtonPressed
     screen = "Invite Contact"
 )
 interface InviteContactsButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Start your free trial"
+)
+interface StartFreeTrialButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Add new password item",
+    screen = "Home Screen"
+)
+interface AddNewPasswordItemButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copy username",
+    screen = "Item Detail"
+)
+interface CopyUserNameButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "View password",
+    screen = "Item Detail"
+)
+interface ViewPasswordButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copy password",
+    screen = "Item Detail"
+)
+interface CopyPasswordButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Launch WebSite",
+    screen = "Item Detail"
+)
+interface LaunchWebSiteButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copy notes",
+    screen = "Item Detail"
+)
+interface CopyNotesButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Generate password",
+    screen = "Add Item"
+)
+interface GeneratePasswordButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copy password",
+    screen = "Generate Password Widget Screen"
+)
+interface GeneratePasswordCopyPasswordButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Use Capital letter ON toggle",
+    screen = "Generate Password Widget Screen"
+)
+interface UseCapitalLettersOnTogglePressed
+
+@ButtonPressEvent(
+    buttonName = "Use Capital letter OFF toggle",
+    screen = "Generate Password Widget Screen"
+)
+interface UseCapitalLettersOffTogglePressed
+
+@ButtonPressEvent(
+    buttonName = "Use Digits ON toggle",
+    screen = "Generate Password Widget Screen"
+)
+interface UseDigitsOnTogglePressed
+
+@ButtonPressEvent(
+    buttonName = "Use Digits OFF toggle",
+    screen = "Generate Password Widget Screen"
+)
+interface UseDigitsOffTogglePressed
+
+@ButtonPressEvent(
+    buttonName = "Use Symbols ON toggle",
+    screen = "Generate Password Widget Screen"
+)
+interface UseSymbolsOnTogglePressed
+
+@ButtonPressEvent(
+    buttonName = "Use Symbols OFF toggle",
+    screen = "Generate Password Widget Screen"
+)
+interface UseSymbolsOffTogglePressed
+
+@ButtonPressEvent(
+    buttonName = "Use password",
+    screen = "Generate Password Widget Screen"
+)
+interface UsePasswordButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Regenerate",
+    screen = "Generate Password Widget Screen"
+)
+interface RegenerateButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Turn on autofill toggle",
+    screen = "Settings Screen"
+)
+interface AutofillToggleEnabled
+
+@ButtonPressEvent(
+    buttonName = "Turn off autofill toggle",
+    screen = "Settings Screen"
+)
+interface AutofillToggleDisabled

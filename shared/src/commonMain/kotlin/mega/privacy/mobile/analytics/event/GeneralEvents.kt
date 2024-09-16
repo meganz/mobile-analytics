@@ -92,3 +92,6 @@ interface UpgradeAccountPurchaseFailed
 
 @GeneralEvent
 interface NodeInfoDescriptionRemovedMessageDisplayed
+
+@GeneralEvent
+interface PasswordItemsSearch

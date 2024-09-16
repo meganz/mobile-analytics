@@ -809,3 +809,101 @@ interface AudioPlayerHideNodeMenuItem
     screen = "Chat Rooms Screen"
 )
 interface MeetingsAddMenu
+
+@MenuItemEvent(
+    menuItem = "Title A - Z",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Home Screen"
+)
+interface SortPasswordsByTitleAscendingMenuItem
+
+@MenuItemEvent(
+    menuItem = "Title Z - A",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Home Screen"
+)
+interface SortPasswordsByTitleDescendingMenuItem
+
+@MenuItemEvent(
+    menuItem = "Date added (newest)",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Home Screen"
+)
+interface SortPasswordsByDateNewestMenuItem
+
+@MenuItemEvent(
+    menuItem = "Date added (oldest)",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Home Screen"
+)
+interface SortPasswordsByDateOldestMenuItem
+
+@MenuItemEvent(
+    menuItem = "Copy password",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Home Screen"
+)
+interface CopyPasswordMenuItem
+
+@MenuItemEvent(
+    menuItem = "Copy username",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Home Screen"
+)
+interface CopyUserNameMenuItem
+
+@MenuItemEvent(
+    menuItem = "Launch website",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Home Screen"
+)
+interface LaunchWebsiteMenuItem
+
+@MenuItemEvent(
+    menuItem = "Edit item",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Home Screen"
+)
+interface EditPasswordMenuItem
+
+@MenuItemEvent(
+    menuItem = "Delete item",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Home Screen"
+)
+interface DeletePasswordMenuItem
+
+@MenuItemEvent(
+    menuItem = "Clear copied data in 15 seconds",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Settings Screen"
+)
+interface ClearCopiedDataAfterFifteenSecondsMenuItem
+
+@MenuItemEvent(
+    menuItem = "Clear copied data in 30 seconds",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Settings Screen"
+)
+interface ClearCopiedDataAfterThirtySecondsMenuItem
+
+@MenuItemEvent(
+    menuItem = "Clear copied data in 1 minute",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Settings Screen"
+)
+interface ClearCopiedDataAfterOneMinuteMenuItem
+
+@MenuItemEvent(
+    menuItem = "Clear copied data in 3 minutes",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Settings Screen"
+)
+interface ClearCopiedDataAfterThreeMinutesMenuItem
+
+@MenuItemEvent(
+    menuItem = "Never clear copied data",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Settings Screen"
+)
+interface NeverClearCopiedDataMenuItem
