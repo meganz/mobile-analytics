@@ -49,3 +49,9 @@ interface InviteToMEGAScanCode
     navigationElementType = NavigationEvent.NavigationElementType.Drawer
 )
 interface InviteToMEGAShareInvite
+
+@NavigationEvent(
+    destination = "Sync List",
+    navigationElementType = NavigationEvent.NavigationElementType.Toolbar
+)
+interface SyncNewFolderScreenBackNavigation

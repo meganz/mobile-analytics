@@ -1110,3 +1110,15 @@ interface AutofillToggleEnabled
     screen = "Settings Screen"
 )
 interface AutofillToggleDisabled
+
+@ButtonPressEvent(
+    buttonName = "Sync folders button of the Sync Promotion Bottom Sheet",
+    screen = "Sync Promotion Bottom Sheet"
+)
+interface SyncPromotionBottomSheetSyncFoldersButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Learn more button of the Sync Promotion Bottom Sheet",
+    screen = "Sync Promotion Bottom Sheet"
+)
+interface SyncPromotionBottomSheetLearnMoreButtonPressed

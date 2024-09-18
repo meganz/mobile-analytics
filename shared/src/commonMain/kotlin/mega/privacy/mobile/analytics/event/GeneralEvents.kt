@@ -95,3 +95,6 @@ interface NodeInfoDescriptionRemovedMessageDisplayed
 
 @GeneralEvent
 interface PasswordItemsSearch
+
+@GeneralEvent
+interface SyncPromotionBottomSheetDismissed
