@@ -136,3 +136,15 @@ interface EditPasswordItemScreen
 
 @ScreenViewEvent
 interface GeneratePasswordWidgetScreen
+
+@ScreenViewEvent
+interface ScheduleNewMeetingScreen
+
+@ScreenViewEvent
+interface EditScheduledMeetingScreen
+
+@ScreenViewEvent
+interface EditScheduledMeetingOccurrenceScreen
+
+@ScreenViewEvent
+interface ShareLinkDialog

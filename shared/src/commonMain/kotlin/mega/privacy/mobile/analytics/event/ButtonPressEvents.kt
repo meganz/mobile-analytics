@@ -1,7 +1,6 @@
 package mega.privacy.mobile.analytics.event
 
 import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
-
 @ButtonPressEvent(
     buttonName = "DeleteAlbumCancelButton",
     screen = "PhotoScreen",
@@ -1122,3 +1121,28 @@ interface SyncPromotionBottomSheetSyncFoldersButtonPressed
     screen = "Sync Promotion Bottom Sheet"
 )
 interface SyncPromotionBottomSheetLearnMoreButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Meeting link enabled on edit scheduled meeting",
+    screen = "Edit Scheduled Meeting"
+)
+interface EditScheduledMeetingSettingEnableMeetingLinkButton
+
+@ButtonPressEvent(
+    buttonName = "Meeting link enabled on edit scheduled meeting occurrence",
+    screen = "Edit Scheduled Meeting"
+)
+interface EditScheduledMeetingOccurrenceSettingEnableMeetingLinkButton
+
+@ButtonPressEvent(
+    buttonName = "Send meeting link to chat",
+    screen = "Share link dialog"
+)
+interface SendMeetingLinkToChatScheduledMeeting
+
+@ButtonPressEvent(
+    buttonName = "Share meeting link",
+    screen = "Share link dialog"
+)
+interface ShareMeetingLinkScheduledMeeting
+
