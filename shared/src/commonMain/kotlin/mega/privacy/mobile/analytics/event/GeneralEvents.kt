@@ -98,3 +98,9 @@ interface PasswordItemsSearch
 
 @GeneralEvent
 interface SyncPromotionBottomSheetDismissed
+
+@GeneralEvent
+interface TestPasswordConfirmWrongPasswordMessageDisplayed
+
+@GeneralEvent
+interface TestPasswordConfirmPasswordAcceptedMessageDisplayed

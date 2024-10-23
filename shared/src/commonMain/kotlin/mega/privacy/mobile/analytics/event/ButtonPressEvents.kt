@@ -1146,3 +1146,93 @@ interface SendMeetingLinkToChatScheduledMeeting
 )
 interface ShareMeetingLinkScheduledMeeting
 
+@ButtonPressEvent(
+    buttonName = "Back up Recovery key",
+    screen = "Profile screen"
+)
+interface BackupRecoveryKeyButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copy",
+    screen = "Recovery key screen"
+)
+interface RecoveryKeyCopyButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "OK",
+    screen = "Recovery key screen's copy dialog"
+)
+interface RecoveryKeyCopyOkButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Save",
+    screen = "Recovery key screen"
+)
+interface RecoveryKeySaveButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "OK",
+    screen = "Recovery key screen's save dialog"
+)
+interface RecoveryKeySaveOkButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Why do I need a Recovery key",
+    screen = "Recovery key screen"
+)
+interface RecoveryKeyWhyDoINeedARecoveryKeyButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Close",
+    screen = "Password reminder screen"
+)
+interface PasswordReminderCloseButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Test Password",
+    screen = "Password reminder screen"
+)
+interface PasswordReminderTestPasswordButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Proceed to log out",
+    screen = "Password reminder screen"
+)
+interface PasswordReminderProceedToLogoutButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Export recovery key",
+    screen = "Password reminder screen"
+)
+interface PasswordReminderExportRecoveryKeyButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "OK",
+    screen = "Password reminder screen's export recovery key dialog"
+)
+interface PasswordReminderExportRecoveryKeyOkButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Confirm",
+    screen = "Test Password screen"
+)
+interface TestPasswordConfirmButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Export recovery key",
+    screen = "Test Password screen"
+)
+interface TestPasswordExportRecoveryKeyButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Proceed to log out",
+    screen = "Test Password screen"
+)
+interface TestPasswordProceedToLogoutButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "OK",
+    screen = "Test Password screen's export recovery key dialog"
+)
+interface TestPasswordExportRecoveryKeyOkButtonPressed
+

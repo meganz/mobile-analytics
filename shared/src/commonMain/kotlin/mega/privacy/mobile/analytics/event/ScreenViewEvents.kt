@@ -148,3 +148,6 @@ interface EditScheduledMeetingOccurrenceScreen
 
 @ScreenViewEvent
 interface ShareLinkDialog
+
+@ScreenViewEvent
+interface ProfileScreen
