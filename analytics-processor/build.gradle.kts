@@ -11,6 +11,12 @@ kotlin {
         testRuns["test"].executionTask.configure {
             useJUnitPlatform()
         }
+
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "17"
+            }
+        }
     }
     sourceSets {
         val jvmMain by getting {

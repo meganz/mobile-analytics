@@ -1,4 +1,5 @@
 import groovy.util.Node
+import org.gradle.kotlin.dsl.jvm
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import src.main.kotlin.HtmlTableTask
@@ -15,7 +16,14 @@ plugins {
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
     targetHierarchy.default()
-    android {
+    jvm {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "17"
+            }
+        }
+    }
+    androidTarget {
         compilations.all {
             kotlinOptions {
                 jvmTarget = "17"
@@ -123,7 +131,7 @@ kotlin {
             kotlin.srcDir("build/generated/ksp/metadata/commonMain")
             dependencies {
                 //put your multiplatform dependencies here
-                compileOnly(project(":analytics-annotations"))
+                implementation(project(":analytics-annotations"))
                 api(project(":analytics-annotations"))
                 api(project(":analytics-core"))
 
