@@ -3,11 +3,17 @@ import java.time.format.DateTimeFormatter
 
 plugins {
     //trick: for the same plugin versions in all sub-modules
-    id("com.android.library").version("8.0.2").apply(false)
-    kotlin("multiplatform").version("1.8.21").apply(false)
-    id("org.jetbrains.kotlin.jvm") version "1.9.10" apply false
+    id("com.android.library").version("8.5.0").apply(false)
+    kotlin("multiplatform").version("2.0.21").apply(false)
+    id("org.jetbrains.kotlin.jvm") version "2.0.21" apply false
     id("com.jfrog.artifactory").version("4.32.0").apply(false)
     `maven-publish`
+}
+
+buildscript {
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.21")
+    }
 }
 
 allprojects {

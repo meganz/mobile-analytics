@@ -1,8 +1,10 @@
 import groovy.util.Node
 import org.gradle.kotlin.dsl.jvm
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import src.main.kotlin.HtmlTableTask
+import kotlin.text.set
 
 plugins {
     kotlin("multiplatform")
@@ -17,17 +19,13 @@ plugins {
 kotlin {
     targetHierarchy.default()
     jvm {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
         }
     }
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
         }
         publishLibraryVariants("release", "debug")
     }
@@ -135,7 +133,7 @@ kotlin {
                 api(project(":analytics-annotations"))
                 api(project(":analytics-core"))
 
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
             }
         }
         val commonTest by getting {
@@ -155,9 +153,9 @@ dependencies {
 
 android {
     namespace = "mega.privacy.mobile.analytics"
-    compileSdk = 33
+    compileSdk = 35
     defaultConfig {
-        minSdk = 24
+        minSdk = 26
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

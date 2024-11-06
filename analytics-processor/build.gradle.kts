@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 val kspVersion: String by project
 
@@ -6,16 +7,15 @@ plugins {
     kotlin("plugin.serialization") version "1.8.21"
 }
 
+@OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
     jvm {
         testRuns["test"].executionTask.configure {
             useJUnitPlatform()
         }
 
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
         }
     }
     sourceSets {
@@ -23,8 +23,8 @@ kotlin {
             dependencies {
                 implementation(project(":analytics-core"))
                 implementation(project(":analytics-annotations"))
-                implementation("com.squareup:kotlinpoet:1.14.2")
-                implementation("com.squareup:kotlinpoet-ksp:1.14.2")
+                implementation("com.squareup:kotlinpoet:1.18.1")
+                implementation("com.squareup:kotlinpoet-ksp:1.18.1")
                 implementation("com.google.devtools.ksp:symbol-processing-api:$kspVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
             }

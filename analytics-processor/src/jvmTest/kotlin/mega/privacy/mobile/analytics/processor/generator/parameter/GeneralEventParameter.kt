@@ -43,7 +43,6 @@ class Test3(
       override val uniqueIdentifier: Int = 0
     
       override val info: Map<String, Any?> = emptyMap()
-    
     }
     
     public object Test2Event : GeneralEventIdentifier {
@@ -52,7 +51,6 @@ class Test3(
       override val uniqueIdentifier: Int = 1
     
       override val info: Map<String, Any?> = emptyMap()
-    
     }
     
     public class Test3Event(
@@ -67,6 +65,5 @@ class Test3(
       "bar" to "my value",
       )
     }
-
     """.trimIndent()
 }
