@@ -13,3 +13,6 @@ interface FullStorageOverQuotaBannerDisplayed
 
 @NotificationEvent
 interface AlmostFullStorageOverQuotaBannerDisplayed
+
+@NotificationEvent
+interface NotificationCentreItemTapped

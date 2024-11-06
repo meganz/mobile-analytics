@@ -1254,3 +1254,8 @@ interface KillSwitchToggleDisabledPressed
 )
 interface KillSwitchNotificationDisabledPressed
 
+@ButtonPressEvent(
+    buttonName = "Notifications",
+    screen = "My Account Hall"
+)
+interface NotificationsEntryButtonPressed
