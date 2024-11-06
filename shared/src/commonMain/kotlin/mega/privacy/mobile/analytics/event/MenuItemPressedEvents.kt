@@ -907,3 +907,31 @@ interface ClearCopiedDataAfterThreeMinutesMenuItem
     screen = "Settings Screen"
 )
 interface NeverClearCopiedDataMenuItem
+
+@MenuItemEvent(
+    menuItem = "Share meeting link",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "CallScreen"
+)
+interface CallScreenMenuOptionsShareLinkMenuItem
+
+@MenuItemEvent(
+    menuItem = "Archived",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Meetings list screen"
+)
+interface ArchivedChatsMenuItem
+
+@MenuItemEvent(
+    menuItem = "Online Status Changed",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Meetings list screen"
+)
+interface ChatRoomStatusMenuItem
+
+@MenuItemEvent(
+    menuItem = "DND Status Changed",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Meetings list screen"
+)
+interface ChatRoomDNDMenuItem

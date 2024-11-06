@@ -913,6 +913,30 @@ interface CopyLinkToPasteboardPressed
 interface ShareLinkPressed
 
 @ButtonPressEvent(
+    buttonName = "Invite participants",
+    screen = "Call UI - Share link alert"
+)
+interface InviteParticipantsPressed
+
+@ButtonPressEvent(
+    buttonName = "More",
+    screen = "CallScreen"
+)
+interface CallUIMoreButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Invite Participants",
+    screen = "CallScreen"
+)
+interface ParticipantListInviteParticipantRowPressed
+
+@ButtonPressEvent(
+    buttonName = "Share meeting link",
+    screen = "CallScreen"
+)
+interface ParticipantListShareMeetingLinkPressed
+
+@ButtonPressEvent(
     buttonName = "Learn more invite contacts ",
     screen = "Chat Screen"
 )
@@ -1259,3 +1283,15 @@ interface KillSwitchNotificationDisabledPressed
     screen = "My Account Hall"
 )
 interface NotificationsEntryButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Add Participant",
+    screen = "Scheduled meeting info screen"
+)
+interface MeetingInfoAddParticipantButtonTapped
+
+@ButtonPressEvent(
+    buttonName = "Leave meeting",
+    screen = "Scheduled meeting info screen"
+)
+interface MeetingInfoLeaveMeetingButtonTapped
