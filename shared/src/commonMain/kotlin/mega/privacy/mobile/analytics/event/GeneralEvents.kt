@@ -104,3 +104,9 @@ interface TestPasswordConfirmWrongPasswordMessageDisplayed
 
 @GeneralEvent
 interface TestPasswordConfirmPasswordAcceptedMessageDisplayed
+
+@GeneralEvent
+interface VpnSplitTunnellingEnableSelectedApps
+
+@GeneralEvent
+interface VpnSplitTunnellingDisableSelectedApps

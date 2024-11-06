@@ -151,3 +151,9 @@ interface ShareLinkDialog
 
 @ScreenViewEvent
 interface ProfileScreen
+
+@ScreenViewEvent
+interface SplitTunnellingScreen
+
+@ScreenViewEvent
+interface SplitTunnellingAppSelectionScreen
