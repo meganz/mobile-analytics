@@ -1236,3 +1236,21 @@ interface TestPasswordProceedToLogoutButtonPressed
 )
 interface TestPasswordExportRecoveryKeyOkButtonPressed
 
+@ButtonPressEvent(
+    buttonName = "Kill Switch",
+    screen = "Settings screen"
+)
+interface KillSwitchToggleEnabledPressed
+
+@ButtonPressEvent(
+    buttonName = "Kill Switch",
+    screen = "Settings screen"
+)
+interface KillSwitchToggleDisabledPressed
+
+@ButtonPressEvent(
+    buttonName = "Kill Switch",
+    screen = "Notification"
+)
+interface KillSwitchNotificationDisabledPressed
+
