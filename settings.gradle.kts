@@ -1,12 +1,8 @@
 pluginManagement {
-    val kspVersion: String by settings
     repositories {
         google()
         gradlePluginPortal()
         mavenCentral()
-    }
-    plugins{
-        id("com.google.devtools.ksp") version kspVersion apply false
     }
 }
 

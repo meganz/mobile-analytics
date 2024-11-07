@@ -1,17 +1,15 @@
 import groovy.util.Node
-import org.gradle.kotlin.dsl.jvm
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import src.main.kotlin.HtmlTableTask
-import kotlin.text.set
 
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
-    id("com.google.devtools.ksp")
-    id("io.github.luca992.multiplatform-swiftpackage") version "2.1.2"
-    id("com.jfrog.artifactory")
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.google.ksp)
+    alias(libs.plugins.multiplatform.swift)
+    alias(libs.plugins.jfrog)
     `maven-publish`
 }
 
@@ -133,7 +131,7 @@ kotlin {
                 api(project(":analytics-annotations"))
                 api(project(":analytics-core"))
 
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+                implementation(libs.kotlinx.coroutines)
             }
         }
         val commonTest by getting {
