@@ -112,7 +112,10 @@ interface VpnSplitTunnellingEnableSelectedApps
 interface VpnSplitTunnellingDisableSelectedApps
 
 @GeneralEvent
-interface AccountNotificationCentreEntryDisplayed
+interface AccountNotificationCentreDisplayedWithNoUnreadNotifications
 
 @GeneralEvent
 interface VpnSplitTunnellingEnableAllApps
+
+@GeneralEvent
+interface AccountNotificationCentreDisplayedWithUnreadNotifications
