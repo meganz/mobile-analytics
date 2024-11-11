@@ -935,3 +935,10 @@ interface ChatRoomStatusMenuItem
     screen = "Meetings list screen"
 )
 interface ChatRoomDNDMenuItem
+
+@MenuItemEvent(
+    menuItem = "Open Link",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Meetings list screen"
+)
+interface OpenLinkMenuItem
