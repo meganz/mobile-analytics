@@ -1295,3 +1295,9 @@ interface MeetingInfoAddParticipantButtonTapped
     screen = "Scheduled meeting info screen"
 )
 interface MeetingInfoLeaveMeetingButtonTapped
+
+@ButtonPressEvent(
+    buttonName = "Audio player queue",
+    screen = "Audio player controller"
+)
+interface AudioPlayerQueueButtonPressed

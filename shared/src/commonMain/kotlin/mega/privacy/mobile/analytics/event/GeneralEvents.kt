@@ -146,3 +146,18 @@ interface DocumentScannerUploadingImageToCloudDrive
 
 @GeneralEvent
 interface DocumentScannerUploadingImageToChat
+
+@GeneralEvent
+interface AudioPlayerIsActivated
+
+@GeneralEvent
+interface AudioPlayerShuffleEnabled
+
+@GeneralEvent
+interface AudioPlayerLoopQueueEnabled
+
+@GeneralEvent
+interface AudioPlayerLoopPlayingItemEnabled
+
+@GeneralEvent
+interface AudioPlayerQueueReordered
