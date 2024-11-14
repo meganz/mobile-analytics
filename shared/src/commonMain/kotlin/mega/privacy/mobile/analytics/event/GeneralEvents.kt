@@ -119,3 +119,30 @@ interface VpnSplitTunnellingEnableAllApps
 
 @GeneralEvent
 interface AccountNotificationCentreDisplayedWithUnreadNotifications
+
+@GeneralEvent
+interface DocumentScanInitiated
+
+@GeneralEvent
+interface DocumentScannerSavePDFToCloudDrive
+
+@GeneralEvent
+interface DocumentScannerSavePDFToChat
+
+@GeneralEvent
+interface DocumentScannerSaveImageToCloudDrive
+
+@GeneralEvent
+interface DocumentScannerSaveImageToChat
+
+@GeneralEvent
+interface DocumentScannerUploadingPDFToCloudDrive
+
+@GeneralEvent
+interface DocumentScannerUploadingPDFToChat
+
+@GeneralEvent
+interface DocumentScannerUploadingImageToCloudDrive
+
+@GeneralEvent
+interface DocumentScannerUploadingImageToChat
