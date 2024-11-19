@@ -1301,3 +1301,33 @@ interface MeetingInfoLeaveMeetingButtonTapped
     screen = "Audio player controller"
 )
 interface AudioPlayerQueueButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Android Sync Multi FAB Button",
+    screen = "Sync list screen"
+)
+interface AndroidSyncMultiFABButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Android Backup FAB Button",
+    screen = "Sync list screen"
+)
+interface AndroidBackupFABButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Android Sync select device folder button",
+    screen = "Add new sync screen"
+)
+interface AndroidSyncSelectDeviceFolderButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Android Sync all files access permission dialog confirm button",
+    screen = "Sync List and New Sync screens"
+)
+interface AndroidSyncAllFilesAccessDialogConfirmButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Android Sync all files access permission dialog dismiss button",
+    screen = "Sync List and New Sync screens"
+)
+interface AndroidSyncAllFilesAccessDialogDismissButtonPressed

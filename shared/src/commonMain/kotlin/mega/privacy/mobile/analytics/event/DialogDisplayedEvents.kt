@@ -52,3 +52,6 @@ interface SyncFeatureUpgradeDialogDisplayed
 
 @DialogDisplayedEvent(dialog = "Upgrade to Pro to get unlimited calls", screen = "Call UI and MainTabBar screens")
 interface UpgradeToProToGetUnlimitedCallsDialog
+
+@DialogDisplayedEvent(dialog = "Android Sync all files access permission", screen = "Sync List and New Sync screens")
+interface AndroidSyncAllFilesAccessDialogDisplayed

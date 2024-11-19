@@ -161,3 +161,6 @@ interface AudioPlayerLoopPlayingItemEnabled
 
 @GeneralEvent
 interface AudioPlayerQueueReordered
+
+@GeneralEvent
+interface AndroidSyncLocalFolderSelected
