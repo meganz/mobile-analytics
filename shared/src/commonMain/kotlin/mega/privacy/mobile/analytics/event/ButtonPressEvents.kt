@@ -1331,3 +1331,33 @@ interface AndroidSyncAllFilesAccessDialogConfirmButtonPressed
     screen = "Sync List and New Sync screens"
 )
 interface AndroidSyncAllFilesAccessDialogDismissButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Sync card open device folder button",
+    screen = "Sync Card and Sync List"
+)
+interface SyncCardOpenDeviceFolderButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Sync card open MEGA folder button",
+    screen = "Sync Card and Sync List"
+)
+interface SyncCardOpenMegaFolderButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Sync card pause/run button",
+    screen = "Sync Card and Sync List"
+)
+interface SyncCardPauseRunButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Sync card stop button",
+    screen = "Sync Card and Sync List"
+)
+interface SyncCardStopButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Sync card issues info button",
+    screen = "Sync Card and Sync List"
+)
+interface SyncCardIssuesInfoButtonPressed

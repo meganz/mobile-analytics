@@ -164,3 +164,9 @@ interface AudioPlayerQueueReordered
 
 @GeneralEvent
 interface AndroidSyncLocalFolderSelected
+
+@GeneralEvent
+interface SyncFoldersListDisplayed
+
+@GeneralEvent
+interface SyncCardExpanded
