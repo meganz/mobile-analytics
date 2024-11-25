@@ -1361,3 +1361,9 @@ interface SyncCardStopButtonPressed
     screen = "Sync Card and Sync List"
 )
 interface SyncCardIssuesInfoButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Text editor edit button",
+    screen = "Text Editor Screen"
+)
+interface TextEditorEditButtonPressed

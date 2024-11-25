@@ -160,3 +160,6 @@ interface SplitTunnellingAppSelectionScreen
 
 @ScreenViewEvent
 interface NotificationCentreScreen
+
+@ScreenViewEvent
+interface TextEditorScreen

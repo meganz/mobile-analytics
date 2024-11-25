@@ -942,3 +942,129 @@ interface ChatRoomDNDMenuItem
     screen = "Meetings list screen"
 )
 interface OpenLinkMenuItem
+
+@MenuItemEvent(
+    menuItem = "Edit",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Text Editor Screen"
+)
+interface TextEditorEditMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Edit",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Text Editor Screen"
+)
+interface TextEditorEditMenuItem
+
+@MenuItemEvent(
+    menuItem = "Make available offline",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Text Editor Screen"
+)
+interface TextEditorMakeAvailableOfflineMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Make available offline",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Text Editor Screen"
+)
+interface TextEditorMakeAvailableOfflineMenuItem
+
+@MenuItemEvent(
+    menuItem = "Download",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Text Editor Screen"
+)
+interface TextEditorDownloadMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Share Link",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Text Editor Screen"
+)
+interface TextEditorShareLinkMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Share Link",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Text Editor Screen"
+)
+interface TextEditorShareLinkMenuItem
+
+@MenuItemEvent(
+    menuItem = "Close",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Text Editor Screen"
+)
+interface TextEditorCloseMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Send to chat",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Text Editor Screen"
+)
+interface TextEditorSendToChatMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Send to chat",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Text Editor Screen"
+)
+interface TextEditorSendToChatMenuItem
+
+@MenuItemEvent(
+    menuItem = "Export file",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Text Editor Screen"
+)
+interface TextEditorExportFileMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Export file",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Text Editor Screen"
+)
+interface TextEditorExportFileMenuItem
+
+@MenuItemEvent(
+    menuItem = "Rename",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Text Editor Screen"
+)
+interface TextEditorRenameMenuItem
+
+@MenuItemEvent(
+    menuItem = "Move",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Text Editor Screen"
+)
+interface TextEditorMoveMenuItem
+
+@MenuItemEvent(
+    menuItem = "Copy",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Text Editor Screen"
+)
+interface TextEditorCopyMenuItem
+
+@MenuItemEvent(
+    menuItem = "Show line numbers",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Text Editor Screen"
+)
+interface TextEditorShowLineNumbersMenuItem
+
+@MenuItemEvent(
+    menuItem = "Hide line numbers",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Text Editor Screen"
+)
+interface TextEditorHideLineNumbersMenuItem
+
+@MenuItemEvent(
+    menuItem = "Move to the Rubbish bin",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Text Editor Screen"
+)
+interface TextEditorMoveToTheRubbishBinMenuItem
