@@ -1068,3 +1068,10 @@ interface TextEditorHideLineNumbersMenuItem
     screen = "Text Editor Screen"
 )
 interface TextEditorMoveToTheRubbishBinMenuItem
+
+@MenuItemEvent(
+    menuItem = "Save Edit",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Text Editor Screen"
+)
+interface TextEditorSaveEditMenuToolbar
