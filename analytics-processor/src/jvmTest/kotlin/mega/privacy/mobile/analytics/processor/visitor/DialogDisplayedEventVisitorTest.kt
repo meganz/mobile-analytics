@@ -8,18 +8,20 @@ import com.google.devtools.ksp.symbol.KSValueArgument
 import mega.privacy.mobile.analytics.annotations.DialogDisplayedEvent
 import mega.privacy.mobile.analytics.core.event.identifier.DialogDisplayedEventIdentifier
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 import mega.privacy.mobile.analytics.processor.mockShortName
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.mockito.kotlin.mock
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class DialogDisplayedEventVisitorTest :
-    AnalyticsVisitorTest<DialogDisplayedEventVisitor>() {
-    override fun initialiseUnderTest(idGenerator: IdGenerator) =
+    SimpleIdAnalyticsVisitorTest<DialogDisplayedEventVisitor>() {
+
+    override fun initialiseUnderTest(idGenerator: IdGenerator<GenerateSimpleIdRequest>) =
         DialogDisplayedEventVisitor(idGenerator)
+
 
     @Test
     internal fun `test that event implements correct interface`() {

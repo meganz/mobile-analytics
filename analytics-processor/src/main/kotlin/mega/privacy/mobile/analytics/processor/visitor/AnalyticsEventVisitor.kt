@@ -11,6 +11,7 @@ import com.squareup.kotlinpoet.TypeSpec
 import mega.privacy.mobile.analytics.core.event.identifier.EventIdentifier
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateIdRequest
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import mega.privacy.mobile.analytics.processor.visitor.response.EventResponse
 import kotlin.reflect.KClass
@@ -21,8 +22,8 @@ import kotlin.reflect.KClass
  * @property idGenerator
  * @property eventIdentifierClass
  */
-abstract class AnalyticsEventVisitor(
-    protected val idGenerator: IdGenerator,
+abstract class AnalyticsEventVisitor<T : GenerateIdRequest>(
+    protected val idGenerator: IdGenerator<T>,
     private val eventIdentifierClass: KClass<*>,
 ) : KSDefaultVisitor<EventData, EventResponse>() {
 
@@ -67,7 +68,7 @@ abstract class AnalyticsEventVisitor(
         data: EventData,
     ): EventResponse {
         val shortName = getAnnotatedClassName(classDeclaration)
-        val newMap = idGenerator.invoke(shortName, data.idMap)
+        val newMap = idGenerator.invoke(getIdGeneratorParam(classDeclaration, data))
 
         return EventResponse(
             newMap,
@@ -79,7 +80,15 @@ abstract class AnalyticsEventVisitor(
         )
     }
 
-    private fun getAnnotatedClassName(classDeclaration: KSClassDeclaration): String =
+    /**
+     * Get id generator param
+     *
+     * @param classDeclaration
+     * @param data
+     */
+    abstract fun getIdGeneratorParam(classDeclaration: KSClassDeclaration, data: EventData): T
+
+    protected fun getAnnotatedClassName(classDeclaration: KSClassDeclaration): String =
         classDeclaration.qualifiedName?.getShortName()
             ?: throw VisitorException("Qualified name is null")
 

@@ -1,14 +1,15 @@
 package mega.privacy.mobile.analytics.processor.identifier
 
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateIdRequest
+
 /**
  * Id generator
  */
-interface IdGenerator {
+interface IdGenerator<REQUEST : GenerateIdRequest> {
     /**
      * Invoke
      *
-     * @param name
-     * @param currentIdentifiers
+     * @param request
      */
-    operator fun invoke(name: String, currentIdentifiers: Map<String, Int>): Map<String, Int>
+    operator fun invoke(request: REQUEST): Map<String, Int>
 }

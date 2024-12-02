@@ -5,13 +5,14 @@ import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSName
 import mega.privacy.mobile.analytics.core.event.identifier.ScreenViewEventIdentifier
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.mockito.kotlin.mock
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class ScreenViewVisitorTest : AnalyticsVisitorTest<ScreenViewVisitor>() {
+internal class ScreenViewVisitorTest : SimpleIdAnalyticsVisitorTest<ScreenViewVisitor>() {
 
     @Test
     internal fun `test that event implements correct interface`() {
@@ -28,7 +29,7 @@ internal class ScreenViewVisitorTest : AnalyticsVisitorTest<ScreenViewVisitor>()
         assertThat(actual).contains(ScreenViewEventIdentifier::class.qualifiedName)
     }
 
-    override fun initialiseUnderTest(idGenerator: IdGenerator) =
+    override fun initialiseUnderTest(idGenerator: IdGenerator<GenerateSimpleIdRequest>) =
         ScreenViewVisitor(idGenerator)
 
     override fun stubClassDeclaration(className: String): KSClassDeclaration {

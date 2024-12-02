@@ -9,6 +9,7 @@ import com.squareup.kotlinpoet.KModifier
 import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.core.event.identifier.TabSelectedEventIdentifier
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 import mega.privacy.mobile.analytics.processor.mockShortName
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import org.junit.jupiter.api.Test
@@ -16,8 +17,8 @@ import org.junit.jupiter.api.TestInstance
 import org.mockito.kotlin.mock
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class TabSelectedVisitorTest : AnalyticsVisitorTest<TabSelectedVisitor>() {
-    override fun initialiseUnderTest(idGenerator: IdGenerator) =
+internal class TabSelectedVisitorTest : SimpleIdAnalyticsVisitorTest<TabSelectedVisitor>() {
+    override fun initialiseUnderTest(idGenerator: IdGenerator<GenerateSimpleIdRequest>) =
         TabSelectedVisitor(idGenerator)
 
     @Test

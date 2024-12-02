@@ -1,6 +1,6 @@
 package mega.privacy.mobile.analytics.processor.visitor
 
-import com.google.common.truth.Truth.*
+import com.google.common.truth.Truth.assertThat
 import com.google.devtools.ksp.symbol.KSAnnotation
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSFunctionDeclaration
@@ -9,14 +9,13 @@ import com.google.devtools.ksp.symbol.KSValueArgument
 import com.google.devtools.ksp.symbol.KSValueParameter
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.ParameterSpec
-import com.squareup.kotlinpoet.TypeName
 import mega.privacy.mobile.analytics.annotations.StaticValue
 import mega.privacy.mobile.analytics.core.event.identifier.ItemSelectedEventIdentifier
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 import mega.privacy.mobile.analytics.processor.mockShortName
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import mega.privacy.mobile.analytics.processor.visitor.mapper.ConstructorParameterMapper
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.mockito.kotlin.mock
@@ -24,12 +23,15 @@ import org.mockito.kotlin.stub
 import kotlin.reflect.KClass
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class ItemSelectedEventVisitorTest : AnalyticsVisitorTest<ItemSelectedEventVisitor>() {
+internal class ItemSelectedEventVisitorTest :
+    SimpleIdAnalyticsVisitorTest<ItemSelectedEventVisitor>() {
+
     private val constructorParameterMapper = mock<ConstructorParameterMapper>()
-    override fun initialiseUnderTest(idGenerator: IdGenerator) = ItemSelectedEventVisitor(
-        constructorParameterMapper = constructorParameterMapper,
-        idGenerator = idGenerator,
-    )
+    override fun initialiseUnderTest(idGenerator: IdGenerator<GenerateSimpleIdRequest>) =
+        ItemSelectedEventVisitor(
+            constructorParameterMapper = constructorParameterMapper,
+            idGenerator = idGenerator,
+        )
 
     @Test
     internal fun `test that event implements correct interface`() {

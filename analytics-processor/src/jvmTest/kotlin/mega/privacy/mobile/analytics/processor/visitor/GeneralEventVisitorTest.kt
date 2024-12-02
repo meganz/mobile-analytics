@@ -1,6 +1,6 @@
 package mega.privacy.mobile.analytics.processor.visitor
 
-import com.google.common.truth.Truth.*
+import com.google.common.truth.Truth.assertThat
 import com.google.devtools.ksp.symbol.KSAnnotation
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSFunctionDeclaration
@@ -12,10 +12,10 @@ import com.squareup.kotlinpoet.ParameterSpec
 import mega.privacy.mobile.analytics.annotations.StaticValue
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 import mega.privacy.mobile.analytics.processor.mockShortName
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import mega.privacy.mobile.analytics.processor.visitor.mapper.ConstructorParameterMapper
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.mockito.kotlin.mock
@@ -23,9 +23,10 @@ import org.mockito.kotlin.stub
 import kotlin.reflect.KClass
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class GeneralEventVisitorTest : AnalyticsVisitorTest<GeneralEventVisitor>() {
+internal class GeneralEventVisitorTest : SimpleIdAnalyticsVisitorTest<GeneralEventVisitor>() {
+
     private val constructorParameterMapper = mock<ConstructorParameterMapper>()
-    override fun initialiseUnderTest(idGenerator: IdGenerator): GeneralEventVisitor {
+    override fun initialiseUnderTest(idGenerator: IdGenerator<GenerateSimpleIdRequest>): GeneralEventVisitor {
         return GeneralEventVisitor(
             constructorParameterMapper = constructorParameterMapper,
             idGenerator = idGenerator,

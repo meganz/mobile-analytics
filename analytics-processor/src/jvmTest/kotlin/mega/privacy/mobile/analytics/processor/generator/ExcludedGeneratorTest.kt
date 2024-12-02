@@ -12,6 +12,7 @@ import mega.privacy.mobile.analytics.processor.AnalyticsEventProcessor
 import mega.privacy.mobile.analytics.processor.TestProcessorProvider
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
+import mega.privacy.mobile.analytics.processor.identifier.SingleRangeIdGenerator
 import mega.privacy.mobile.analytics.processor.visitor.TabSelectedVisitor
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -25,7 +26,7 @@ class ExcludedGeneratorTest {
     private val annotationClass = TabSelectedEvent::class
     private val codeGenerator = mock<CodeGenerator>()
     private val idProvider = mock<IdProvider>()
-    private val idGenerator = mock<IdGenerator>()
+    private val idGenerator = mock<SingleRangeIdGenerator>()
 
     private val visitor = TabSelectedVisitor(idGenerator)
 

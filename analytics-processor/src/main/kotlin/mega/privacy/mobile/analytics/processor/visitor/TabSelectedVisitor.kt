@@ -8,6 +8,7 @@ import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.core.event.identifier.TabSelectedEventIdentifier
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 
 /**
  * Tab selected visitor
@@ -16,8 +17,8 @@ import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
  *
  * @param idGenerator
  */
-class TabSelectedVisitor(idGenerator: IdGenerator) :
-    AnalyticsEventVisitor(idGenerator, TabSelectedEventIdentifier::class) {
+class TabSelectedVisitor(idGenerator: IdGenerator<GenerateSimpleIdRequest>) :
+    SimpleIdAnalyticsEventVisitor(idGenerator, TabSelectedEventIdentifier::class) {
 
     override fun getProperties(classDeclaration: KSClassDeclaration): List<PropertySpec> {
         val annotation: KSAnnotation =

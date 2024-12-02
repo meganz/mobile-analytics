@@ -9,6 +9,7 @@ import mega.privacy.mobile.analytics.annotations.NavigationEvent
 import mega.privacy.mobile.analytics.core.event.identifier.NavigationEventIdentifier
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 
 /**
  * Menu item event visitor
@@ -17,8 +18,8 @@ import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
  *
  * @param idGenerator
  */
-class NavigationEventVisitor(idGenerator: IdGenerator) :
-    AnalyticsEventVisitor(idGenerator, NavigationEventIdentifier::class) {
+class NavigationEventVisitor(idGenerator: IdGenerator<GenerateSimpleIdRequest>) :
+    SimpleIdAnalyticsEventVisitor(idGenerator, NavigationEventIdentifier::class) {
 
     override fun getProperties(classDeclaration: KSClassDeclaration): List<PropertySpec> {
         val annotation: KSAnnotation =

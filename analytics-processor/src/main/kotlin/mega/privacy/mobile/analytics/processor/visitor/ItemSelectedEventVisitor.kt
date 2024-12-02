@@ -14,6 +14,7 @@ import mega.privacy.mobile.analytics.annotations.StaticValue
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.ItemSelectedEventIdentifier
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import mega.privacy.mobile.analytics.processor.visitor.mapper.ConstructorParameterMapper
 import mega.privacy.mobile.analytics.processor.visitor.response.EventResponse
@@ -25,8 +26,8 @@ import mega.privacy.mobile.analytics.processor.visitor.response.EventResponse
  */
 class ItemSelectedEventVisitor(
     private val constructorParameterMapper: ConstructorParameterMapper,
-    idGenerator: IdGenerator,
-) : AnalyticsEventVisitor(idGenerator, ItemSelectedEventIdentifier::class) {
+    idGenerator: IdGenerator<GenerateSimpleIdRequest>,
+) : SimpleIdAnalyticsEventVisitor(idGenerator, ItemSelectedEventIdentifier::class) {
 
     private var constructorValues: List<KSValueParameter>? = null
 

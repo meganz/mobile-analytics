@@ -11,6 +11,7 @@ import mega.privacy.mobile.analytics.annotations.NotificationEvent
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
 import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 import mega.privacy.mobile.analytics.processor.visitor.ButtonPressVisitor
 import mega.privacy.mobile.analytics.processor.visitor.DialogDisplayedEventVisitor
 import mega.privacy.mobile.analytics.processor.visitor.GeneralEventVisitor
@@ -28,9 +29,9 @@ import kotlin.reflect.KClass
 /**
  * Annotation visitor factory
  *
- * @property idGenerator
+ * @property simpleIdGenerator
  */
-class AnnotationVisitorFactory(private val idGenerator: IdGenerator) {
+class AnnotationVisitorFactory(private val simpleIdGenerator: IdGenerator<GenerateSimpleIdRequest>) {
     /**
      * Invoke
      *
@@ -39,29 +40,29 @@ class AnnotationVisitorFactory(private val idGenerator: IdGenerator) {
      */
     operator fun invoke(annotationType: KClass<*>): KSDefaultVisitor<EventData, EventResponse> {
         return when (annotationType) {
-            ScreenViewEvent::class -> ScreenViewVisitor(idGenerator = idGenerator)
+            ScreenViewEvent::class -> ScreenViewVisitor(idGenerator = simpleIdGenerator)
 
-            TabSelectedEvent::class -> TabSelectedVisitor(idGenerator = idGenerator)
+            TabSelectedEvent::class -> TabSelectedVisitor(idGenerator = simpleIdGenerator)
 
             GeneralEvent::class -> GeneralEventVisitor(
                 constructorParameterMapper = ConstructorParameterMapper(),
-                idGenerator = idGenerator
+                idGenerator = simpleIdGenerator
             )
 
-            ButtonPressEvent::class -> ButtonPressVisitor(idGenerator = idGenerator)
+            ButtonPressEvent::class -> ButtonPressVisitor(idGenerator = simpleIdGenerator)
 
             ItemSelectedEvent::class -> ItemSelectedEventVisitor(
                 constructorParameterMapper = ConstructorParameterMapper(),
-                idGenerator = idGenerator
+                idGenerator = simpleIdGenerator
             )
 
-            MenuItemEvent::class -> MenuItemEventVisitor(idGenerator = idGenerator)
+            MenuItemEvent::class -> MenuItemEventVisitor(idGenerator = simpleIdGenerator)
 
-            NavigationEvent::class -> NavigationEventVisitor(idGenerator = idGenerator)
+            NavigationEvent::class -> NavigationEventVisitor(idGenerator = simpleIdGenerator)
 
-            NotificationEvent::class -> NotificationEventVisitor(idGenerator = idGenerator)
+            NotificationEvent::class -> NotificationEventVisitor(idGenerator = simpleIdGenerator)
 
-            DialogDisplayedEvent::class -> DialogDisplayedEventVisitor(idGenerator = idGenerator)
+            DialogDisplayedEvent::class -> DialogDisplayedEventVisitor(idGenerator = simpleIdGenerator)
 
             else -> throw IllegalArgumentException("No visitor class registered for event type ${annotationType.simpleName}. Please add registration to ${AnnotationVisitorFactory::class.simpleName}")
         }

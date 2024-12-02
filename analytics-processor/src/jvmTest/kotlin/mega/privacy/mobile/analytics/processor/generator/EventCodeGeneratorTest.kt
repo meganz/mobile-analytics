@@ -12,6 +12,7 @@ import mega.privacy.mobile.analytics.processor.TestProcessorProvider
 import mega.privacy.mobile.analytics.processor.generator.parameter.GeneratorCodeTestParameter
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateIdRequest
 import mega.privacy.mobile.analytics.processor.visitor.AnalyticsEventVisitor
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -21,18 +22,18 @@ import org.mockito.kotlin.mock
 import java.io.File
 import kotlin.reflect.KClass
 
-abstract class EventCodeGeneratorTest {
+abstract class EventCodeGeneratorTest<T : GenerateIdRequest> {
     private lateinit var underTest: EventCodeGenerator
 
     protected abstract val testParams: GeneratorCodeTestParameter
     protected abstract val annotationClass: KClass<*>
-    protected abstract fun visitor(idGenerator: IdGenerator): AnalyticsEventVisitor
+    protected abstract fun visitor(idGenerator: IdGenerator<T>): AnalyticsEventVisitor<T>
 
     @TempDir
     lateinit var temporaryFolder: File
     private val codeGenerator = mock<CodeGenerator>()
     private val idProvider = mock<IdProvider>()
-    private val idGenerator = mock<IdGenerator>()
+    private val idGenerator = mock<IdGenerator<T>>()
 
 
     @BeforeEach

@@ -4,6 +4,7 @@ import com.google.common.truth.Truth.assertThat
 import mega.privacy.mobile.analytics.processor.exception.NoIdAvailableException
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.identifier.SingleRangeIdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -11,7 +12,7 @@ import org.junit.jupiter.api.assertThrows
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class IdGeneratorTest {
-    private lateinit var underTest: IdGenerator
+    private lateinit var underTest: IdGenerator<GenerateSimpleIdRequest>
 
     private val idRange = 8..50
 
@@ -25,7 +26,7 @@ class IdGeneratorTest {
         val testName = "TestName"
         val expected = 23
         val idMap = mapOf(testName to expected)
-        val actual = underTest(testName, idMap)[testName]
+        val actual = underTest(GenerateSimpleIdRequest(testName, idMap))[testName]
         assertThat(actual).isEqualTo(expected)
     }
 
@@ -34,7 +35,7 @@ class IdGeneratorTest {
         val testName = "TestName"
         val expected = idRange.first
         val idMap = emptyMap<String, Int>()
-        val actual = underTest(testName, idMap)[testName]
+        val actual = underTest(GenerateSimpleIdRequest(testName, idMap))[testName]
         assertThat(actual).isEqualTo(expected)
     }
 
@@ -43,7 +44,7 @@ class IdGeneratorTest {
         val testName = "TestName"
         val expected = idRange[1]
         val idMap = mapOf("Existing" to idRange[0])
-        val actual = underTest(testName, idMap)[testName]
+        val actual = underTest(GenerateSimpleIdRequest(testName, idMap))[testName]
         assertThat(actual).isEqualTo(expected)
     }
 
@@ -55,7 +56,7 @@ class IdGeneratorTest {
             "Existing" to idRange[0],
             "Existing2" to idRange[1]
         )
-        val actual = underTest(testName, idMap)[testName]
+        val actual = underTest(GenerateSimpleIdRequest(testName, idMap))[testName]
         assertThat(actual).isEqualTo(expected)
     }
 
@@ -63,7 +64,7 @@ class IdGeneratorTest {
     internal fun `test that an exception is thrown if no valid id exists in range`() {
         val testName = "TestName"
         val idMap = idRange.associateBy { it.toString() }
-        assertThrows<NoIdAvailableException> { underTest(testName, idMap) }
+        assertThrows<NoIdAvailableException> { underTest(GenerateSimpleIdRequest(testName, idMap)) }
     }
 
     operator fun IntRange.get(index: Int) = this.toList()[index]

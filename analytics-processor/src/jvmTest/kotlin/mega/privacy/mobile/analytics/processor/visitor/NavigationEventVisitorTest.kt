@@ -8,16 +8,16 @@ import com.google.devtools.ksp.symbol.KSValueArgument
 import mega.privacy.mobile.analytics.annotations.NavigationEvent
 import mega.privacy.mobile.analytics.core.event.identifier.NavigationEventIdentifier
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 import mega.privacy.mobile.analytics.processor.mockShortName
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.mockito.kotlin.mock
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class NavigationEventVisitorTest : AnalyticsVisitorTest<NavigationEventVisitor>() {
-    override fun initialiseUnderTest(idGenerator: IdGenerator) =
+internal class NavigationEventVisitorTest : SimpleIdAnalyticsVisitorTest<NavigationEventVisitor>() {
+    override fun initialiseUnderTest(idGenerator: IdGenerator<GenerateSimpleIdRequest>) =
         NavigationEventVisitor(idGenerator)
 
     @Test

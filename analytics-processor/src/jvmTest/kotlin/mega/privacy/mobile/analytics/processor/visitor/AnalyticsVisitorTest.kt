@@ -2,32 +2,35 @@ package mega.privacy.mobile.analytics.processor.visitor
 
 import com.google.common.truth.Truth.assertThat
 import com.google.devtools.ksp.symbol.KSClassDeclaration
-import com.google.devtools.ksp.symbol.KSName
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.TypeSpec
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateIdRequest
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.mockito.kotlin.KStubbing
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
+import org.mockito.kotlin.stub
 
-abstract class AnalyticsVisitorTest<T : AnalyticsEventVisitor> {
+abstract class AnalyticsVisitorTest<T : AnalyticsEventVisitor<R>, R : GenerateIdRequest> {
     protected lateinit var underTest: T
 
     protected val eventIdentifier = 42
-    protected val idGenerator = mock<IdGenerator> {
-        on { invoke(any(), any()) }.thenAnswer { mapOf(it.arguments[0] to eventIdentifier) }
-    }
+    protected val idGenerator = mock<IdGenerator<R>>()
+
+    protected abstract fun stubGenerator(): KStubbing<IdGenerator<R>>.(IdGenerator<R>) -> Unit
 
     @BeforeEach
     internal fun setUp() {
         underTest = initialiseUnderTest(idGenerator)
+        idGenerator.stub(stubGenerator())
     }
 
-    abstract fun initialiseUnderTest(idGenerator: IdGenerator): T
+    abstract fun initialiseUnderTest(idGenerator: IdGenerator<R>): T
 
     @Test
     internal fun `test that exception is thrown if no name is present`() {

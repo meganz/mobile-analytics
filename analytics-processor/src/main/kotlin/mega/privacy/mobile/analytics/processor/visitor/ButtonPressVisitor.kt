@@ -12,6 +12,7 @@ import mega.privacy.mobile.analytics.core.event.identifier.ButtonPressedEventIde
 import mega.privacy.mobile.analytics.core.event.identifier.TabSelectedEventIdentifier
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 
 /**
  * Button press visitor
@@ -20,8 +21,8 @@ import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
  *
  * @param idGenerator
  */
-class ButtonPressVisitor(idGenerator: IdGenerator) :
-    AnalyticsEventVisitor(idGenerator, ButtonPressedEventIdentifier::class) {
+class ButtonPressVisitor(idGenerator: IdGenerator<GenerateSimpleIdRequest>) :
+    SimpleIdAnalyticsEventVisitor(idGenerator, ButtonPressedEventIdentifier::class) {
 
     override fun getProperties(classDeclaration: KSClassDeclaration): List<PropertySpec> {
         val annotation: KSAnnotation =

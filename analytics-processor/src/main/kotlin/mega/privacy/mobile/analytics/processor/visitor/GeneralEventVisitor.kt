@@ -13,6 +13,7 @@ import com.squareup.kotlinpoet.asTypeName
 import mega.privacy.mobile.analytics.annotations.StaticValue
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import mega.privacy.mobile.analytics.processor.visitor.mapper.ConstructorParameterMapper
 import mega.privacy.mobile.analytics.processor.visitor.response.EventResponse
@@ -24,8 +25,8 @@ import mega.privacy.mobile.analytics.processor.visitor.response.EventResponse
  */
 class GeneralEventVisitor(
     private val constructorParameterMapper: ConstructorParameterMapper,
-    idGenerator: IdGenerator,
-) : AnalyticsEventVisitor(idGenerator, GeneralEventIdentifier::class) {
+    idGenerator: IdGenerator<GenerateSimpleIdRequest>
+) : SimpleIdAnalyticsEventVisitor(idGenerator, GeneralEventIdentifier::class) {
 
     private var constructorValues: List<KSValueParameter>? = null
 

@@ -9,6 +9,7 @@ import mega.privacy.mobile.analytics.annotations.DialogDisplayedEvent
 import mega.privacy.mobile.analytics.core.event.identifier.DialogDisplayedEventIdentifier
 import mega.privacy.mobile.analytics.processor.exception.VisitorException
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 
 /**
  * Dialog displayed event visitor
@@ -17,8 +18,8 @@ import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
  *
  * @param idGenerator
  */
-class DialogDisplayedEventVisitor(idGenerator: IdGenerator) :
-    AnalyticsEventVisitor(idGenerator, DialogDisplayedEventIdentifier::class) {
+class DialogDisplayedEventVisitor(idGenerator: IdGenerator<GenerateSimpleIdRequest>) :
+    SimpleIdAnalyticsEventVisitor(idGenerator, DialogDisplayedEventIdentifier::class) {
 
     override fun getProperties(classDeclaration: KSClassDeclaration): List<PropertySpec> {
         val annotation: KSAnnotation =

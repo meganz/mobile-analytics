@@ -1,6 +1,5 @@
 package mega.privacy.mobile.analytics.processor.visitor
 
-import com.google.common.truth.Truth
 import com.google.common.truth.Truth.assertThat
 import com.google.devtools.ksp.symbol.KSAnnotation
 import com.google.devtools.ksp.symbol.KSClassDeclaration
@@ -8,18 +7,17 @@ import com.google.devtools.ksp.symbol.KSName
 import com.google.devtools.ksp.symbol.KSValueArgument
 import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
 import mega.privacy.mobile.analytics.core.event.identifier.ButtonPressedEventIdentifier
-import mega.privacy.mobile.analytics.core.event.identifier.TabSelectedEventIdentifier
 import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
+import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 import mega.privacy.mobile.analytics.processor.mockShortName
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.mockito.kotlin.mock
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class ButtonPressVisitorTest : AnalyticsVisitorTest<ButtonPressVisitor>() {
-    override fun initialiseUnderTest(idGenerator: IdGenerator) =
+internal class ButtonPressVisitorTest : SimpleIdAnalyticsVisitorTest<ButtonPressVisitor>() {
+    override fun initialiseUnderTest(idGenerator: IdGenerator<GenerateSimpleIdRequest>) =
         ButtonPressVisitor(idGenerator)
 
     @Test
