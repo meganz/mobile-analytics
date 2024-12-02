@@ -6,6 +6,7 @@ import mega.privacy.mobile.analytics.core.event.type.ButtonPressedEvent
 import mega.privacy.mobile.analytics.core.event.type.DialogDisplayedEvent
 import mega.privacy.mobile.analytics.core.event.type.GeneralEvent
 import mega.privacy.mobile.analytics.core.event.type.ItemSelectedEvent
+import mega.privacy.mobile.analytics.core.event.type.LegacyEvent
 import mega.privacy.mobile.analytics.core.event.type.MenuItemEvent
 import mega.privacy.mobile.analytics.core.event.type.NavigationEvent
 import mega.privacy.mobile.analytics.core.event.type.NotificationEvent
@@ -109,9 +110,17 @@ class EventGeneratorTest {
     }
 
     @Test
+    fun `test that legacy event identifier returns a legacy event`() = runTest {
+        val fakeLegacyEventInfo = FakeEventProvider.legacyEventIdentifier
+        val actual = underTest.generateEvent(fakeLegacyEventInfo)
+
+        assertTrue(actual is LegacyEvent)
+    }
+
+    @Test
     internal fun `test that every event returns with the correct app identifier`() = runTest {
         eventIdentifierProvider.forEach {
-            val actual = underTest.generateEvent(it.value).appIdentifier
+            val actual = underTest.generateEvent(it).appIdentifier
             assertEquals(actual, fakeAppIdentifier)
         }
     }

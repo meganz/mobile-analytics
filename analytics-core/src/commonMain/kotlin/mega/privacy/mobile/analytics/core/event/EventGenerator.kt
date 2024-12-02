@@ -6,6 +6,7 @@ import mega.privacy.mobile.analytics.core.event.identifier.DialogDisplayedEventI
 import mega.privacy.mobile.analytics.core.event.identifier.EventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.ItemSelectedEventIdentifier
+import mega.privacy.mobile.analytics.core.event.identifier.LegacyEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.MenuItemEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.NavigationEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.NotificationEventIdentifier
@@ -16,6 +17,7 @@ import mega.privacy.mobile.analytics.core.event.type.ButtonPressedEvent
 import mega.privacy.mobile.analytics.core.event.type.DialogDisplayedEvent
 import mega.privacy.mobile.analytics.core.event.type.GeneralEvent
 import mega.privacy.mobile.analytics.core.event.type.ItemSelectedEvent
+import mega.privacy.mobile.analytics.core.event.type.LegacyEvent
 import mega.privacy.mobile.analytics.core.event.type.MenuItemEvent
 import mega.privacy.mobile.analytics.core.event.type.NavigationEvent
 import mega.privacy.mobile.analytics.core.event.type.NotificationEvent
@@ -43,56 +45,62 @@ class EventGenerator(
     suspend fun generateEvent(eventIdentifier: EventIdentifier): AnalyticsEvent {
         return when (eventIdentifier) {
             is ScreenViewEventIdentifier -> trackScreenView(
-                eventIdentifier,
-                viewIdProvider(),
-                appIdentifier
+                eventIdentifier = eventIdentifier,
+                viewIdentifier = viewIdProvider(),
+                appIdentifier = appIdentifier,
             )
 
             is ButtonPressedEventIdentifier -> ButtonPressedEvent(
-                eventIdentifier,
-                currentViewId,
-                appIdentifier
+                eventIdentifier = eventIdentifier,
+                viewId = currentViewId,
+                appIdentifier = appIdentifier,
             )
 
             is DialogDisplayedEventIdentifier -> DialogDisplayedEvent(
-                eventIdentifier,
-                currentViewId,
-                appIdentifier
+                eventIdentifier = eventIdentifier,
+                viewId = currentViewId,
+                appIdentifier = appIdentifier,
             )
 
             is GeneralEventIdentifier -> GeneralEvent(
-                eventIdentifier,
-                currentViewId,
-                appIdentifier
+                eventIdentifier = eventIdentifier,
+                viewId = currentViewId,
+                appIdentifier = appIdentifier,
             )
 
             is ItemSelectedEventIdentifier -> ItemSelectedEvent(
-                eventIdentifier,
-                currentViewId,
-                appIdentifier
+                eventIdentifier = eventIdentifier,
+                viewId = currentViewId,
+                appIdentifier = appIdentifier,
             )
 
             is MenuItemEventIdentifier -> MenuItemEvent(
-                eventIdentifier,
-                currentViewId,
-                appIdentifier
+                eventIdentifier = eventIdentifier,
+                viewId = currentViewId,
+                appIdentifier = appIdentifier,
             )
 
             is NavigationEventIdentifier -> NavigationEvent(
-                eventIdentifier,
-                currentViewId,
-                appIdentifier
+                eventIdentifier = eventIdentifier,
+                viewId = currentViewId,
+                appIdentifier = appIdentifier,
             )
 
             is NotificationEventIdentifier -> NotificationEvent(
-                eventIdentifier,
-                appIdentifier
+                eventIdentifier = eventIdentifier,
+                appIdentifier = appIdentifier,
             )
 
             is TabSelectedEventIdentifier -> TabSelectedEvent(
-                eventIdentifier,
-                currentViewId ?: viewIdProvider(),
-                appIdentifier
+                eventIdentifier = eventIdentifier,
+                viewId = currentViewId ?: viewIdProvider(),
+                appIdentifier = appIdentifier,
+            )
+
+            is LegacyEventIdentifier -> LegacyEvent(
+                eventIdentifier = eventIdentifier,
+                viewId = currentViewId,
+                appIdentifier = appIdentifier,
             )
 
             else -> throw NotImplementedError("Not yet implemented")

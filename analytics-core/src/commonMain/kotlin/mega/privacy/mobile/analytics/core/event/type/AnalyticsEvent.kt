@@ -14,7 +14,7 @@ abstract class AnalyticsEvent {
      * Get event identifier
      *
      */
-    fun getEventIdentifier() =
+    open fun getEventIdentifier() =
         platformEventIdentifier + eventTypeIdentifier + eventIdentifier.uniqueIdentifier + appIdentifier.identifier
 
     /**

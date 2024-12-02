@@ -5,32 +5,12 @@ import mega.privacy.mobile.analytics.core.event.identifier.DialogDisplayedEventI
 import mega.privacy.mobile.analytics.core.event.identifier.EventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.ItemSelectedEventIdentifier
+import mega.privacy.mobile.analytics.core.event.identifier.LegacyEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.MenuItemEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.NavigationEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.NotificationEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.ScreenViewEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.TabSelectedEventIdentifier
-import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.EventType.ButtonPressed
-import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.EventType.DialogDisplayed
-import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.EventType.General
-import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.EventType.ItemSelected
-import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.EventType.MenuItem
-import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.EventType.Navigation
-import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.EventType.Notification
-import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.EventType.ScreenView
-import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.EventType.TabSelected
-
-internal enum class EventType {
-    ScreenView,
-    ButtonPressed,
-    DialogDisplayed,
-    General,
-    ItemSelected,
-    MenuItem,
-    Navigation,
-    Notification,
-    TabSelected
-}
 
 internal object FakeEventProvider {
     val screenViewEventIdentifier = object : ScreenViewEventIdentifier {
@@ -115,18 +95,25 @@ internal object FakeEventProvider {
         override val uniqueIdentifier: Int
             get() = 123
     }
+    val legacyEventIdentifier = object : LegacyEventIdentifier {
+        override val eventName: String
+            get() = "expectedEventName"
+        override val uniqueIdentifier: Int
+            get() = 123
+    }
 }
 
 internal object EventDataProvider {
-    val eventIdentifierProvider: Map<EventType, EventIdentifier> = mapOf(
-        ScreenView to FakeEventProvider.screenViewEventIdentifier,
-        ButtonPressed to FakeEventProvider.buttonPressedEventIdentifier,
-        DialogDisplayed to FakeEventProvider.dialogDisplayedEventIdentifier,
-        General to FakeEventProvider.generalEventIdentifier,
-        ItemSelected to FakeEventProvider.itemSelectedEventIdentifier,
-        MenuItem to FakeEventProvider.menuItemEventIdentifier,
-        Navigation to FakeEventProvider.navigationEventIdentifier,
-        Notification to FakeEventProvider.notificationEventIdentifier,
-        TabSelected to FakeEventProvider.tabSelectedEventIdentifier
+    val eventIdentifierProvider: List<EventIdentifier> = listOf(
+        FakeEventProvider.screenViewEventIdentifier,
+        FakeEventProvider.buttonPressedEventIdentifier,
+        FakeEventProvider.dialogDisplayedEventIdentifier,
+        FakeEventProvider.generalEventIdentifier,
+        FakeEventProvider.itemSelectedEventIdentifier,
+        FakeEventProvider.menuItemEventIdentifier,
+        FakeEventProvider.navigationEventIdentifier,
+        FakeEventProvider.notificationEventIdentifier,
+        FakeEventProvider.tabSelectedEventIdentifier,
+        FakeEventProvider.legacyEventIdentifier,
     )
 }

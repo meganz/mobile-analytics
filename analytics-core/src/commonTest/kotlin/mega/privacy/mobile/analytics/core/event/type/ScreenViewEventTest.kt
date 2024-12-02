@@ -1,9 +1,7 @@
 package mega.privacy.mobile.analytics.core.event.type
 
-import mega.privacy.mobile.analytics.core.event.identifier.AppIdentifier
-import mega.privacy.mobile.analytics.core.mapper.EventDataMapper
 import mega.privacy.mobile.analytics.core.event.identifier.ScreenViewEventIdentifier
-import mega.privacy.mobile.analytics.core.getPlatform
+import mega.privacy.mobile.analytics.core.mapper.EventDataMapper
 import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.eventIdentifier
 import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.expectedAppIdentifier
 import mega.privacy.mobile.analytics.core.mapper.mega.privacy.mobile.analytics.core.event.testEventIdentifier
