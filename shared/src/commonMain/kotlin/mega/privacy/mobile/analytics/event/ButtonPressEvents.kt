@@ -1,6 +1,7 @@
 package mega.privacy.mobile.analytics.event
 
 import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
+
 @ButtonPressEvent(
     buttonName = "DeleteAlbumCancelButton",
     screen = "PhotoScreen",
@@ -1367,3 +1368,15 @@ interface SyncCardIssuesInfoButtonPressed
     screen = "Text Editor Screen"
 )
 interface TextEditorEditButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Turn on autolock toggle",
+    screen = "Settings Screen"
+)
+interface AutolockToggleEnabled
+
+@ButtonPressEvent(
+    buttonName = "Turn off autolock toggle",
+    screen = "Settings Screen"
+)
+interface AutolockToggleDisabled
