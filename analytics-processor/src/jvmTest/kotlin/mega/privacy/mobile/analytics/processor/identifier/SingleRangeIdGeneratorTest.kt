@@ -1,9 +1,7 @@
-package mega.privacy.mobile.analytics.processor
+package mega.privacy.mobile.analytics.processor.identifier
 
-import com.google.common.truth.Truth.assertThat
+import com.google.common.truth.Truth
 import mega.privacy.mobile.analytics.processor.exception.NoIdAvailableException
-import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
-import mega.privacy.mobile.analytics.processor.identifier.SingleRangeIdGenerator
 import mega.privacy.mobile.analytics.processor.identifier.model.GenerateSimpleIdRequest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -11,8 +9,8 @@ import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.assertThrows
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class IdGeneratorTest {
-    private lateinit var underTest: IdGenerator<GenerateSimpleIdRequest>
+class SingleRangeIdGeneratorTest {
+    private lateinit var underTest: SingleRangeIdGenerator
 
     private val idRange = 8..50
 
@@ -27,7 +25,7 @@ class IdGeneratorTest {
         val expected = 23
         val idMap = mapOf(testName to expected)
         val actual = underTest(GenerateSimpleIdRequest(testName, idMap))[testName]
-        assertThat(actual).isEqualTo(expected)
+        Truth.assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -36,7 +34,7 @@ class IdGeneratorTest {
         val expected = idRange.first
         val idMap = emptyMap<String, Int>()
         val actual = underTest(GenerateSimpleIdRequest(testName, idMap))[testName]
-        assertThat(actual).isEqualTo(expected)
+        Truth.assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -45,7 +43,7 @@ class IdGeneratorTest {
         val expected = idRange[1]
         val idMap = mapOf("Existing" to idRange[0])
         val actual = underTest(GenerateSimpleIdRequest(testName, idMap))[testName]
-        assertThat(actual).isEqualTo(expected)
+        Truth.assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -57,7 +55,7 @@ class IdGeneratorTest {
             "Existing2" to idRange[1]
         )
         val actual = underTest(GenerateSimpleIdRequest(testName, idMap))[testName]
-        assertThat(actual).isEqualTo(expected)
+        Truth.assertThat(actual).isEqualTo(expected)
     }
 
     @Test
