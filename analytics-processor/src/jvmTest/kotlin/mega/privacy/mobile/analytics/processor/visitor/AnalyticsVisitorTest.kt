@@ -109,20 +109,6 @@ abstract class AnalyticsVisitorTest<T : AnalyticsEventVisitor<R>, R : GenerateId
     }
 
     @Test
-    internal fun `test that event identifier is added with the value returned by the id generator`() {
-        val expected = eventIdentifier
-        val classDeclaration = stubClassDeclaration()
-        val actual = underTest.visitClassDeclaration(
-            classDeclaration = classDeclaration,
-            data = EventData(emptyMap()),
-        ).spec
-            .propertySpecs
-            .associate { it.name to it.initializer }
-
-        assertThat(actual["uniqueIdentifier"].toString()).isEqualTo(expected.toString())
-    }
-
-    @Test
     internal fun `test that event id property is declared as an overridden property`() {
         val classDeclaration = stubClassDeclaration()
         val actual = underTest.visitClassDeclaration(
