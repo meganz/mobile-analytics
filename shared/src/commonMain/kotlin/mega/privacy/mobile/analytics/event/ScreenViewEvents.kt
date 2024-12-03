@@ -163,3 +163,6 @@ interface NotificationCentreScreen
 
 @ScreenViewEvent
 interface TextEditorScreen
+
+@ScreenViewEvent
+interface RegionsListScreen

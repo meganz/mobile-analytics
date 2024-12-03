@@ -218,3 +218,9 @@ class DurationFilterBetween4and20MinutesClicked
 
 @ItemSelectedEvent
 class DurationFilterMoreThan20MinutesClicked
+
+@ItemSelectedEvent
+interface RegionSearchResultItemSelected
+
+@ItemSelectedEvent
+interface RegionSearchBarClicked
