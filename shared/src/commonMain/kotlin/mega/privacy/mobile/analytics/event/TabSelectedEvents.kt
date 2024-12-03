@@ -28,3 +28,9 @@ interface OutgoingSharesTab
 
 @TabSelectedEvent(screenName = "SharedItemsScreen", tabName = "Link Shares")
 interface LinkSharesTab
+
+@TabSelectedEvent(screenName = "VideoSectionScreen", tabName = "All videos")
+interface AllVideosTab
+
+@TabSelectedEvent(screenName = "VideoSectionScreen", tabName = "Playlists")
+interface PlaylistsTab

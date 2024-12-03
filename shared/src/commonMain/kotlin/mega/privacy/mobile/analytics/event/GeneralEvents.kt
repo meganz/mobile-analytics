@@ -170,3 +170,6 @@ interface SyncFoldersListDisplayed
 
 @GeneralEvent
 interface SyncCardExpanded
+
+@GeneralEvent
+interface PlaylistCreatedSuccessfully

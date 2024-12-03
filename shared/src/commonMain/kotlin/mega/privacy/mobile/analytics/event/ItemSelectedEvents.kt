@@ -188,3 +188,33 @@ class SearchDateAddedLastYearClicked
 
 @ItemSelectedEvent
 class SearchDateAddedOlderClicked
+
+@ItemSelectedEvent
+class LocationFilterAllLocationsClicked
+
+@ItemSelectedEvent
+class LocationFilterCloudDriveClicked
+
+@ItemSelectedEvent
+class LocationFilterCameraUploadClicked
+
+@ItemSelectedEvent
+class LocationFilterSharedItemClicked
+
+@ItemSelectedEvent
+class DurationFilterAllDurationsClicked
+
+@ItemSelectedEvent
+class DurationFilterLessThan10SecondsClicked
+
+@ItemSelectedEvent
+class DurationFilterBetween10and60SecondsClicked
+
+@ItemSelectedEvent
+class DurationFilterBetween1and4MinutesClicked
+
+@ItemSelectedEvent
+class DurationFilterBetween4and20MinutesClicked
+
+@ItemSelectedEvent
+class DurationFilterMoreThan20MinutesClicked

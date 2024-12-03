@@ -1380,3 +1380,21 @@ interface AutolockToggleEnabled
     screen = "Settings Screen"
 )
 interface AutolockToggleDisabled
+
+@ButtonPressEvent(
+    buttonName = "Video playlist creation button",
+    screen = "Video Section Screen"
+)
+interface VideoPlaylistCreationButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Open recently watched video button",
+    screen = "Video Section Screen"
+)
+interface RecentlyWatchedOpenedButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Search button",
+    screen = "Video Section Screen"
+)
+interface VideoSectionSearchButtonPressed
