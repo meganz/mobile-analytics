@@ -7,6 +7,7 @@ import mega.privacy.mobile.analytics.annotations.DialogDisplayedEvent
 import mega.privacy.mobile.analytics.annotations.Exclude
 import mega.privacy.mobile.analytics.annotations.GeneralEvent
 import mega.privacy.mobile.analytics.annotations.ItemSelectedEvent
+import mega.privacy.mobile.analytics.annotations.LegacyEvent
 import mega.privacy.mobile.analytics.annotations.MenuItemEvent
 import mega.privacy.mobile.analytics.annotations.NavigationEvent
 import mega.privacy.mobile.analytics.annotations.NotificationEvent
@@ -200,7 +201,7 @@ interface ExampleNotification
  * Example screen view event
  *
  * Generated event type is object
- * Event name will the [interface name] - Use the screen name as interface name
+ * Event name will be the [interface name] - Use the screen name as interface name
  * Event class will be [interface name + "Event"]
  */
 @ScreenViewEvent
@@ -217,3 +218,13 @@ interface ExampleScreen
  */
 @TabSelectedEvent(screenName = "Screen Name", tabName = "Tab name")
 interface ExampleTabSelected
+
+/**
+ * Example legacy event
+ *
+ * Generated event type is object
+ * Event name will be the [interface name], event class will be [interface name + "Event"]
+ * Event identifier will be the value of @param eventId and will not follow the standard id structure
+ */
+@LegacyEvent(eventId = 12345)
+interface ExampleLegacy

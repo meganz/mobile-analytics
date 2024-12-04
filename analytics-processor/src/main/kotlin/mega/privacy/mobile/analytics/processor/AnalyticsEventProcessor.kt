@@ -9,6 +9,7 @@ import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
 import mega.privacy.mobile.analytics.annotations.DialogDisplayedEvent
 import mega.privacy.mobile.analytics.annotations.GeneralEvent
 import mega.privacy.mobile.analytics.annotations.ItemSelectedEvent
+import mega.privacy.mobile.analytics.annotations.LegacyEvent
 import mega.privacy.mobile.analytics.annotations.MenuItemEvent
 import mega.privacy.mobile.analytics.annotations.NavigationEvent
 import mega.privacy.mobile.analytics.annotations.NotificationEvent
@@ -90,6 +91,12 @@ class AnalyticsEventProcessor(
                 resolver = resolver,
                 fileName = "DialogDisplayedEvents"
             ),
+            getGenerator(
+                annotationClass = LegacyEvent::class,
+            ).generate(
+                resolver = resolver,
+                fileName = "LegacyEvents"
+            )
         ).flatten()
     }
 
