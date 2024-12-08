@@ -92,7 +92,7 @@ abstract class EventCodeGeneratorTest<T : GenerateIdRequest> {
                     listOf(
                         TestProcessorProvider(
                             options = mapOf(
-                                AnalyticsEventProcessor.resourcePathKey to temporaryFolder.path
+                                AnalyticsEventProcessor.RESOURCE_PATH_KEY to temporaryFolder.path
                             )
                         )
                     )

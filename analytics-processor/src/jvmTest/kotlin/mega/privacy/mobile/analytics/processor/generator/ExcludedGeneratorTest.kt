@@ -10,7 +10,6 @@ import com.tschuchort.compiletesting.symbolProcessorProviders
 import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.processor.AnalyticsEventProcessor
 import mega.privacy.mobile.analytics.processor.TestProcessorProvider
-import mega.privacy.mobile.analytics.processor.identifier.IdGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
 import mega.privacy.mobile.analytics.processor.identifier.SingleRangeIdGenerator
 import mega.privacy.mobile.analytics.processor.visitor.TabSelectedVisitor
@@ -107,7 +106,7 @@ interface TestTab1
                     listOf(
                         TestProcessorProvider(
                             options = mapOf(
-                                AnalyticsEventProcessor.resourcePathKey to temporaryFolder.path
+                                AnalyticsEventProcessor.RESOURCE_PATH_KEY to temporaryFolder.path
                             )
                         )
                     )

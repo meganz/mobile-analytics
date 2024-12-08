@@ -14,10 +14,11 @@ import mega.privacy.mobile.analytics.annotations.NavigationEvent
 import mega.privacy.mobile.analytics.annotations.NotificationEvent
 import mega.privacy.mobile.analytics.annotations.ScreenViewEvent
 import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
+import mega.privacy.mobile.analytics.processor.factory.AnnotationVisitorFactory
+import mega.privacy.mobile.analytics.processor.factory.IdGeneratorFactory
 import mega.privacy.mobile.analytics.processor.generator.EventCodeGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
-import mega.privacy.mobile.analytics.processor.identifier.SingleRangeIdGenerator
-import mega.privacy.mobile.analytics.processor.factory.AnnotationVisitorFactory
+import kotlin.reflect.KClass
 
 /**
  * Analytics event processor
@@ -27,112 +28,86 @@ class AnalyticsEventProcessor(
     private val logger: KSPLogger,
     options: Map<String, String>,
 ) : SymbolProcessor {
-    private val idProvider = IdProvider(logger, options[resourcePathKey])
-    private val idGenerator = SingleRangeIdGenerator(0..999)
-    private val visitorFactory = AnnotationVisitorFactory(idGenerator)
+    private val idProvider = IdProvider(logger, options[RESOURCE_PATH_KEY])
+    private val idGeneratorFactory = IdGeneratorFactory()
+    private val visitorFactory = AnnotationVisitorFactory(idGeneratorFactory)
+    private val analyticsPackageName = "mega.privacy.mobile.analytics.event"
 
     override fun process(resolver: Resolver): List<KSAnnotated> {
         logger.info("Processing started...")
-        val packageName = "mega.privacy.mobile.analytics.event"
         return listOf(
-            EventCodeGenerator(
-                codeGenerator = codeGenerator,
-                idProvider = idProvider,
-                visitorFactory = visitorFactory,
+            getGenerator(
                 annotationClass = ScreenViewEvent::class
             ).generate(
                 resolver = resolver,
-                packageName = packageName,
                 fileName = "ScreenViewEvents"
             ),
-            EventCodeGenerator(
-                codeGenerator = codeGenerator,
-                idProvider = idProvider,
-                visitorFactory = visitorFactory,
+            getGenerator(
                 annotationClass = TabSelectedEvent::class
             ).generate(
                 resolver = resolver,
-                packageName = packageName,
                 fileName = "TabSelectedEvents"
             ),
-            EventCodeGenerator(
-                codeGenerator = codeGenerator,
-                idProvider = idProvider,
-                visitorFactory = visitorFactory,
+            getGenerator(
                 annotationClass = GeneralEvent::class,
             ).generate(
                 resolver = resolver,
-                packageName = packageName,
                 fileName = "GeneralEvents"
             ),
-            EventCodeGenerator(
-                codeGenerator = codeGenerator,
-                idProvider = idProvider,
-                visitorFactory = visitorFactory,
+            getGenerator(
                 annotationClass = ButtonPressEvent::class,
             ).generate(
                 resolver = resolver,
-                packageName = packageName,
                 fileName = "ButtonPressEvents"
             ),
-            EventCodeGenerator(
-                codeGenerator = codeGenerator,
-                idProvider = idProvider,
-                visitorFactory = visitorFactory,
+            getGenerator(
                 annotationClass = ItemSelectedEvent::class,
             ).generate(
                 resolver = resolver,
-                packageName = packageName,
                 fileName = "ItemSelectedEvents"
             ),
-            EventCodeGenerator(
-                codeGenerator = codeGenerator,
-                idProvider = idProvider,
-                visitorFactory = visitorFactory,
+            getGenerator(
                 annotationClass = MenuItemEvent::class,
             ).generate(
                 resolver = resolver,
-                packageName = packageName,
                 fileName = "MenuItemEvents"
             ),
-            EventCodeGenerator(
-                codeGenerator = codeGenerator,
-                idProvider = idProvider,
-                visitorFactory = visitorFactory,
+            getGenerator(
                 annotationClass = NavigationEvent::class,
             ).generate(
                 resolver = resolver,
-                packageName = packageName,
                 fileName = "NavigationEvents"
             ),
-            EventCodeGenerator(
-                codeGenerator = codeGenerator,
-                idProvider = idProvider,
-                visitorFactory = visitorFactory,
+            getGenerator(
                 annotationClass = NotificationEvent::class,
             ).generate(
                 resolver = resolver,
-                packageName = packageName,
                 fileName = "NotificationEvents"
             ),
-            EventCodeGenerator(
-                codeGenerator = codeGenerator,
-                idProvider = idProvider,
-                visitorFactory = visitorFactory,
+            getGenerator(
                 annotationClass = DialogDisplayedEvent::class,
             ).generate(
                 resolver = resolver,
-                packageName = packageName,
                 fileName = "DialogDisplayedEvents"
             ),
         ).flatten()
     }
 
+    private fun getGenerator(annotationClass: KClass<*>) = EventCodeGenerator(
+        codeGenerator = codeGenerator,
+        idProvider = idProvider,
+        visitorFactory = visitorFactory,
+        annotationClass = annotationClass,
+    )
+
+    private fun EventCodeGenerator.generate(resolver: Resolver, fileName: String) =
+        generate(resolver = resolver, packageName = analyticsPackageName, fileName = fileName)
+
     companion object {
         /**
          * Resource path key
          */
-        const val resourcePathKey = "resourcePath"
+        const val RESOURCE_PATH_KEY = "resourcePath"
     }
 
 }
