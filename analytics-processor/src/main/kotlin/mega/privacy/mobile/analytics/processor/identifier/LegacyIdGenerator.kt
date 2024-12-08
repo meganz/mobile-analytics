@@ -9,9 +9,15 @@ class LegacyIdGenerator : IdGenerator<GenerateLegacyIdRequest> {
 
     override fun invoke(request: GenerateLegacyIdRequest): Map<String, Int> {
         val idMap = request.currentIdMap.toMutableMap()
+
+        checkRestrictedRange(request)
         checkExistingIds(idMap, request)
         idMap.putIfAbsent(request.eventName, request.legacyId)
         return idMap
+    }
+
+    private fun checkRestrictedRange(request: GenerateLegacyIdRequest) {
+        if ((300_000..499_999).contains(request.legacyId)) throw IllegalStateException("Id provided, ${request.legacyId}, is not allowed to fall within the range 300 000 to 499 999")
     }
 
     private fun checkExistingIds(

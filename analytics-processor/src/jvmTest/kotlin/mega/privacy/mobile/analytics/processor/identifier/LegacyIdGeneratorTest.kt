@@ -5,6 +5,9 @@ import mega.privacy.mobile.analytics.processor.identifier.model.GenerateLegacyId
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.MethodSource
+import kotlin.streams.asStream
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class LegacyIdGeneratorTest {
@@ -72,4 +75,20 @@ class LegacyIdGeneratorTest {
 
         assertThrows<IllegalStateException> { underTest(request) }
     }
+
+    @ParameterizedTest
+    @MethodSource(value = ["rangeSource"])
+    fun `test that exception is thrown if id falls within 300 000 to 499 999`(legacyId: Int) {
+        val eventName = "eventName"
+
+        val request = GenerateLegacyIdRequest(
+            legacyId = legacyId,
+            eventName = eventName,
+            currentIdMap = emptyMap(),
+        )
+
+        assertThrows<IllegalStateException> { underTest(request) }
+    }
+
+    private fun rangeSource() = (300_000..499_999).step(1000).asSequence().asStream()
 }
