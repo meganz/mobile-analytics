@@ -166,3 +166,6 @@ interface TextEditorScreen
 
 @ScreenViewEvent
 interface RegionsListScreen
+
+@ScreenViewEvent
+interface AdFreeDialogScreen

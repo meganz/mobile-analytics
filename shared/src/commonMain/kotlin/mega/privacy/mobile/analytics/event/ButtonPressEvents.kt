@@ -1398,3 +1398,33 @@ interface RecentlyWatchedOpenedButtonPressed
     screen = "Video Section Screen"
 )
 interface VideoSectionSearchButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Close Ads button",
+    screen = "Ads banner view"
+)
+interface AdsBannerCloseAdsButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "View pro plans",
+    screen = "Ad-free dialog screen"
+)
+interface AdFreeDialogScreenViewProPlansButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Skip",
+    screen = "Ad-free dialog screen"
+)
+interface AdFreeDialogScreenSkipButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Buy plan",
+    screen = "Ad-free dialog screen's upgrade plan page"
+)
+interface AdFreeDialogUpgradeAccountPlanPageBuyButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Buy plan",
+    screen = "Upgrade account plan page"
+)
+interface AdsUpgradeAccountPlanPageBuyButtonPressed
