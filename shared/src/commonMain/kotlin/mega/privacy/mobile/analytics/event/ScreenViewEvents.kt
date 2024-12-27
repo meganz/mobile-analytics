@@ -169,3 +169,6 @@ interface RegionsListScreen
 
 @ScreenViewEvent
 interface AdFreeDialogScreen
+
+@ScreenViewEvent
+interface AutoConnectVpnScreen

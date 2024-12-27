@@ -224,3 +224,12 @@ interface RegionSearchResultItemSelected
 
 @ItemSelectedEvent
 interface RegionSearchBarClicked
+
+@ItemSelectedEvent
+interface AutoConnectVpnAllNetworksSelected
+
+@ItemSelectedEvent
+interface AutoConnectVpnWifiOnlySelected
+
+@ItemSelectedEvent
+interface AutoConnectVpnCellularOnlySelected

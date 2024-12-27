@@ -1428,3 +1428,27 @@ interface AdFreeDialogUpgradeAccountPlanPageBuyButtonPressed
     screen = "Upgrade account plan page"
 )
 interface AdsUpgradeAccountPlanPageBuyButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Auto-connect VPN Toggle",
+    screen = "Auto-connect VPN page"
+)
+interface AutoConnectVPNToggleEnablePressed
+
+@ButtonPressEvent(
+    buttonName = "Auto-connect VPN Toggle",
+    screen = "Auto-connect VPN page"
+)
+interface AutoConnectVPNToggleDisablePressed
+
+@ButtonPressEvent(
+    buttonName = "Add Trusted Network",
+    screen = "Auto-connect VPN page"
+)
+interface AddTrustedNetworkButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Remove Trusted Network",
+    screen = "Auto-connect VPN page"
+)
+interface RemoveTrustedNetworkButtonPressed
