@@ -1452,3 +1452,9 @@ interface AddTrustedNetworkButtonPressed
     screen = "Auto-connect VPN page"
 )
 interface RemoveTrustedNetworkButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Skip",
+    screen = "Cancellation Survey"
+)
+interface SkipCancellationSurveyButtonPressed
