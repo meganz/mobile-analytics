@@ -1458,3 +1458,15 @@ interface RemoveTrustedNetworkButtonPressed
     screen = "Cancellation Survey"
 )
 interface SkipCancellationSurveyButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Not now",
+    screen = "Onboarding Initial Page Screen"
+)
+interface OnboardingInitialPageNotNowButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Set up MEGA",
+    screen = "Onboarding Initial Page Screen"
+)
+interface OnboardingInitialPageSetUpMegaButtonPressed
