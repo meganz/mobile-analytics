@@ -1470,3 +1470,15 @@ interface OnboardingInitialPageNotNowButtonPressed
     screen = "Onboarding Initial Page Screen"
 )
 interface OnboardingInitialPageSetUpMegaButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Skip set up",
+    screen = "Initial launch Page Screen"
+)
+interface InitialLaunchSkipSetUpButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Set up MEGA",
+    screen = "Initial launch Page Screen"
+)
+interface InitialLaunchSetUpButtonPressed
