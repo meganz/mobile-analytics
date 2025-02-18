@@ -233,3 +233,15 @@ interface AutoConnectVpnWifiOnlySelected
 
 @ItemSelectedEvent
 interface AutoConnectVpnCellularOnlySelected
+
+@ItemSelectedEvent
+interface AutoLockUnlockWithOptionSelected
+
+@ItemSelectedEvent
+interface AutoLockUnlockWithNoneOptionSelected
+
+@ItemSelectedEvent
+interface AutoLockUnlockWithBiometricsOptionSelected
+
+@ItemSelectedEvent
+interface AutoLockUnlockWithPinCodeOptionSelected
