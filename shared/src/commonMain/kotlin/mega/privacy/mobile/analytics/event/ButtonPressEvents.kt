@@ -1482,3 +1482,9 @@ interface InitialLaunchSkipSetUpButtonPressed
     screen = "Initial launch Page Screen"
 )
 interface InitialLaunchSetUpButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Help",
+    screen = "Login Page Screen"
+)
+interface LoginHelpButtonPressed
