@@ -1488,3 +1488,15 @@ interface InitialLaunchSetUpButtonPressed
     screen = "Login Page Screen"
 )
 interface LoginHelpButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Pause",
+    screen = "Home Screen"
+)
+interface PauseVpnButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Resume",
+    screen = "Home Screen"
+)
+interface ResumeVpnButtonPressed

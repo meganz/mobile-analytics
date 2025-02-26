@@ -245,3 +245,12 @@ interface AutoLockUnlockWithBiometricsOptionSelected
 
 @ItemSelectedEvent
 interface AutoLockUnlockWithPinCodeOptionSelected
+
+@ItemSelectedEvent
+interface PauseVpnDurationSmallOptionSelected
+
+@ItemSelectedEvent
+interface PauseVpnDurationMediumOptionSelected
+
+@ItemSelectedEvent
+interface PauseVpnDurationLargeOptionSelected
