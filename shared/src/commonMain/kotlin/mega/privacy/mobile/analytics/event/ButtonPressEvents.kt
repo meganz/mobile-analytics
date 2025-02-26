@@ -1512,3 +1512,9 @@ interface BeginNetworkTestButtonPressed
     screen = "Network Test Screen"
 )
 interface NetworkErrorLearnMoreButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Back up folders button of the Sync Promotion Bottom Sheet",
+    screen = "Sync Promotion Bottom Sheet"
+)
+interface SyncPromotionBottomSheetBackUpFoldersButtonPressed
