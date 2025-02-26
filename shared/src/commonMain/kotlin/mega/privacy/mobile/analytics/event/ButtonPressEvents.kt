@@ -1500,3 +1500,15 @@ interface PauseVpnButtonPressed
     screen = "Home Screen"
 )
 interface ResumeVpnButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Begin network test",
+    screen = "Network Test Screen"
+)
+interface BeginNetworkTestButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Learn more",
+    screen = "Network Test Screen"
+)
+interface NetworkErrorLearnMoreButtonPressed

@@ -172,3 +172,6 @@ interface AdFreeDialogScreen
 
 @ScreenViewEvent
 interface AutoConnectVpnScreen
+
+@ScreenViewEvent
+interface NetworkTestScreen
