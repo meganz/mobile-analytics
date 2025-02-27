@@ -1075,3 +1075,16 @@ interface TextEditorMoveToTheRubbishBinMenuItem
     screen = "Text Editor Screen"
 )
 interface TextEditorSaveEditMenuToolbar
+
+
+@MenuItemEvent(
+    menuItem = "Hide node from context menu",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface HideNodeMenuItem
+
+@MenuItemEvent(
+    menuItem = "Hide node from multi-select menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+)
+interface HideNodeMultiSelectMenuItem
