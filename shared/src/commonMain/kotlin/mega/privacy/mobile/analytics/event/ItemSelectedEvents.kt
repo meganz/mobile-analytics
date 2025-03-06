@@ -254,3 +254,39 @@ interface PauseVpnDurationMediumOptionSelected
 
 @ItemSelectedEvent
 interface PauseVpnDurationLargeOptionSelected
+
+@ItemSelectedEvent
+interface MyAccountSettingsItemSelected
+
+@ItemSelectedEvent
+interface AppearanceSettingsItemSelected
+
+@ItemSelectedEvent
+interface FileManagementSettingsItemSelected
+
+@ItemSelectedEvent
+interface CameraUploadsSettingsItemSelected
+
+@ItemSelectedEvent
+interface SyncSettingsItemSelected
+
+@ItemSelectedEvent
+interface MediaSettingsItemSelected
+
+@ItemSelectedEvent
+interface ChatAndMeetingsSettingsItemSelected
+
+@ItemSelectedEvent
+interface SecuritySettingsItemSelected
+
+@ItemSelectedEvent
+interface AdvancedSettingsItemSelected
+
+@ItemSelectedEvent
+interface HelpAndFeedbackSettingsItemSelected
+
+@ItemSelectedEvent
+interface AboutSettingsItemSelected
+
+@ItemSelectedEvent
+interface QASettingsItemSelected
