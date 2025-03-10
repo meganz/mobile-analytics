@@ -173,3 +173,15 @@ interface SyncCardExpanded
 
 @GeneralEvent
 interface PlaylistCreatedSuccessfully
+
+@GeneralEvent
+interface CameraUploadsEnabled
+
+@GeneralEvent
+interface CameraUploadsDisabled
+
+@GeneralEvent
+interface MediaUploadsEnabled
+
+@GeneralEvent
+interface MediaUploadsDisabled
