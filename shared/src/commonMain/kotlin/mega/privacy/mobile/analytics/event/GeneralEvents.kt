@@ -191,3 +191,6 @@ interface AdBlockingEnabled
 
 @GeneralEvent
 interface AdBlockingDisabled
+
+@GeneralEvent
+class RequestNewCountries(countries: String)
