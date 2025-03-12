@@ -185,3 +185,9 @@ interface MediaUploadsEnabled
 
 @GeneralEvent
 interface MediaUploadsDisabled
+
+@GeneralEvent
+interface AdBlockingEnabled
+
+@GeneralEvent
+interface AdBlockingDisabled

@@ -1518,3 +1518,15 @@ interface NetworkErrorLearnMoreButtonPressed
     screen = "Sync Promotion Bottom Sheet"
 )
 interface SyncPromotionBottomSheetBackUpFoldersButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Promotional Sheet Primary Button",
+    screen = "Promotional Sheet"
+)
+interface PromotionalSheetPrimaryButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Promotional Sheet Secondary Button",
+    screen = "Promotional Sheet"
+)
+interface PromotionalSheetSecondaryButtonPressed
