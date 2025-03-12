@@ -1088,3 +1088,10 @@ interface HideNodeMenuItem
     menuType = MenuItemEvent.MenuType.Toolbar,
 )
 interface HideNodeMultiSelectMenuItem
+
+@MenuItemEvent(
+    menuItem = "Magnifier menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Image Preview Screen",
+)
+interface MagnifierMenuItem
