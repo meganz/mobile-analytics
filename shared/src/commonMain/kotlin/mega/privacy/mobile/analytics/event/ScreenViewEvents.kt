@@ -175,3 +175,9 @@ interface AutoConnectVpnScreen
 
 @ScreenViewEvent
 interface NetworkTestScreen
+
+@ScreenViewEvent
+interface PromotionalSheetScreen
+
+@ScreenViewEvent
+interface RequestNewCountriesScreen
