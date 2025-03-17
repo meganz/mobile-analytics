@@ -1530,3 +1530,8 @@ interface PromotionalSheetPrimaryButtonPressed
     screen = "Promotional Sheet"
 )
 interface PromotionalSheetSecondaryButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Hide Node Info Button"
+)
+interface HideNodeInfoButtonPressed
