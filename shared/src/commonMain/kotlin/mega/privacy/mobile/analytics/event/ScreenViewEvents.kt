@@ -181,3 +181,6 @@ interface PromotionalSheetScreen
 
 @ScreenViewEvent
 interface RequestNewCountriesScreen
+
+@ScreenViewEvent
+interface DebugLogsScreen

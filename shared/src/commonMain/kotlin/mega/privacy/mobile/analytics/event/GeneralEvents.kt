@@ -194,3 +194,9 @@ interface AdBlockingDisabled
 
 @GeneralEvent
 class RequestNewCountries(countries: String)
+
+@GeneralEvent
+class DebugLogsEnabled
+
+@GeneralEvent
+class DebugLogsDisabled
