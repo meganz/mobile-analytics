@@ -1535,3 +1535,9 @@ interface PromotionalSheetSecondaryButtonPressed
     buttonName = "Hide Node Info Button"
 )
 interface HideNodeInfoButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Submit",
+    screen = "Debug Logs Screen"
+)
+interface SubmitDebugLogsButtonPressed
