@@ -290,3 +290,9 @@ interface AboutSettingsItemSelected
 
 @ItemSelectedEvent
 interface QASettingsItemSelected
+
+@ItemSelectedEvent
+interface VpnSmartBannerItemSelected
+
+@ItemSelectedEvent
+interface PwmSmartBannerItemSelected

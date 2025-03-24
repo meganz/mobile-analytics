@@ -200,3 +200,6 @@ class DebugLogsEnabled
 
 @GeneralEvent
 class DebugLogsDisabled
+
+@GeneralEvent
+class SmartBannerSwipe
