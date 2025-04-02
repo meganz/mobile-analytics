@@ -203,3 +203,24 @@ class DebugLogsDisabled
 
 @GeneralEvent
 class SmartBannerSwipe
+
+@GeneralEvent
+interface AudioPlayerSpeedChangeHalfX
+
+@GeneralEvent
+interface AudioPlayerSpeedChange1X
+
+@GeneralEvent
+interface AudioPlayerSpeedChangeOneAndHalfX
+
+@GeneralEvent
+interface AudioPlayerSpeedChange2X
+
+@GeneralEvent
+interface AudioPlayerForward15Seconds
+
+@GeneralEvent
+interface AudioPlayerBack15Seconds
+
+@GeneralEvent
+interface AudioPlayerQueueItemRemoved
