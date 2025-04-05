@@ -1,0 +1,6 @@
+    implementation(files("../shared-release.aar"))
+    implementation(files("../analytics-core-release.aar"))
+    implementation(files("../analytics-annotations-release.aar")) 
+    implementation(files("../shared-release.aar"))
+        implementation(files("../analytics-core-release.aar"))
+            implementation(files("../analytics-annotations-release.aar")) 
