@@ -1541,3 +1541,21 @@ interface HideNodeInfoButtonPressed
     screen = "Debug Logs Screen"
 )
 interface SubmitDebugLogsButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Folders",
+    screen = "Sync List Screen"
+)
+interface SyncListFoldersButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Issues",
+    screen = "Sync List Screen"
+)
+interface SyncListIssuesButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Solved Issues",
+    screen = "Sync List Screen"
+)
+interface SyncListSolvedIssuesButtonPressed

@@ -34,3 +34,6 @@ interface AllVideosTab
 
 @TabSelectedEvent(screenName = "VideoSectionScreen", tabName = "Playlists")
 interface PlaylistsTab
+
+@TabSelectedEvent(screenName = "DriveScreen", tabName = "Syncs")
+interface SyncsTab
