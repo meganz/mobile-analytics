@@ -16,3 +16,21 @@ interface AlmostFullStorageOverQuotaBannerDisplayed
 
 @NotificationEvent
 interface NotificationCentreItemTapped
+
+@NotificationEvent
+interface MonthlyPlanPurchaseSuccessful
+
+@NotificationEvent
+interface MonthlyPlanPurchaseFailed
+
+@NotificationEvent
+interface AnnualPlanPurchaseSuccessful
+
+@NotificationEvent
+interface AnnualPlanPurchaseFailed
+
+@NotificationEvent
+interface TwoYearPlanPurchaseSuccessful
+
+@NotificationEvent
+interface TwoYearPlanPurchaseFailed
