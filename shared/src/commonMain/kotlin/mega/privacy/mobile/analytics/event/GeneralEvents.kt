@@ -224,3 +224,78 @@ interface AudioPlayerBack15Seconds
 
 @GeneralEvent
 interface AudioPlayerQueueItemRemoved
+
+@GeneralEvent
+interface VideoUploadsEnabled
+
+@GeneralEvent
+interface VideoUploadsDisabled
+
+@GeneralEvent
+interface CameraUploadsFormatHEICSelected
+
+@GeneralEvent
+interface CameraUploadsFormatJPGSelected
+
+@GeneralEvent
+interface MegaUploadFolderUpdated
+
+@GeneralEvent
+interface PhotosLocationTagsEnabled
+
+@GeneralEvent
+interface PhotosLocationTagsDisabled
+
+@GeneralEvent
+interface CameraUploadsMobileDataEnabled
+
+@GeneralEvent
+interface CameraUploadsMobileDataDisabled
+
+@GeneralEvent
+interface LivePhotoVideoUploadsEnabled
+
+@GeneralEvent
+interface LivePhotoVideoUploadsDisabled
+
+@GeneralEvent
+interface BurstPhotosUploadEnabled
+
+@GeneralEvent
+interface BurstPhotosUploadDisabled
+
+@GeneralEvent
+interface HiddenAlbumUploadEnabled
+
+@GeneralEvent
+interface HiddenAlbumUploadDisabled
+
+@GeneralEvent
+interface SharedAlbumsUploadEnabled
+
+@GeneralEvent
+interface SharedAlbumsUploadDisabled
+
+@GeneralEvent
+interface ITunesSyncedAlbumsUploadEnabled
+
+@GeneralEvent
+interface ITunesSyncedAlbumsUploadDisabled
+
+@GeneralEvent
+interface VideoCodecHEVCSelected
+
+@GeneralEvent
+interface VideoCodecH264Selected
+
+@GeneralEvent
+interface VideoQualityLow
+
+@GeneralEvent
+interface VideoQualityMedium
+
+@GeneralEvent
+interface VideoQualityHigh
+
+@GeneralEvent
+interface VideoQualityOriginal
