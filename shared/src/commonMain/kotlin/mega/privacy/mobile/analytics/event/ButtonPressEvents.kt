@@ -1559,3 +1559,15 @@ interface SyncListIssuesButtonPressed
     screen = "Sync List Screen"
 )
 interface SyncListSolvedIssuesButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Allow LAN Connections",
+    screen = "Settings Screen"
+)
+interface AllowLANConnectionsToggleEnabledPressed
+
+@ButtonPressEvent(
+    buttonName = "Allow LAN Connections",
+    screen = "Settings Screen"
+)
+interface AllowLANConnectionsToggleDisabledPressed
