@@ -1571,3 +1571,27 @@ interface AllowLANConnectionsToggleEnabledPressed
     screen = "Settings Screen"
 )
 interface AllowLANConnectionsToggleDisabledPressed
+
+@ButtonPressEvent(
+    buttonName = "Send to chat folder link no account logged",
+    screen = "Folder link"
+)
+interface SendToChatFolderLinkNoAccountLoggedButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Send to chat folder link",
+    screen = "Folder link"
+)
+interface SendToChatFolderLinkButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Send to chat file link no account logged",
+    screen = "File link"
+)
+interface SendToChatFileLinkNoAccountLoggedButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Send to chat file link",
+    screen = "File link"
+)
+interface SendToChatFileLinkButtonPressed
