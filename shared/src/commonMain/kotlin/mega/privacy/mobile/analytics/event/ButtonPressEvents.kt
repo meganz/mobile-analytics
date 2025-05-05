@@ -1595,3 +1595,20 @@ interface SendToChatFileLinkNoAccountLoggedButtonPressed
     screen = "File link"
 )
 interface SendToChatFileLinkButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Archive note to self"
+)
+interface ArchiveNoteToSelfButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Create note to self",
+    screen = "New chat"
+)
+interface CreateNoteToSelfButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Open note to self",
+    screen = "Chats list"
+)
+interface OpenNoteToSelfButtonPressed
