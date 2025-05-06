@@ -1612,3 +1612,81 @@ interface CreateNoteToSelfButtonPressed
     screen = "Chats list"
 )
 interface OpenNoteToSelfButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Forgot password",
+    screen = "Login screen"
+)
+interface ForgotPasswordButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Change email address",
+    screen = "Login screen"
+)
+interface ChangeEmailAddressButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Maybe later",
+    screen = "Upgrade Account Plan Screen"
+)
+interface MaybeLaterUpdgradeAccountButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Get started for free",
+    screen = "Upgrade Account Plan Screen"
+)
+interface GetStartedForFreeUpgradePlanButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Enable notifications",
+    screen = "Notifications CTA Screen"
+)
+interface EnableNotificationsCTAButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Skip for now on Notifications CTA screen",
+    screen = "Notifications CTA Screen"
+)
+interface SkipNotificationsCTAButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Don't allow button on notifications permission dialog",
+    screen = "Notifications CTA Screen"
+)
+interface DontAllowNotificationsCTAButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Allow button on notifications permission dialog",
+    screen = "Notifications CTA Screen"
+)
+interface AllowNotificationsCTAButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Enable camera uploads",
+    screen = "Camera Backups CTA Screen"
+)
+interface EnableCameraBackupsCTAButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Skip for now on Camera Backups CTA screen",
+    screen = "Camera Backups CTA Screen"
+)
+interface SkipCameraBackupsCTAButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Limited Access button on Photos permission dialog",
+    screen = "Camera Backups CTA Screen"
+)
+interface LimitedAccessCameraBackupsCTAButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Allow Full Access button on Photos permission dialog",
+    screen = "Camera Backups CTA Screen"
+)
+interface FullAccessCameraBackupsCTAButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Don't allow button on Photos permission dialog",
+    screen = "Camera Backups CTA Screen"
+)
+interface DontAllowCameraBackupsCTAButtonPressed

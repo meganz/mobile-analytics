@@ -184,3 +184,9 @@ interface RequestNewCountriesScreen
 
 @ScreenViewEvent
 interface DebugLogsScreen
+
+@ScreenViewEvent
+interface NotificationsCTAScreen
+
+@ScreenViewEvent
+interface CameraBackupsCTAScreen
