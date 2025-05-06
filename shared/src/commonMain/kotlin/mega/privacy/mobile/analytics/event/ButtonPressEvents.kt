@@ -1629,7 +1629,7 @@ interface ChangeEmailAddressButtonPressed
     buttonName = "Maybe later",
     screen = "Upgrade Account Plan Screen"
 )
-interface MaybeLaterUpdgradeAccountButtonPressed
+interface MaybeLaterUpgradeAccountButtonPressed
 
 @ButtonPressEvent(
     buttonName = "Get started for free",
