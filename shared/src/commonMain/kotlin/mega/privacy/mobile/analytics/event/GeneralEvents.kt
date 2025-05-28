@@ -299,3 +299,6 @@ interface VideoQualityHigh
 
 @GeneralEvent
 interface VideoQualityOriginal
+
+@GeneralEvent
+interface SlideshowSecureModeActivated
