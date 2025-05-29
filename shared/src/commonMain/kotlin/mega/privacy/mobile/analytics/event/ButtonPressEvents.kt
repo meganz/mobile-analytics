@@ -1690,3 +1690,105 @@ interface FullAccessCameraBackupsCTAButtonPressed
     screen = "Camera Backups CTA Screen"
 )
 interface DontAllowCameraBackupsCTAButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Add new credit card item",
+    screen = "Home Screen"
+)
+interface AddNewCreditCardItemButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Save add credit card item",
+    screen = "Add Credit Card Item Screen"
+)
+interface SaveAddCreditCardItemButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Save edit credit card item",
+    screen = "Edit Credit Card Item Screen"
+)
+interface SaveEditCreditCardItemButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Close add credit card",
+    screen = "Add Credit Card Item Screen"
+)
+interface AddCreditCardCloseButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Close edit credit card",
+    screen = "Edit Credit Card Item Screen"
+)
+interface EditCreditCardCloseButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Discard add credit card dialog keep editing button",
+    screen = "Add Credit Card Item Screen"
+)
+interface DiscardAddCreditCardDialogKeepEditingButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Discard edit credit card dialog keep editing button",
+    screen = "Edit Credit Card Item Screen"
+)
+interface DiscardEditCreditCardDialogKeepEditingButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Discard add credit card dialog discard button",
+    screen = "Add Credit Card Item Screen"
+)
+interface DiscardAddCreditCardDialogDiscardButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Discard edit credit card dialog discard button",
+    screen = "Edit Credit Card Item Screen"
+)
+interface DiscardEditCreditCardDialogDiscardButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Edit credit card button",
+    screen = "Credit Card Detail Screen"
+)
+interface CreditCardDetailEditButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Delete credit card button",
+    screen = "Credit Card Detail Screen"
+)
+interface CreditCardDetailDeleteButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copy cardholder name button",
+    screen = "Credit Card Detail Screen "
+)
+interface CopyCardholderNameButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copy card number button",
+    screen = "Credit Card Detail Screen "
+)
+interface CopyCardNumberButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copy expiration date button",
+    screen = "Credit Card Detail Screen "
+)
+interface CopyExpirationDateButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copy CVV button",
+    screen = "Credit Card Detail Screen "
+)
+interface CopyCVVButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Delete credit card dialog cancel button",
+    screen = "Credit Card Detail Screen "
+)
+interface DeleteCreditCardDialogCancelButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Delete credit card dialog delete button",
+    screen = "Credit Card Detail Screen "
+)
+interface DeleteCreditCardDialogDeleteButtonPressed
