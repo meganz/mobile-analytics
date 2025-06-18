@@ -156,6 +156,13 @@ interface VideoPlayerFullScreenPressed
 interface VideoPlayerOriginalPressed
 
 @ButtonPressEvent(
+    buttonName = "Speed Option 0.25X",
+    screen = "Video player controller",
+    dialog = "SpeedSelectedPopup"
+)
+interface VideoSpeedOptionPressed_0_25X
+
+@ButtonPressEvent(
     buttonName = "Speed Option 0.5X",
     screen = "Video player controller",
     dialog = "SpeedSelectedPopup"
@@ -163,11 +170,39 @@ interface VideoPlayerOriginalPressed
 interface SpeedOption0_5XPressed
 
 @ButtonPressEvent(
+    buttonName = "Speed Option 0.75X",
+    screen = "Video player controller",
+    dialog = "SpeedSelectedPopup"
+)
+interface VideoSpeedOptionPressed_0_75X
+
+@ButtonPressEvent(
+    buttonName = "Speed Option 1X",
+    screen = "Video player controller",
+    dialog = "SpeedSelectedPopup"
+)
+interface VideoSpeedOptionPressed_1X
+
+@ButtonPressEvent(
+    buttonName = "Speed Option 1.25X",
+    screen = "Video player controller",
+    dialog = "SpeedSelectedPopup"
+)
+interface VideoSpeedOptionPressed_1_25X
+
+@ButtonPressEvent(
     buttonName = "Speed Option 1.5X",
     screen = "Video player controller",
     dialog = "SpeedSelectedPopup"
 )
 interface SpeedOption1_5XPressed
+
+@ButtonPressEvent(
+    buttonName = "Speed Option 1.75X",
+    screen = "Video player controller",
+    dialog = "SpeedSelectedPopup"
+)
+interface VideoSpeedOptionPressed_1_75X
 
 @ButtonPressEvent(
     buttonName = "Speed Option 2X",
