@@ -208,10 +208,19 @@ class SmartBannerSwipe
 interface AudioPlayerSpeedChangeHalfX
 
 @GeneralEvent
+interface AudioPlayerSpeedChangeTo_0_75X
+
+@GeneralEvent
 interface AudioPlayerSpeedChange1X
 
 @GeneralEvent
+interface AudioPlayerSpeedChangeTo_1_25X
+
+@GeneralEvent
 interface AudioPlayerSpeedChangeOneAndHalfX
+
+@GeneralEvent
+interface AudioPlayerSpeedChangeTo_1_75X
 
 @GeneralEvent
 interface AudioPlayerSpeedChange2X
