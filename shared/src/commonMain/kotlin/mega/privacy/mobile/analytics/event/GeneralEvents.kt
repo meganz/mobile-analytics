@@ -311,3 +311,6 @@ interface VideoQualityOriginal
 
 @GeneralEvent
 interface SlideshowSecureModeActivated
+
+@GeneralEvent
+interface ActiveTransferPriorityChanged

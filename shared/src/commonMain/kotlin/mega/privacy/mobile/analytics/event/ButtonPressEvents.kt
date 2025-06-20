@@ -1827,3 +1827,15 @@ interface DeleteCreditCardDialogCancelButtonPressed
     screen = "Credit Card Detail Screen "
 )
 interface DeleteCreditCardDialogDeleteButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Active transfers individual play button",
+    screen = "Transfers Section Screen"
+)
+interface ActiveTransfersIndividualPlayButtonButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Active transfers individual pause button",
+    screen = "Transfers Section Screen"
+)
+interface ActiveTransfersIndividualPauseButtonButtonPressed

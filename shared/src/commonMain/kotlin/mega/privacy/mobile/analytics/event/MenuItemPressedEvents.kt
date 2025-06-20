@@ -1102,3 +1102,185 @@ interface MagnifierMenuItem
     screen = "Slideshow Screen",
 )
 interface SlideshowTutorialMenuItem
+
+@MenuItemEvent(
+    menuItem = "Active transfers global play menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface ActiveTransfersGlobalPlayMenuItem
+
+@MenuItemEvent(
+    menuItem = "Active transfers global pause menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface ActiveTransfersGlobalPauseMenuItem
+
+@MenuItemEvent(
+    menuItem = "Active transfers more options menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface ActiveTransfersMoreOptionsMenuItem
+
+@MenuItemEvent(
+    menuItem = "Active transfers select menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface ActiveTransfersSelectMenuItem
+
+@MenuItemEvent(
+    menuItem = "Active transfers cancel selected menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface ActiveTransfersCancelSelectedMenuItem
+
+@MenuItemEvent(
+    menuItem = "Active transfers select all menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface ActiveTransfersSelectAllMenuItem
+
+@MenuItemEvent(
+    menuItem = "Active transfers cancel all menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface ActiveTransfersCancelAllMenuItem
+
+@MenuItemEvent(
+    menuItem = "Completed transfers more options menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface CompletedTransfersMoreOptionsMenuItem
+
+@MenuItemEvent(
+    menuItem = "Completed transfers item view in folder menu",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Transfers Section Screen"
+)
+interface CompletedTransfersItemViewInFolderMenuItem
+
+@MenuItemEvent(
+    menuItem = "Completed transfers item open menu",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Transfers Section Screen"
+)
+interface CompletedTransfersItemOpenMenuItem
+
+@MenuItemEvent(
+    menuItem = "Completed transfers item share menu",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Transfers Section Screen"
+)
+interface CompletedTransfersItemShareMenuItem
+
+@MenuItemEvent(
+    menuItem = "Completed transfers item clear menu",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Transfers Section Screen"
+)
+interface CompletedTransfersItemClearMenuItem
+
+@MenuItemEvent(
+    menuItem = "Completed transfers clear selected menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface CompletedTransfersClearSelectedMenuItem
+
+@MenuItemEvent(
+    menuItem = "Completed transfers select all menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface CompletedTransfersSelectAllMenuItem
+
+@MenuItemEvent(
+    menuItem = "Completed transfers select menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface CompletedTransfersSelectMenuItem
+
+@MenuItemEvent(
+    menuItem = "Completed transfers clear all menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface CompletedTransfersClearAllMenuItem
+
+@MenuItemEvent(
+    menuItem = "Failed transfers more options menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface FailedTransfersMoreOptionsMenuItem
+
+@MenuItemEvent(
+    menuItem = "Failed transfers item more options menu",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Transfers Section Screen"
+)
+interface FailedTransfersItemMoreOptionsMenuItem
+
+@MenuItemEvent(
+    menuItem = "Failed transfers item retry menu",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Transfers Section Screen"
+)
+interface FailedTransfersItemRetryMenuItem
+
+@MenuItemEvent(
+    menuItem = "Failed transfers item clear menu",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Transfers Section Screen"
+)
+interface FailedTransfersItemClearMenuItem
+
+@MenuItemEvent(
+    menuItem = "Failed transfers select menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface FailedTransfersSelectMenuItem
+
+@MenuItemEvent(
+    menuItem = "Failed transfers retry all menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface FailedTransfersRetryAllMenuItem
+
+@MenuItemEvent(
+    menuItem = "Failed transfers clear all menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface FailedTransfersClearAllMenuItem
+
+@MenuItemEvent(
+    menuItem = "Failed transfers clear selected menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface FailedTransfersClearSelectedMenuItem
+
+@MenuItemEvent(
+    menuItem = "Failed transfers retry selected menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface FailedTransfersRetrySelectedMenuItem
+
+@MenuItemEvent(
+    menuItem = "Failed transfers select all menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Transfers Section Screen"
+)
+interface FailedTransfersSelectAllMenuItem

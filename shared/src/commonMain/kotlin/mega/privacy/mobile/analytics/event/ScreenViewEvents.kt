@@ -190,3 +190,6 @@ interface NotificationsCTAScreen
 
 @ScreenViewEvent
 interface CameraBackupsCTAScreen
+
+@ScreenViewEvent
+interface TransfersSectionScreen
