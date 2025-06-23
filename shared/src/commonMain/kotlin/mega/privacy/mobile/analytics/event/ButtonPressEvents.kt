@@ -1839,3 +1839,9 @@ interface ActiveTransfersIndividualPlayButtonButtonPressed
     screen = "Transfers Section Screen"
 )
 interface ActiveTransfersIndividualPauseButtonButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Spotlight search node button",
+    screen = "Spotlight search"
+)
+interface SpotlightNodeButtonPressed
