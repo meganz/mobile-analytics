@@ -37,3 +37,12 @@ interface PlaylistsTab
 
 @TabSelectedEvent(screenName = "DriveScreen", tabName = "Syncs")
 interface SyncsTab
+
+@TabSelectedEvent(screenName = "Transfers Section Screen", tabName = "Active")
+interface ActiveTransfersTab
+
+@TabSelectedEvent(screenName = "Transfers Section Screen", tabName = "Completed")
+interface CompletedTransfersTab
+
+@TabSelectedEvent(screenName = "Transfers Section Screen", tabName = "Failed")
+interface FailedTransfersTab
