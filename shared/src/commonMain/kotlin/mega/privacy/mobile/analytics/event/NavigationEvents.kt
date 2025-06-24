@@ -55,3 +55,9 @@ interface InviteToMEGAShareInvite
     navigationElementType = NavigationEvent.NavigationElementType.Toolbar
 )
 interface SyncNewFolderScreenBackNavigation
+
+@NavigationEvent(
+    destination = "Menu",
+    navigationElementType = NavigationEvent.NavigationElementType.Bottom
+)
+interface MenuBottomNavigationItem
