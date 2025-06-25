@@ -314,3 +314,9 @@ interface SlideshowSecureModeActivated
 
 @GeneralEvent
 interface ActiveTransferPriorityChanged
+
+@GeneralEvent
+interface IOSMigrationFileCreatedSuccessfully
+
+@GeneralEvent
+interface IOSMigrationFileImportedSuccessfully
