@@ -94,6 +94,21 @@ class SyncOptionSelected(val selectionType: SelectionType) {
 }
 
 @ItemSelectedEvent
+class SyncPowerOptionSelected(val selectionType: SelectionType) {
+    enum class SelectionType {
+        /**
+         * When user selects option Sync always
+         */
+        SyncAlways,
+
+        /**
+         * When user selects option Sync only when charging
+         */
+        SyncOnlyWhenCharging,
+    }
+}
+
+@ItemSelectedEvent
 class DeviceCenterItemClicked(val itemType: ItemType) {
     enum class ItemType {
         /**
