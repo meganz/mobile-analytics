@@ -1104,6 +1104,20 @@ interface MagnifierMenuItem
 interface SlideshowTutorialMenuItem
 
 @MenuItemEvent(
+    menuItem = "Photo editor toolbar menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Image Preview Screen",
+)
+interface PhotoEditorMenuItem
+
+@MenuItemEvent(
+    menuItem = "Get link toolbar menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Image Preview Screen",
+)
+interface ImagePreviewGetLinkMenuItem
+
+@MenuItemEvent(
     menuItem = "Active transfers global play menu",
     menuType = MenuItemEvent.MenuType.Toolbar,
     screen = "Transfers Section Screen"
