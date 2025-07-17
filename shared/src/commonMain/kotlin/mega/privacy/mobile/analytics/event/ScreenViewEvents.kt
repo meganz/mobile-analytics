@@ -193,3 +193,6 @@ interface CameraBackupsCTAScreen
 
 @ScreenViewEvent
 interface TransfersSectionScreen
+
+@ScreenViewEvent
+interface MyMenuScreen
