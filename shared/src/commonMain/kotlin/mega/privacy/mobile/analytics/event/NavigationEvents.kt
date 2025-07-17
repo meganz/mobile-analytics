@@ -61,3 +61,75 @@ interface SyncNewFolderScreenBackNavigation
     navigationElementType = NavigationEvent.NavigationElementType.Bottom
 )
 interface MenuBottomNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu Storage",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuStorageNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu Contacts",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuContactsNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu Achievements",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuAchievementsNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu SharedItems",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuSharedItemsNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu Device Centre",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuDeviceCentreNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu Transfers",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuTransfersNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu Offline Files",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuOfflineFilesNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu Rubbish Bin",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuRubbishBinNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu Settings",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuSettingsNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu MEGA VPN",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuMEGAVPNNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu MEGA Pass",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuMEGAPassNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu Transfer.it",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuTransferITNavigationItem
