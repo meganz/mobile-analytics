@@ -1845,3 +1845,39 @@ interface ActiveTransfersIndividualPauseButtonButtonPressed
     screen = "Spotlight search"
 )
 interface SpotlightNodeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Enable Ad-blocking",
+    screen = "Ad-blocking Onboarding Screen"
+)
+interface EnableAdBlockingOnboardingButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Skip Ad-blocking",
+    screen = "Ad-blocking Onboarding Screen"
+)
+interface SkipAdBlockingOnboardingButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Continue setup VPN",
+    screen = "VPN Setup Onboarding Screen"
+)
+interface ContinueSetupVPNOnboardingButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Skip setup VPN",
+    screen = "VPN Setup Onboarding Screen"
+)
+interface SkipSetupVPNOnboardingButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Continue setup Notification",
+    screen = "Notification Setup Onboarding Screen",
+)
+interface ContinueSetupNotificationOnboardingButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Skip setup Notification",
+    screen = "Notification Setup Onboarding Screen",
+)
+interface SkipSetupNotificationOnboardingButtonPressed

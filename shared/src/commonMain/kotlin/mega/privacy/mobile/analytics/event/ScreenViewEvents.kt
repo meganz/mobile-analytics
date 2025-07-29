@@ -196,3 +196,12 @@ interface TransfersSectionScreen
 
 @ScreenViewEvent
 interface MyMenuScreen
+
+@ScreenViewEvent
+interface SetupAdBlockingScreenView
+
+@ScreenViewEvent
+interface SetupVpnScreenView
+
+@ScreenViewEvent
+interface SetupNotificationScreenView
