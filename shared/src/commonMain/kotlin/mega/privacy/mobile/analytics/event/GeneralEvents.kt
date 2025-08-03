@@ -320,3 +320,9 @@ interface IOSMigrationFileCreatedSuccessfully
 
 @GeneralEvent
 interface IOSMigrationFileImportedSuccessfully
+
+@GeneralEvent
+interface IOSKMTransferCreatedSuccessfully
+
+@GeneralEvent
+interface IOSKMTransferImportedSuccessfully
