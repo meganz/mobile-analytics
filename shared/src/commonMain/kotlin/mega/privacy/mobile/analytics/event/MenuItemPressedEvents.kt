@@ -1298,3 +1298,15 @@ interface FailedTransfersRetrySelectedMenuItem
     screen = "Transfers Section Screen"
 )
 interface FailedTransfersSelectAllMenuItem
+
+@MenuItemEvent(
+    menuItem = "Label added",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface LabelAddedMenuItem
+
+@MenuItemEvent(
+    menuItem = "Label removed",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface LabelRemovedMenuItem
