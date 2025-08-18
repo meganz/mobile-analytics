@@ -326,3 +326,6 @@ interface IOSKMTransferCreatedSuccessfully
 
 @GeneralEvent
 interface IOSKMTransferImportedSuccessfully
+
+@GeneralEvent
+interface VideoBufferingExceeded_1_Second
