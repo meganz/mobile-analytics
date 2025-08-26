@@ -133,3 +133,9 @@ interface MyMenuMEGAPassNavigationItem
     navigationElementType = NavigationEvent.NavigationElementType.Drawer
 )
 interface MyMenuTransferITNavigationItem
+
+@NavigationEvent(
+    destination = "Home",
+    navigationElementType = NavigationEvent.NavigationElementType.Bottom
+)
+interface HomeBottomNavigationItem
