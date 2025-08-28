@@ -139,3 +139,9 @@ interface MyMenuTransferITNavigationItem
     navigationElementType = NavigationEvent.NavigationElementType.Bottom
 )
 interface HomeBottomNavigationItem
+
+@NavigationEvent(
+    destination = "Photos",
+    navigationElementType = NavigationEvent.NavigationElementType.Bottom
+)
+interface PhotosBottomNavigationItem

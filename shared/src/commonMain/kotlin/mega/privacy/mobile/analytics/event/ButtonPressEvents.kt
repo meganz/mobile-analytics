@@ -1881,3 +1881,9 @@ interface ContinueSetupNotificationOnboardingButtonPressed
     screen = "Notification Setup Onboarding Screen",
 )
 interface SkipSetupNotificationOnboardingButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Privacy Suite Expanded",
+    screen = "Menu Screen"
+)
+interface PrivacySuiteExpanded
