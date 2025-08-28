@@ -1887,3 +1887,15 @@ interface SkipSetupNotificationOnboardingButtonPressed
     screen = "Menu Screen"
 )
 interface PrivacySuiteExpanded
+
+@ButtonPressEvent(
+    buttonName = "Upgrade for free users",
+    screen = "Menu Screen"
+)
+interface UpgradeForFreeUsersInMenu
+
+@ButtonPressEvent(
+    buttonName = "Upgrade for paid users",
+    screen = "Menu Screen"
+)
+interface UpgradeForPaidUsersInMenu
