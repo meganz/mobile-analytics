@@ -1899,3 +1899,15 @@ interface UpgradeForFreeUsersInMenu
     screen = "Menu Screen"
 )
 interface UpgradeForPaidUsersInMenu
+
+@ButtonPressEvent(
+    buttonName = "Start MEGA VPN free trial",
+    screen = "Achievements Screen"
+)
+interface StartMEGAVPNFreeTrial
+
+@ButtonPressEvent(
+    buttonName = "Start MEGA PWM free trial",
+    screen = "Achievements Screen"
+)
+interface StartMEGAPWMFreeTrial
