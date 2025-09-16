@@ -329,3 +329,6 @@ interface IOSKMTransferImportedSuccessfully
 
 @GeneralEvent
 interface VideoBufferingExceeded_1_Second
+
+@GeneralEvent
+class VideoPlaybackRecord(val duration: Int)
