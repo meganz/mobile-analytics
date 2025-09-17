@@ -332,3 +332,48 @@ interface VideoBufferingExceeded_1_Second
 
 @GeneralEvent
 class VideoPlaybackRecord(val duration: Int)
+
+@GeneralEvent
+class FileOpen(
+    val fileType: String,
+    val context: FileOpenContext
+) {
+    enum class FileOpenContext {
+        /**
+         * Opened from a file link
+         */
+        FileLink,
+        /**
+         * Opened from chat
+         */
+        Chat,
+        /**
+         * Opened from the cloud drive
+         */
+        CloudDrive,
+        /**
+         * Opened from shared items
+         */
+        SharedItems,
+        /**
+         * Opened from recent files
+         */
+        Recent,
+        /**
+         * Opened from offline files
+         */
+        Offline,
+        /**
+         * Opened from search results
+         */
+        Search,
+        /**
+         * Opened from a folder link
+         */
+        FolderLink,
+        /**
+         * Context is unknown
+         */
+        Unknown
+    }
+}
