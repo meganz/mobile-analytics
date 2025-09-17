@@ -205,3 +205,6 @@ interface SetupVpnScreenView
 
 @ScreenViewEvent
 interface SetupNotificationScreenView
+
+@ScreenViewEvent
+interface FileContactListScreenView
