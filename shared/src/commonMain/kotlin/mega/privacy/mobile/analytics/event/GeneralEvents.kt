@@ -377,3 +377,63 @@ class FileOpen(
         Unknown
     }
 }
+
+@GeneralEvent
+class VideoPlaybackFirstFrame(val time: Int, val scenario: VideoPlaybackScenario, val commonMap: String) {
+    enum class VideoPlaybackScenario {
+        /**
+         * manual click play
+         */
+        ManualClick,
+
+        /**
+         * resume play
+         */
+        Resume,
+
+        /**
+         * replay
+         */
+        Replay
+    }
+}
+
+@GeneralEvent
+class VideoPlaybackStartupFailure(val scenario: VideoPlaybackScenario, val commonMap: String) {
+    enum class VideoPlaybackScenario {
+        /**
+         * manual click play
+         */
+        ManualClick,
+
+        /**
+         * resume play
+         */
+        Resume,
+
+        /**
+         * replay
+         */
+        Replay
+    }
+}
+
+@GeneralEvent
+class VideoPlaybackStall(val time: Int, val scenario: VideoPlaybackScenario, val commonMap: String) {
+    enum class VideoPlaybackScenario {
+        /**
+         * manual click play
+         */
+        ManualClick,
+
+        /**
+         * resume play
+         */
+        Resume,
+
+        /**
+         * replay
+         */
+        Replay
+    }
+}
