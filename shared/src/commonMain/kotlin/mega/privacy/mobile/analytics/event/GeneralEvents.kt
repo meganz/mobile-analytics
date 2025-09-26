@@ -437,3 +437,67 @@ class VideoPlaybackStall(val time: Int, val scenario: VideoPlaybackScenario, val
         Replay
     }
 }
+
+
+@GeneralEvent
+class VideoPlaybackRecordNewVP(val duration: Int)
+
+@GeneralEvent
+class VideoPlaybackFirstFrameNewVP(val time: Int, val scenario: VideoPlaybackScenario, val commonMap: String) {
+    enum class VideoPlaybackScenario {
+        /**
+         * manual click play
+         */
+        ManualClick,
+
+        /**
+         * resume play
+         */
+        Resume,
+
+        /**
+         * replay
+         */
+        Replay
+    }
+}
+
+@GeneralEvent
+class VideoPlaybackStartupFailureNewVP(val scenario: VideoPlaybackScenario, val commonMap: String) {
+    enum class VideoPlaybackScenario {
+        /**
+         * manual click play
+         */
+        ManualClick,
+
+        /**
+         * resume play
+         */
+        Resume,
+
+        /**
+         * replay
+         */
+        Replay
+    }
+}
+
+@GeneralEvent
+class VideoPlaybackStallNewVP(val time: Int, val scenario: VideoPlaybackScenario, val commonMap: String) {
+    enum class VideoPlaybackScenario {
+        /**
+         * manual click play
+         */
+        ManualClick,
+
+        /**
+         * resume play
+         */
+        Resume,
+
+        /**
+         * replay
+         */
+        Replay
+    }
+}
