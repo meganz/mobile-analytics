@@ -1911,3 +1911,16 @@ interface StartMEGAVPNFreeTrial
     screen = "Achievements Screen"
 )
 interface StartMEGAPWMFreeTrial
+
+@ButtonPressEvent(
+    buttonName = "Active transfers undo swipe to cancel snackbar action",
+    screen = "Transfers Section Screen"
+)
+interface ActiveTransfersUndoSwipeToCancelSnackbarAction
+
+
+@ButtonPressEvent(
+    buttonName = "Failed transfers retry snackbar action",
+    screen = "Transfers Section Screen"
+)
+interface FailedTransfersRetrySnackbarAction
