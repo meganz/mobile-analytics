@@ -8,6 +8,7 @@ import com.google.devtools.ksp.symbol.KSAnnotated
 import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
 import mega.privacy.mobile.analytics.annotations.DialogDisplayedEvent
 import mega.privacy.mobile.analytics.annotations.GeneralEvent
+import mega.privacy.mobile.analytics.annotations.GestureEvent
 import mega.privacy.mobile.analytics.annotations.ItemSelectedEvent
 import mega.privacy.mobile.analytics.annotations.LegacyEvent
 import mega.privacy.mobile.analytics.annotations.MenuItemEvent
@@ -96,7 +97,13 @@ class AnalyticsEventProcessor(
             ).generate(
                 resolver = resolver,
                 fileName = "LegacyEvents"
-            )
+            ),
+            getGenerator(
+                annotationClass = GestureEvent::class,
+            ).generate(
+                resolver = resolver,
+                fileName = "GestureEvents"
+            ),
         ).flatten()
     }
 

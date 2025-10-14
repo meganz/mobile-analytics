@@ -8,6 +8,7 @@ class DialogDisplayedEventParameter : GeneratorCodeTestParameter {
     override val sourceFile = SourceFile.kotlin(
         "input.kt",
         """
+
 import mega.privacy.mobile.analytics.annotations.DialogDisplayedEvent
 
 @DialogDisplayedEvent(dialog = "dialog1", screen = "screen1")
