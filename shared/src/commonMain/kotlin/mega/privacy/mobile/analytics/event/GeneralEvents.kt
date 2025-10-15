@@ -313,9 +313,6 @@ interface VideoQualityOriginal
 interface SlideshowSecureModeActivated
 
 @GeneralEvent
-interface ActiveTransferPriorityChanged
-
-@GeneralEvent
 interface IOSMigrationFileCreatedSuccessfully
 
 @GeneralEvent
