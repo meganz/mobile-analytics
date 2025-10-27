@@ -5,6 +5,7 @@ import mega.privacy.mobile.analytics.core.event.identifier.AppIdentifier
 import mega.privacy.mobile.analytics.core.event.type.ButtonPressedEvent
 import mega.privacy.mobile.analytics.core.event.type.DialogDisplayedEvent
 import mega.privacy.mobile.analytics.core.event.type.GeneralEvent
+import mega.privacy.mobile.analytics.core.event.type.GestureEvent
 import mega.privacy.mobile.analytics.core.event.type.ItemSelectedEvent
 import mega.privacy.mobile.analytics.core.event.type.LegacyEvent
 import mega.privacy.mobile.analytics.core.event.type.MenuItemEvent
@@ -115,6 +116,15 @@ class EventGeneratorTest {
         val actual = underTest.generateEvent(fakeLegacyEventInfo)
 
         assertTrue(actual is LegacyEvent)
+    }
+
+
+    @Test
+    fun `test that gesture event identifier returns a gesture event`() = runTest {
+        val fakeGestureEventInfo = FakeEventProvider.gestureEventIdentifier
+        val actual = underTest.generateEvent(fakeGestureEventInfo)
+
+        assertTrue(actual is GestureEvent)
     }
 
     @Test

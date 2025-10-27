@@ -5,6 +5,7 @@ import mega.privacy.mobile.analytics.core.event.identifier.ButtonPressedEventIde
 import mega.privacy.mobile.analytics.core.event.identifier.DialogDisplayedEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.EventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
+import mega.privacy.mobile.analytics.core.event.identifier.GestureEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.ItemSelectedEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.LegacyEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.MenuItemEventIdentifier
@@ -16,6 +17,7 @@ import mega.privacy.mobile.analytics.core.event.type.AnalyticsEvent
 import mega.privacy.mobile.analytics.core.event.type.ButtonPressedEvent
 import mega.privacy.mobile.analytics.core.event.type.DialogDisplayedEvent
 import mega.privacy.mobile.analytics.core.event.type.GeneralEvent
+import mega.privacy.mobile.analytics.core.event.type.GestureEvent
 import mega.privacy.mobile.analytics.core.event.type.ItemSelectedEvent
 import mega.privacy.mobile.analytics.core.event.type.LegacyEvent
 import mega.privacy.mobile.analytics.core.event.type.MenuItemEvent
@@ -98,6 +100,12 @@ class EventGenerator(
             )
 
             is LegacyEventIdentifier -> LegacyEvent(
+                eventIdentifier = eventIdentifier,
+                viewId = currentViewId,
+                appIdentifier = appIdentifier,
+            )
+
+            is GestureEventIdentifier -> GestureEvent(
                 eventIdentifier = eventIdentifier,
                 viewId = currentViewId,
                 appIdentifier = appIdentifier,

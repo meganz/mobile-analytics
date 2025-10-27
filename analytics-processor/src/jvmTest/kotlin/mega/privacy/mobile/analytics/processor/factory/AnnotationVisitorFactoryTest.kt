@@ -4,6 +4,7 @@ import com.google.common.truth.Truth.assertThat
 import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
 import mega.privacy.mobile.analytics.annotations.DialogDisplayedEvent
 import mega.privacy.mobile.analytics.annotations.GeneralEvent
+import mega.privacy.mobile.analytics.annotations.GestureEvent
 import mega.privacy.mobile.analytics.annotations.ItemSelectedEvent
 import mega.privacy.mobile.analytics.annotations.LegacyEvent
 import mega.privacy.mobile.analytics.annotations.MenuItemEvent
@@ -14,6 +15,7 @@ import mega.privacy.mobile.analytics.annotations.TabSelectedEvent
 import mega.privacy.mobile.analytics.processor.visitor.ButtonPressVisitor
 import mega.privacy.mobile.analytics.processor.visitor.DialogDisplayedEventVisitor
 import mega.privacy.mobile.analytics.processor.visitor.GeneralEventVisitor
+import mega.privacy.mobile.analytics.processor.visitor.GestureEventVisitor
 import mega.privacy.mobile.analytics.processor.visitor.ItemSelectedEventVisitor
 import mega.privacy.mobile.analytics.processor.visitor.LegacyEventVisitor
 import mega.privacy.mobile.analytics.processor.visitor.MenuItemEventVisitor
@@ -49,5 +51,6 @@ class AnnotationVisitorFactoryTest {
         Arguments.of(NotificationEvent::class, NotificationEventVisitor::class.java),
         Arguments.of(DialogDisplayedEvent::class, DialogDisplayedEventVisitor::class.java),
         Arguments.of(LegacyEvent::class, LegacyEventVisitor::class.java),
+        Arguments.of(GestureEvent::class, GestureEventVisitor::class.java),
     )
 }

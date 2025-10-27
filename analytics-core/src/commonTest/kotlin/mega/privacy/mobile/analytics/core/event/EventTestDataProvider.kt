@@ -4,6 +4,7 @@ import mega.privacy.mobile.analytics.core.event.identifier.ButtonPressedEventIde
 import mega.privacy.mobile.analytics.core.event.identifier.DialogDisplayedEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.EventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.GeneralEventIdentifier
+import mega.privacy.mobile.analytics.core.event.identifier.GestureEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.ItemSelectedEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.LegacyEventIdentifier
 import mega.privacy.mobile.analytics.core.event.identifier.MenuItemEventIdentifier
@@ -101,6 +102,17 @@ internal object FakeEventProvider {
         override val uniqueIdentifier: Int
             get() = 123
     }
+
+    val gestureEventIdentifier = object : GestureEventIdentifier {
+        override val eventName: String
+            get() = "expectedEventName"
+        override val uniqueIdentifier: Int
+            get() = 123
+        override val screenName: String?
+            get() = "expectedScreenName"
+        override val gestureName: String
+            get() = "expectedGestureName"
+    }
 }
 
 internal object EventDataProvider {
@@ -115,5 +127,6 @@ internal object EventDataProvider {
         FakeEventProvider.notificationEventIdentifier,
         FakeEventProvider.tabSelectedEventIdentifier,
         FakeEventProvider.legacyEventIdentifier,
+        FakeEventProvider.gestureEventIdentifier,
     )
 }
