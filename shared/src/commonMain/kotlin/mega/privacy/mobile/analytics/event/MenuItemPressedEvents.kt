@@ -1310,3 +1310,10 @@ interface LabelAddedMenuItem
     menuType = MenuItemEvent.MenuType.Item
 )
 interface LabelRemovedMenuItem
+
+@MenuItemEvent(
+    menuItem = "Make available offline using BGContinuedProcessingTask",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Photo preview screen"
+)
+interface PhotoPreviewMakeAvailableOfflineBGContinuedProcessingTaskMenuItem
