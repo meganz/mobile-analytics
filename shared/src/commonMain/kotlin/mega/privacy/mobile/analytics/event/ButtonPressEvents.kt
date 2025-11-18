@@ -1924,3 +1924,15 @@ interface ActiveTransfersUndoSwipeToCancelSnackbarAction
     screen = "Transfers Section Screen"
 )
 interface FailedTransfersRetrySnackbarAction
+
+@ButtonPressEvent(
+    buttonName = "Edit text file action",
+    screen = "The text file browser screen"
+)
+interface EditTextFileAction
+
+@ButtonPressEvent(
+    buttonName = "Picture in picture pressed in Video Player",
+    screen = "The video player screen"
+)
+interface VideoPlayerPictureInPicturePressed
