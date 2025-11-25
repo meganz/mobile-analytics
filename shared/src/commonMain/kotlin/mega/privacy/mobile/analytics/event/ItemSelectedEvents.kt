@@ -317,3 +317,6 @@ interface CompletedTransfersItemTapAndHoldSelected
 
 @ItemSelectedEvent
 interface FailedTransfersItemTapAndHoldSelected
+
+@ItemSelectedEvent
+interface CameraUploadsTargetFolderIncomingShareSelected
