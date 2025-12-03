@@ -208,3 +208,6 @@ interface SetupNotificationScreenView
 
 @ScreenViewEvent
 interface FileContactListScreenView
+
+@ScreenViewEvent
+interface CameraUploadProgressScreen

@@ -1317,3 +1317,9 @@ interface LabelRemovedMenuItem
     screen = "Photo preview screen"
 )
 interface PhotoPreviewMakeAvailableOfflineBGContinuedProcessingTaskMenuItem
+
+@MenuItemEvent(
+    menuItem = "Camera uploads settings",
+    menuType = MenuItemEvent.MenuType.Toolbar
+)
+interface CameraUploadsSettingsMenuItem
