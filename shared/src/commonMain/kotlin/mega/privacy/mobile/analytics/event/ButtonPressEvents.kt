@@ -1936,3 +1936,39 @@ interface EditTextFileAction
     screen = "The video player screen"
 )
 interface VideoPlayerPictureInPicturePressed
+
+@ButtonPressEvent(
+    buttonName = "Login button",
+    screen = "USP Welcome Screen"
+)
+interface LoginButtonOnUSPPagePressed
+
+@ButtonPressEvent(
+    buttonName = "Accept",
+    screen = "Terms of Service Screen"
+)
+interface AcceptTermsOfServiceButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Change email address",
+    screen = "Email Confirmation Screen"
+)
+interface EmailConfirmationChangeEmailButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Close email confirmation screen",
+    screen = "Email Confirmation Screen"
+)
+interface CloseEmailConfirmationButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Confirm close email confirmation screen",
+    screen = "Email Confirmation Screen"
+)
+interface ConfirmCloseEmailConfirmationButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Cancel close email confirmation screen",
+    screen = "Email Confirmation Screen"
+)
+interface CancelCloseEmailConfirmationButtonPressed
