@@ -1972,3 +1972,62 @@ interface ConfirmCloseEmailConfirmationButtonPressed
     screen = "Email Confirmation Screen"
 )
 interface CancelCloseEmailConfirmationButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Cloud Drive search bar",
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveSearchBarPressed
+
+@ButtonPressEvent(
+    buttonName = "Cloud Drive search bar's cancel",
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveSearchBarCancelPressed
+
+@ButtonPressEvent(
+    buttonName = "Cloud Drive empty state's `Add Files`",
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveEmptyStateAddFilesPressed
+
+@ButtonPressEvent(
+    buttonName = "Cloud Drive parent node's more button",
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveParentNodeMoreButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Cloud Drive child node's more button",
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveChildNodeMoreButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Sort button"
+)
+interface SortButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Cloud Drive item's swipe gesture - download",
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveSwipeGestureDownloadButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Cloud Drive item's swipe gesture - Link",
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveSwipeGestureLinkButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Cloud Drive item's swipe gesture - Remove",
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveSwipeGestureRemoveButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "View mode button"
+)
+interface ViewModeButtonPressed
+

@@ -1323,3 +1323,155 @@ interface PhotoPreviewMakeAvailableOfflineBGContinuedProcessingTaskMenuItem
     menuType = MenuItemEvent.MenuType.Toolbar
 )
 interface CameraUploadsSettingsMenuItem
+
+@MenuItemEvent(
+    menuItem = "Info",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveInfoMenuItem
+
+@MenuItemEvent(
+    menuItem = "Select",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectMenuItem
+
+@MenuItemEvent(
+    menuItem = "Favourite",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveFavouriteMenuItem
+
+@MenuItemEvent(
+    menuItem = "Label",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveLabelMenuItem
+
+@MenuItemEvent(
+    menuItem = "Make available offline",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveDownloadMenuItem
+
+@MenuItemEvent(
+    menuItem = "Share link",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveShareLinkMenuItem
+
+@MenuItemEvent(
+    menuItem = "Share folder",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveShareFolderMenuItem
+
+@MenuItemEvent(
+    menuItem = "Rename",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveRenameMenuItem
+
+@MenuItemEvent(
+    menuItem = "Hide",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveHideMenuItem
+
+@MenuItemEvent(
+    menuItem = "Move",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveMoveMenuItem
+
+@MenuItemEvent(
+    menuItem = "Copy",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveCopyMenuItem
+
+@MenuItemEvent(
+    menuItem = "Move to rubbish bin",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveMoveToRubbishBinMenuItem
+
+@MenuItemEvent(
+    menuItem = "Sort by name",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface SortByNameMenuItem
+
+@MenuItemEvent(
+    menuItem = "Sort by favourite",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface SortByFavouriteMenuItem
+
+@MenuItemEvent(
+    menuItem = "Sort by label",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface SortByLabelMenuItem
+
+@MenuItemEvent(
+    menuItem = "Sort by date added",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface SortByDateAddedMenuItem
+
+@MenuItemEvent(
+    menuItem = "Sort by date modified",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface SortByDateModifiedMenuItem
+
+@MenuItemEvent(
+    menuItem = "Sort by size",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface SortBySizeMenuItem
+
+@MenuItemEvent(
+    menuItem = "Scan document",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveScanDocumentMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Capture",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveCaptureMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "List view mode option",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface ViewModeListMenuItem
+
+@MenuItemEvent(
+    menuItem = "Grid view mode option",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface ViewModeGridMenuItem
+
+@MenuItemEvent(
+    menuItem = "Gallery view mode option",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface ViewModeGalleryMenuItem

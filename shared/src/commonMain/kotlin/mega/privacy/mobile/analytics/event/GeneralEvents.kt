@@ -498,3 +498,6 @@ class VideoPlaybackStallNewVP(val time: Int, val scenario: VideoPlaybackScenario
         Replay
     }
 }
+
+@GeneralEvent
+interface CloudDriveMultiSelectModeEntered
