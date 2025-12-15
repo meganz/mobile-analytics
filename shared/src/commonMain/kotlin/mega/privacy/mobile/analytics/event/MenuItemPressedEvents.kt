@@ -1445,6 +1445,18 @@ interface SortByDateModifiedMenuItem
 interface SortBySizeMenuItem
 
 @MenuItemEvent(
+    menuItem = "Sort by link creation",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface SortByLinkCreationMenuItem
+
+@MenuItemEvent(
+    menuItem = "Sort by share creation",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface SortByShareCreationMenuItem
+
+@MenuItemEvent(
     menuItem = "Scan document",
     menuType = MenuItemEvent.MenuType.Toolbar,
     screen = "Cloud Drive Screen"
@@ -1475,3 +1487,9 @@ interface ViewModeGridMenuItem
     menuType = MenuItemEvent.MenuType.Item,
 )
 interface ViewModeGalleryMenuItem
+
+@MenuItemEvent(
+    menuItem = "Cloud drive bottom toolbar more action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveBottomToolBarMoreMenuItem
