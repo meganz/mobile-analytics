@@ -211,3 +211,6 @@ interface FileContactListScreenView
 
 @ScreenViewEvent
 interface CameraUploadProgressScreen
+
+@ScreenViewEvent
+interface FreeTrialScreen

@@ -34,3 +34,18 @@ interface TwoYearPlanPurchaseSuccessful
 
 @NotificationEvent
 interface TwoYearPlanPurchaseFailed
+
+@NotificationEvent
+interface MonthlyPlanFreeTrialSuccessful
+
+@NotificationEvent
+interface MonthlyPlanFreeTrialFailed
+
+@NotificationEvent
+interface AnnualPlanFreeTrialSuccessful
+
+@NotificationEvent
+interface AnnualPlanFreeTrialFailed
+
+@NotificationEvent
+interface FreeTrialPurchaseCancelled

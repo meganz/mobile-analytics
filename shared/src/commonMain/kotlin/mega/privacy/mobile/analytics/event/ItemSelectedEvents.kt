@@ -320,3 +320,9 @@ interface FailedTransfersItemTapAndHoldSelected
 
 @ItemSelectedEvent
 interface CameraUploadsTargetFolderIncomingShareSelected
+
+@ItemSelectedEvent
+interface FreeTrialMonthlyPlanSelected
+
+@ItemSelectedEvent
+interface FreeTrialAnnualPlanSelected
