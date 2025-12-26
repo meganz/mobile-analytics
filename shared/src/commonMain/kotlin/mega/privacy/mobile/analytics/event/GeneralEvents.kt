@@ -501,3 +501,6 @@ class VideoPlaybackStallNewVP(val time: Int, val scenario: VideoPlaybackScenario
 
 @GeneralEvent
 interface CloudDriveMultiSelectModeEntered
+
+@GeneralEvent
+interface SyncWorkerForegroundExecutionStarted
