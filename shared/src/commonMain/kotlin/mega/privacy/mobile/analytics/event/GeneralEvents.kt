@@ -504,3 +504,6 @@ interface CloudDriveMultiSelectModeEntered
 
 @GeneralEvent
 interface SyncWorkerForegroundExecutionStarted
+
+@GeneralEvent
+interface AirplayActivationInVideoPlayback
