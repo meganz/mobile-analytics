@@ -2031,3 +2031,21 @@ interface CloudDriveSwipeGestureRemoveButtonPressed
 )
 interface ViewModeButtonPressed
 
+@ButtonPressEvent(
+    buttonName = "Location filter button",
+    screen = "All video screen"
+)
+interface LocationFilterButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Duration filter button",
+    screen = "All video screen"
+)
+interface DurationFilterButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Videos chip button",
+    screen = "Home screen"
+)
+interface VideosChipButtonPressed
+

@@ -145,3 +145,9 @@ interface HomeBottomNavigationItem
     navigationElementType = NavigationEvent.NavigationElementType.Bottom
 )
 interface PhotosBottomNavigationItem
+
+@NavigationEvent(
+    destination = "Home",
+    navigationElementType = NavigationEvent.NavigationElementType.Toolbar
+)
+interface VideosScreenBackNavigation
