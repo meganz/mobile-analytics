@@ -2049,3 +2049,7 @@ interface DurationFilterButtonPressed
 )
 interface VideosChipButtonPressed
 
+@ButtonPressEvent(
+    buttonName = "Back button"
+)
+interface BackButtonPressed

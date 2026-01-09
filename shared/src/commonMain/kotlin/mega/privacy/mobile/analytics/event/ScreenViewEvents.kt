@@ -214,3 +214,6 @@ interface CameraUploadProgressScreen
 
 @ScreenViewEvent
 interface FreeTrialScreen
+
+@ScreenViewEvent
+interface OfflineScreen
