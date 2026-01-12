@@ -2053,3 +2053,27 @@ interface VideosChipButtonPressed
     buttonName = "Back button"
 )
 interface BackButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Send decryption key separately folder enabled",
+    screen = "share and manage link screen"
+)
+interface LinkSendDecryptionKeyFolderButtonEnabled
+
+@ButtonPressEvent(
+    buttonName = "Send decryption key separately file enabled",
+    screen = "share and manage link screen"
+)
+interface LinkSendDecryptionKeyFileButtonEnabled
+
+@ButtonPressEvent(
+    buttonName = "Send decryption key separately folder disabled",
+    screen = "share and manage link screen"
+)
+interface LinkSendDecryptionKeyFolderButtonDisabled
+
+@ButtonPressEvent(
+    buttonName = "Send decryption key separately file disabled",
+    screen = "share and manage link screen"
+)
+interface LinkSendDecryptionKeyFileButtonDisabled
