@@ -2077,3 +2077,27 @@ interface LinkSendDecryptionKeyFolderButtonDisabled
     screen = "share and manage link screen"
 )
 interface LinkSendDecryptionKeyFileButtonDisabled
+
+@ButtonPressEvent(
+    buttonName = "Set expiry date for folder enabled",
+    screen = "share and manage link screen"
+)
+interface LinkSetExpiryDateFolderButtonPressedEnabled
+
+@ButtonPressEvent(
+    buttonName = "Set expiry date for file enabled",
+    screen = "share and manage link screen"
+)
+interface LinkSetExpiryDateFileButtonPressedEnabled
+
+@ButtonPressEvent(
+    buttonName = "Set expiry date for folder disabled",
+    screen = "share and manage link screen"
+)
+interface LinkSetExpiryDateFolderButtonPressedDisabled
+
+@ButtonPressEvent(
+    buttonName = "Set expiry date for file disabled",
+    screen = "share and manage link screen"
+)
+interface LinkSetExpiryDateFileButtonPressedDisabled
