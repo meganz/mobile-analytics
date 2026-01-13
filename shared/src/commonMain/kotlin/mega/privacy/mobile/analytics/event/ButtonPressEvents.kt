@@ -2101,3 +2101,15 @@ interface LinkSetExpiryDateFolderButtonPressedDisabled
     screen = "share and manage link screen"
 )
 interface LinkSetExpiryDateFileButtonPressedDisabled
+
+@ButtonPressEvent(
+    buttonName = "Encrypt password for folder",
+    screen = "share and manage link screen"
+)
+interface LinkEncryptPasswordFolderButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Encrypt password for file",
+    screen = "share and manage link screen"
+)
+interface LinkEncryptPasswordFileButtonPressed
