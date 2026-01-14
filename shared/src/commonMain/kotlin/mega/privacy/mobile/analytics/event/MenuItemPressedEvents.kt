@@ -1493,3 +1493,38 @@ interface ViewModeGalleryMenuItem
     menuType = MenuItemEvent.MenuType.Item,
 )
 interface CloudDriveBottomToolBarMoreMenuItem
+
+@MenuItemEvent(
+    menuItem = "Scan Document",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Home Screen"
+)
+interface HomeScanDocumentMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Capture",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Home Screen"
+)
+interface HomeCaptureMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Add New Sync",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Home Screen"
+)
+interface HomeAddNewSyncMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Add New Backup",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Home Screen"
+)
+interface HomeAddNewBackupMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "New Chat",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Home Screen"
+)
+interface HomeNewChatMenuToolbar

@@ -2113,3 +2113,9 @@ interface LinkEncryptFolderButtonPressed
     screen = "share and manage link screen"
 )
 interface LinkEncryptFileButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Home FAB options button",
+    screen = "Home Screen"
+)
+interface HomeFabOptionsButtonPressed
