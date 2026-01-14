@@ -2044,10 +2044,28 @@ interface LocationFilterButtonPressed
 interface DurationFilterButtonPressed
 
 @ButtonPressEvent(
+    buttonName = "Favourites chip button",
+    screen = "Home screen"
+)
+interface FavouritesChipButtonPressed
+
+@ButtonPressEvent(
     buttonName = "Videos chip button",
     screen = "Home screen"
 )
 interface VideosChipButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Offline chip button",
+    screen = "Home screen"
+)
+interface OfflineChipButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Chat chip button",
+    screen = "Home screen"
+)
+interface ChatChipButtonPressed
 
 @ButtonPressEvent(
     buttonName = "Back button"
