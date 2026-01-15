@@ -217,3 +217,6 @@ interface FreeTrialScreen
 
 @ScreenViewEvent
 interface OfflineScreen
+
+@ScreenViewEvent
+interface FavouritesScreen
