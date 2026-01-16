@@ -1528,3 +1528,9 @@ interface HomeAddNewBackupMenuToolbar
     screen = "Home Screen"
 )
 interface HomeNewChatMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Add to album from context menu",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface AddToAlbumMenuItem
