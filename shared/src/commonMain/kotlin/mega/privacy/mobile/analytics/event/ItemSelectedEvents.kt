@@ -326,3 +326,45 @@ interface FreeTrialMonthlyPlanSelected
 
 @ItemSelectedEvent
 interface FreeTrialAnnualPlanSelected
+
+@ItemSelectedEvent
+interface MediaScreenYearsFilterSelected
+
+@ItemSelectedEvent
+interface MediaScreenMonthsFilterSelected
+
+@ItemSelectedEvent
+interface MediaScreenDaysFilterSelected
+
+@ItemSelectedEvent
+interface MediaScreenAllFilterSelected
+
+@ItemSelectedEvent
+interface MediaScreenSortByNewestSelected
+
+@ItemSelectedEvent
+interface MediaScreenFilterAllLocationsSelected
+
+@ItemSelectedEvent
+interface MediaScreenFilterCloudDriveSelected
+
+@ItemSelectedEvent
+interface MediaScreenFilterCameraUploadsSelected
+
+@ItemSelectedEvent
+interface MediaScreenFilterAllMediaSelected
+
+@ItemSelectedEvent
+interface MediaScreenFilterImagesSelected
+
+@ItemSelectedEvent
+interface MediaScreenFilterVideosSelected
+
+@ItemSelectedEvent
+interface MediaScreenGridSizeCompactSelected
+
+@ItemSelectedEvent
+interface MediaScreenGridSizeDefaultSelected
+
+@ItemSelectedEvent
+interface MediaScreenGridSizeLargeSelected

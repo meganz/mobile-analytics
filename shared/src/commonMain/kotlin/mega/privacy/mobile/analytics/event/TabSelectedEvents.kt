@@ -46,3 +46,15 @@ interface CompletedTransfersTab
 
 @TabSelectedEvent(screenName = "Transfers Section Screen", tabName = "Failed")
 interface FailedTransfersTab
+
+@TabSelectedEvent(screenName = "MediaScreen", tabName = "Timeline")
+interface MediaScreenTimelineTab
+
+@TabSelectedEvent(screenName = "MediaScreen", tabName = "Albums")
+interface MediaScreenAlbumsTab
+
+@TabSelectedEvent(screenName = "MediaScreen", tabName = "Videos")
+interface MediaScreenVideosTab
+
+@TabSelectedEvent(screenName = "MediaScreen", tabName = "Playlists")
+interface MediaScreenPlaylistsTab

@@ -2137,3 +2137,45 @@ interface LinkEncryptFileButtonPressed
     screen = "Home Screen"
 )
 interface HomeFabOptionsButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Download button",
+    screen = "Media Screen"
+)
+interface MediaScreenDownloadButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Link button",
+    screen = "Media Screen"
+)
+interface MediaScreenLinkButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Respond button",
+    screen = "Media Screen"
+)
+interface MediaScreenRespondButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Share button",
+    screen = "Media Screen"
+)
+interface MediaScreenShareButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Trash button",
+    screen = "Media Screen"
+)
+interface MediaScreenTrashButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "More button",
+    screen = "Media Screen"
+)
+interface MediaScreenMoreButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Add items button",
+    screen = "Media Screen"
+)
+interface MediaScreenAlbumAddItemsButtonPressed

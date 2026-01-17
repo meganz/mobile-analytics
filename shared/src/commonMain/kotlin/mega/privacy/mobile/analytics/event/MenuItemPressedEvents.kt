@@ -1536,6 +1536,42 @@ interface HomeNewChatMenuToolbar
 interface AddToAlbumMenuItem
 
 @MenuItemEvent(
+    menuItem = "Transfers",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Media Screen"
+)
+interface MediaScreenTransfersMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Search",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Media Screen"
+)
+interface MediaScreenSearchMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "More",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Media Screen"
+)
+interface MediaScreenMoreMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Sort by",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Media Screen"
+)
+interface MediaScreenSortByMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Settings",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Media Screen"
+)
+interface MediaScreenSettingsMenuToolbar
+
+
+@MenuItemEvent(
     menuItem = "Sync",
     menuType = MenuItemEvent.MenuType.Item,
     screen = "Cloud Drive screen"

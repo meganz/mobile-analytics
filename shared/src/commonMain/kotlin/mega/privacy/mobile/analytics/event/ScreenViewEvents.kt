@@ -220,3 +220,6 @@ interface OfflineScreen
 
 @ScreenViewEvent
 interface FavouritesScreen
+
+@ScreenViewEvent
+interface MediaScreen
