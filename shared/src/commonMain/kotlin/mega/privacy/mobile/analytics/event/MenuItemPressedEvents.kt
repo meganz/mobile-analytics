@@ -1534,3 +1534,10 @@ interface HomeNewChatMenuToolbar
     menuType = MenuItemEvent.MenuType.Item,
 )
 interface AddToAlbumMenuItem
+
+@MenuItemEvent(
+    menuItem = "Sync",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSyncMenuItem
