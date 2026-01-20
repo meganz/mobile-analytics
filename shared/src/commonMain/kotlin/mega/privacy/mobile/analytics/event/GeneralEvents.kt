@@ -507,9 +507,3 @@ interface SyncWorkerForegroundExecutionStarted
 
 @GeneralEvent
 interface AirplayActivationInVideoPlayback
-
-@GeneralEvent
-interface FileLinkViewUpgradeToProAlertDisplayed
-
-@GeneralEvent
-interface FolderLinkViewUpgradeToProAlertDisplayed
