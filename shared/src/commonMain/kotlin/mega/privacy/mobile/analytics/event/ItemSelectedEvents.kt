@@ -313,6 +313,9 @@ interface VpnSmartBannerItemSelected
 interface PwmSmartBannerItemSelected
 
 @ItemSelectedEvent
+interface TransferItSmartBannerItemSelected
+
+@ItemSelectedEvent
 interface CompletedTransfersItemTapAndHoldSelected
 
 @ItemSelectedEvent

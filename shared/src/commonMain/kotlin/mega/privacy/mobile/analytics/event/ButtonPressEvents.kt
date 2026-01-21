@@ -2197,3 +2197,21 @@ interface RecentsViewAllButtonPressed
     screen = "Home Screen"
 )
 interface RecentsChildNodeMoreButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Close PWM Home Banner",
+    screen = "Home Screen"
+)
+interface PwmBannerCloseButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Close VPN Home Banner",
+    screen = "Home Screen"
+)
+interface VpnBannerCloseButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Close Transfer it Home Banner",
+    screen = "Home Screen"
+)
+interface TransferItBannerCloseButtonPressed
