@@ -2179,3 +2179,21 @@ interface MediaScreenMoreButtonPressed
     screen = "Media Screen"
 )
 interface MediaScreenAlbumAddItemsButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Recents Empty State Upload Button",
+    screen = "Home Screen"
+)
+interface RecentsEmptyStateUploadButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Recents View all Button",
+    screen = "Home Screen"
+)
+interface RecentsViewAllButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Recents Child Node More Button",
+    screen = "Home Screen"
+)
+interface RecentsChildNodeMoreButtonPressed

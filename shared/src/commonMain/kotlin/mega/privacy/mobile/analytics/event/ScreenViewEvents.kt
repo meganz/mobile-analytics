@@ -223,3 +223,6 @@ interface FavouritesScreen
 
 @ScreenViewEvent
 interface MediaScreen
+
+@ScreenViewEvent
+interface RecentsScreen
