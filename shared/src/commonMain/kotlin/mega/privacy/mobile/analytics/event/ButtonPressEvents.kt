@@ -2215,3 +2215,15 @@ interface VpnBannerCloseButtonPressed
     screen = "Home Screen"
 )
 interface TransferItBannerCloseButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Open My Account Screen from Account Widget",
+    screen = "Home Screen"
+)
+interface MyAccountHomeWidgetButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Open Upgrade Account Screen from Account Widget",
+    screen = "Home Screen"
+)
+interface UpgradeAccountHomeWidgetButtonPressed
