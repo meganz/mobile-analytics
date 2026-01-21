@@ -11,18 +11,6 @@ interface RemoveLinksConfirmationDialog
 @DialogDisplayedEvent(dialog = "CreateNewAlbumDialog", screen = "PhotoScreen")
 interface CreateNewAlbumDialog
 
-@DialogDisplayedEvent(dialog = "LinkProFeatureSeePlanFolderDialog")
-interface LinkProFeatureSeePlanFolderDialog
-
-@DialogDisplayedEvent(dialog = "LinkProFeatureSeePlanFileDialog")
-interface LinkProFeatureSeePlanFileDialog
-
-@DialogDisplayedEvent(dialog = "LinkProFeatureSeeNotNowPlanFolderDialog")
-interface LinkProFeatureSeeNotNowPlanFolderDialog
-
-@DialogDisplayedEvent(dialog = "LinkProFeatureSeeNotNowPlanFileDialog")
-interface LinkProFeatureSeeNotNowPlanFileDialog
-
 @DialogDisplayedEvent(dialog = "AlbumImportInputDecryptionKeyDialog", screen = "AlbumImportScreen")
 interface AlbumImportInputDecryptionKeyDialog
 
@@ -55,3 +43,9 @@ interface UpgradeToProToGetUnlimitedCallsDialog
 
 @DialogDisplayedEvent(dialog = "Android Sync all files access permission", screen = "Sync List and New Sync screens")
 interface AndroidSyncAllFilesAccessDialogDisplayed
+
+@DialogDisplayedEvent(dialog = "Upgrade to Pro Feature Dialog for Folder", screen = "Share/Manage Link Screen")
+interface LinkUpgradeToProFeatureFolderDialog
+
+@DialogDisplayedEvent(dialog = "Upgrade to Pro Feature Dialog for File", screen = "Share/Manage Link Screen")
+interface LinkUpgradeToProFeatureFileDialog
