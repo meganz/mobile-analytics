@@ -507,3 +507,15 @@ interface SyncWorkerForegroundExecutionStarted
 
 @GeneralEvent
 interface AirplayActivationInVideoPlayback
+
+@GeneralEvent
+interface MyAccountStorageTransferSectionTapped
+
+@GeneralEvent
+interface MyAccountBackupRecoverySectionTapped
+
+@GeneralEvent
+interface MyAccountContactsSectionTapped
+
+@GeneralEvent
+interface MyAccountAchievementsSectionTapped
