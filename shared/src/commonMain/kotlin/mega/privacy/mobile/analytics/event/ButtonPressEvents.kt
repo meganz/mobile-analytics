@@ -1980,6 +1980,17 @@ interface CancelCloseEmailConfirmationButtonPressed
 interface CloudDriveSearchBarPressed
 
 @ButtonPressEvent(
+    buttonName = "Home Screen search bar",
+    screen = "Home Screen"
+)
+interface HomeSearchBarPressed
+
+@ButtonPressEvent(
+    buttonName = "Transfers Toolbar Widget"
+)
+interface TransfersToolbarWidgetPressed
+
+@ButtonPressEvent(
     buttonName = "Cloud Drive search bar's cancel",
     screen = "Cloud Drive Screen"
 )

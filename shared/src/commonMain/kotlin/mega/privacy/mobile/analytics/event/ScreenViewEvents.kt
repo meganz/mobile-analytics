@@ -15,6 +15,9 @@ interface ChatScreen
 interface CloudDriveScreen
 
 @ScreenViewEvent
+interface DriveSyncScreen
+
+@ScreenViewEvent
 interface HomeScreen
 
 @ScreenViewEvent
@@ -226,3 +229,9 @@ interface MediaScreen
 
 @ScreenViewEvent
 interface RecentsScreen
+
+@ScreenViewEvent
+interface RecentsBucketScreen
+
+@ScreenViewEvent
+interface SharesScreen
