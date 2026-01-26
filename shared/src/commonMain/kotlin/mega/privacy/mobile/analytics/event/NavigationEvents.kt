@@ -151,3 +151,9 @@ interface PhotosBottomNavigationItem
     navigationElementType = NavigationEvent.NavigationElementType.Toolbar
 )
 interface VideosScreenBackNavigation
+
+@NavigationEvent(
+    destination = "My Menu Chat",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuChatNavigationItem

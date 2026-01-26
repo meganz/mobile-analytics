@@ -2238,3 +2238,9 @@ interface MyAccountHomeWidgetButtonPressed
     screen = "Home Screen"
 )
 interface UpgradeAccountHomeWidgetButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Privacy Suite Collapsed",
+    screen = "Menu Screen"
+)
+interface PrivacySuiteCollapsed
