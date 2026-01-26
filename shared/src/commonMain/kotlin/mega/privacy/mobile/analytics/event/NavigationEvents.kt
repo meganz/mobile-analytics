@@ -157,3 +157,9 @@ interface VideosScreenBackNavigation
     navigationElementType = NavigationEvent.NavigationElementType.Drawer
 )
 interface MyMenuChatNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu Upgrade",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuUpgradeNavigationItem
