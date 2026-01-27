@@ -2244,3 +2244,33 @@ interface UpgradeAccountHomeWidgetButtonPressed
     screen = "Menu Screen"
 )
 interface PrivacySuiteCollapsed
+
+@ButtonPressEvent(
+    buttonName = "Add to album button",
+    screen = "Media Screen"
+)
+interface MediaScreenAddToAlbumButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copy button",
+    screen = "Media Screen"
+)
+interface MediaScreenCopyButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Hide button",
+    screen = "Media Screen"
+)
+interface MediaScreenHideButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Move button",
+    screen = "Media Screen"
+)
+interface MediaScreenMoveButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Remove link button",
+    screen = "Media Screen"
+)
+interface MediaScreenRemoveLinkButtonPressed
