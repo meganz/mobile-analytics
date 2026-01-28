@@ -1577,3 +1577,10 @@ interface MediaScreenSettingsMenuToolbar
     screen = "Cloud Drive screen"
 )
 interface CloudDriveSyncMenuItem
+
+@MenuItemEvent(
+    menuItem = "Filter",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Media Screen"
+)
+interface MediaScreenFilterMenuToolbar
