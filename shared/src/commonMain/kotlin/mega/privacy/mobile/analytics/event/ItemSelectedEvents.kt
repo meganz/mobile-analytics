@@ -371,3 +371,6 @@ interface MediaScreenGridSizeDefaultSelected
 
 @ItemSelectedEvent
 interface MediaScreenGridSizeLargeSelected
+
+@ItemSelectedEvent
+interface MediaScreenSortByOldestSelected

@@ -519,3 +519,6 @@ interface MyAccountContactsSectionTapped
 
 @GeneralEvent
 interface MyAccountAchievementsSectionTapped
+
+@GeneralEvent
+class MediaScreenFilterSettingsRememberPreferences(val enabled: Boolean)
