@@ -1584,3 +1584,135 @@ interface CloudDriveSyncMenuItem
     screen = "Media Screen"
 )
 interface MediaScreenFilterMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Add to menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveAddToMenuItem
+
+@MenuItemEvent(
+    menuItem = "Delete permanently menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveDeletePermanentlyMenuItem
+
+@MenuItemEvent(
+    menuItem = "Dispute take down menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveDisputeTakeDownMenuItem
+
+@MenuItemEvent(
+    menuItem = "Save to device menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveSaveToDeviceMenuItem
+
+@MenuItemEvent(
+    menuItem = "Edit menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveEditMenuItem
+
+@MenuItemEvent(
+    menuItem = "Delete permanently menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveManageLinkMenuItem
+
+@MenuItemEvent(
+    menuItem = "Leave share menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveLeaveShareMenuItem
+
+@MenuItemEvent(
+    menuItem = "Manage shared folder menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveManageSharedFolderMenuItem
+
+@MenuItemEvent(
+    menuItem = "Open location menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveOpenLocationMenuItem
+
+@MenuItemEvent(
+    menuItem = "Open with menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveOpenWithMenuItem
+
+@MenuItemEvent(
+    menuItem = "Remove favourite menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveRemoveFavouriteMenuItem
+
+@MenuItemEvent(
+    menuItem = "Remove link menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveRemoveLinkMenuItem
+
+@MenuItemEvent(
+    menuItem = "Remove offline menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveRemoveOfflineMenuItem
+
+@MenuItemEvent(
+    menuItem = "Remove share menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveRemoveShareMenuItem
+
+@MenuItemEvent(
+    menuItem = "Restore menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveRestoreMenuItem
+
+@MenuItemEvent(
+    menuItem = "Send to chat action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveSendToChatMenuItem
+
+@MenuItemEvent(
+    menuItem = "Share menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveShareMenuItem
+
+@MenuItemEvent(
+    menuItem = "Slideshow menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveSlideshowMenuItem
+
+@MenuItemEvent(
+    menuItem = "Unhide menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveUnhideMenuItem
+
+@MenuItemEvent(
+    menuItem = "Verify user menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveVerifyUserMenuItem
+
+@MenuItemEvent(
+    menuItem = "Versions menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveVersionsMenuItem
+
+@MenuItemEvent(
+    menuItem = "View in folder menu action",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface CloudDriveViewInFolderMenuItem
