@@ -12,7 +12,19 @@ interface GenericAppPushNotificationTapped
 interface FullStorageOverQuotaBannerDisplayed
 
 @NotificationEvent
+interface FullStorageAndTransferOverQuotaErrorBannerDisplaye
+
+@NotificationEvent
+interface TransferOverQuotaErrorBannerDisplayed
+
+@NotificationEvent
 interface AlmostFullStorageOverQuotaBannerDisplayed
+
+@NotificationEvent
+interface AlmostFullStorageAndTransferOverQuotaBannerDisplayed
+
+@NotificationEvent
+interface TransferOverQuotaWarningBannerDisplayed
 
 @NotificationEvent
 interface NotificationCentreItemTapped
