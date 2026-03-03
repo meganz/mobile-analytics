@@ -522,3 +522,64 @@ interface MyAccountAchievementsSectionTapped
 
 @GeneralEvent
 class MediaScreenFilterSettingsRememberPreferences(val enabled: Boolean)
+
+// BGTask (BGContinuedProcessingTask) analytics events
+
+// BGTask outcome
+@GeneralEvent
+interface BGTaskCompleted
+
+@GeneralEvent
+interface BGTaskExpired
+
+@GeneralEvent
+interface BGTaskScheduleFailedRegister
+
+@GeneralEvent
+interface BGTaskScheduleFailedSubmit
+
+// Duration of BGTask (start to completion/expiration) - bucketed
+@GeneralEvent
+interface BGTaskDurationUnder1Min
+
+@GeneralEvent
+interface BGTaskDurationUnder5Min
+
+@GeneralEvent
+interface BGTaskDurationUnder10Min
+
+@GeneralEvent
+interface BGTaskDurationOver10Min
+
+// Completion % at expiration - bucketed
+@GeneralEvent
+interface BGTaskProgressAtExpirationUnder25
+
+@GeneralEvent
+interface BGTaskProgressAtExpirationUnder50
+
+@GeneralEvent
+interface BGTaskProgressAtExpirationUnder75
+
+@GeneralEvent
+interface BGTaskProgressAtExpirationOver75
+
+// App state at expiration
+@GeneralEvent
+interface BGTaskExpiredWhileAppActive
+
+@GeneralEvent
+interface BGTaskExpiredWhileAppBackground
+
+// OS scheduling delay (time from submit to launch handler) - bucketed
+@GeneralEvent
+interface BGTaskSchedulingDelayUnder5s
+
+@GeneralEvent
+interface BGTaskSchedulingDelayUnder30s
+
+@GeneralEvent
+interface BGTaskSchedulingDelayUnder1Min
+
+@GeneralEvent
+interface BGTaskSchedulingDelayOver1Min
