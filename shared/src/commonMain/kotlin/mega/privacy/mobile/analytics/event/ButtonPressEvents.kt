@@ -2274,3 +2274,9 @@ interface MediaScreenMoveButtonPressed
     screen = "Media Screen"
 )
 interface MediaScreenRemoveLinkButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Audio chip button",
+    screen = "Home screen"
+)
+interface AudiosChipButtonPressed
