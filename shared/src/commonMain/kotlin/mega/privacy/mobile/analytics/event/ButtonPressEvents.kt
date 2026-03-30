@@ -2280,3 +2280,21 @@ interface MediaScreenRemoveLinkButtonPressed
     screen = "Home screen"
 )
 interface AudiosChipButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upload shortcut action",
+    screen = "App Shortcut"
+)
+interface ShortcutActionUploadButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Scan document shortcut action",
+    screen = "App Shortcut"
+)
+interface ShortcutActionScanDocumentButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Chat shortcut action",
+    screen = "App Shortcut"
+)
+interface ShortcutActionChatButtonPressed
