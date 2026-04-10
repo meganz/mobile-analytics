@@ -2298,3 +2298,9 @@ interface ShortcutActionScanDocumentButtonPressed
     screen = "App Shortcut"
 )
 interface ShortcutActionChatButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Audio chip button",
+    screen = "Home screen"
+)
+interface AudioChipButtonPressed
