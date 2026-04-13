@@ -235,3 +235,6 @@ interface RecentsBucketScreen
 
 @ScreenViewEvent
 interface SharesScreen
+
+@ScreenViewEvent
+interface RecentMixedFilesScreen

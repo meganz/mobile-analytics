@@ -1716,3 +1716,21 @@ interface CloudDriveVersionsMenuItem
     menuType = MenuItemEvent.MenuType.Item,
 )
 interface CloudDriveViewInFolderMenuItem
+
+@MenuItemEvent(
+    menuItem = "Hide recent activity",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface HideRecentActivityMenuItem
+
+@MenuItemEvent(
+    menuItem = "Show recent activity",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface ShowRecentActivityMenuItem
+
+@MenuItemEvent(
+    menuItem = "Clear recent activity",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface ClearRecentActivityMenuItem
