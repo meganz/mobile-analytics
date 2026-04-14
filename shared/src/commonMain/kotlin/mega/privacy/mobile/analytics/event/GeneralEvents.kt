@@ -187,6 +187,24 @@ interface MediaUploadsEnabled
 interface MediaUploadsDisabled
 
 @GeneralEvent
+interface CameraUploadsFolderConflictDetected
+
+@GeneralEvent
+interface SyncRemoteFolderConflict
+
+@GeneralEvent
+interface SyncLocalFolderConflict
+
+@GeneralEvent
+interface SyncMegaPickerFolderDisabled
+
+@GeneralEvent
+interface SyncDcimFolderSelected
+
+@GeneralEvent
+interface SyncExternalStorageFolderSelected
+
+@GeneralEvent
 interface AdBlockingEnabled
 
 @GeneralEvent
