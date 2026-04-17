@@ -238,3 +238,6 @@ interface SharesScreen
 
 @ScreenViewEvent
 interface RecentMixedFilesScreen
+
+@ScreenViewEvent
+interface TransfersSettingsScreen

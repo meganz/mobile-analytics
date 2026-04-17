@@ -49,3 +49,9 @@ interface LinkUpgradeToProFeatureFolderDialog
 
 @DialogDisplayedEvent(dialog = "Upgrade to Pro Feature Dialog for File", screen = "Share/Manage Link Screen")
 interface LinkUpgradeToProFeatureFileDialog
+
+@DialogDisplayedEvent(dialog = "Picker to choose preferred download connections", screen = "Transfers Setting screen")
+interface DownloadConnectionsDialog
+
+@DialogDisplayedEvent(dialog = "Picker to choose preferred upload connections", screen = "Transfers Setting screen")
+interface UploadConnectionsDialog

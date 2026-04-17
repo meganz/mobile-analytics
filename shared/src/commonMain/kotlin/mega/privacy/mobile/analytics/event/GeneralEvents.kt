@@ -601,3 +601,9 @@ interface BGTaskSchedulingDelayUnder1Min
 
 @GeneralEvent
 interface BGTaskSchedulingDelayOver1Min
+
+@GeneralEvent
+class DownloadConnectionsChanged(val previousValue: Int, val newValue: Int)
+
+@GeneralEvent
+class UploadConnectionsChanged(val previousValue: Int, val newValue: Int)
