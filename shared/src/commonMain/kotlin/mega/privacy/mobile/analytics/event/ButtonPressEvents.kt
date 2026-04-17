@@ -2304,3 +2304,15 @@ interface ShortcutActionChatButtonPressed
     screen = "Home screen"
 )
 interface AudioChipButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Rotate to landscape",
+    screen = "Video player controller"
+)
+interface VideoPlayerRotateToLandscapePressed
+
+@ButtonPressEvent(
+    buttonName = "Rotate to portrait",
+    screen = "Video player controller"
+)
+interface VideoPlayerRotateToPortraitPressed
