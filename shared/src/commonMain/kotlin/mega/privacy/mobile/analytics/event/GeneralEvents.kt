@@ -605,5 +605,24 @@ interface BGTaskSchedulingDelayOver1Min
 @GeneralEvent
 class DownloadConnectionsChanged(val previousValue: Int, val newValue: Int)
 
+// Rewarded Ad funnel events
+@GeneralEvent
+interface RewardedAdGateActionRequested
+
+@GeneralEvent
+interface RewardedAdLoaded
+
+@GeneralEvent
+interface RewardedAdImpression
+
+@GeneralEvent
+interface RewardedAdClicked
+
+@GeneralEvent
+interface RewardedAdRewardEarned
+
+@GeneralEvent
+interface RewardedAdUnavailable
+
 @GeneralEvent
 class UploadConnectionsChanged(val previousValue: Int, val newValue: Int)

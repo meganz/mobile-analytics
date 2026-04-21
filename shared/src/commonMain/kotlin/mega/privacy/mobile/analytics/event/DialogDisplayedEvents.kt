@@ -55,3 +55,6 @@ interface DownloadConnectionsDialog
 
 @DialogDisplayedEvent(dialog = "Picker to choose preferred upload connections", screen = "Transfers Setting screen")
 interface UploadConnectionsDialog
+
+@DialogDisplayedEvent(dialog = "Rewarded Ad Dialog")
+interface RewardedAdDialogDisplayed

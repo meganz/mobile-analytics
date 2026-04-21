@@ -2316,3 +2316,21 @@ interface VideoPlayerRotateToLandscapePressed
     screen = "Video player controller"
 )
 interface VideoPlayerRotateToPortraitPressed
+
+@ButtonPressEvent(
+    buttonName = "Watch Ad",
+    dialog = "Rewarded Ad Dialog"
+)
+interface RewardedAdDialogWatchAdButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade to Pro",
+    dialog = "Rewarded Ad Dialog"
+)
+interface RewardedAdDialogUpgradeToProButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Close",
+    dialog = "Rewarded Ad Dialog"
+)
+interface RewardedAdDialogCloseButtonPressed
