@@ -2334,3 +2334,39 @@ interface RewardedAdDialogUpgradeToProButtonPressed
     dialog = "Rewarded Ad Dialog"
 )
 interface RewardedAdDialogCloseButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Close folder link guest banner",
+    screen = "Folder link"
+)
+interface SaveToMegaBannerCloseButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Create a free account button in folder link guest banner",
+    screen = "Folder link"
+)
+interface SaveToMegaBannerCreateAccountButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Log in button in folder link guest banner",
+    screen = "Folder link"
+)
+interface SaveToMegaBannerLogInButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Close folder link guest bottom sheet",
+    screen = "Folder link"
+)
+interface SaveToMegaBottomSheetCloseButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Sign up button in folder link guest bottom sheet",
+    screen = "Folder link"
+)
+interface SaveToMegaBottomSheetSignUpButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Log in button in folder link guest bottom sheet",
+    screen = "Folder link"
+)
+interface SaveToMegaBottomSheetLogInButtonPressed
