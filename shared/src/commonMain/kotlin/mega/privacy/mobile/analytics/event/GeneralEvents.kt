@@ -626,3 +626,12 @@ interface RewardedAdUnavailable
 
 @GeneralEvent
 class UploadConnectionsChanged(val previousValue: Int, val newValue: Int)
+
+@GeneralEvent
+interface OpenLinkUrlSubmitted
+
+@GeneralEvent
+interface OpenLinkUrlSuccess
+
+@GeneralEvent
+interface OpenLinkUrlFailure
