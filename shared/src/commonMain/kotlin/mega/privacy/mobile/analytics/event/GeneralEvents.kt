@@ -635,3 +635,9 @@ interface OpenLinkUrlSuccess
 
 @GeneralEvent
 interface OpenLinkUrlFailure
+
+@GeneralEvent
+interface CloudDriveDocumentProviderFileOpened
+
+@GeneralEvent
+interface CloudDriveDocumentProviderFolderOpened
