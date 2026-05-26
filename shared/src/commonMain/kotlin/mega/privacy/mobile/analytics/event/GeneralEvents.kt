@@ -641,3 +641,42 @@ interface CloudDriveDocumentProviderFileOpened
 
 @GeneralEvent
 interface CloudDriveDocumentProviderFolderOpened
+
+@GeneralEvent
+class ShareLinkOpened(val linkType: LinkType, val authStatus: AuthStatus) {
+    enum class LinkType {
+        File,
+        Folder,
+        Album
+    }
+    enum class AuthStatus {
+        LoggedIn,
+        LoggedOut
+    }
+}
+
+@GeneralEvent
+class VideoPlayStarted(val linkType: LinkType, val authStatus: AuthStatus) {
+    enum class LinkType {
+        File,
+        Folder,
+        Album
+    }
+    enum class AuthStatus {
+        LoggedIn,
+        LoggedOut
+    }
+}
+
+@GeneralEvent
+class AudioPlayStarted(val linkType: LinkType, val authStatus: AuthStatus) {
+    enum class LinkType {
+        File,
+        Folder,
+        Album
+    }
+    enum class AuthStatus {
+        LoggedIn,
+        LoggedOut
+    }
+}
