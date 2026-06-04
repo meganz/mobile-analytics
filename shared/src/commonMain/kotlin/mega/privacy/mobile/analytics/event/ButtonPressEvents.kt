@@ -2370,3 +2370,21 @@ interface SaveToMegaBottomSheetSignUpButtonPressed
     screen = "Folder link"
 )
 interface SaveToMegaBottomSheetLogInButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "RemoveContactConfirmButton",
+    dialog = "RemoveContactConfirmationDialog"
+)
+interface RemoveContactConfirmButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "RemoveContactDismissButton",
+    dialog = "RemoveContactConfirmationDialog"
+)
+interface RemoveContactDismissButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Add Contact FAB",
+    screen = "ContactListScreen",
+)
+interface AddContactFAB

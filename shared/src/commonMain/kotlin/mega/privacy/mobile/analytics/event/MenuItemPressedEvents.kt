@@ -1734,3 +1734,33 @@ interface ShowRecentActivityMenuItem
     menuType = MenuItemEvent.MenuType.Item,
 )
 interface ClearRecentActivityMenuItem
+
+@MenuItemEvent(
+    menuItem = "Send Message",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface ContactItemSendMessageMenuItem
+
+@MenuItemEvent(
+    menuItem = "Audio Call",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface ContactItemStartCallMenuItem
+
+@MenuItemEvent(
+    menuItem = "Video Call",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface ContactItemStartVideoCallMenuItem
+
+@MenuItemEvent(
+    menuItem = "Contact Info",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface ContactItemContactInfoMenuItem
+
+@MenuItemEvent(
+    menuItem = "Remove Contact",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface ContactItemRemoveContactMenuItem

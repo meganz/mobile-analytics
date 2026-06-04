@@ -58,3 +58,6 @@ interface UploadConnectionsDialog
 
 @DialogDisplayedEvent(dialog = "Rewarded Ad Dialog")
 interface RewardedAdDialogDisplayed
+
+@DialogDisplayedEvent(dialog = "RemoveContactConfirmationDialog", screen = "ContactList")
+interface RemoveContactConfirmationDialog

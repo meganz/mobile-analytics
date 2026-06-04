@@ -241,3 +241,15 @@ interface RecentMixedFilesScreen
 
 @ScreenViewEvent
 interface TransfersSettingsScreen
+
+@ScreenViewEvent
+interface ContactListScreen
+
+@ScreenViewEvent
+interface ContactGroupListScreen
+
+@ScreenViewEvent
+interface ContactRequestListScreen
+
+@ScreenViewEvent
+interface AddContactScreen

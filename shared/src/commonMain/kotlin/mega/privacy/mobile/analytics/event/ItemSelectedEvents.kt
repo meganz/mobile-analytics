@@ -374,3 +374,9 @@ interface MediaScreenGridSizeLargeSelected
 
 @ItemSelectedEvent
 interface MediaScreenSortByOldestSelected
+
+@ItemSelectedEvent
+interface ContactItemSelected
+
+@ItemSelectedEvent
+interface ContactItemAvatarSelected
