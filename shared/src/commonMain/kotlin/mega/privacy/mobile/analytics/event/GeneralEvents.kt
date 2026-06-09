@@ -722,3 +722,18 @@ class AudioPlayStarted(val linkType: LinkType, val authStatus: AuthStatus) {
         LoggedOut
     }
 }
+
+@GeneralEvent
+interface VideoPlaybackMp4Started
+
+@GeneralEvent
+interface VideoPlaybackAviStarted
+
+@GeneralEvent
+interface VideoPlaybackMkvStarted
+
+@GeneralEvent
+interface VideoPlaybackMovStarted
+
+@GeneralEvent
+interface VideoPlaybackOtherStarted
