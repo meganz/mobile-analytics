@@ -280,6 +280,48 @@ interface CameraUploadsMobileDataEnabled
 interface CameraUploadsMobileDataDisabled
 
 @GeneralEvent
+interface CameraUploadsKeepFileNamesAsInDeviceEnabled
+
+@GeneralEvent
+interface CameraUploadsKeepFileNamesAsInDeviceDisabled
+
+@GeneralEvent
+interface CameraUploadsOnlyWhileChargingEnabled
+
+@GeneralEvent
+interface CameraUploadsOnlyWhileChargingDisabled
+
+@GeneralEvent
+interface CameraUploadsVideoCompressionRequireChargingEnabled
+
+@GeneralEvent
+interface CameraUploadsVideoCompressionRequireChargingDisabled
+
+@GeneralEvent
+interface CameraUploadsVideoCompressionSizeLimitChanged
+
+@GeneralEvent
+interface CameraUploadsFileUploadPhotosSelected
+
+@GeneralEvent
+interface CameraUploadsFileUploadVideosSelected
+
+@GeneralEvent
+interface CameraUploadsFileUploadPhotosAndVideosSelected
+
+@GeneralEvent
+interface CameraUploadsLocalFolderSelected
+
+@GeneralEvent
+interface CameraUploadsTargetFolderSelected
+
+@GeneralEvent
+interface MediaUploadsLocalFolderSelected
+
+@GeneralEvent
+interface MediaUploadsTargetFolderSelected
+
+@GeneralEvent
 interface LivePhotoVideoUploadsEnabled
 
 @GeneralEvent
