@@ -352,6 +352,12 @@ interface ITunesSyncedAlbumsUploadEnabled
 interface ITunesSyncedAlbumsUploadDisabled
 
 @GeneralEvent
+interface UploadOnlyNewPhotosEnabled
+
+@GeneralEvent
+interface UploadOnlyNewPhotosDisabled
+
+@GeneralEvent
 interface VideoCodecHEVCSelected
 
 @GeneralEvent
