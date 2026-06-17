@@ -2388,3 +2388,51 @@ interface RemoveContactDismissButtonPressed
     screen = "ContactListScreen",
 )
 interface AddContactFAB
+
+@ButtonPressEvent(
+    buttonName = "Cancel",
+    screen = "CloudExplorerScreen"
+)
+interface CloudExplorerCancelButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Close",
+    screen = "CloudExplorerScreen"
+)
+interface CloudExplorerCloseButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Confirm Cloud Drive",
+    screen = "CloudExplorerScreen"
+)
+interface CloudExplorerConfirmedCloudButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Confirm Incoming Shares",
+    screen = "CloudExplorerScreen"
+)
+interface CloudExplorerConfirmedIncomingButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Confirm Favourites",
+    screen = "CloudExplorerScreen"
+)
+interface CloudExplorerConfirmedFavouritesButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Confirm Chat",
+    screen = "CloudExplorerScreen"
+)
+interface CloudExplorerConfirmedChatButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Search",
+    screen = "CloudExplorerScreen"
+)
+interface CloudExplorerSearchButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Confirm Search",
+    screen = "CloudExplorerScreen"
+)
+interface CloudExplorerConfirmedSearchButtonPressed

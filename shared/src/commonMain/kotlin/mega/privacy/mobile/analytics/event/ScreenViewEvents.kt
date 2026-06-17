@@ -253,3 +253,6 @@ interface ContactRequestListScreen
 
 @ScreenViewEvent
 interface AddContactScreen
+
+@ScreenViewEvent
+interface CloudExplorerScreen
