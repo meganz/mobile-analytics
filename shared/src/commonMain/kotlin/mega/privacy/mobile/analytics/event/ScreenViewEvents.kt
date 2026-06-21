@@ -256,3 +256,6 @@ interface AddContactScreen
 
 @ScreenViewEvent
 interface CloudExplorerScreen
+
+@ScreenViewEvent
+interface PdfViewerScreen

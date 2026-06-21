@@ -1764,3 +1764,10 @@ interface ContactItemContactInfoMenuItem
     menuType = MenuItemEvent.MenuType.Item,
 )
 interface ContactItemRemoveContactMenuItem
+
+@MenuItemEvent(
+    menuItem = "Search",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "PDF Viewer Screen"
+)
+interface PdfViewerSearchMenuToolbar

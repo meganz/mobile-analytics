@@ -743,3 +743,6 @@ interface VideoPlaybackMovStarted
 
 @GeneralEvent
 interface VideoPlaybackOtherStarted
+
+@GeneralEvent
+class PdfViewerSearchPerformed(val resultCount: Int)
