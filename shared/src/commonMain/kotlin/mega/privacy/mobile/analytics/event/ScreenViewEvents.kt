@@ -259,3 +259,9 @@ interface CloudExplorerScreen
 
 @ScreenViewEvent
 interface PdfViewerScreen
+
+@ScreenViewEvent
+interface ShareLinkScreen
+
+@ScreenViewEvent
+interface LinkSettingsScreen

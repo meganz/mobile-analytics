@@ -2436,3 +2436,85 @@ interface CloudExplorerSearchButtonPressed
     screen = "CloudExplorerScreen"
 )
 interface CloudExplorerConfirmedSearchButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copy link",
+    screen = "share and manage link screen"
+)
+interface LinkCopyLinkButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copy all links",
+    screen = "share and manage link screen"
+)
+interface LinkCopyAllLinksButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copy decryption key",
+    screen = "share and manage link screen"
+)
+interface LinkCopyDecryptionKeyButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copy password",
+    screen = "share and manage link screen"
+)
+interface LinkCopyPasswordButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Share link",
+    screen = "share and manage link screen"
+)
+interface LinkShareButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copyright agree",
+    screen = "share and manage link screen"
+)
+interface LinkCopyrightAgreeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Copyright cancel",
+    screen = "share and manage link screen"
+)
+interface LinkCopyrightCancelButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Hidden items warning continue",
+    screen = "share and manage link screen",
+    dialog = "Hidden items warning"
+)
+interface LinkHiddenItemsContinueButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Hidden items warning cancel",
+    screen = "share and manage link screen",
+    dialog = "Hidden items warning"
+)
+interface LinkHiddenItemsCancelButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Save link settings",
+    screen = "link settings screen"
+)
+interface LinkSettingsSaveButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Separate link and key learn more",
+    screen = "link settings screen"
+)
+interface LinkSeparateKeyLearnMoreButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Discard changes discard",
+    screen = "link settings screen",
+    dialog = "Discard changes"
+)
+interface LinkDiscardChangesDiscardButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Discard changes cancel",
+    screen = "link settings screen",
+    dialog = "Discard changes"
+)
+interface LinkDiscardChangesCancelButtonPressed

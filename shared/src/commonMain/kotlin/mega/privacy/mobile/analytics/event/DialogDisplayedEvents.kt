@@ -61,3 +61,12 @@ interface RewardedAdDialogDisplayed
 
 @DialogDisplayedEvent(dialog = "RemoveContactConfirmationDialog", screen = "ContactList")
 interface RemoveContactConfirmationDialog
+
+@DialogDisplayedEvent(dialog = "Copyright warning", screen = "Share/Manage Link Screen")
+interface LinkCopyrightWarningDialog
+
+@DialogDisplayedEvent(dialog = "Hidden items warning", screen = "Share/Manage Link Screen")
+interface LinkHiddenItemsWarningDialog
+
+@DialogDisplayedEvent(dialog = "Discard changes", screen = "Link settings screen")
+interface LinkDiscardChangesDialog

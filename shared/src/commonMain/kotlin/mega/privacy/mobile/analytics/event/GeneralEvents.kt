@@ -746,3 +746,6 @@ interface VideoPlaybackOtherStarted
 
 @GeneralEvent
 class PdfViewerSearchPerformed(val resultCount: Int)
+
+@GeneralEvent
+interface LinkSettingsSaveFailed
