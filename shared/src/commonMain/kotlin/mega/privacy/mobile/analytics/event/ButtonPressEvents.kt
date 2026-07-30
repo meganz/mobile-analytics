@@ -2518,3 +2518,27 @@ interface LinkDiscardChangesDiscardButtonPressed
     dialog = "Discard changes"
 )
 interface LinkDiscardChangesCancelButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Tag chip",
+    screen = "Search Screen"
+)
+interface SearchTagChipPressed
+
+@ButtonPressEvent(
+    buttonName = "Tags show all",
+    screen = "Search Screen"
+)
+interface SearchTagsShowAllPressed
+
+@ButtonPressEvent(
+    buttonName = "Tags show less",
+    screen = "Search Screen"
+)
+interface SearchTagsShowLessPressed
+
+@ButtonPressEvent(
+    buttonName = "Tag filter chip remove",
+    screen = "Search Results Screen"
+)
+interface SearchTagFilterRemoved
