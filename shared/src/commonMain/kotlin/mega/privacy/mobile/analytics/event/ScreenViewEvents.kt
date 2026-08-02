@@ -265,3 +265,6 @@ interface ShareLinkScreen
 
 @ScreenViewEvent
 interface LinkSettingsScreen
+
+@ScreenViewEvent
+interface CustomiseNavigationScreen

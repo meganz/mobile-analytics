@@ -2542,3 +2542,15 @@ interface SearchTagsShowLessPressed
     screen = "Search Results Screen"
 )
 interface SearchTagFilterRemoved
+
+@ButtonPressEvent(
+    buttonName = "Save",
+    screen = "CustomiseNavigation"
+)
+interface CustomiseNavigationSaveButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Reset to default",
+    screen = "CustomiseNavigation"
+)
+interface CustomiseNavigationResetButtonPressed
