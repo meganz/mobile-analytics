@@ -1771,3 +1771,10 @@ interface ContactItemRemoveContactMenuItem
     screen = "PDF Viewer Screen"
 )
 interface PdfViewerSearchMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Video editor toolbar menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Video Player Screen",
+)
+interface VideoEditorMenuItem

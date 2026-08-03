@@ -2650,3 +2650,39 @@ interface TransferAllUsedProUserUpgradeButtonPressed
     dialog = "Transfer All Used Dialog"
 )
 interface TransferAllUsedProUserViewAllPlansButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Save",
+    screen = "Video Editor Screen"
+)
+interface VideoEditorSaveButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Trim tool",
+    screen = "Video Editor Screen"
+)
+interface VideoEditorTrimToolPressed
+
+@ButtonPressEvent(
+    buttonName = "Crop tool",
+    screen = "Video Editor Screen"
+)
+interface VideoEditorCropToolPressed
+
+@ButtonPressEvent(
+    buttonName = "Rotate tool",
+    screen = "Video Editor Screen"
+)
+interface VideoEditorRotateToolPressed
+
+@ButtonPressEvent(
+    buttonName = "Speed tool",
+    screen = "Video Editor Screen"
+)
+interface VideoEditorSpeedToolPressed
+
+@ButtonPressEvent(
+    buttonName = "Volume tool",
+    screen = "Video Editor Screen"
+)
+interface VideoEditorVolumeToolPressed
