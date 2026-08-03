@@ -270,13 +270,25 @@ interface LinkSettingsScreen
 interface CustomiseNavigationScreen
 
 @ScreenViewEvent
-interface StorageAlmostFullDialogScreen
+interface StorageAlmostFullFreeUserDialogScreen
 
 @ScreenViewEvent
-interface StorageFullDialogScreen
+interface StorageAlmostFullProUserDialogScreen
 
 @ScreenViewEvent
-interface TransferAlmostUsedDialogScreen
+interface StorageFullFreeUserDialogScreen
 
 @ScreenViewEvent
-interface TransferAllUsedDialogScreen
+interface StorageFullProUserDialogScreen
+
+@ScreenViewEvent
+interface TransferAlmostUsedFreeUserDialogScreen
+
+@ScreenViewEvent
+interface TransferAlmostUsedProUserDialogScreen
+
+@ScreenViewEvent
+interface TransferAllUsedFreeUserDialogScreen
+
+@ScreenViewEvent
+interface TransferAllUsedProUserDialogScreen
