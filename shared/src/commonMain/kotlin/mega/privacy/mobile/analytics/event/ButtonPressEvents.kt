@@ -2554,3 +2554,99 @@ interface CustomiseNavigationSaveButtonPressed
     screen = "CustomiseNavigation"
 )
 interface CustomiseNavigationResetButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade button for free user",
+    dialog = "Storage Almost Full Dialog"
+)
+interface StorageAlmostFullFreeUserUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "View all plans button for free user",
+    dialog = "Storage Almost Full Dialog"
+)
+interface StorageAlmostFullFreeUserViewAllPlansButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade button for pro user",
+    dialog = "Storage Almost Full Dialog"
+)
+interface StorageAlmostFullProUserUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "View all plans button for pro user",
+    dialog = "Storage Almost Full Dialog"
+)
+interface StorageAlmostFullProUserViewAllPlansButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade button for free user",
+    dialog = "Storage Full Dialog"
+)
+interface StorageFullFreeUserUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "View all plans button for free user",
+    dialog = "Storage Full Dialog"
+)
+interface StorageFullFreeUserViewAllPlansButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade button for pro user",
+    dialog = "Storage Full Dialog"
+)
+interface StorageFullProUserUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "View all plans button for pro user",
+    dialog = "Storage Full Dialog"
+)
+interface StorageFullProUserViewAllPlansButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade button for free user",
+    dialog = "Transfer Almost Used Dialog"
+)
+interface TransferAlmostUsedFreeUserUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "View all plans button for free user",
+    dialog = "Transfer Almost Used Dialog"
+)
+interface TransferAlmostUsedFreeUserViewAllPlansButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade button for pro user",
+    dialog = "Transfer Almost Used Dialog"
+)
+interface TransferAlmostUsedProUserUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "View all plans button for pro user",
+    dialog = "Transfer Almost Used Dialog"
+)
+interface TransferAlmostUsedProUserViewAllPlansButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade button for free user",
+    dialog = "Transfer All Used Dialog"
+)
+interface TransferAllUsedFreeUserUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "View all plans button for free user",
+    dialog = "Transfer All Used Dialog"
+)
+interface TransferAllUsedFreeUserViewAllPlansButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade button for pro user",
+    dialog = "Transfer All Used Dialog"
+)
+interface TransferAllUsedProUserUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "View all plans button for pro user",
+    dialog = "Transfer All Used Dialog"
+)
+interface TransferAllUsedProUserViewAllPlansButtonPressed

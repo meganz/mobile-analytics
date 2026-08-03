@@ -268,3 +268,15 @@ interface LinkSettingsScreen
 
 @ScreenViewEvent
 interface CustomiseNavigationScreen
+
+@ScreenViewEvent
+interface StorageAlmostFullDialogScreen
+
+@ScreenViewEvent
+interface StorageFullDialogScreen
+
+@ScreenViewEvent
+interface TransferAlmostUsedDialogScreen
+
+@ScreenViewEvent
+interface TransferAllUsedDialogScreen
