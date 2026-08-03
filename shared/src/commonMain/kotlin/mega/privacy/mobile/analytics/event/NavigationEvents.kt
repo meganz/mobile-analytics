@@ -163,3 +163,28 @@ interface MyMenuChatNavigationItem
     navigationElementType = NavigationEvent.NavigationElementType.Drawer
 )
 interface MyMenuUpgradeNavigationItem
+
+
+@NavigationEvent(
+    destination = "Offline Files",
+    navigationElementType = NavigationEvent.NavigationElementType.Bottom
+)
+interface OfflineFilesBottomNavigationItem
+
+@NavigationEvent(
+    destination = "Shared Items",
+    navigationElementType = NavigationEvent.NavigationElementType.Bottom
+)
+interface SharedItemsBottomNavigationItem
+
+@NavigationEvent(
+    destination = "Favourites",
+    navigationElementType = NavigationEvent.NavigationElementType.Bottom
+)
+interface FavouritesBottomNavigationItem
+
+@NavigationEvent(
+    destination = "Transfers",
+    navigationElementType = NavigationEvent.NavigationElementType.Bottom
+)
+interface TransfersBottomNavigationItem
