@@ -2108,6 +2108,18 @@ interface LinkSendDecryptionKeyFolderButtonDisabled
 interface LinkSendDecryptionKeyFileButtonDisabled
 
 @ButtonPressEvent(
+    buttonName = "Send decryption key separately album enabled",
+    screen = "share and manage link screen"
+)
+interface LinkSendDecryptionKeyAlbumButtonEnabled
+
+@ButtonPressEvent(
+    buttonName = "Send decryption key separately album disabled",
+    screen = "share and manage link screen"
+)
+interface LinkSendDecryptionKeyAlbumButtonDisabled
+
+@ButtonPressEvent(
     buttonName = "Set expiry date for folder enabled",
     screen = "share and manage link screen"
 )

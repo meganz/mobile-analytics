@@ -267,6 +267,9 @@ interface ShareLinkScreen
 interface LinkSettingsScreen
 
 @ScreenViewEvent
+interface AlbumLinkSettingsScreen
+
+@ScreenViewEvent
 interface CustomiseNavigationScreen
 
 @ScreenViewEvent
