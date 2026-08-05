@@ -1778,3 +1778,9 @@ interface PdfViewerSearchMenuToolbar
     screen = "Video Player Screen",
 )
 interface VideoEditorMenuItem
+
+@MenuItemEvent(
+    menuItem = "Customise navigation",
+    menuType = MenuItemEvent.MenuType.Item
+)
+interface SettingsCustomiseNavigationMenuItem

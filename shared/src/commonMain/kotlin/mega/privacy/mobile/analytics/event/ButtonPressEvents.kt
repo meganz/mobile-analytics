@@ -2770,3 +2770,17 @@ interface MenuSubscriptionOfferBannerPressed
     screen = "Menu Screen"
 )
 interface MenuSubscriptionOfferBannerDismissButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Explore",
+    screen = "Home",
+    dialog = "CustomiseNavigationTooltip"
+)
+interface CustomiseNavigationTooltipExploreButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Dismiss",
+    screen = "Home",
+    dialog = "CustomiseNavigationTooltip"
+)
+interface CustomiseNavigationTooltipDismissButtonPressed

@@ -70,3 +70,6 @@ interface LinkHiddenItemsWarningDialog
 
 @DialogDisplayedEvent(dialog = "Discard changes", screen = "Link settings screen")
 interface LinkDiscardChangesDialog
+
+@DialogDisplayedEvent(dialog = "CustomiseNavigationTooltip", screen = "Home")
+interface CustomiseNavigationTooltipDisplayed
