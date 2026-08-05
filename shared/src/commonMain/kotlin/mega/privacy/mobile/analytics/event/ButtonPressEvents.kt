@@ -2698,3 +2698,75 @@ interface VideoEditorSpeedToolPressed
     screen = "Video Editor Screen"
 )
 interface VideoEditorVolumeToolPressed
+
+@ButtonPressEvent(
+    buttonName = "Monthly billing period",
+    screen = "Upgrade Account Plan"
+)
+interface UpgradeAccountPlanMonthlyPeriodTogglePressed
+
+@ButtonPressEvent(
+    buttonName = "Yearly billing period",
+    screen = "Upgrade Account Plan"
+)
+interface UpgradeAccountPlanYearlyPeriodTogglePressed
+
+@ButtonPressEvent(
+    buttonName = "Offer CTA on auto-opened offer",
+    screen = "Subscription Offer Screen"
+)
+interface SubscriptionOfferAutoOpenCtaButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Dismiss auto-opened offer",
+    screen = "Subscription Offer Screen"
+)
+interface SubscriptionOfferAutoOpenDismissButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "View all plans on auto-opened offer",
+    screen = "Subscription Offer Screen"
+)
+interface SubscriptionOfferAutoOpenViewAllPlansButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Offer CTA on triggered offer",
+    screen = "Subscription Offer Screen"
+)
+interface SubscriptionOfferTriggeredCtaButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Dismiss triggered offer",
+    screen = "Subscription Offer Screen"
+)
+interface SubscriptionOfferTriggeredDismissButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "View all plans on triggered offer",
+    screen = "Subscription Offer Screen"
+)
+interface SubscriptionOfferTriggeredViewAllPlansButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Subscription offer banner",
+    screen = "Home Screen"
+)
+interface HomeSubscriptionOfferBannerPressed
+
+@ButtonPressEvent(
+    buttonName = "Dismiss subscription offer banner",
+    screen = "Home Screen"
+)
+interface HomeSubscriptionOfferBannerDismissButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Subscription offer banner",
+    screen = "Menu Screen"
+)
+interface MenuSubscriptionOfferBannerPressed
+
+@ButtonPressEvent(
+    buttonName = "Dismiss subscription offer banner",
+    screen = "Menu Screen"
+)
+interface MenuSubscriptionOfferBannerDismissButtonPressed

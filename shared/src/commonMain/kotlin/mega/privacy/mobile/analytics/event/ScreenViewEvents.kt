@@ -295,3 +295,9 @@ interface TransferAllUsedFreeUserDialogScreen
 
 @ScreenViewEvent
 interface TransferAllUsedProUserDialogScreen
+
+@ScreenViewEvent
+interface SubscriptionOfferAutoOpenScreen
+
+@ScreenViewEvent
+interface SubscriptionOfferTriggeredScreen

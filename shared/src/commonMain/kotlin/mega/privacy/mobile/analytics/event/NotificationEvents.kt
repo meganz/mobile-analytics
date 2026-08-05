@@ -61,3 +61,15 @@ interface AnnualPlanFreeTrialFailed
 
 @NotificationEvent
 interface FreeTrialPurchaseCancelled
+
+@NotificationEvent
+interface HomeSubscriptionOfferBannerDisplayed
+
+@NotificationEvent
+interface MenuSubscriptionOfferBannerDisplayed
+
+@NotificationEvent
+interface SubscriptionOfferNotificationReceived
+
+@NotificationEvent
+interface SubscriptionOfferNotificationTapped
