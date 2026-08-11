@@ -749,3 +749,6 @@ class PdfViewerSearchPerformed(val resultCount: Int)
 
 @GeneralEvent
 interface LinkSettingsSaveFailed
+
+@GeneralEvent
+class VideoPlaybackStartupFailureReasonNewVP(val errCode: Int, val reason: String)
