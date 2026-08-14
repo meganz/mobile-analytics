@@ -16,3 +16,6 @@ interface FailedTransfersSwipeToRetry
 
 @GestureEvent(gesture = "Active transfer drag and drop to change priority", screen = "Transfers Section Screen")
 interface ActiveTransferDragAndDropToChangePriority
+
+@GestureEvent(gesture = "Drag to select started", screen = "Media Screen")
+interface MediaScreenDragToSelectStarted

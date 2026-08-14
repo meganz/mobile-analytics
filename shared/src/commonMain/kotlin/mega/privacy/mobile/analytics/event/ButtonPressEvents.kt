@@ -2288,6 +2288,12 @@ interface MediaScreenMoveButtonPressed
 interface MediaScreenRemoveLinkButtonPressed
 
 @ButtonPressEvent(
+    buttonName = "Date header select all button",
+    screen = "Media Screen"
+)
+interface MediaScreenDateHeaderSelectAllPressed
+
+@ButtonPressEvent(
     buttonName = "Audio chip button",
     screen = "Home screen"
 )
