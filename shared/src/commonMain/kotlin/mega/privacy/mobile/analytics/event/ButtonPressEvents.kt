@@ -2622,6 +2622,18 @@ interface StorageFullProUserUpgradeButtonPressed
 interface StorageFullProUserViewAllPlansButtonPressed
 
 @ButtonPressEvent(
+    buttonName = "Upgrade button for not logged in user",
+    dialog = "Transfer Almost Used Dialog"
+)
+interface TransferAlmostUsedNotLoggedInUserUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "View all plans button for not logged in user",
+    dialog = "Transfer Almost Used Dialog"
+)
+interface TransferAlmostUsedNotLoggedInUserViewAllPlansButtonPressed
+
+@ButtonPressEvent(
     buttonName = "Upgrade button for free user",
     dialog = "Transfer Almost Used Dialog"
 )
@@ -2644,6 +2656,18 @@ interface TransferAlmostUsedProUserUpgradeButtonPressed
     dialog = "Transfer Almost Used Dialog"
 )
 interface TransferAlmostUsedProUserViewAllPlansButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade button for not logged in user",
+    dialog = "Transfer All Used Dialog"
+)
+interface TransferAllUsedNotLoggedInUserUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "View all plans button for not logged in user",
+    dialog = "Transfer All Used Dialog"
+)
+interface TransferAllUsedNotLoggedInUserViewAllPlansButtonPressed
 
 @ButtonPressEvent(
     buttonName = "Upgrade button for free user",

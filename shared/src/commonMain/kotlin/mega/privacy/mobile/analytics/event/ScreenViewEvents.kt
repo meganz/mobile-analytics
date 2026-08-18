@@ -285,10 +285,16 @@ interface StorageFullFreeUserDialogScreen
 interface StorageFullProUserDialogScreen
 
 @ScreenViewEvent
+interface TransferAlmostUsedNotLoggedInUserDialogScreen
+
+@ScreenViewEvent
 interface TransferAlmostUsedFreeUserDialogScreen
 
 @ScreenViewEvent
 interface TransferAlmostUsedProUserDialogScreen
+
+@ScreenViewEvent
+interface TransferAllUsedNotLoggedInUserDialogScreen
 
 @ScreenViewEvent
 interface TransferAllUsedFreeUserDialogScreen
