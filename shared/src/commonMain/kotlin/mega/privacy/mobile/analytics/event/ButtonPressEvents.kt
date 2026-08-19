@@ -2814,3 +2814,15 @@ interface CustomiseNavigationTooltipExploreButtonPressed
     dialog = "CustomiseNavigationTooltip"
 )
 interface CustomiseNavigationTooltipDismissButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Purge banner Learn more",
+    screen = "Cloud Drive Screen"
+)
+interface InactivityPurgeBannerLearnMoreButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Purge banner Close button",
+    screen = "Cloud Drive Screen"
+)
+interface InactivityPurgeBannerCloseButtonPressed

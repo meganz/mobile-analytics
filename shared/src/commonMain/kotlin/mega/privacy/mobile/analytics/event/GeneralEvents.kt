@@ -752,3 +752,9 @@ interface LinkSettingsSaveFailed
 
 @GeneralEvent
 class VideoPlaybackStartupFailureReasonNewVP(val errCode: Int, val reason: String)
+
+@GeneralEvent
+interface InactivityPurgeBannerDisplayed
+
+@GeneralEvent
+interface InactivityPurgeEventReceived
