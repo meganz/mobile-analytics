@@ -758,3 +758,12 @@ interface InactivityPurgeBannerDisplayed
 
 @GeneralEvent
 interface InactivityPurgeEventReceived
+
+@GeneralEvent
+interface IOSKMTransferUSMigrationSucceeded
+
+@GeneralEvent
+interface IOSKMTransferUSSessionLost
+
+@GeneralEvent
+class IOSKMTransferUSMigrationFailed(val reason: String)
