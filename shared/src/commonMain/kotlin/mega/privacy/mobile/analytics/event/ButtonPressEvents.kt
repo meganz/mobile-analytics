@@ -2826,3 +2826,75 @@ interface InactivityPurgeBannerLearnMoreButtonPressed
     screen = "Cloud Drive Screen"
 )
 interface InactivityPurgeBannerCloseButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Free User Buy Pro Lite",
+    screen = "Upgrade Account Plan"
+)
+interface FreeUserBuyProLite
+
+@ButtonPressEvent(
+    buttonName = "Free User Buy Pro I",
+    screen = "Upgrade Account Plan"
+)
+interface FreeUserBuyProI
+
+@ButtonPressEvent(
+    buttonName = "Free User Buy Pro II",
+    screen = "Upgrade Account Plan"
+)
+interface FreeUserBuyProII
+
+@ButtonPressEvent(
+    buttonName = "Free User Buy Pro III",
+    screen = "Upgrade Account Plan"
+)
+interface FreeUserBuyProIII
+
+@ButtonPressEvent(
+    buttonName = "Paid User Buy Pro Lite",
+    screen = "Upgrade Account Plan"
+)
+interface PaidUserBuyProLite
+
+@ButtonPressEvent(
+    buttonName = "Paid User Buy Pro I",
+    screen = "Upgrade Account Plan"
+)
+interface PaidUserBuyProI
+
+@ButtonPressEvent(
+    buttonName = "Paid User Buy Pro II",
+    screen = "Upgrade Account Plan"
+)
+interface PaidUserBuyProII
+
+@ButtonPressEvent(
+    buttonName = "Paid User Buy Pro III",
+    screen = "Upgrade Account Plan"
+)
+interface PaidUserBuyProIII
+
+@ButtonPressEvent(
+    buttonName = "Free User Monthly billing period",
+    screen = "Upgrade Account Plan"
+)
+interface FreeUserUpgradeAccountPlanMonthlyPeriodTogglePressed
+
+@ButtonPressEvent(
+    buttonName = "Paid User Monthly billing period",
+    screen = "Upgrade Account Plan"
+)
+interface PaidUserUpgradeAccountPlanMonthlyPeriodTogglePressed
+
+@ButtonPressEvent(
+    buttonName = "Free User Yearly billing period",
+    screen = "Upgrade Account Plan"
+)
+interface FreeUserUpgradeAccountPlanYearlyPeriodTogglePressed
+
+@ButtonPressEvent(
+    buttonName = "Paid User Yearly billing period",
+    screen = "Upgrade Account Plan"
+)
+interface PaidUserUpgradeAccountPlanYearlyPeriodTogglePressed

@@ -767,3 +767,12 @@ interface IOSKMTransferUSSessionLost
 
 @GeneralEvent
 class IOSKMTransferUSMigrationFailed(val reason: String)
+
+@GeneralEvent
+interface FreeUserOfferTimedOut
+
+@GeneralEvent
+interface PaidUserOfferTimedOut
+
+@GeneralEvent
+interface PaidUserEligibleForOffers

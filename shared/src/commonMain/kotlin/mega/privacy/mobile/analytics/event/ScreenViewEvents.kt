@@ -307,3 +307,9 @@ interface SubscriptionOfferAutoOpenScreen
 
 @ScreenViewEvent
 interface SubscriptionOfferTriggeredScreen
+
+@ScreenViewEvent
+interface FreeUserUpgradeAccountPlanScreen
+
+@ScreenViewEvent
+interface PaidUserUpgradeAccountPlanScreen
