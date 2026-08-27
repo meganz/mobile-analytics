@@ -73,3 +73,9 @@ interface LinkDiscardChangesDialog
 
 @DialogDisplayedEvent(dialog = "CustomiseNavigationTooltip", screen = "Home")
 interface CustomiseNavigationTooltipDisplayed
+
+@DialogDisplayedEvent(dialog = "CustomiseNavigationMaxItemsSnackbar", screen = "CustomiseNavigation")
+interface CustomiseNavigationMaxItemsSnackbarDisplayed
+
+@DialogDisplayedEvent(dialog = "CustomiseNavigationMinItemsSnackbar", screen = "CustomiseNavigation")
+interface CustomiseNavigationMinItemsSnackbarDisplayed

@@ -380,3 +380,31 @@ interface ContactItemSelected
 
 @ItemSelectedEvent
 interface ContactItemAvatarSelected
+
+@ItemSelectedEvent
+class CustomiseNavigationItemAdded(val section: Section) {
+    enum class Section {
+        Home,
+        CloudDrive,
+        Media,
+        Chat,
+        SharedItems,
+        OfflineFiles,
+        Favourites,
+        Transfers,
+    }
+}
+
+@ItemSelectedEvent
+class CustomiseNavigationItemRemoved(val section: Section) {
+    enum class Section {
+        Home,
+        CloudDrive,
+        Media,
+        Chat,
+        SharedItems,
+        OfflineFiles,
+        Favourites,
+        Transfers,
+    }
+}

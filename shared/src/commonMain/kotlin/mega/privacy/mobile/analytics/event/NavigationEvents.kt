@@ -188,3 +188,27 @@ interface FavouritesBottomNavigationItem
     navigationElementType = NavigationEvent.NavigationElementType.Bottom
 )
 interface TransfersBottomNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu Home",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuHomeNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu Cloud Drive",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuCloudDriveNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu Media",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuMediaNavigationItem
+
+@NavigationEvent(
+    destination = "My Menu Favourites",
+    navigationElementType = NavigationEvent.NavigationElementType.Drawer
+)
+interface MyMenuFavouritesNavigationItem

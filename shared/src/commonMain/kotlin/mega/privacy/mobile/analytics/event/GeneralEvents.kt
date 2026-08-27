@@ -776,3 +776,9 @@ interface PaidUserOfferTimedOut
 
 @GeneralEvent
 interface PaidUserEligibleForOffers
+
+@GeneralEvent
+interface CustomiseNavigationItemsReordered
+
+@GeneralEvent
+interface CustomNavigationActive
