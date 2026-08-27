@@ -2898,3 +2898,39 @@ interface FreeUserUpgradeAccountPlanYearlyPeriodTogglePressed
     screen = "Upgrade Account Plan"
 )
 interface PaidUserUpgradeAccountPlanYearlyPeriodTogglePressed
+
+@ButtonPressEvent(
+    buttonName = "Camera uploads button on Home screen's Do more with MEGA section",
+    screen = "Home Screen"
+)
+interface DoMoreWithMegaCameraUploadsButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Add sync button on Home screen's Do more with MEGA section",
+    screen = "Home Screen"
+)
+interface DoMoreWithMegaAddSyncButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Scan document button on Home screen's Do more with MEGA section",
+    screen = "Home Screen"
+)
+interface DoMoreWithMegaScanDocumentButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Create album button on Home screen's Do more with MEGA section",
+    screen = "Home Screen"
+)
+interface DoMoreWithMegaCreateAlbumButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Add contact button on Home screen's Do more with MEGA section",
+    screen = "Home Screen"
+)
+interface DoMoreWithMegaAddContactButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Schedule meeting button on Home screen's Do more with MEGA section",
+    screen = "Home Screen"
+)
+interface DoMoreWithMegaScheduleMeetingButtonPressed
