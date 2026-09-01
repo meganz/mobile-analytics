@@ -386,3 +386,9 @@ class CustomiseNavigationItemAdded(val section: String)
 
 @ItemSelectedEvent
 class CustomiseNavigationItemRemoved(val section: String)
+
+@ItemSelectedEvent
+interface MediaScreenSortByNewestDateTakenSelected
+
+@ItemSelectedEvent
+interface MediaScreenSortByOldestDateTakenSelected
