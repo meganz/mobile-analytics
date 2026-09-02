@@ -313,3 +313,9 @@ interface FreeUserUpgradeAccountPlanScreen
 
 @ScreenViewEvent
 interface PaidUserUpgradeAccountPlanScreen
+
+@ScreenViewEvent
+interface FileLinkScreen
+
+@ScreenViewEvent
+interface FolderLinkScreen

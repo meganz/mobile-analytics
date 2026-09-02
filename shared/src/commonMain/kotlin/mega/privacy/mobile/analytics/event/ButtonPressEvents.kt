@@ -2934,3 +2934,81 @@ interface DoMoreWithMegaAddContactButtonPressed
     screen = "Home Screen"
 )
 interface DoMoreWithMegaScheduleMeetingButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "File link save to MEGA anchored button",
+    screen = "File link"
+)
+interface FileLinkSaveToMegaAnchoredButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "File link save to MEGA more options row",
+    screen = "File link"
+)
+interface FileLinkSaveToMegaMoreOptionsButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "File link download anchored button",
+    screen = "File link"
+)
+interface FileLinkDownloadAnchoredButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "File link download more options row",
+    screen = "File link"
+)
+interface FileLinkDownloadMoreOptionsButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "File link save to photos more options row",
+    screen = "File link"
+)
+interface FileLinkSaveToPhotosMoreOptionsButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "File link copy to offline more options row",
+    screen = "File link"
+)
+interface FileLinkCopyToOfflineMoreOptionsButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Folder link save to MEGA anchored button",
+    screen = "Folder link"
+)
+interface FolderLinkSaveToMegaAnchoredButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Folder link save to MEGA more options row",
+    screen = "Folder link"
+)
+interface FolderLinkSaveToMegaMoreOptionsButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Folder link save to MEGA selection toolbar button",
+    screen = "Folder link"
+)
+interface FolderLinkSaveToMegaSelectionToolbarButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Folder link download anchored button",
+    screen = "Folder link"
+)
+interface FolderLinkDownloadAnchoredButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Folder link download selection toolbar button",
+    screen = "Folder link"
+)
+interface FolderLinkDownloadSelectionToolbarButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Album link download selection toolbar button",
+    screen = "Album import screen"
+)
+interface AlbumLinkDownloadSelectionToolbarButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Album link copy to offline more options row",
+    screen = "Album import screen"
+)
+interface AlbumLinkCopyToOfflineMoreOptionsButtonPressed
