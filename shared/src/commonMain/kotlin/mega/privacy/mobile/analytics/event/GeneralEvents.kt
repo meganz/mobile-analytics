@@ -782,3 +782,6 @@ interface CustomiseNavigationItemsReordered
 
 @GeneralEvent
 interface CustomNavigationActive
+
+@GeneralEvent
+class UpgradePlansPurchaseError(val details: String)
