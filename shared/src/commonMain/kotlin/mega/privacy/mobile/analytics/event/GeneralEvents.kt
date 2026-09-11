@@ -785,3 +785,19 @@ interface CustomNavigationActive
 
 @GeneralEvent
 class UpgradePlansPurchaseError(val details: String)
+
+@GeneralEvent
+class AudioPlaybackStarted(val sourceType: String, val authStatus: AuthStatus) {
+    enum class AuthStatus {
+        LoggedIn,
+        LoggedOut
+    }
+}
+
+@GeneralEvent
+class AudioPlaybackFailed(val sourceType: String, val reason: String, val authStatus: AuthStatus) {
+    enum class AuthStatus {
+        LoggedIn,
+        LoggedOut
+    }
+}
