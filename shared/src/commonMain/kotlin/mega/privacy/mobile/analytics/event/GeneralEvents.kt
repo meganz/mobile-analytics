@@ -801,3 +801,9 @@ class AudioPlaybackFailed(val sourceType: String, val reason: String, val authSt
         LoggedOut
     }
 }
+
+@GeneralEvent
+interface AudioPlayerContinuousPlaybackEnabled
+
+@GeneralEvent
+interface AudioPlayerContinuousPlaybackDisabled

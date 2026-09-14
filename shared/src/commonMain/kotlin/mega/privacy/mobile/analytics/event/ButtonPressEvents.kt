@@ -3012,3 +3012,21 @@ interface AlbumLinkDownloadSelectionToolbarButtonPressed
     screen = "Album import screen"
 )
 interface AlbumLinkCopyToOfflineMoreOptionsButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Podcast mode",
+    screen = "Audio player controller"
+)
+interface AudioPlayerPodcastModeEnabled
+
+@ButtonPressEvent(
+    buttonName = "Music mode",
+    screen = "Audio player controller"
+)
+interface AudioPlayerMusicModeEnabled
+
+@ButtonPressEvent(
+    buttonName = "Restart from beginning snackbar action",
+    screen = "Audio player controller"
+)
+interface AudioPlayerRestartFromBeginning

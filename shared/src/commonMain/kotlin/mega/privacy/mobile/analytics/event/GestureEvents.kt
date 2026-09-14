@@ -43,3 +43,5 @@ interface VideoPlayerZoomToFit
 
 @GestureEvent(gesture = "Pinch to zoom", screen = "Video Player Screen")
 interface VideoPlayerPinchToZoom
+@GestureEvent(gesture = "Slider drag to change playback speed", screen = "Audio player controller")
+interface AudioPlayerSpeedChangeBySlider

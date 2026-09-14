@@ -392,3 +392,21 @@ interface MediaScreenSortByNewestDateTakenSelected
 
 @ItemSelectedEvent
 interface MediaScreenSortByOldestDateTakenSelected
+
+@ItemSelectedEvent
+interface AudioPlayerSleepTimer5Minutes
+
+@ItemSelectedEvent
+interface AudioPlayerSleepTimer15Minutes
+
+@ItemSelectedEvent
+interface AudioPlayerSleepTimer30Minutes
+
+@ItemSelectedEvent
+interface AudioPlayerSleepTimer60Minutes
+
+@ItemSelectedEvent
+interface AudioPlayerSleepTimerEndOfTrack
+
+@ItemSelectedEvent
+interface AudioPlayerSleepTimerTurnOff
