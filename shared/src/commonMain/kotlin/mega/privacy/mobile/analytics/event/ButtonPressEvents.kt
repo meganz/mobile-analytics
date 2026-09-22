@@ -3030,3 +3030,9 @@ interface AudioPlayerMusicModeEnabled
     screen = "Audio player controller"
 )
 interface AudioPlayerRestartFromBeginning
+
+@ButtonPressEvent(
+    buttonName = "Confirm button",
+    dialog = "CreateVideoPlaylistDialog"
+)
+interface MediaScreenCreateVideoPlaylistDialogConfirmed

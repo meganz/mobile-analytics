@@ -807,3 +807,24 @@ interface AudioPlayerContinuousPlaybackEnabled
 
 @GeneralEvent
 interface AudioPlayerContinuousPlaybackDisabled
+
+@GeneralEvent
+interface MediaScreenCreateVideoPlaylistDialogDismissed
+
+@GeneralEvent
+interface MediaScreenVideoPlayedFromPlaylist
+
+@GeneralEvent
+interface MediaScreenVideosAddedToPlaylist
+
+@GeneralEvent
+interface MediaScreenVideosRemovedFromPlaylist
+
+@GeneralEvent
+interface MediaScreenVideoPlaylistDeleted
+
+@GeneralEvent
+interface MediaScreenVideoPlaylistsBulkDeleted
+
+@GeneralEvent
+interface MediaScreenVideoPlaylistRenamed
