@@ -828,3 +828,68 @@ interface MediaScreenVideoPlaylistsBulkDeleted
 
 @GeneralEvent
 interface MediaScreenVideoPlaylistRenamed
+
+@GeneralEvent
+interface AndroidSyncExclusionsNameRuleAdded
+
+@GeneralEvent
+class AndroidSyncExclusionsExtensionRulesAdded(val extensionCount: Int)
+
+@GeneralEvent
+interface AndroidSyncExclusionsBiggerThanSizeLimitAdded
+
+@GeneralEvent
+interface AndroidSyncExclusionsSmallerThanSizeLimitAdded
+
+@GeneralEvent
+interface AndroidSyncExclusionsNotBetweenSizeLimitAdded
+
+@GeneralEvent
+interface AndroidSyncExclusionsRuleEdited
+
+@GeneralEvent
+interface AndroidSyncExclusionsBiggerThanSizeLimitEdited
+
+@GeneralEvent
+interface AndroidSyncExclusionsSmallerThanSizeLimitEdited
+
+@GeneralEvent
+interface AndroidSyncExclusionsNotBetweenSizeLimitEdited
+
+@GeneralEvent
+interface AndroidSyncExclusionsSizeLimitDeleted
+
+@GeneralEvent
+interface AndroidSyncExclusionsRuleDeletedFromChip
+
+@GeneralEvent
+interface AndroidSyncExclusionsRuleDeletedFromEditScreen
+
+@GeneralEvent
+interface AndroidSyncExclusionsDefaultsRestored
+
+@GeneralEvent
+interface AndroidSyncExclusionsAllRemoved
+
+@GeneralEvent
+class AndroidSyncExclusionsChangesSaved(
+    val ruleCount: Int,
+    val customRuleCount: Int,
+    val hasSizeLimit: Boolean
+)
+
+@GeneralEvent
+interface AndroidSyncExclusionsSaveFailed
+
+@GeneralEvent
+interface AndroidSyncExclusionsChangesDiscarded
+
+@GeneralEvent
+interface AndroidSyncExclusionsReviewSaved
+
+@GeneralEvent
+class AndroidSyncExclusionsSetupConfigured(
+    val ruleCount: Int,
+    val customRuleCount: Int,
+    val hasSizeLimit: Boolean
+)

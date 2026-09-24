@@ -3036,3 +3036,21 @@ interface AudioPlayerRestartFromBeginning
     dialog = "CreateVideoPlaylistDialog"
 )
 interface MediaScreenCreateVideoPlaylistDialogConfirmed
+
+@ButtonPressEvent(
+    buttonName = "Sync card exclusions button",
+    screen = "Sync Card and Sync List"
+)
+interface SyncCardExclusionsButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Android Sync manage exclusions row",
+    screen = "Add new sync screen"
+)
+interface AndroidSyncSetupManageExclusionsButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Android Sync add exclusion button",
+    screen = "Android Sync exclusions screen"
+)
+interface AndroidSyncExclusionsAddButtonPressed
