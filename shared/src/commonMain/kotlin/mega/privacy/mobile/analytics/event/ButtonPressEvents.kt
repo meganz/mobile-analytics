@@ -3054,3 +3054,9 @@ interface AndroidSyncSetupManageExclusionsButtonPressed
     screen = "Android Sync exclusions screen"
 )
 interface AndroidSyncExclusionsAddButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Chat message notification reply button",
+    dialog = "Chat message notification"
+)
+interface ChatMessageNotificationReplyButtonPressed
