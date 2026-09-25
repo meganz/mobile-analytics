@@ -893,3 +893,23 @@ class AndroidSyncExclusionsSetupConfigured(
     val customRuleCount: Int,
     val hasSizeLimit: Boolean
 )
+
+/**
+ * A plain text (.txt) file was created from the new text file dialog, with the "Rich text
+ * formatting" checkbox left off. Paired with [RichTextFileCreated]: the two together are every
+ * creation where the checkbox was on offer, so their split is the rich text opt-in rate.
+ *
+ * Not sent by the new link (.url) dialog, which shares the same screen but never offers the
+ * checkbox.
+ */
+@GeneralEvent
+interface PlainTextFileCreated
+
+/**
+ * A rich text (Markdown, .md) file was created from the new text file dialog. Sent whether the
+ * user ticked the "Rich text formatting" checkbox or typed the .md extension themselves, since
+ * the checkbox and the file name field are the same state. See [PlainTextFileCreated] for the
+ * pairing.
+ */
+@GeneralEvent
+interface RichTextFileCreated

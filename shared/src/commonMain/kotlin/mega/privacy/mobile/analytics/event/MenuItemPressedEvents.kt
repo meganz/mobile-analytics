@@ -1784,3 +1784,17 @@ interface VideoEditorMenuItem
     menuType = MenuItemEvent.MenuType.Item
 )
 interface SettingsCustomiseNavigationMenuItem
+
+@MenuItemEvent(
+    menuItem = "Plain text",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Text Editor Screen"
+)
+interface TextEditorPlainTextModeMenuItem
+
+@MenuItemEvent(
+    menuItem = "Rich text",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Text Editor Screen"
+)
+interface TextEditorRichTextModeMenuItem
