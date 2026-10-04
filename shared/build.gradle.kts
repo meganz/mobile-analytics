@@ -2,11 +2,12 @@ import groovy.util.Node
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 import src.main.kotlin.HtmlTableTask
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.android.kmp.library)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.multiplatform.swift)
     alias(libs.plugins.jfrog)
@@ -15,17 +16,18 @@ plugins {
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
-    targetHierarchy.default()
     jvm {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_17)
         }
     }
-    androidTarget {
+    android {
+        namespace = "mega.privacy.mobile.analytics"
+        compileSdk = 36
+        minSdk = 26
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_17)
         }
-        publishLibraryVariants("release", "debug")
     }
 
     listOf(
@@ -48,99 +50,65 @@ kotlin {
         }
     }
 
+    val exportedModules = listOf(":analytics-annotations", ":analytics-core")
+        .map { path -> project.dependencies.project(path) }
     targets.withType<KotlinNativeTarget> {
         binaries.withType<Framework> {
             isStatic = false
-            export(project(":analytics-annotations"))
-            export(project(":analytics-core"))
+            exportedModules.forEach { export(it) }
 
             transitiveExport = true
         }
     }
 
-    afterEvaluate {
-        tasks {
-            withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>> {
-                if (name != "kspCommonMainKotlinMetadata")
-                    dependsOn("kspCommonMainKotlinMetadata")
-            }
-
-            getByName("androidReleaseSourcesJar") {
-                dependsOn("kspCommonMainKotlinMetadata")
-            }
-
-            getByName("androidDebugSourcesJar") {
-                dependsOn("kspCommonMainKotlinMetadata")
-            }
-
-            getByName("iosArm64SourcesJar") {
-                dependsOn("kspCommonMainKotlinMetadata")
-            }
-
-            getByName("iosSimulatorArm64SourcesJar") {
-                dependsOn("kspCommonMainKotlinMetadata")
-            }
-
-            getByName("iosX64SourcesJar") {
-                dependsOn("kspCommonMainKotlinMetadata")
-            }
-
-            getByName("sourcesJar") {
-                dependsOn("kspCommonMainKotlinMetadata")
-            }
-        }
-
-        task("sourceJar") {
-            dependsOn("kspCommonMainKotlinMetadata")
-        }
-    }
-
-    publishing {
-        publications {
-            matching { it.name == "${android().name}kotlinMultiplatform" }.all {
-                val targetPublication = this@all
-                tasks.withType<AbstractPublishToMaven>()
-                    .matching { it.publication == targetPublication }
-                    .configureEach { onlyIf { findProperty("isMainHost") == "true" } }
-            }
-
-            val libVersion = rootProject.extra.get("androidLibVersion") as String
-            create<MavenPublication>("aar") {
-                groupId = "mega.privacy.mobile"
-                artifactId = "analytics-events-android"
-                version = libVersion
-                artifact("$buildDir/outputs/aar/${project.name}-release.aar")
-                artifact("$buildDir/libs/${project.name}-android-1.0.0-sources.jar") {
-                    classifier = "sources"
-                    extension = "jar"
-                }
-
-                pom.withXml {
-                    addDependencyInPOM(libVersion)
-                }
-            }
-        }
-    }
-
     sourceSets {
-        val commonMain by getting {
+        commonMain {
             kotlin.srcDir("build/generated/ksp/metadata/commonMain")
             dependencies {
-                //put your multiplatform dependencies here
-                implementation(project(":analytics-annotations"))
                 api(project(":analytics-annotations"))
                 api(project(":analytics-core"))
 
                 implementation(libs.kotlinx.coroutines)
             }
         }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-            }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
         }
-        val windowsMain by getting {
-            dependsOn(commonMain)
+    }
+}
+
+// Event classes are generated once into commonMain metadata; every other compilation (and the
+// sources jars) must wait for that generation to finish.
+tasks.withType<KotlinCompilationTask<*>>().configureEach {
+    if (name != "kspCommonMainKotlinMetadata") {
+        dependsOn("kspCommonMainKotlinMetadata")
+    }
+}
+tasks.matching { it.name.endsWith("SourcesJar") }.configureEach {
+    dependsOn("kspCommonMainKotlinMetadata")
+}
+tasks.register("sourceJar") {
+    dependsOn("kspCommonMainKotlinMetadata")
+}
+
+// AGP registers the Android bundle/sources tasks after evaluation, so the publication must be
+// declared once they exist.
+afterEvaluate {
+    publishing.publications {
+        val libVersion = rootProject.extra.get("androidLibVersion") as String
+        create<MavenPublication>("aar") {
+            groupId = "mega.privacy.mobile"
+            artifactId = "analytics-events-android"
+            version = libVersion
+            artifact(tasks.named("bundleAndroidMainAar"))
+            artifact(tasks.named("androidSourcesJar")) {
+                classifier = "sources"
+                extension = "jar"
+            }
+
+            pom.withXml {
+                addDependencyInPOM(libVersion)
+            }
         }
     }
 }
@@ -149,21 +117,7 @@ dependencies {
     add("kspCommonMainMetadata", project(":analytics-processor"))
 }
 
-android {
-    namespace = "mega.privacy.mobile.analytics"
-    compileSdk = 35
-    defaultConfig {
-        minSdk = 26
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-}
-
 ksp {
-    // ...
-
     val relativeResourcePath = "src/commonMain/resources"
 
     val absoluteResourcePath = File(projectDir, relativeResourcePath).absolutePath
@@ -184,13 +138,12 @@ multiplatformSwiftPackage {
 }
 
 artifactory {
-    clientConfig.isIncludeEnvVars = true
     setContextUrl("https://artifactory.developers.mega.co.nz/artifactory/mega-gradle")
     publish {
         repository {
-            setRepoKey("mobile-analytics")
-            setUsername(System.getenv("ARTIFACTORY_USER")) // The publisher user name
-            setPassword(System.getenv("ARTIFACTORY_ACCESS_TOKEN")) // The publisher password
+            repoKey = "mobile-analytics"
+            username = System.getenv("ARTIFACTORY_USER") // The publisher user name
+            password = System.getenv("ARTIFACTORY_ACCESS_TOKEN") // The publisher password
         }
         defaults {
             setPublishArtifacts(true)
@@ -221,13 +174,13 @@ fun XmlProvider.addDependencyInPOM(libVersion: String) {
     val kotlinxSerializationJsonDep = depRoot.appendNode("dependency")
     Node(kotlinxSerializationJsonDep, "groupId").apply { setValue("org.jetbrains.kotlinx") }
     Node(kotlinxSerializationJsonDep, "artifactId").apply { setValue("kotlinx-serialization-json") }
-    Node(kotlinxSerializationJsonDep, "version").apply { setValue("1.5.1") }
+    Node(kotlinxSerializationJsonDep, "version").apply { setValue(libs.versions.kotlinx.serialization.get()) }
     Node(kotlinxSerializationJsonDep, "scope").apply { setValue("compile") }
 }
 
-tasks.getByName("artifactoryPublish") {
+tasks.named("artifactoryPublish") {
     dependsOn("assemble")
-    dependsOn("androidReleaseSourcesJar")
+    dependsOn("androidSourcesJar")
 }
 
 

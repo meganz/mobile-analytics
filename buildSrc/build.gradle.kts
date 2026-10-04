@@ -7,9 +7,7 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
-
-    // Dependencies for src.main.kotlin.HtmlTableTask
-    implementation("org.codehaus.groovy:groovy-json:3.0.9")
+    // Dependencies for src.main.kotlin.HtmlTableTask (groovy.json ships with Gradle's bundled Groovy)
+    implementation(localGroovy())
     implementation(gradleApi())
 }

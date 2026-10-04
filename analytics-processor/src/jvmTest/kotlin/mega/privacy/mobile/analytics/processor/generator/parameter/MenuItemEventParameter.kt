@@ -11,7 +11,7 @@ class MenuItemEventParameter : GeneratorCodeTestParameter {
 import mega.privacy.mobile.analytics.annotations.MenuItemEvent
 import mega.privacy.mobile.analytics.annotations.MenuItemEvent.MenuType
 
-@MenuItemEvent(menuItem = "item1", screenName = "screen1", menuType = MenuType.Item)
+@MenuItemEvent(menuItem = "item1", screen = "screen1", menuType = MenuType.Item)
 interface TestItem
 
 @MenuItemEvent(menuItem = "item2", menuType = MenuType.Toolbar)
@@ -35,7 +35,7 @@ interface TestItem2"""
         
           override val menuType: String = "Item"
         
-          override val screenName: String? = null
+          override val screenName: String? = "screen1"
         }
         
         public object TestItem2Event : MenuItemEventIdentifier {

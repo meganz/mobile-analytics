@@ -2,11 +2,11 @@ package mega.privacy.mobile.analytics.processor.generator
 
 import com.google.common.truth.Truth.assertThat
 import com.google.devtools.ksp.processing.CodeGenerator
+import com.tschuchort.compiletesting.JvmCompilationResult
 import com.tschuchort.compiletesting.KotlinCompilation
 import com.tschuchort.compiletesting.SourceFile
-import com.tschuchort.compiletesting.kspIncremental
+import com.tschuchort.compiletesting.configureKsp
 import com.tschuchort.compiletesting.kspSourcesDir
-import com.tschuchort.compiletesting.symbolProcessorProviders
 import mega.privacy.mobile.analytics.processor.AnalyticsEventProcessor
 import mega.privacy.mobile.analytics.processor.TestProcessorProvider
 import mega.privacy.mobile.analytics.processor.generator.parameter.GeneratorCodeTestParameter
@@ -88,21 +88,21 @@ abstract class EventCodeGeneratorTest<T : GenerateIdRequest> {
                 sources = sourceFiles.asList()
                 workingDir = temporaryFolder
                 inheritClassPath = true
-                symbolProcessorProviders =
-                    listOf(
+                configureKsp {
+                    symbolProcessorProviders +=
                         TestProcessorProvider(
                             options = mapOf(
                                 AnalyticsEventProcessor.RESOURCE_PATH_KEY to temporaryFolder.path
                             )
                         )
-                    )
+                    incremental = true
+                }
                 verbose = false
-                kspIncremental = true // The default now
                 multiplatform = true
             }
     }
 
-    private fun compile(vararg sourceFiles: SourceFile): KotlinCompilation.Result {
+    private fun compile(vararg sourceFiles: SourceFile): JvmCompilationResult {
         return prepareCompilation(*sourceFiles).compile()
     }
 }

@@ -1,26 +1,26 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import kotlin.text.set
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.android.kmp.library)
     alias(libs.plugins.jfrog)
     `maven-publish`
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
-    targetHierarchy.default()
     jvm {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_17)
         }
     }
-    androidTarget {
+    android {
+        namespace = "mega.privacy.mobile.analytics.core"
+        compileSdk = 36
+        minSdk = 26
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_17)
         }
-        publishLibraryVariants("release", "debug")
     }
 
     listOf(
@@ -44,67 +44,41 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                //put your multiplatform dependencies here
-                implementation(libs.kotlinx.serialization)
-            }
+        commonMain.dependencies {
+            implementation(libs.kotlinx.serialization)
         }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-                implementation(libs.kotlinx.coroutines.test)
-            }
-        }
-        val windowsMain by getting {
-            dependsOn(commonMain)
-        }
-    }
-
-    publishing {
-        publications {
-            matching { it.name == "${android().name}kotlinMultiplatform" }.all {
-                val targetPublication = this@all
-                tasks.withType<AbstractPublishToMaven>()
-                    .matching { it.publication == targetPublication }
-                    .configureEach { onlyIf { findProperty("isMainHost") == "true" } }
-            }
-
-            val libVersion = rootProject.extra.get("androidLibVersion") as String
-            create<MavenPublication>("aar") {
-                groupId = "mega.privacy.mobile"
-                artifactId = "analytics-core-android"
-                version = libVersion
-                artifact("$buildDir/outputs/aar/${project.name}-release.aar")
-                artifact("$buildDir/libs/${project.name}-android-1.0.0-sources.jar") {
-                    classifier = "sources"
-                    extension = "jar"
-                }
-            }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+            implementation(libs.kotlinx.coroutines.test)
         }
     }
 }
 
-android {
-    namespace = "mega.privacy.mobile.analytics.core"
-    compileSdk = 35
-    defaultConfig {
-        minSdk = 26
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+// AGP registers the Android bundle/sources tasks after evaluation, so the publication must be
+// declared once they exist.
+afterEvaluate {
+    publishing.publications {
+        val libVersion = rootProject.extra.get("androidLibVersion") as String
+        create<MavenPublication>("aar") {
+            groupId = "mega.privacy.mobile"
+            artifactId = "analytics-core-android"
+            version = libVersion
+            artifact(tasks.named("bundleAndroidMainAar"))
+            artifact(tasks.named("androidSourcesJar")) {
+                classifier = "sources"
+                extension = "jar"
+            }
+        }
     }
 }
 
 artifactory {
-    clientConfig.isIncludeEnvVars = true
     setContextUrl("https://artifactory.developers.mega.co.nz/artifactory/mega-gradle")
     publish {
         repository {
-            setRepoKey("mobile-analytics")
-            setUsername(System.getenv("ARTIFACTORY_USER")) // The publisher user name
-            setPassword(System.getenv("ARTIFACTORY_ACCESS_TOKEN")) // The publisher password
+            repoKey = "mobile-analytics"
+            username = System.getenv("ARTIFACTORY_USER") // The publisher user name
+            password = System.getenv("ARTIFACTORY_ACCESS_TOKEN") // The publisher password
         }
         defaults {
             setPublishArtifacts(true)
@@ -114,7 +88,7 @@ artifactory {
     }
 }
 
-tasks.getByName("artifactoryPublish") {
+tasks.named("artifactoryPublish") {
     dependsOn("assemble")
-    dependsOn("androidReleaseSourcesJar")
+    dependsOn("androidSourcesJar")
 }

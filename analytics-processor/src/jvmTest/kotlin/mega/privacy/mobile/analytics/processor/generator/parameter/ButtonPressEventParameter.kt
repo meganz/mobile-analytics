@@ -10,7 +10,7 @@ class ButtonPressEventParameter : GeneratorCodeTestParameter {
         """
 import mega.privacy.mobile.analytics.annotations.ButtonPressEvent
 
-@ButtonPressEvent(buttonName = "button1", screenName = "screen1")
+@ButtonPressEvent(buttonName = "button1", screen = "screen1")
 interface TestButton
     """
     )
@@ -30,7 +30,7 @@ interface TestButton
         
           override val buttonName: String = "button1"
         
-          override val screenName: String? = null
+          override val screenName: String? = "screen1"
         
           override val dialogName: String? = null
         }

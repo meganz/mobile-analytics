@@ -18,7 +18,7 @@ kotlin {
         }
     }
     sourceSets {
-        val jvmMain by getting {
+        jvmMain {
             dependencies {
                 implementation(project(":analytics-core"))
                 implementation(project(":analytics-annotations"))
@@ -31,10 +31,13 @@ kotlin {
             resources.srcDir("src/main/resources")
         }
 
-        val jvmTest by getting {
+        jvmTest {
+            // kotlin-compile-testing exposes the compiler API behind this opt-in
+            languageSettings.optIn("org.jetbrains.kotlin.compiler.plugin.ExperimentalCompilerApi")
             dependencies {
-                runtimeOnly(libs.junit.jupiter.engine)
+                implementation(project.dependencies.platform(libs.junit.bom))
                 implementation(libs.bundles.junit5)
+                runtimeOnly(libs.junit.platform.launcher)
                 implementation(libs.bundles.mocking)
                 implementation(libs.bundles.compile.testing)
             }

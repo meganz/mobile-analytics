@@ -11,10 +11,12 @@ A Kotlin Multiplatform (KMP) library that provides type-safe analytics event def
 ```bash
 ./gradlew build                        # Full build (includes KSP code generation)
 ./gradlew test                         # Run all tests
-./gradlew :analytics-processor:test    # Run processor tests only (JUnit 5)
+./gradlew :analytics-processor:jvmTest # Run processor tests only (JUnit 5)
 ./gradlew :analytics-core:test         # Run core module tests
 ./gradlew clean build                  # Clean rebuild
 ```
+
+Running Gradle needs JDK 17 or newer (Android Studio's bundled JBR works). Toolchain versions (Gradle 9.6, AGP 9.4, Kotlin 2.4, KSP 2.3) are kept in step with the MEGA android app repo. The Android targets use the `com.android.kotlin.multiplatform.library` plugin, so Android settings live inside the `kotlin { android { } }` block of each module rather than a top-level `android {}` block.
 
 ## Architecture
 
