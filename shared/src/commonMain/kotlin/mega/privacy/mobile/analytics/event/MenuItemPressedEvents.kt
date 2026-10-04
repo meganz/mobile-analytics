@@ -1798,3 +1798,15 @@ interface TextEditorPlainTextModeMenuItem
     screen = "Text Editor Screen"
 )
 interface TextEditorRichTextModeMenuItem
+
+@MenuItemEvent(
+    menuItem = "Send File",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface ContactItemSendFileMenuItem
+
+@MenuItemEvent(
+    menuItem = "Share Contact",
+    menuType = MenuItemEvent.MenuType.Item,
+)
+interface ContactItemShareContactMenuItem
