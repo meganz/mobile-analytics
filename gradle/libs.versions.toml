@@ -13,7 +13,7 @@ mockito-kotlin = "6.3.0"
 mockito-inline = "5.2.0"
 truth = "1.4.5"
 jfrog = "6.0.4"
-multiplatform-swift = "2.2.4"
+multiplatform-swift = "2.3.0"
 
 [libraries]
 google-ksp = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "google-ksp" }

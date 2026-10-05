@@ -84,7 +84,7 @@ tasks.withType<KotlinCompilationTask<*>>().configureEach {
         dependsOn("kspCommonMainKotlinMetadata")
     }
 }
-tasks.matching { it.name.endsWith("SourcesJar") }.configureEach {
+tasks.matching { it.name.endsWith("sourcesJar", ignoreCase = true) }.configureEach {
     dependsOn("kspCommonMainKotlinMetadata")
 }
 tasks.register("sourceJar") {
