@@ -24,6 +24,21 @@ allprojects {
     }
 }
 
+// A local repository so CI can run the same publishing tasks as Artifactory without uploading:
+// ./gradlew publishAllPublicationsToVerifyRepository
+subprojects {
+    plugins.withId("maven-publish") {
+        extensions.configure<PublishingExtension> {
+            repositories {
+                maven {
+                    name = "verify"
+                    url = uri(rootProject.layout.buildDirectory.dir("verify-repo"))
+                }
+            }
+        }
+    }
+}
+
 tasks.register("clean", Delete::class) {
     delete(rootProject.layout.buildDirectory)
 }

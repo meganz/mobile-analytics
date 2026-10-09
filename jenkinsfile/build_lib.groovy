@@ -117,7 +117,8 @@ pipeline {
                     util.useGitLab() {
                         util.useGpg() {
                             sh """
-                                ./gradlew createSwiftPackage
+                                ./gradlew createSwiftPackage :shared:verifySwiftPackageEvents
+                                (cd ios-smoke-tests && swift test)
                                 rm -fr mobile-analytics-ios
                                 git clone https://code.developers.mega.co.nz/mobile/kmm/mobile-analytics-ios.git
                                 cd mobile-analytics-ios

@@ -4,6 +4,8 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 import src.main.kotlin.HtmlTableTask
+import src.main.kotlin.VerifyEventIdStabilityTask
+import src.main.kotlin.VerifySwiftPackageEventsTask
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -185,6 +187,21 @@ tasks.named("artifactoryPublish") {
 
 
 tasks.register<HtmlTableTask>("generateHtmlTables")
+
+tasks.register<VerifySwiftPackageEventsTask>("verifySwiftPackageEvents") {
+    xcFramework.set(rootProject.layout.projectDirectory.dir("SwiftPackages/MEGAAnalyticsiOS/MEGAAnalyticsiOS.xcframework"))
+    eventSourceDir.set(layout.projectDirectory.dir("src/commonMain/kotlin/mega/privacy/mobile/analytics/event"))
+    resourceDir.set(layout.projectDirectory.dir("src/commonMain/resources"))
+    mustRunAfter("createSwiftPackage")
+}
+
+tasks.register<VerifyEventIdStabilityTask>("verifyEventIdStability") {
+    resourceDir.set(layout.projectDirectory.dir("src/commonMain/resources"))
+    baselineRef.set(providers.gradleProperty("eventIdBaseline").orElse("origin/main"))
+    allowRemovals.set(providers.gradleProperty("allowEventIdRemoval").map(String::toBoolean).orElse(false))
+    // KSP rewrites the JSON files, so check what it produced.
+    mustRunAfter("kspCommonMainKotlinMetadata")
+}
 
 // https://youtrack.jetbrains.com/issue/KT-42276
 val workAroundKt43094 = true

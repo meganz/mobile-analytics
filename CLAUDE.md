@@ -10,13 +10,24 @@ A Kotlin Multiplatform (KMP) library that provides type-safe analytics event def
 
 ```bash
 ./gradlew build                        # Full build (includes KSP code generation)
-./gradlew test                         # Run all tests
+./gradlew jvmTest                      # Run JVM tests in all modules
 ./gradlew :analytics-processor:jvmTest # Run processor tests only (JUnit 5)
-./gradlew :analytics-core:test         # Run core module tests
+./gradlew :analytics-core:allTests     # Run core module tests on all host-supported targets
 ./gradlew clean build                  # Clean rebuild
 ```
 
-Running Gradle needs JDK 17 or newer (Android Studio's bundled JBR works). Toolchain versions (Gradle 9.6, AGP 9.4, Kotlin 2.4, KSP 2.3) are kept in step with the MEGA android app repo. The Android targets use the `com.android.kotlin.multiplatform.library` plugin, so Android settings live inside the `kotlin { android { } }` block of each module rather than a top-level `android {}` block.
+### Verification checks (also run by the MR pipeline in `jenkinsfile/build_status.groovy`)
+
+```bash
+./gradlew :shared:verifyEventIdStability             # Existing event IDs unchanged vs origin/main
+./gradlew publishAllPublicationsToVerifyRepository   # Publishing tasks against build/verify-repo, no upload
+./gradlew createSwiftPackage :shared:verifySwiftPackageEvents  # Every declared event is in the XCFramework
+(cd ios-smoke-tests && swift test)                   # Swift Testing smoke tests against the generated package
+```
+
+`verifyEventIdStability` fails on removed events unless run with `-PallowEventIdRemoval=true`; in CI, put `[allow-event-id-removal]` in a commit message on the branch. Changed or reused IDs always fail.
+
+Running Gradle needs JDK 17 or newer (Android Studio's bundled JBR works). Toolchain versions (Gradle 9.6, AGP 9.4, Kotlin 2.4, KSP 2.3) are kept in step with the MEGA android app repo, except Kotlin, which is on 2.4.21 for the fix to KT-86443 (2.4.0 crashed iOS consumers in `-[KotlinBase description]`). The Android targets use the `com.android.kotlin.multiplatform.library` plugin, so Android settings live inside the `kotlin { android { } }` block of each module rather than a top-level `android {}` block.
 
 ## Architecture
 
@@ -31,7 +42,7 @@ Four modules:
 
 1. Add an annotated interface or class in `shared/src/commonMain/kotlin/mega/privacy/mobile/analytics/event/` in the appropriate file (e.g., `ButtonPressEvents.kt`)
 2. Simple events: use an `interface` — generates a singleton `object`
-3. Events with runtime parameters: use a `class` with constructor params — generates a `data class`. Use `@StaticValue("value")` for compile-time constants in the payload
+3. Events with runtime parameters: use a `class` with constructor params — generates a `class` whose params go into `info`. Use `@StaticValue("value")` for compile-time constants in the payload
 4. Run `./gradlew build` to trigger KSP generation
 5. **Commit both the new annotation and the updated JSON file in `shared/src/commonMain/resources/`** — JSON files contain stable event IDs; if not committed, IDs can change and corrupt analytics data
 

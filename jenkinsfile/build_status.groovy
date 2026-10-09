@@ -94,7 +94,70 @@ pipeline {
                 }
             }
         }
+        stage('Verify Event IDs') {
+            steps {
+                gitlabCommitStatus(name: 'Event IDs') {
+                    script {
+                        BUILD_STEP = 'Verify Event IDs'
+                        // The build regenerates the JSON files, so any difference means they were not committed
+                        sh "git diff --exit-code -- shared/src/commonMain/resources"
+                        fetchMainBranch()
+                        String allowRemoval = isEventIdRemovalAllowed() ? "-PallowEventIdRemoval=true" : ""
+                        sh "./gradlew :shared:verifyEventIdStability -PeventIdBaseline=origin/main ${allowRemoval}"
+                    }
+                }
+            }
+        }
+        stage('Verify Publishing') {
+            steps {
+                gitlabCommitStatus(name: 'Publishing') {
+                    script {
+                        BUILD_STEP = 'Verify Publishing'
+                        // Runs the publishing tasks against a local repository; nothing is uploaded
+                        sh "./gradlew publishAllPublicationsToVerifyRepository"
+                    }
+                }
+            }
+        }
+        stage('Verify iOS Package') {
+            steps {
+                gitlabCommitStatus(name: 'iOS Package') {
+                    script {
+                        BUILD_STEP = 'Verify iOS Package'
+                        // A separate Gradle invocation, as in the publish job
+                        sh "./gradlew createSwiftPackage :shared:verifySwiftPackageEvents"
+                        sh "cd ios-smoke-tests && swift test"
+                    }
+                }
+            }
+        }
     }
+}
+
+/**
+ * Fetch main as origin/main, the baseline for the event ID check. The MR checkout only fetches
+ * the MR ref, and plain `sh` has no GitLab credentials, so pass them through a credential helper.
+ * Single-quoted so the token is never interpolated into the script or written to the git config.
+ */
+private void fetchMainBranch() {
+    withCredentials([usernamePassword(credentialsId: 'Gitlab-Access-Token', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+        sh '''
+            GIT_TERMINAL_PROMPT=0 git -c credential.helper= \
+                -c credential.helper='!f() { echo "username=${GIT_USERNAME}"; echo "password=${GIT_PASSWORD}"; }; f' \
+                fetch --no-tags origin +refs/heads/main:refs/remotes/origin/main
+        '''
+    }
+}
+
+/**
+ * Event removals are allowed when a commit on the branch contains [allow-event-id-removal]
+ * in its message, for deliberate clean-ups of unused events.
+ */
+private boolean isEventIdRemovalAllowed() {
+    return sh(
+            script: "git log origin/main..HEAD --format=%B | grep -qF '[allow-event-id-removal]'",
+            returnStatus: true
+    ) == 0
 }
 
 
