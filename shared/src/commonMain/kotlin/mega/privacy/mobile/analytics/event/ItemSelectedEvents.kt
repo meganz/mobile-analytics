@@ -440,3 +440,9 @@ interface ViewedLinksFileLinkItemSelected
 
 @ItemSelectedEvent
 interface ViewedLinksFolderLinkItemSelected
+
+@ItemSelectedEvent
+class WidgetCustomisationWidgetEnabled(val widget: String)
+
+@ItemSelectedEvent
+class WidgetCustomisationWidgetDisabled(val widget: String)

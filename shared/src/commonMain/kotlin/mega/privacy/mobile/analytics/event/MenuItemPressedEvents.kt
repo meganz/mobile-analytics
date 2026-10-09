@@ -1831,3 +1831,24 @@ interface ViewedLinksClearHistoryMenuItem
     screen = "Viewed links screen"
 )
 interface ViewedLinksRemoveSelectedMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "More",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "WidgetCustomisation"
+)
+interface WidgetCustomisationMoreMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Reset to default",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "WidgetCustomisation"
+)
+interface WidgetCustomisationResetToDefaultMenuItem
+
+@MenuItemEvent(
+    menuItem = "Choose default start screen",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "WidgetCustomisation"
+)
+interface WidgetCustomisationChooseDefaultStartScreenMenuItem

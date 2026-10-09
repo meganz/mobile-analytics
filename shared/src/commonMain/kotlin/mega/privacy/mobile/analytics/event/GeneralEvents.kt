@@ -923,3 +923,9 @@ interface RichTextFileCreated
  */
 @GeneralEvent
 interface ContinueWhereLeftOffWidgetDisplayed
+
+@GeneralEvent
+interface WidgetCustomisationWidgetsReordered
+
+@GeneralEvent
+interface WidgetCustomisationActive

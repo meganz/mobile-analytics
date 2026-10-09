@@ -82,3 +82,12 @@ interface CustomiseNavigationMinItemsSnackbarDisplayed
 
 @DialogDisplayedEvent(dialog = "Clear history", screen = "Viewed links screen")
 interface ViewedLinksClearHistoryDialog
+
+@DialogDisplayedEvent(dialog = "WidgetCustomisationTooltip", screen = "Home")
+interface WidgetCustomisationTooltipDisplayed
+
+@DialogDisplayedEvent(dialog = "WidgetCustomisationPromo")
+interface WidgetCustomisationPromoDisplayed
+
+@DialogDisplayedEvent(dialog = "WidgetCustomisationLastWidgetSnackbar", screen = "WidgetCustomisation")
+interface WidgetCustomisationLastWidgetSnackbarDisplayed

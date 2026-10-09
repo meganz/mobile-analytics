@@ -3105,3 +3105,35 @@ interface ViewedLinksClearHistoryConfirmButtonPressed
     dialog = "Remove selected links"
 )
 interface ViewedLinksRemoveSelectedConfirmButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Customise home toolbar button",
+    screen = "Home"
+)
+interface WidgetCustomisationToolbarButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Explore",
+    screen = "Home",
+    dialog = "WidgetCustomisationTooltip"
+)
+interface WidgetCustomisationTooltipExploreButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Dismiss",
+    screen = "Home",
+    dialog = "WidgetCustomisationTooltip"
+)
+interface WidgetCustomisationTooltipDismissButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Explore",
+    dialog = "WidgetCustomisationPromo"
+)
+interface WidgetCustomisationPromoExploreButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Dismiss",
+    dialog = "WidgetCustomisationPromo"
+)
+interface WidgetCustomisationPromoDismissButtonPressed

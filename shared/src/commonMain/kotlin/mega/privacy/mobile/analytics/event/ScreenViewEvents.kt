@@ -325,3 +325,6 @@ interface ContinueWhereLeftOffScreen
 
 @ScreenViewEvent
 interface ViewedLinksScreen
+
+@ScreenViewEvent
+interface WidgetCustomisationScreen
