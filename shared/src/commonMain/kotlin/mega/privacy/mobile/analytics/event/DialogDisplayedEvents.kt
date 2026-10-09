@@ -79,3 +79,6 @@ interface CustomiseNavigationMaxItemsSnackbarDisplayed
 
 @DialogDisplayedEvent(dialog = "CustomiseNavigationMinItemsSnackbar", screen = "CustomiseNavigation")
 interface CustomiseNavigationMinItemsSnackbarDisplayed
+
+@DialogDisplayedEvent(dialog = "Clear history", screen = "Viewed links screen")
+interface ViewedLinksClearHistoryDialog

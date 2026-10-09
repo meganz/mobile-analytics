@@ -1817,3 +1817,17 @@ interface ContactItemShareContactMenuItem
     screen = "Continue where you left off screen"
 )
 interface ContinueWhereLeftOffClearHistoryMenuItem
+
+@MenuItemEvent(
+    menuItem = "Clear history",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Viewed links screen"
+)
+interface ViewedLinksClearHistoryMenuItem
+
+@MenuItemEvent(
+    menuItem = "Clear",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Viewed links screen"
+)
+interface ViewedLinksRemoveSelectedMenuToolbar

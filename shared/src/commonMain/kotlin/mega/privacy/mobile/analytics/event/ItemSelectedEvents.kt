@@ -428,3 +428,15 @@ interface ContinueWhereLeftOffListViewSelected
 
 @ItemSelectedEvent
 interface ContinueWhereLeftOffGridViewSelected
+
+@ItemSelectedEvent
+interface ViewedLinksWidgetFileLinkItemSelected
+
+@ItemSelectedEvent
+interface ViewedLinksWidgetFolderLinkItemSelected
+
+@ItemSelectedEvent
+interface ViewedLinksFileLinkItemSelected
+
+@ItemSelectedEvent
+interface ViewedLinksFolderLinkItemSelected

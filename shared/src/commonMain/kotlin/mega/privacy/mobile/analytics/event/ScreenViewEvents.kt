@@ -322,3 +322,6 @@ interface FolderLinkScreen
 
 @ScreenViewEvent
 interface ContinueWhereLeftOffScreen
+
+@ScreenViewEvent
+interface ViewedLinksScreen

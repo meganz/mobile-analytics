@@ -3085,3 +3085,23 @@ interface ContinueWhereLeftOffMoreButtonPressed
     dialog = "Clear history dialog"
 )
 interface ContinueWhereLeftOffClearHistoryDialogConfirmed
+
+@ButtonPressEvent(
+    buttonName = "Viewed links View all Button",
+    screen = "Home Screen"
+)
+interface ViewedLinksViewAllButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Viewed links clear history confirm button",
+    screen = "Viewed links screen",
+    dialog = "Clear history"
+)
+interface ViewedLinksClearHistoryConfirmButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Viewed links remove selected confirm button",
+    screen = "Viewed links screen",
+    dialog = "Remove selected links"
+)
+interface ViewedLinksRemoveSelectedConfirmButtonPressed
