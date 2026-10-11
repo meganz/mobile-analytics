@@ -1810,3 +1810,10 @@ interface ContactItemSendFileMenuItem
     menuType = MenuItemEvent.MenuType.Item,
 )
 interface ContactItemShareContactMenuItem
+
+@MenuItemEvent(
+    menuItem = "Clear history",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Continue where you left off screen"
+)
+interface ContinueWhereLeftOffClearHistoryMenuItem

@@ -3060,3 +3060,28 @@ interface AndroidSyncExclusionsAddButtonPressed
     dialog = "Chat message notification"
 )
 interface ChatMessageNotificationReplyButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Continue where you left off widget item",
+    screen = "Home Screen"
+)
+interface ContinueWhereLeftOffWidgetItemPressed
+
+@ButtonPressEvent(
+    buttonName = "Continue where you left off list item",
+    screen = "Continue where you left off screen"
+)
+interface ContinueWhereLeftOffListItemPressed
+
+@ButtonPressEvent(
+    buttonName = "More button",
+    screen = "Continue where you left off screen"
+)
+interface ContinueWhereLeftOffMoreButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Clear button",
+    screen = "Continue where you left off screen",
+    dialog = "Clear history dialog"
+)
+interface ContinueWhereLeftOffClearHistoryDialogConfirmed

@@ -913,3 +913,13 @@ interface PlainTextFileCreated
  */
 @GeneralEvent
 interface RichTextFileCreated
+
+/**
+ * The Continue where you left off carousel was shown on Home with at least one item. Sent at most
+ * once per app session (process): not again on scroll, recomposition, rotation, tab switches or
+ * returning to Home, and not while the carousel is loading or empty. It counts sessions that saw
+ * a non-empty carousel, so pair it with [ContinueWhereLeftOffWidgetItemPressed] per session for
+ * the tap-through rate.
+ */
+@GeneralEvent
+interface ContinueWhereLeftOffWidgetDisplayed

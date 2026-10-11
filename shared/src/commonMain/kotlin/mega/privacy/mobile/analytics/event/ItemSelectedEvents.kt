@@ -410,3 +410,21 @@ interface AudioPlayerSleepTimerEndOfTrack
 
 @ItemSelectedEvent
 interface AudioPlayerSleepTimerTurnOff
+
+@ItemSelectedEvent
+interface ContinueWhereLeftOffSortByNameAscendingSelected
+
+@ItemSelectedEvent
+interface ContinueWhereLeftOffSortByNameDescendingSelected
+
+@ItemSelectedEvent
+interface ContinueWhereLeftOffSortByDateNewestSelected
+
+@ItemSelectedEvent
+interface ContinueWhereLeftOffSortByDateOldestSelected
+
+@ItemSelectedEvent
+interface ContinueWhereLeftOffListViewSelected
+
+@ItemSelectedEvent
+interface ContinueWhereLeftOffGridViewSelected
