@@ -3068,6 +3068,18 @@ interface ChatMessageNotificationReplyButtonPressed
 interface ContinueWhereLeftOffWidgetItemPressed
 
 @ButtonPressEvent(
+    buttonName = "Continue where you left off View all button",
+    screen = "Home Screen"
+)
+interface ContinueWhereLeftOffViewAllButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Continue where you left off More card",
+    screen = "Home Screen"
+)
+interface ContinueWhereLeftOffWidgetMoreCardPressed
+
+@ButtonPressEvent(
     buttonName = "Continue where you left off list item",
     screen = "Continue where you left off screen"
 )
