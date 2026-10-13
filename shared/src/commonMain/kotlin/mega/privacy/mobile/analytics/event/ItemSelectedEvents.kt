@@ -446,3 +446,15 @@ class WidgetCustomisationWidgetEnabled(val widget: String)
 
 @ItemSelectedEvent
 class WidgetCustomisationWidgetDisabled(val widget: String)
+
+@ItemSelectedEvent
+interface PdfViewerThumbnailSelected
+
+@ItemSelectedEvent
+interface PdfViewerContentsItemSelected
+
+@ItemSelectedEvent
+interface PdfViewerSearchResultItemSelected
+
+@ItemSelectedEvent
+class PdfViewerMoreActionSelected(val action: String, val source: String)

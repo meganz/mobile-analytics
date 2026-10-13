@@ -929,3 +929,30 @@ interface WidgetCustomisationWidgetsReordered
 
 @GeneralEvent
 interface WidgetCustomisationActive
+
+@GeneralEvent
+interface PdfViewerClosed
+
+@GeneralEvent
+interface PdfViewerLoadSucceeded
+
+@GeneralEvent
+class PdfViewerLoadFailed(val reason: String)
+
+@GeneralEvent
+interface PdfViewerPasswordUnlocked
+
+@GeneralEvent
+interface PdfViewerMoreMenuOpened
+
+@GeneralEvent
+interface PdfViewerThumbnailsOpened
+
+@GeneralEvent
+interface PdfViewerContentsOpened
+
+@GeneralEvent
+interface PdfViewerSearchSessionStarted
+
+@GeneralEvent
+class PdfViewerDownloadRequested(val source: String)
