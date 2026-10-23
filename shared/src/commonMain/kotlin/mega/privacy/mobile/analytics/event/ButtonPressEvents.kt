@@ -3149,3 +3149,15 @@ interface WidgetCustomisationPromoExploreButtonPressed
     dialog = "WidgetCustomisationPromo"
 )
 interface WidgetCustomisationPromoDismissButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Folder shortcut action",
+    screen = "App Shortcut"
+)
+interface ShortcutActionFolderButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Open Settings",
+    dialog = "HomeScreenShortcutPermissionDialog"
+)
+interface HomeScreenShortcutPermissionDialogOpenSettingsButtonPressed

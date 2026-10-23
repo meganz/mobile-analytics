@@ -1852,3 +1852,10 @@ interface WidgetCustomisationResetToDefaultMenuItem
     screen = "WidgetCustomisation"
 )
 interface WidgetCustomisationChooseDefaultStartScreenMenuItem
+
+@MenuItemEvent(
+    menuItem = "Add to Home screen",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveAddToHomeScreenMenuItem

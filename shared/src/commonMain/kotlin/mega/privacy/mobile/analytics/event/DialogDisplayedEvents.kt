@@ -91,3 +91,6 @@ interface WidgetCustomisationPromoDisplayed
 
 @DialogDisplayedEvent(dialog = "WidgetCustomisationLastWidgetSnackbar", screen = "WidgetCustomisation")
 interface WidgetCustomisationLastWidgetSnackbarDisplayed
+
+@DialogDisplayedEvent(dialog = "HomeScreenShortcutPermissionDialog")
+interface HomeScreenShortcutPermissionDialogDisplayed
