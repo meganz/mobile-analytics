@@ -1859,3 +1859,17 @@ interface WidgetCustomisationChooseDefaultStartScreenMenuItem
     screen = "Cloud Drive screen"
 )
 interface CloudDriveAddToHomeScreenMenuItem
+
+@MenuItemEvent(
+    menuItem = "Import from another cloud",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Home Screen"
+)
+interface HomeImportFromAnotherCloudMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Import from another cloud",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveImportFromAnotherCloudMenuToolbar

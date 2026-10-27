@@ -3161,3 +3161,15 @@ interface ShortcutActionFolderButtonPressed
     dialog = "HomeScreenShortcutPermissionDialog"
 )
 interface HomeScreenShortcutPermissionDialogOpenSettingsButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Cloud Drive empty state's `Import from another cloud`",
+    screen = "Cloud Drive Screen"
+)
+interface CloudDriveEmptyStateImportFromAnotherCloudPressed
+
+@ButtonPressEvent(
+    buttonName = "Migration tool PSA positive button",
+    dialog = "MigrationToolPsa"
+)
+interface MigrationToolPsaPositiveButtonPressed
