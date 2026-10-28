@@ -1873,3 +1873,10 @@ interface HomeImportFromAnotherCloudMenuToolbar
     screen = "Cloud Drive Screen"
 )
 interface CloudDriveImportFromAnotherCloudMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Clear",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Continue where you left off screen"
+)
+interface ContinueWhereLeftOffRemoveSelectedMenuToolbar

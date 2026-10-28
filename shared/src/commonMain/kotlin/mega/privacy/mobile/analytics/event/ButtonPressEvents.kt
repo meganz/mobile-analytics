@@ -3173,3 +3173,10 @@ interface CloudDriveEmptyStateImportFromAnotherCloudPressed
     dialog = "MigrationToolPsa"
 )
 interface MigrationToolPsaPositiveButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Clear button",
+    screen = "Continue where you left off screen",
+    dialog = "Clear selected files dialog"
+)
+interface ContinueWhereLeftOffRemoveSelectedConfirmButtonPressed
