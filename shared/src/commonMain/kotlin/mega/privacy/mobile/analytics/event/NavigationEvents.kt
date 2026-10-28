@@ -212,3 +212,39 @@ interface MyMenuMediaNavigationItem
     navigationElementType = NavigationEvent.NavigationElementType.Drawer
 )
 interface MyMenuFavouritesNavigationItem
+
+@NavigationEvent(
+    destination = "Storage",
+    navigationElementType = NavigationEvent.NavigationElementType.Bottom
+)
+interface StorageBottomNavigationItem
+
+@NavigationEvent(
+    destination = "Contacts",
+    navigationElementType = NavigationEvent.NavigationElementType.Bottom
+)
+interface ContactsBottomNavigationItem
+
+@NavigationEvent(
+    destination = "Achievements",
+    navigationElementType = NavigationEvent.NavigationElementType.Bottom
+)
+interface AchievementsBottomNavigationItem
+
+@NavigationEvent(
+    destination = "Device Centre",
+    navigationElementType = NavigationEvent.NavigationElementType.Bottom
+)
+interface DeviceCentreBottomNavigationItem
+
+@NavigationEvent(
+    destination = "Rubbish Bin",
+    navigationElementType = NavigationEvent.NavigationElementType.Bottom
+)
+interface RubbishBinBottomNavigationItem
+
+@NavigationEvent(
+    destination = "Settings",
+    navigationElementType = NavigationEvent.NavigationElementType.Bottom
+)
+interface SettingsBottomNavigationItem
