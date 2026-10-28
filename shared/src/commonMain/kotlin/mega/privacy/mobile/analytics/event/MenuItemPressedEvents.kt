@@ -1854,6 +1854,13 @@ interface WidgetCustomisationResetToDefaultMenuItem
 interface WidgetCustomisationChooseDefaultStartScreenMenuItem
 
 @MenuItemEvent(
+    menuItem = "Customise navigation",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "WidgetCustomisation"
+)
+interface WidgetCustomisationCustomiseNavigationMenuItem
+
+@MenuItemEvent(
     menuItem = "Add to Home screen",
     menuType = MenuItemEvent.MenuType.Item,
     screen = "Cloud Drive screen"
