@@ -45,3 +45,9 @@ interface VideoPlayerZoomToFit
 interface VideoPlayerPinchToZoom
 @GestureEvent(gesture = "Slider drag to change playback speed", screen = "Audio player controller")
 interface AudioPlayerSpeedChangeBySlider
+
+@GestureEvent(gesture = "Sync progress completed transfer swipe to clear", screen = "Sync progress")
+interface SyncProgressCompletedTransferSwipeToClear
+
+@GestureEvent(gesture = "Sync progress resolved issue swipe to clear", screen = "Sync progress")
+interface SyncProgressResolvedIssueSwipeToClear

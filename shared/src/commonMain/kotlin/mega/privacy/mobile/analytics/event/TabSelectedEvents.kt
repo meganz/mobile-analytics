@@ -61,3 +61,12 @@ interface MediaScreenVideosTab
 
 @TabSelectedEvent(screenName = "MediaScreen", tabName = "Playlists")
 interface MediaScreenPlaylistsTab
+
+@TabSelectedEvent(screenName = "Sync progress", tabName = "Active")
+interface SyncProgressActiveTab
+
+@TabSelectedEvent(screenName = "Sync progress", tabName = "Completed")
+interface SyncProgressCompletedTab
+
+@TabSelectedEvent(screenName = "Sync progress", tabName = "Issues")
+interface SyncProgressIssuesTab

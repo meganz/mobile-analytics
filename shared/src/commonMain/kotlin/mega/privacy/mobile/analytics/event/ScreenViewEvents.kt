@@ -328,3 +328,6 @@ interface ViewedLinksScreen
 
 @ScreenViewEvent
 interface WidgetCustomisationScreen
+
+@ScreenViewEvent
+interface SyncProgressScreen

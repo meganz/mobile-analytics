@@ -3180,3 +3180,39 @@ interface MigrationToolPsaPositiveButtonPressed
     dialog = "Clear selected files dialog"
 )
 interface ContinueWhereLeftOffRemoveSelectedConfirmButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Sync card progress panel",
+    screen = "Sync Card and Sync List"
+)
+interface SyncCardProgressPanelButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Sync card review issues row",
+    screen = "Sync Card and Sync List"
+)
+interface SyncCardReviewIssuesButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Upgrade banner button",
+    screen = "Sync progress"
+)
+interface SyncProgressUpgradeButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Allow mobile data banner button",
+    screen = "Sync progress"
+)
+interface SyncProgressAllowMobileDataButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Resume banner button",
+    screen = "Sync progress"
+)
+interface SyncProgressResumeBannerButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Sync progress completed transfer more button",
+    screen = "Sync progress"
+)
+interface SyncProgressCompletedTransferMoreButtonPressed

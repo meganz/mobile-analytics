@@ -1887,3 +1887,38 @@ interface CloudDriveImportFromAnotherCloudMenuToolbar
     screen = "Continue where you left off screen"
 )
 interface ContinueWhereLeftOffRemoveSelectedMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Sync progress pause menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Sync progress"
+)
+interface SyncProgressPauseMenuItem
+
+@MenuItemEvent(
+    menuItem = "Sync progress resume menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Sync progress"
+)
+interface SyncProgressResumeMenuItem
+
+@MenuItemEvent(
+    menuItem = "Sync progress more options menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Sync progress"
+)
+interface SyncProgressMoreOptionsMenuItem
+
+@MenuItemEvent(
+    menuItem = "Sync progress clear completed menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Sync progress"
+)
+interface SyncProgressClearCompletedMenuItem
+
+@MenuItemEvent(
+    menuItem = "Sync progress sync settings menu",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Sync progress"
+)
+interface SyncProgressSyncSettingsMenuItem
