@@ -956,3 +956,25 @@ interface PdfViewerSearchSessionStarted
 
 @GeneralEvent
 class PdfViewerDownloadRequested(val source: String)
+
+/**
+ * Items were pinned to Home from the picker, from the Home section or from the Pinned items page.
+ *
+ * @property count The number of items pinned in this batch, from 1 to 10
+ */
+@GeneralEvent
+class PinnedItemsPinned(val count: Int)
+
+/**
+ * An item was unpinned from Home, from Edit mode on the Pinned items page or from the dialog
+ * for an unavailable item.
+ */
+@GeneralEvent
+interface PinnedItemUnpinned
+
+/**
+ * The pinned items were reordered on the Pinned items page, by dragging or by the "Move up" and
+ * "Move down" accessibility actions.
+ */
+@GeneralEvent
+interface PinnedItemsReordered

@@ -3216,3 +3216,21 @@ interface SyncProgressResumeBannerButtonPressed
     screen = "Sync progress"
 )
 interface SyncProgressCompletedTransferMoreButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Pinned items Add pin button",
+    screen = "Home Screen"
+)
+interface PinnedItemsWidgetAddPinButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Pinned items Add pin button",
+    screen = "Pinned items screen"
+)
+interface PinnedItemsAddPinButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Pinned items View all button",
+    screen = "Home Screen"
+)
+interface PinnedItemsViewAllButtonPressed

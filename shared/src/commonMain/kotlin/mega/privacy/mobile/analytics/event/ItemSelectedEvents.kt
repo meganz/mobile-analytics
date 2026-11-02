@@ -458,3 +458,15 @@ interface PdfViewerSearchResultItemSelected
 
 @ItemSelectedEvent
 class PdfViewerMoreActionSelected(val action: String, val source: String)
+
+/**
+ * A pinned folder was opened from the Pinned items section on Home.
+ */
+@ItemSelectedEvent
+interface PinnedItemsWidgetFolderItemSelected
+
+/**
+ * A pinned file was opened from the Pinned items section on Home.
+ */
+@ItemSelectedEvent
+interface PinnedItemsWidgetFileItemSelected
