@@ -2538,6 +2538,58 @@ interface LinkDiscardChangesDiscardButtonPressed
 interface LinkDiscardChangesCancelButtonPressed
 
 @ButtonPressEvent(
+    buttonName = "Share password share",
+    screen = "share and manage link screen",
+    dialog = "Share password"
+)
+interface LinkSharePasswordShareButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Share password not now",
+    screen = "share and manage link screen",
+    dialog = "Share password"
+)
+interface LinkSharePasswordNotNowButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Share via QR code share",
+    screen = "share and manage link screen",
+    dialog = "Share via QR code"
+)
+interface LinkQRCodeShareButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Share via QR code save",
+    screen = "share and manage link screen",
+    dialog = "Share via QR code"
+)
+interface LinkQRCodeSaveButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Locked Pro expiry date row",
+    screen = "link settings screen"
+)
+interface LinkLockedProExpiryDateRowButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Locked Pro password row",
+    screen = "link settings screen"
+)
+interface LinkLockedProPasswordRowButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Remove links confirmation remove",
+    dialog = "Remove links confirmation"
+)
+interface LinkRemoveConfirmationRemoveButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Remove links confirmation cancel",
+    dialog = "Remove links confirmation"
+)
+interface LinkRemoveConfirmationCancelButtonPressed
+
+@ButtonPressEvent(
     buttonName = "Tag chip",
     screen = "Search Screen"
 )

@@ -751,6 +751,18 @@ class PdfViewerSearchPerformed(val resultCount: Int)
 interface LinkSettingsSaveFailed
 
 @GeneralEvent
+interface LinkShareSheetCompleted
+
+@GeneralEvent
+interface LinkExpiredStateDisplayed
+
+@GeneralEvent
+interface LinkExpiryDateChanged
+
+@GeneralEvent
+class LinkCreationFailed(val reason: String)
+
+@GeneralEvent
 class VideoPlaybackStartupFailureReasonNewVP(val errCode: Int, val reason: String)
 
 @GeneralEvent

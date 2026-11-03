@@ -71,6 +71,15 @@ interface LinkHiddenItemsWarningDialog
 @DialogDisplayedEvent(dialog = "Discard changes", screen = "Link settings screen")
 interface LinkDiscardChangesDialog
 
+@DialogDisplayedEvent(dialog = "Share password", screen = "Share/Manage Link Screen")
+interface LinkSharePasswordDialog
+
+@DialogDisplayedEvent(dialog = "Share via QR code", screen = "Share/Manage Link Screen")
+interface LinkQRCodeDialog
+
+@DialogDisplayedEvent(dialog = "Remove links confirmation")
+interface LinkRemoveConfirmationDialog
+
 @DialogDisplayedEvent(dialog = "CustomiseNavigationTooltip", screen = "Home")
 interface CustomiseNavigationTooltipDisplayed
 
