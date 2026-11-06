@@ -3286,3 +3286,15 @@ interface PinnedItemsAddPinButtonPressed
     screen = "Home Screen"
 )
 interface PinnedItemsViewAllButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Shuffle Button",
+    screen = "Video player controller"
+)
+interface VideoPlayerShuffleEnabled
+
+@ButtonPressEvent(
+    buttonName = "Shuffle Button",
+    screen = "Video player controller"
+)
+interface VideoPlayerShuffleDisabled

@@ -1029,3 +1029,6 @@ class ExternalImageUploadStarted(
     val fileType: String,
     val isLoggedIn: Boolean,
 )
+
+@GeneralEvent
+interface VideoPlayerOpenedWithShuffleOn
