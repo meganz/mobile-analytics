@@ -990,3 +990,42 @@ interface PinnedItemUnpinned
  */
 @GeneralEvent
 interface PinnedItemsReordered
+
+/**
+ * The external image viewer showed an image that another app sent to MEGA.
+ *
+ * @property fileType Image type: `jpeg`, `png`, `heic`, `webp`, `gif` or `other`. It comes from
+ * the MIME type of the intent, with the file extension as fallback.
+ * @property isLoggedIn True when the user is logged in at the time of the event.
+ */
+@GeneralEvent
+class ExternalImageOpened(
+    val fileType: String,
+    val isLoggedIn: Boolean,
+)
+
+/**
+ * The user tapped "Save to Cloud Drive" in the external image viewer. Divide by
+ * [ExternalImageOpened] for each [fileType] to get the share of opens that the user saves.
+ *
+ * @property fileType Same values as [ExternalImageOpened.fileType].
+ * @property isLoggedIn True when the user is logged in at the time of the event. It can differ
+ * from the value of the [ExternalImageOpened] event, because the user can log in after the open.
+ */
+@GeneralEvent
+class ExternalImageSaveToCloudDriveTapped(
+    val fileType: String,
+    val isLoggedIn: Boolean,
+)
+
+/**
+ * The upload of the image from the external image viewer started.
+ *
+ * @property fileType Same values as [ExternalImageOpened.fileType].
+ * @property isLoggedIn True when the user is logged in at the time of the event.
+ */
+@GeneralEvent
+class ExternalImageUploadStarted(
+    val fileType: String,
+    val isLoggedIn: Boolean,
+)
