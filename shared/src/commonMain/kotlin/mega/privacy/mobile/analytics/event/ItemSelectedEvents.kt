@@ -316,6 +316,9 @@ interface PwmSmartBannerItemSelected
 interface TransferItSmartBannerItemSelected
 
 @ItemSelectedEvent
+interface MigrationToolSmartBannerItemSelected
+
+@ItemSelectedEvent
 interface CompletedTransfersItemTapAndHoldSelected
 
 @ItemSelectedEvent

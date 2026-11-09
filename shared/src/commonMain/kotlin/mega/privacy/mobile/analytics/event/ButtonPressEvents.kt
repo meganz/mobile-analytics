@@ -3227,6 +3227,12 @@ interface CloudDriveEmptyStateImportFromAnotherCloudPressed
 interface MigrationToolPsaPositiveButtonPressed
 
 @ButtonPressEvent(
+    buttonName = "Close Migration tool Home Banner",
+    screen = "Home Screen"
+)
+interface MigrationToolBannerCloseButtonPressed
+
+@ButtonPressEvent(
     buttonName = "Clear button",
     screen = "Continue where you left off screen",
     dialog = "Clear selected files dialog"
