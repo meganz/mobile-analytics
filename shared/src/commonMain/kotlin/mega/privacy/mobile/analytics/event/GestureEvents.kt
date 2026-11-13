@@ -51,3 +51,24 @@ interface SyncProgressCompletedTransferSwipeToClear
 
 @GestureEvent(gesture = "Sync progress resolved issue swipe to clear", screen = "Sync progress")
 interface SyncProgressResolvedIssueSwipeToClear
+
+@GestureEvent(gesture = "Swipe to next track", screen = "Audio mini player")
+interface AudioMiniPlayerSwipeToNext
+
+@GestureEvent(gesture = "Swipe to previous track", screen = "Audio mini player")
+interface AudioMiniPlayerSwipeToPrevious
+
+@GestureEvent(gesture = "Swipe to next track", screen = "Audio player controller")
+interface AudioPlayerSwipeToNext
+
+@GestureEvent(gesture = "Swipe to previous track", screen = "Audio player controller")
+interface AudioPlayerSwipeToPrevious
+
+@GestureEvent(gesture = "Double tap to seek forward", screen = "Audio player controller")
+interface AudioPlayerDoubleTapSeekForward
+
+@GestureEvent(gesture = "Double tap to seek backward", screen = "Audio player controller")
+interface AudioPlayerDoubleTapSeekBackward
+
+@GestureEvent(gesture = "Drag down to collapse the player", screen = "Audio player controller")
+interface AudioPlayerDragDownToCollapse

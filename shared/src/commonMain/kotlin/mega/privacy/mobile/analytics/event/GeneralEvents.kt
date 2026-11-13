@@ -1032,3 +1032,9 @@ class ExternalImageUploadStarted(
 
 @GeneralEvent
 interface VideoPlayerOpenedWithShuffleOn
+
+@GeneralEvent
+interface AudioPlayerStoredSpeedApplied
+
+@GeneralEvent
+interface AudioPlayerPlaybackErrorShown

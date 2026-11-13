@@ -3304,3 +3304,39 @@ interface VideoPlayerShuffleEnabled
     screen = "Video player controller"
 )
 interface VideoPlayerShuffleDisabled
+
+@ButtonPressEvent(
+    buttonName = "Play",
+    screen = "Audio mini player"
+)
+interface AudioMiniPlayerPlayPressed
+
+@ButtonPressEvent(
+    buttonName = "Pause",
+    screen = "Audio mini player"
+)
+interface AudioMiniPlayerPausePressed
+
+@ButtonPressEvent(
+    buttonName = "Close",
+    screen = "Audio mini player"
+)
+interface AudioMiniPlayerClosePressed
+
+@ButtonPressEvent(
+    buttonName = "Open full player",
+    screen = "Audio mini player"
+)
+interface AudioMiniPlayerOpenedFullPlayer
+
+@ButtonPressEvent(
+    buttonName = "Next track",
+    screen = "Audio player controller"
+)
+interface AudioPlayerNextButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Previous track",
+    screen = "Audio player controller"
+)
+interface AudioPlayerPreviousButtonPressed
