@@ -1061,3 +1061,15 @@ interface AudioPlayerStoredSpeedApplied
 
 @GeneralEvent
 interface AudioPlayerPlaybackErrorShown
+
+/**
+ * The batch rename dialog was closed without renaming, by Cancel, back or a tap outside.
+ */
+@GeneralEvent
+interface BatchRenameDialogCancelled
+
+/**
+ * A batch rename ended and at least 1 item was not renamed.
+ */
+@GeneralEvent
+interface BatchRenamePartiallyFailed

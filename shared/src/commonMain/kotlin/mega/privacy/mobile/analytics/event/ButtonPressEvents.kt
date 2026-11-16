@@ -3340,3 +3340,27 @@ interface AudioPlayerNextButtonPressed
     screen = "Audio player controller"
 )
 interface AudioPlayerPreviousButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Batch rename Add text rename",
+    dialog = "Batch rename"
+)
+interface BatchRenameAddTextRenameButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Batch rename Replace text rename",
+    dialog = "Batch rename"
+)
+interface BatchRenameReplaceTextRenameButtonPressed
+
+@ButtonPressEvent(
+    buttonName = "Batch rename extension change Change anyway",
+    dialog = "Batch rename extension change"
+)
+interface BatchRenameExtensionChangeConfirmed
+
+@ButtonPressEvent(
+    buttonName = "Batch rename progress Cancel",
+    dialog = "Batch rename"
+)
+interface BatchRenameInProgressCancelled

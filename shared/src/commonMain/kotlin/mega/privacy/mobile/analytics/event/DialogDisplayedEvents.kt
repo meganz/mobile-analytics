@@ -106,3 +106,15 @@ interface WidgetCustomisationLastWidgetSnackbarDisplayed
 
 @DialogDisplayedEvent(dialog = "HomeScreenShortcutPermissionDialog")
 interface HomeScreenShortcutPermissionDialogDisplayed
+
+/**
+ * The batch rename dialog was opened for 2 or more selected items.
+ */
+@DialogDisplayedEvent(dialog = "Batch rename")
+interface BatchRenameDialogDisplayed
+
+/**
+ * The batch rename confirmation for a changed file extension was shown.
+ */
+@DialogDisplayedEvent(dialog = "Batch rename extension change")
+interface BatchRenameExtensionChangeDialogDisplayed

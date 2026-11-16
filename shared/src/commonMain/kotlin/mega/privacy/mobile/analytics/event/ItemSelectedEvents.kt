@@ -473,3 +473,15 @@ interface PinnedItemsWidgetFolderItemSelected
  */
 @ItemSelectedEvent
 interface PinnedItemsWidgetFileItemSelected
+
+/**
+ * "Add text" was picked in the mode menu of the batch rename dialog.
+ */
+@ItemSelectedEvent
+interface BatchRenameAddTextModeSelected
+
+/**
+ * "Replace text" was picked in the mode menu of the batch rename dialog.
+ */
+@ItemSelectedEvent
+interface BatchRenameReplaceTextModeSelected
