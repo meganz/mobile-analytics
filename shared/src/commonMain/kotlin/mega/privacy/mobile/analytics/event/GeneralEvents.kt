@@ -970,6 +970,29 @@ interface PdfViewerSearchSessionStarted
 class PdfViewerDownloadRequested(val source: String)
 
 /**
+ * A long press in the PDF viewer selected text. Dragging a selection handle does not send it.
+ */
+@GeneralEvent
+interface PdfViewerTextSelected
+
+/**
+ * "Select all" in the PDF viewer selected text. On Android, it selects the text of the current
+ * page.
+ */
+@GeneralEvent
+interface PdfViewerAllTextSelected
+
+/**
+ * The user copied the selected text of the PDF viewer. It is not sent when the copied text is
+ * empty.
+ *
+ * @property characterCount The number of UTF-16 code units in the copied text: `String.length`
+ * in Kotlin, `text.utf16.count` in Swift.
+ */
+@GeneralEvent
+class PdfViewerTextCopied(val characterCount: Int)
+
+/**
  * Items were pinned to Home from the picker, from the Home section or from the Pinned items page.
  *
  * @property count The number of items pinned in this batch, from 1 to 10
