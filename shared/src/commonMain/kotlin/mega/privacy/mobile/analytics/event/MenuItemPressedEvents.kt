@@ -1352,6 +1352,11 @@ interface CloudDriveFavouriteMenuItem
 )
 interface CloudDriveLabelMenuItem
 
+/**
+ * Android no longer sends this event. Android sends [CloudDriveSaveToDeviceMenuItem] for Download
+ * and [CloudDriveMakeAvailableOfflineMenuItem] for Make available offline.
+ * iOS still sends this event.
+ */
 @MenuItemEvent(
     menuItem = "Make available offline",
     menuType = MenuItemEvent.MenuType.Item,
@@ -1359,6 +1364,11 @@ interface CloudDriveLabelMenuItem
 )
 interface CloudDriveDownloadMenuItem
 
+/**
+ * Android no longer sends this event. Android sends [CloudDriveGetLinkMenuItem] for Share link
+ * and [CloudDriveManageLinkMenuItem] for Manage link.
+ * iOS still sends this event.
+ */
 @MenuItemEvent(
     menuItem = "Share link",
     menuType = MenuItemEvent.MenuType.Item,
@@ -1616,7 +1626,7 @@ interface CloudDriveSaveToDeviceMenuItem
 interface CloudDriveEditMenuItem
 
 @MenuItemEvent(
-    menuItem = "Delete permanently menu action",
+    menuItem = "Manage link menu action",
     menuType = MenuItemEvent.MenuType.Item,
 )
 interface CloudDriveManageLinkMenuItem
@@ -1922,3 +1932,171 @@ interface SyncProgressClearCompletedMenuItem
     screen = "Sync progress"
 )
 interface SyncProgressSyncSettingsMenuItem
+
+@MenuItemEvent(
+    menuItem = "Make available offline",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveMakeAvailableOfflineMenuItem
+
+@MenuItemEvent(
+    menuItem = "Share link",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveGetLinkMenuItem
+
+@MenuItemEvent(
+    menuItem = "Selection Copy",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionCopyMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Hide",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionHideMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Move",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionMoveMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Move to rubbish bin",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionMoveToRubbishBinMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Manage link",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionManageLinkMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Download",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionDownloadMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Unhide",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionUnhideMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Rename",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionRenameMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Share link",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionGetLinkMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Remove link",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionRemoveLinkMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Send to chat",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionSendToChatMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Share folder",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionShareFolderMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Remove share",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionRemoveShareMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Dispute takedown",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionDisputeTakeDownMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Share",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionShareMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Add to",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionAddToMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Add to album",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionAddToAlbumMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Label",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionLabelMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Favourite",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionFavouriteMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Remove favourite",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionRemoveFavouriteMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Make available offline",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionMakeAvailableOfflineMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Selection Remove offline",
+    menuType = MenuItemEvent.MenuType.Toolbar,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveSelectionRemoveOfflineMenuToolbar
