@@ -317,6 +317,30 @@ class SlideshowSettingRepeatOnButton
 class SlideshowSettingRepeatOffButton
 
 @ButtonPressEvent(
+    buttonName = "Slideshow preference videos ON toggle",
+    screen = "Slideshow settings screen"
+)
+class SlideshowSettingVideosOnButton
+
+@ButtonPressEvent(
+    buttonName = "Slideshow preference videos OFF toggle",
+    screen = "Slideshow settings screen"
+)
+class SlideshowSettingVideosOffButton
+
+@ButtonPressEvent(
+    buttonName = "Slideshow mute button",
+    screen = "Slideshow screen"
+)
+class SlideshowMuteButton
+
+@ButtonPressEvent(
+    buttonName = "Slideshow unmute button",
+    screen = "Slideshow screen"
+)
+class SlideshowUnmuteButton
+
+@ButtonPressEvent(
     buttonName = "Slideshow preference speed slow 8s",
     screen = "Slideshow settings screen",
     dialog = "SlideshowSpeedDialog"
