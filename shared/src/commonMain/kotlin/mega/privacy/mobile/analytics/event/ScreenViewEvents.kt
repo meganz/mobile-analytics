@@ -331,3 +331,6 @@ interface WidgetCustomisationScreen
 
 @ScreenViewEvent
 interface SyncProgressScreen
+
+@ScreenViewEvent
+interface TextEditorRtfPreviewScreen
