@@ -8,11 +8,16 @@ import kotlinx.serialization.json.JsonPrimitive
 
 /**
  * Json mapper
+ *
+ * Returns the event data as JSON text that is escaped as the content of a JSON string,
+ * because the SDK writes the returned text, without escaping, between the quotes of the "m"
+ * field of the log command.
  */
 class JsonMapper : EventDataMapper {
     override fun mapData(eventData: Map<String, Any?>) = runCatching {
-        getMapJson(eventData).toString()
-            .replace("\"", "\\\"")
+        JsonPrimitive(getMapJson(eventData).toString())
+            .toString()
+            .removeSurrounding("\"")
     }.getOrDefault("")
 
     private fun getMapJson(map: Map<*, *>) = JsonObject(
