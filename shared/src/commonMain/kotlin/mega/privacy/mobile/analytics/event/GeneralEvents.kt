@@ -1053,6 +1053,45 @@ class ExternalImageUploadStarted(
     val isLoggedIn: Boolean,
 )
 
+/**
+ * The external audio player opened an audio file that another app sent to MEGA.
+ *
+ * @property fileType Audio type: `mp3` or `other`. It comes from the MIME type of the intent, with
+ * the file extension as fallback.
+ * @property isLoggedIn True when the user is logged in at the time of the event.
+ */
+@GeneralEvent
+class ExternalAudioOpened(
+    val fileType: String,
+    val isLoggedIn: Boolean,
+)
+
+/**
+ * The user tapped "Save to MEGA" in the external audio player. Divide by [ExternalAudioOpened]
+ * for each [fileType] to get the share of opens that the user saves.
+ *
+ * @property fileType Same values as [ExternalAudioOpened.fileType].
+ * @property isLoggedIn True when the user is logged in at the time of the event. It can differ
+ * from the value of the [ExternalAudioOpened] event, because the user can log in after the open.
+ */
+@GeneralEvent
+class ExternalAudioSaveToCloudDriveTapped(
+    val fileType: String,
+    val isLoggedIn: Boolean,
+)
+
+/**
+ * The upload of the audio file from the external audio player started.
+ *
+ * @property fileType Same values as [ExternalAudioOpened.fileType].
+ * @property isLoggedIn True when the user is logged in at the time of the event.
+ */
+@GeneralEvent
+class ExternalAudioUploadStarted(
+    val fileType: String,
+    val isLoggedIn: Boolean,
+)
+
 @GeneralEvent
 interface VideoPlayerOpenedWithShuffleOn
 
