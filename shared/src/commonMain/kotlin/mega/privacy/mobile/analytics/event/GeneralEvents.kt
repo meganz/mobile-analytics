@@ -1073,3 +1073,167 @@ interface BatchRenameDialogCancelled
  */
 @GeneralEvent
 interface BatchRenamePartiallyFailed
+
+/**
+ * A Camera Uploads or Sync background run started, and its lateness was measured against the time
+ * the run was due. Only 10 % of the runs less than 3 hours late are sent, and every later run, so
+ * the counts are not the total run counts.
+ *
+ * @property latenessBucket Null when the lateness cannot be calculated, for example after a reboot.
+ * @property counted True when the run counted toward the battery restriction prompt.
+ * @property longLateCount Number of counted runs in the current window, after this run. Only Camera
+ * Uploads runs are counted, so a Sync event carries the Camera Uploads count.
+ * @property retry True when the run is a retry after a failed attempt, so its lateness includes the
+ * retry delay.
+ * @property sdk Android API level of the device.
+ */
+@GeneralEvent
+class BackgroundWorkRunLateness(
+    val kind: WorkKind,
+    val latenessBucket: LatenessBucket?,
+    val counted: Boolean,
+    val longLateCount: Int,
+    val isIgnoringBatteryOptimizations: Boolean,
+    val standbyBucket: StandbyBucket,
+    val isBackgroundRestricted: Boolean,
+    val powerSave: Boolean,
+    val deviceIdle: Boolean,
+    val charging: Boolean,
+    val reboot: Boolean,
+    val update: Boolean,
+    val retry: Boolean,
+    val lastExit: LastExit,
+    val prevUnfinished: Boolean,
+    val coldStart: Boolean,
+    val sdk: Int,
+    val networkConstraint: NetworkConstraint,
+) {
+    enum class WorkKind {
+        /**
+         * Camera Uploads worker
+         */
+        CameraUploads,
+
+        /**
+         * Sync worker
+         */
+        Sync
+    }
+
+    /**
+     * Each range includes its lower bound and excludes its upper bound.
+     */
+    enum class LatenessBucket {
+        /**
+         * The run started before it was due
+         */
+        Negative,
+
+        /**
+         * 0 to 15 minutes
+         */
+        UpTo15Minutes,
+
+        /**
+         * 15 to 60 minutes
+         */
+        From15To60Minutes,
+
+        /**
+         * 1 to 3 hours
+         */
+        From1To3Hours,
+
+        /**
+         * 3 to 6 hours
+         */
+        From3To6Hours,
+
+        /**
+         * 6 to 12 hours
+         */
+        From6To12Hours,
+
+        /**
+         * 12 to 24 hours
+         */
+        From12To24Hours,
+
+        /**
+         * 24 hours or more
+         */
+        Over24Hours
+    }
+
+    enum class StandbyBucket {
+        /**
+         * The app is exempt from standby restrictions
+         */
+        Exempted,
+
+        /**
+         * Active bucket
+         */
+        Active,
+
+        /**
+         * Working set bucket
+         */
+        WorkingSet,
+
+        /**
+         * Frequent bucket
+         */
+        Frequent,
+
+        /**
+         * Rare bucket
+         */
+        Rare,
+
+        /**
+         * Restricted bucket
+         */
+        Restricted,
+
+        /**
+         * The bucket is not known or not supported on the device
+         */
+        Unknown
+    }
+
+    enum class LastExit {
+        /**
+         * The user stopped the previous process: a force stop, a removal from Recents, or a
+         * stopped Android user
+         */
+        UserForceStop,
+
+        /**
+         * The previous process ended for another reason
+         */
+        Other,
+
+        /**
+         * The reason is not known or not supported on the device
+         */
+        Unknown
+    }
+
+    enum class NetworkConstraint {
+        /**
+         * The work needs an unmetered network
+         */
+        Unmetered,
+
+        /**
+         * The work needs any connected network
+         */
+        Connected,
+
+        /**
+         * The work has no network constraint
+         */
+        None
+    }
+}
