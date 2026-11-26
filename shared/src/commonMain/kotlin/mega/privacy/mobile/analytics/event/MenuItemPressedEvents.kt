@@ -2100,3 +2100,31 @@ interface CloudDriveSelectionMakeAvailableOfflineMenuToolbar
     screen = "Cloud Drive screen"
 )
 interface CloudDriveSelectionRemoveOfflineMenuToolbar
+
+@MenuItemEvent(
+    menuItem = "Pause sync",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDrivePauseSyncMenuItem
+
+@MenuItemEvent(
+    menuItem = "Resume sync",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveResumeSyncMenuItem
+
+@MenuItemEvent(
+    menuItem = "Stop sync",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveStopSyncMenuItem
+
+@MenuItemEvent(
+    menuItem = "Stop backup",
+    menuType = MenuItemEvent.MenuType.Item,
+    screen = "Cloud Drive screen"
+)
+interface CloudDriveStopBackupMenuItem
