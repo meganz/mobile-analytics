@@ -8,10 +8,6 @@ ARTIFACTORY_PUBLISH_LOG = "artifactory_publish.log"
 // Flag indicating whether generated Swift package has updates.
 HAS_SWIFT_PACKAGE_CHANGE = false
 
-TRIGGER_TYPE_UNKNOWN = -1
-TRIGGER_TYPE_PUSH = 0
-TRIGGER_TYPE_COMMAND = 1
-
 /**
  * common.groovy file with common methods
  */
@@ -45,13 +41,6 @@ pipeline {
 
                 common.downloadJenkinsConsoleLog(CONSOLE_LOG_FILE)
 
-                if (triggerType() == TRIGGER_TYPE_COMMAND) {
-                    String jenkinsLogLink = common.uploadFileToGitLab(CONSOLE_LOG_FILE)
-                    String message = failureMessage("<br/>") +
-                            "<br/>Build Log:\t${jenkinsLogLink}"
-                    sendToMR(message)
-                }
-
                 slackSend color: 'danger', message: failureMessage("\n")
                 slackUploadFile filePath: 'console.txt', initialComment: 'Jenkins Log'
             }
@@ -61,15 +50,12 @@ pipeline {
                 common = load('jenkinsfile/common.groovy')
 
                 createTag(getAndroidLibVersion())
-                sendToMR(androidSuccessMessage("<br/>"))
                 slackSend color: "good", message: androidSuccessMessage("\n")
 
                 if (HAS_SWIFT_PACKAGE_CHANGE) {
-                    sendToMR(iOSSuccessMessage("<br/>"))
                     slackSend color: "good", message: iOSSuccessMessage("\n")
                 } else {
                     String noFileChangeMsg = "No change in iOS Swift Package. No files are published."
-                    sendToMR(noFileChangeMsg)
                     slackSend color: "good", message: noFileChangeMsg
                 }
             }
@@ -85,6 +71,25 @@ pipeline {
                     common = load('jenkinsfile/common.groovy')
                     println("Print environment variables")
                     sh('set')
+                    // Only code that is merged to main may be published, because every publish
+                    // releases the library to the apps and tags main.
+                    if (env.gitlabActionType != "PUSH" || env.gitlabTargetBranch != "main") {
+                        error("Publishing runs only on a push to main " +
+                                "(action: ${env.gitlabActionType}, branch: ${env.gitlabTargetBranch})")
+                    }
+                }
+            }
+        }
+        stage('Verify Before Publishing') {
+            steps {
+                script {
+                    BUILD_STEP = 'Verify Before Publishing'
+                    sh "./gradlew build"
+                    // The build regenerates the JSON files, so any difference means they were not committed
+                    sh "git diff --exit-code -- shared/src/commonMain/resources"
+                    String baseline = previousPublishedTag()
+                    String allowRemoval = isEventIdRemovalAllowed(baseline) ? "-PallowEventIdRemoval=true" : ""
+                    sh "./gradlew :shared:verifyEventIdStability -PeventIdBaseline=${baseline} ${allowRemoval}"
                 }
             }
         }
@@ -157,12 +162,6 @@ pipeline {
             }
         }
         stage('Sync Code to GitHub') {
-            when {
-                // only sync to GitHub, when build is triggered by push to main branch
-                expression {
-                    triggerType() == TRIGGER_TYPE_PUSH && gitlabTargetBranch == "main"
-                }
-            }
             steps {
                 script {
                     BUILD_STEP = 'Sync Code to GitHub'
@@ -182,65 +181,62 @@ pipeline {
     }
 }
 
-/**
- * Send message to Merge Request
- * @param message message to send
- */
-private void sendToMR(String message) {
-    common = load('jenkinsfile/common.groovy')
-    if (triggerType() == TRIGGER_TYPE_COMMAND) {
-        common.sendToMR(message)
-    }
-}
-
 private void createTag(String tag) {
     common = load('jenkinsfile/common.groovy')
     common.createTag(tag)
 }
 
 /**
- * Check why this job is triggered
- * @return trigger types
- */
-private int triggerType() {
-    if (gitlabActionType == "NOTE") {
-        return TRIGGER_TYPE_COMMAND
-    } else if (gitlabActionType == "PUSH") {
-        return TRIGGER_TYPE_PUSH
-    } else {
-        return TRIGGER_TYPE_UNKNOWN
-    }
-}
-
-/**
- * Get the name of the build trigger person.
+ * Get the name of the person who pushed to main.
  * @return name
  */
 private String authorName() {
-    if (triggerType() == TRIGGER_TYPE_COMMAND) {
-        return gitlabCommentAuthor
-    } else {
-        return gitlabUserName
+    return env.gitlabUserName
+}
+
+/**
+ * Find the version tag of the previous publish, which is the baseline for the event ID check.
+ * Only tags in the history of HEAD are used, so that a tag created by a concurrent build for a
+ * newer commit is never the baseline. The build fails when no tag is found, because publishing
+ * without the check could release changed event IDs.
+ * @return the tag name, in the format yyyyMMdd.HHmmss
+ */
+private String previousPublishedTag() {
+    fetchTags()
+    String tag = sh(
+            script: "git tag --list --merged HEAD --sort=-v:refname | grep -E '^[0-9]{8}\\.[0-9]{6}\$' | head -n 1",
+            returnStdout: true
+    ).trim()
+    if (tag.isEmpty()) {
+        error("No previous version tag found in the history of HEAD. Cannot verify event IDs before publishing.")
+    }
+    println("Event ID baseline = $tag")
+    return tag
+}
+
+/**
+ * Fetch the version tags. Plain `sh` has no GitLab credentials, so pass them through a credential
+ * helper. Single-quoted so the token is never interpolated into the script or written to the git config.
+ */
+private void fetchTags() {
+    withCredentials([usernamePassword(credentialsId: 'Gitlab-Access-Token', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+        sh '''
+            GIT_TERMINAL_PROMPT=0 git -c credential.helper= \
+                -c credential.helper='!f() { echo "username=${GIT_USERNAME}"; echo "password=${GIT_PASSWORD}"; }; f' \
+                fetch --tags origin
+        '''
     }
 }
 
 /**
- * Command name of what triggers the build.
- * @return one of these values: PUSH, N/A or MR comment
+ * Event removals are allowed when a commit since [baseline] contains [allow-event-id-removal] in
+ * its message, so that a removal accepted in the MR pipeline does not block the publish.
  */
-private String command() {
-    println("==== entering command() ====")
-    int triggerTypeValue = triggerType()
-    switch (triggerTypeValue) {
-        case TRIGGER_TYPE_COMMAND:
-            return gitlabTriggerPhrase
-            break
-        case TRIGGER_TYPE_PUSH:
-            return "PUSH"
-            break
-        default:
-            return "N/A"
-    }
+private boolean isEventIdRemovalAllowed(String baseline) {
+    return sh(
+            script: "git log ${baseline}..HEAD --format=%B | grep -qF '[allow-event-id-removal]'",
+            returnStatus: true
+    ) == 0
 }
 
 /**
@@ -285,7 +281,6 @@ private String androidSuccessMessage(String lineBreak) {
             "${lineBreak}Author:\t${authorName()}" +
             "${lineBreak}Commit:\t${GIT_COMMIT}" +
             "${lineBreak}Version:\tmega.privacy.mobile:analytics-events-android:${getAndroidLibVersion()}" +
-            "${lineBreak}Command:\t${command()}" +
             "${lineBreak}AAR Artifactory Page: ${getLibArtifactoryUrl()}"
 }
 
@@ -348,7 +343,6 @@ String uploadFileToGitLab(String fileName) {
 private String failureMessage(String lineBreak) {
     String message = ":x: Mobile-Analytics Library(Android+iOS) Creation Failed!(Build No:${env.BUILD_NUMBER})" +
             "${lineBreak}Author:\t${authorName()}" +
-            "${lineBreak}Command:\t${command()}" +
             "${lineBreak}Commit:\t${GIT_COMMIT}"
     return message
 }

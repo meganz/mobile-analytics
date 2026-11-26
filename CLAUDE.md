@@ -87,3 +87,5 @@ Processor tests use kotlin-compile-testing to verify generated code output. Test
 ## Publishing
 
 Artifacts publish to Artifactory via `./gradlew artifactoryPublish`. Requires `ARTIFACTORY_USER` and `ARTIFACTORY_ACCESS_TOKEN` environment variables. Versioning is timestamp-based.
+
+CI publishes only on a push to `main` (`jenkinsfile/build_lib.groovy`); MR comments do not trigger a publish. Before it publishes, the job runs `./gradlew build`, the JSON resources diff check, and `:shared:verifyEventIdStability` against the previous version tag (`yyyyMMdd.HHmmss`, created by each publish). After a successful publish it tags `main` with the new version.

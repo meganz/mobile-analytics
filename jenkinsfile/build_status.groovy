@@ -4,7 +4,6 @@ BUILD_STEP = ''
  * GitLab commands that can trigger this job.
  */
 BUILD_KMM_ANALYTICS_CMD = "build_kmm_analytics"
-BUILD_KA_CMD = "build_ka"
 
 // The log file of publishing lib to Artifactory
 ARTIFACTORY_PUBLISH_LOG = "artifactory_publish.log"
