@@ -108,6 +108,19 @@ pipeline {
                 }
             }
         }
+        stage('Verify Event API') {
+            steps {
+                gitlabCommitStatus(name: 'Event API') {
+                    script {
+                        BUILD_STEP = 'Verify Event API'
+                        // Gradle does not run the buildSrc tests as part of the main build
+                        sh "./gradlew -p buildSrc test"
+                        // Reads [allow-event-api-change] from the branch commit messages itself
+                        sh "./gradlew :shared:verifyEventApiStability -PeventIdBaseline=origin/main"
+                    }
+                }
+            }
+        }
         stage('Verify Publishing') {
             steps {
                 gitlabCommitStatus(name: 'Publishing') {
@@ -135,7 +148,7 @@ pipeline {
 }
 
 /**
- * Fetch main as origin/main, the baseline for the event ID check. The MR checkout only fetches
+ * Fetch main as origin/main, the baseline for the event ID and event API checks. The MR checkout only fetches
  * the MR ref, and plain `sh` has no GitLab credentials, so pass them through a credential helper.
  * Single-quoted so the token is never interpolated into the script or written to the git config.
  */

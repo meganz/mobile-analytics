@@ -19,13 +19,19 @@ A Kotlin Multiplatform (KMP) library that provides type-safe analytics event def
 ### Verification checks (also run by the MR pipeline in `jenkinsfile/build_status.groovy`)
 
 ```bash
-./gradlew :shared:verifyEventIdStability             # Existing event IDs unchanged vs origin/main
+./gradlew :shared:verifyEventIdStability             # Existing event IDs unchanged vs the tip of origin/main
+./gradlew :shared:verifyEventApiStability            # Existing events' annotation, parameters and payload unchanged
+./gradlew -p buildSrc test                           # Tests of the verification tasks (not run by the main build)
 ./gradlew publishAllPublicationsToVerifyRepository   # Publishing tasks against build/verify-repo, no upload
 ./gradlew createSwiftPackage :shared:verifySwiftPackageEvents  # Every declared event is in the XCFramework
 (cd ios-smoke-tests && swift test)                   # Swift Testing smoke tests against the generated package
 ```
 
-`verifyEventIdStability` fails on removed events unless run with `-PallowEventIdRemoval=true`; in CI, put `[allow-event-id-removal]` in a commit message on the branch. Changed or reused IDs always fail.
+`verifyEventIdStability` fails on removed events unless run with `-PallowEventIdRemoval=true`; in CI, put `[allow-event-id-removal]` in a commit message on the branch. Changed or reused IDs, IDs outside 0..999 (except `LegacyEvent.json`) and new JSON keys without a declared event always fail.
+
+`verifyEventApiStability` generates the event manifest (`shared/build/eventManifest.json`) for the baseline in a temporary git worktree and compares it with HEAD. It fails on a removed or modified event (annotation arguments, constructor parameters, `@StaticValue` entries or ID) unless a commit message in `<baseline>..HEAD` contains `[allow-event-api-change]` (locally: `-PallowEventApiChange=true`). It always writes `shared/build/reports/eventApiDiff.json`.
+
+Both checks compare with the tip of the baseline (`-PeventIdBaseline`, default `origin/main`), not the merge base, so a branch that is behind `main` must be rebased first.
 
 Running Gradle needs JDK 17 or newer (Android Studio's bundled JBR works). Toolchain versions (Gradle 9.6, AGP 9.4, Kotlin 2.4, KSP 2.3) are kept in step with the MEGA android app repo, except Kotlin, which is on 2.4.21 for the fix to KT-86443 (2.4.0 crashed iOS consumers in `-[KotlinBase description]`). The Android targets use the `com.android.kotlin.multiplatform.library` plugin, so Android settings live inside the `kotlin { android { } }` block of each module rather than a top-level `android {}` block.
 
@@ -54,7 +60,7 @@ The JSON files in `shared/src/commonMain/resources/` (e.g., `ButtonPressEvent.js
 
 `platformIdentifier + eventTypeIdentifier + uniqueId + appIdentifier`
 
-Event type offsets: ScreenView=0, TabSelected=1000, ButtonPress=2000, DialogDisplayed=3000, Navigation=4000, MenuItem=5000, Notification=6000, General=7000, ItemSelected=8000.
+Event type offsets: ScreenView=0, TabSelected=1000, ButtonPress=2000, DialogDisplayed=3000, Navigation=4000, MenuItem=5000, Notification=6000, General=7000, ItemSelected=8000, Gesture=9000.
 
 ## Annotation Types
 

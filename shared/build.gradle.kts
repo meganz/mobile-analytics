@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 import src.main.kotlin.HtmlTableTask
+import src.main.kotlin.VerifyEventApiStabilityTask
 import src.main.kotlin.VerifyEventIdStabilityTask
 import src.main.kotlin.VerifySwiftPackageEventsTask
 
@@ -119,12 +120,21 @@ dependencies {
     add("kspCommonMainMetadata", project(":analytics-processor"))
 }
 
+val eventManifest = layout.buildDirectory.file("eventManifest.json")
+
 ksp {
     val relativeResourcePath = "src/commonMain/resources"
 
     val absoluteResourcePath = File(projectDir, relativeResourcePath).absolutePath
 
     arg("resourcePath", absoluteResourcePath)
+    arg("manifestPath", eventManifest.get().asFile.absolutePath)
+}
+
+// The processor writes the manifest outside the KSP output directory. Declaring it makes Gradle run
+// KSP again when the manifest is missing.
+tasks.matching { it.name == "kspCommonMainKotlinMetadata" }.configureEach {
+    outputs.file(eventManifest)
 }
 
 multiplatformSwiftPackage {
@@ -197,10 +207,22 @@ tasks.register<VerifySwiftPackageEventsTask>("verifySwiftPackageEvents") {
 
 tasks.register<VerifyEventIdStabilityTask>("verifyEventIdStability") {
     resourceDir.set(layout.projectDirectory.dir("src/commonMain/resources"))
+    manifestFile.set(eventManifest)
     baselineRef.set(providers.gradleProperty("eventIdBaseline").orElse("origin/main"))
     allowRemovals.set(providers.gradleProperty("allowEventIdRemoval").map(String::toBoolean).orElse(false))
-    // KSP rewrites the JSON files, so check what it produced.
-    mustRunAfter("kspCommonMainKotlinMetadata")
+    // KSP rewrites the JSON files and writes the manifest, so check what it produced.
+    dependsOn("kspCommonMainKotlinMetadata")
+}
+
+tasks.register<VerifyEventApiStabilityTask>("verifyEventApiStability") {
+    repositoryDir.set(rootProject.layout.projectDirectory)
+    eventSourceDir.set(layout.projectDirectory.dir("src/commonMain"))
+    manifestFile.set(eventManifest)
+    generateTaskPath.set("${project.path}:kspCommonMainKotlinMetadata")
+    baselineRef.set(providers.gradleProperty("eventIdBaseline").orElse("origin/main"))
+    allowChanges.set(providers.gradleProperty("allowEventApiChange").map(String::toBoolean).orElse(false))
+    reportFile.set(layout.buildDirectory.file("reports/eventApiDiff.json"))
+    dependsOn("kspCommonMainKotlinMetadata")
 }
 
 // https://youtrack.jetbrains.com/issue/KT-42276

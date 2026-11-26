@@ -20,6 +20,7 @@ import mega.privacy.mobile.analytics.processor.factory.AnnotationVisitorFactory
 import mega.privacy.mobile.analytics.processor.factory.IdGeneratorFactory
 import mega.privacy.mobile.analytics.processor.generator.EventCodeGenerator
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
+import mega.privacy.mobile.analytics.processor.manifest.EventManifestWriter
 import kotlin.reflect.KClass
 
 /**
@@ -33,6 +34,7 @@ class AnalyticsEventProcessor(
     private val idProvider = IdProvider(logger, options[RESOURCE_PATH_KEY])
     private val idGeneratorFactory = IdGeneratorFactory()
     private val visitorFactory = AnnotationVisitorFactory(idGeneratorFactory)
+    private val manifestWriter = options[MANIFEST_PATH_KEY]?.let(::EventManifestWriter)
     private val analyticsPackageName = "mega.privacy.mobile.analytics.event"
 
     override fun process(resolver: Resolver): List<KSAnnotated> {
@@ -107,11 +109,17 @@ class AnalyticsEventProcessor(
         ).flatten()
     }
 
+    // KSP can call process() once per round, so the manifest is written once, after the last round.
+    override fun finish() {
+        manifestWriter?.write()
+    }
+
     private fun getGenerator(annotationClass: KClass<*>) = EventCodeGenerator(
         codeGenerator = codeGenerator,
         idProvider = idProvider,
         visitorFactory = visitorFactory,
         annotationClass = annotationClass,
+        manifestWriter = manifestWriter,
     )
 
     private fun EventCodeGenerator.generate(resolver: Resolver, fileName: String) =
@@ -122,6 +130,11 @@ class AnalyticsEventProcessor(
          * Resource path key
          */
         const val RESOURCE_PATH_KEY = "resourcePath"
+
+        /**
+         * Manifest path key. When it is not set, no event manifest is written.
+         */
+        const val MANIFEST_PATH_KEY = "manifestPath"
     }
 
 }

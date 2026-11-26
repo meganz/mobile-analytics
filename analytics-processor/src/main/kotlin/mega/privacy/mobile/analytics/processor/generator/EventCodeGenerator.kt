@@ -11,6 +11,7 @@ import com.squareup.kotlinpoet.ksp.writeTo
 import mega.privacy.mobile.analytics.annotations.Exclude
 import mega.privacy.mobile.analytics.processor.factory.AnnotationVisitorFactory
 import mega.privacy.mobile.analytics.processor.identifier.IdProvider
+import mega.privacy.mobile.analytics.processor.manifest.EventManifestWriter
 import mega.privacy.mobile.analytics.processor.visitor.data.EventData
 import kotlin.reflect.KClass
 
@@ -19,12 +20,14 @@ import kotlin.reflect.KClass
  *
  * @property codeGenerator
  * @property idProvider
+ * @property manifestWriter records each generated event, or null when no manifest is written
  */
 class EventCodeGenerator(
     private val codeGenerator: CodeGenerator,
     private val idProvider: IdProvider,
     private val visitorFactory: AnnotationVisitorFactory,
     private val annotationClass: KClass<*>,
+    private val manifestWriter: EventManifestWriter? = null,
 ) {
 
 
@@ -53,6 +56,11 @@ class EventCodeGenerator(
             )
             latestMap = result.idMap
             fileSpec.addType(result.spec)
+            manifestWriter?.record(
+                classDeclaration = it,
+                annotationClass = annotationClass,
+                id = latestMap.getValue(it.simpleName.asString()),
+            )
         }
 
 
