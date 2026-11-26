@@ -1092,6 +1092,39 @@ class ExternalAudioUploadStarted(
     val isLoggedIn: Boolean,
 )
 
+/**
+ * The PDF viewer opened a PDF that another app sent to MEGA. The event has no file type, because
+ * the PDF viewer opens only PDF files.
+ *
+ * @property isLoggedIn True when the user is logged in at the time of the event.
+ */
+@GeneralEvent
+class ExternalPdfOpened(
+    val isLoggedIn: Boolean,
+)
+
+/**
+ * The user tapped "Save to MEGA" in the PDF viewer for a PDF that another app sent to MEGA.
+ * Divide by [ExternalPdfOpened] to get the share of opens that the user saves.
+ *
+ * @property isLoggedIn True when the user is logged in at the time of the event. It can differ
+ * from the value of the [ExternalPdfOpened] event, because the user can log in after the open.
+ */
+@GeneralEvent
+class ExternalPdfSaveToCloudDriveTapped(
+    val isLoggedIn: Boolean,
+)
+
+/**
+ * The upload of a PDF that another app sent to MEGA started.
+ *
+ * @property isLoggedIn True when the user is logged in at the time of the event.
+ */
+@GeneralEvent
+class ExternalPdfUploadStarted(
+    val isLoggedIn: Boolean,
+)
+
 @GeneralEvent
 interface VideoPlayerOpenedWithShuffleOn
 
